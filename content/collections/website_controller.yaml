@@ -1,0 +1,9 @@
+title: 'Website Controller'
+template: default
+layout: layout
+revisions: true
+sort_dir: asc
+default_status: draft
+structure:
+  root: false
+  slugs: true

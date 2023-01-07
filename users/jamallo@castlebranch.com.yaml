@@ -1,0 +1,8 @@
+name: 'Joe Mallory'
+super: true
+id: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
+password_hash: $2y$10$ttTaK1FNQDrEMju7GPZCzOv51BV0MadnhQsp/F.ow1gk3Dnc9nypO
+preferences:
+  collections:
+    website_controller:
+      after_save: continue_editing

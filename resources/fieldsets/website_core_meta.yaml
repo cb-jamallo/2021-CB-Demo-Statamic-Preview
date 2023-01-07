@@ -1,0 +1,25 @@
+title: 'Website Core Meta'
+fields:
+  -
+    handle: meta
+    field:
+      collapse: false
+      sets:
+        item:
+          display: Item
+          fields:
+            -
+              handle: uid
+              field:
+                input_type: text
+                antlers: false
+                display: UID
+                type: text
+                icon: text
+                listable: hidden
+                instructions_position: above
+      display: Meta
+      type: replicator
+      icon: replicator
+      listable: hidden
+      instructions_position: above

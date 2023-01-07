@@ -1,0 +1,93 @@
+title: 'Website Form'
+sections:
+  content:
+    display: Content
+    fields:
+      -
+        handle: 'Campaign Form'
+        field:
+          collapse: false
+          sets:
+            item:
+              display: Item
+              fields:
+                -
+                  handle: campaign_form_name
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: 'Campaign Form Name'
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: campaign_form_section
+                  field:
+                    collapse: false
+                    sets:
+                      item:
+                        display: Item
+                        fields:
+                          -
+                            handle: campaign_form_field
+                            field:
+                              collapse: false
+                              sets:
+                                item:
+                                  display: Item
+                                  fields: {  }
+                              display: 'Campaign Form Field'
+                              type: replicator
+                              icon: replicator
+                              listable: hidden
+                              instructions_position: above
+                    display: 'Campaign Form Section'
+                    type: replicator
+                    icon: replicator
+                    listable: hidden
+                    instructions_position: above
+          display: 'Campaign Form'
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          input_type: text
+          antlers: false
+          display: Title
+          icon: text
+          listable: hidden
+          instructions_position: above
+          validate:
+            - required
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required
+      -
+        handle: parent
+        field:
+          type: entries
+          collections:
+            - website_form
+          max_items: 1
+          listable: false
+          localizable: true
+  metadata:
+    display: Metadata
+    fields: {  }
+  environment:
+    display: Environment
+    fields: {  }

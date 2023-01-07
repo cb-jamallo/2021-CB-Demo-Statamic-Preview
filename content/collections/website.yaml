@@ -1,0 +1,8 @@
+title: Website
+template: default
+layout: layout
+revisions: true
+sort_dir: asc
+structure:
+  root: false
+  slugs: true

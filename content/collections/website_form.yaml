@@ -1,0 +1,8 @@
+title: 'Website Form'
+template: default
+layout: layout
+revisions: false
+sort_dir: asc
+structure:
+  root: false
+  slugs: true
