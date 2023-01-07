@@ -1,8 +1,0 @@
-SITE=tekmountain-com
-
-// netlify.toml
-[build]
-  command = "npm run build"
-
-// build.js
-const buildContext = process.env.SITE
