@@ -1,7 +1,7 @@
 title: 'Website Controller'
 sections:
-  environment:
-    display: Environment
+  domain:
+    display: Domain
     fields:
       -
         handle: title
@@ -23,6 +23,845 @@ sections:
           localizable: true
           validate:
             - required
+  production:
+    display: Production
+    fields: {  }
+  staging:
+    display: Staging
+    fields:
+      -
+        handle: staging-host
+        field:
+          collapse: accordion
+          max_sets: 1
+          sets:
+            item:
+              display: Item
+              fields:
+                -
+                  handle: base
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Base
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: protocol
+                  field:
+                    options:
+                      'null': 'Select one'
+                      http: HTTP
+                      https: HTTPS
+                    multiple: false
+                    clearable: false
+                    searchable: false
+                    taggable: false
+                    push_tags: false
+                    cast_booleans: false
+                    default: https
+                    display: Protocol
+                    type: select
+                    icon: select
+                    listable: true
+                    instructions_position: above
+                    validate:
+                      - required
+                      - 'regex:/http|https/i'
+                -
+                  handle: version
+                  field:
+                    options:
+                      v-1-0-0: 'v 1.0.0'
+                    multiple: false
+                    clearable: true
+                    searchable: true
+                    taggable: true
+                    push_tags: false
+                    cast_booleans: false
+                    display: Version
+                    type: select
+                    icon: select
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+                -
+                  handle: package
+                  field:
+                    mode: list
+                    container: assets
+                    folder: _website-controller-host-packages
+                    restrict: true
+                    allow_uploads: true
+                    show_filename: true
+                    max_files: 1
+                    display: Package
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+                -
+                  handle: sitemap
+                  field:
+                    collapse: accordion
+                    max_sets: 1
+                    sets:
+                      item:
+                        display: Item
+                        fields:
+                          -
+                            handle: uid
+                            field:
+                              input_type: text
+                              antlers: false
+                              default: sitemap
+                              display: UID
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                              validate:
+                                - required
+                          -
+                            handle: path
+                            field:
+                              input_type: text
+                              antlers: false
+                              display: Path
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                              validate:
+                                - required
+                          -
+                            handle: frequency
+                            field:
+                              options:
+                                'null': 'Select one'
+                                hourly: Hourly
+                                daily: Daily
+                                weekly: Weekly
+                                monthly: Monthly
+                                yearly: Yearly
+                                never: Never
+                              multiple: false
+                              max_items: 1
+                              clearable: true
+                              searchable: true
+                              taggable: false
+                              push_tags: false
+                              cast_booleans: false
+                              default: monthly
+                              display: Frequency
+                              type: select
+                              icon: select
+                              listable: hidden
+                              instructions_position: above
+                              validate:
+                                - required
+                          -
+                            handle: priority
+                            field:
+                              options:
+                                10: '1.0'
+                                'null': 'Select one'
+                                '01': '0.1'
+                                '02': '0.2'
+                                '03': '0.3'
+                                '04': '0.4'
+                                '05': '0.5'
+                                '06': '0.6'
+                                '07': '0.7'
+                                '08': '0.8'
+                                '09': '0.9'
+                              multiple: false
+                              max_items: 1
+                              clearable: true
+                              searchable: true
+                              taggable: false
+                              push_tags: false
+                              cast_booleans: false
+                              default: '05'
+                              display: Priority
+                              type: select
+                              icon: select
+                              listable: hidden
+                              instructions_position: above
+                              validate:
+                                - required
+                    display: Sitemap
+                    type: replicator
+                    icon: replicator
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: robottxt
+                  field:
+                    collapse: accordion
+                    sets:
+                      item:
+                        display: Item
+                        fields:
+                          -
+                            handle: uid
+                            field:
+                              input_type: text
+                              antlers: false
+                              default: robots
+                              display: UID
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                          -
+                            handle: path
+                            field:
+                              input_type: text
+                              antlers: false
+                              display: Path
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                          -
+                            handle: content
+                            field:
+                              theme: light
+                              mode: shell
+                              mode_selectable: true
+                              indent_type: tabs
+                              indent_size: 4
+                              key_map: sublime
+                              line_numbers: true
+                              line_wrapping: true
+                              display: Content
+                              type: code
+                              icon: code
+                              listable: hidden
+                              instructions_position: above
+                    display: RobotTxt
+                    type: replicator
+                    icon: replicator
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: humantxt
+                  field:
+                    collapse: accordion
+                    max_sets: 1
+                    sets:
+                      item:
+                        display: Item
+                        fields:
+                          -
+                            handle: uid
+                            field:
+                              input_type: text
+                              antlers: false
+                              default: human
+                              display: UID
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                          -
+                            handle: path
+                            field:
+                              input_type: text
+                              antlers: false
+                              display: Path
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                              validate:
+                                - required
+                          -
+                            handle: content
+                            field:
+                              theme: light
+                              mode: shell
+                              mode_selectable: true
+                              indent_type: tabs
+                              indent_size: 4
+                              key_map: default
+                              line_numbers: true
+                              line_wrapping: true
+                              display: Content
+                              type: code
+                              icon: code
+                              listable: hidden
+                              instructions_position: above
+                              validate:
+                                - required
+                    display: HumanTxt
+                    type: replicator
+                    icon: replicator
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: securitytxt
+                  field:
+                    collapse: accordion
+                    sets:
+                      item:
+                        display: Item
+                        fields:
+                          -
+                            handle: uid
+                            field:
+                              input_type: text
+                              antlers: false
+                              default: security
+                              display: UID
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                              validate:
+                                - required
+                          -
+                            handle: path
+                            field:
+                              input_type: text
+                              antlers: false
+                              display: Path
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                              validate:
+                                - required
+                          -
+                            handle: content
+                            field:
+                              theme: light
+                              mode: shell
+                              mode_selectable: true
+                              indent_type: tabs
+                              indent_size: 4
+                              key_map: default
+                              line_numbers: true
+                              line_wrapping: true
+                              display: Content
+                              type: code
+                              icon: code
+                              listable: hidden
+                              instructions_position: above
+                    display: SecurityTxt
+                    type: replicator
+                    icon: replicator
+                    listable: hidden
+                    instructions_position: above
+                    max_sets: 1
+          display: Host
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+      -
+        handle: staging-template
+        field:
+          collapse: accordion
+          sets:
+            item:
+              display: Item
+              fields:
+                -
+                  handle: uid
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: UID
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+                -
+                  handle: path
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Path
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+                -
+                  handle: name
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Name
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+                -
+                  handle: ext
+                  field:
+                    options:
+                      'null': 'Select One'
+                      html: HTML
+                      svelte: Svelte
+                      vue: Vue
+                      react: React
+                      11ty: 11ty
+                      jsx: JSX
+                      xml: XML
+                      txt: TXT
+                      php: PHP
+                      csharp: 'C#'
+                    multiple: false
+                    clearable: true
+                    searchable: true
+                    taggable: true
+                    push_tags: false
+                    cast_booleans: false
+                    default: 'null'
+                    display: Ext
+                    type: select
+                    icon: select
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+                -
+                  handle: doctype
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: true
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Doctype
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+                    if:
+                      as: 'contains_any html,php,csharp'
+                -
+                  handle: html
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: true
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Html
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+                    if:
+                      as: 'contains_any html,php,csharp'
+                -
+                  handle: head
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: true
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Head
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+                    if:
+                      as: 'contains_any html,php,csharp'
+                -
+                  handle: title
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: true
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Title
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+                    if:
+                      as: 'contains_any html,php,csharp'
+                -
+                  handle: link
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: true
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Link
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+                    if:
+                      as: 'contains_any html,php,csharp'
+                -
+                  handle: meta
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: true
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Meta
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+                    if:
+                      as: 'contains_any html,php,csharp'
+                -
+                  handle: style
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: true
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Style
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: script
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: true
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Script
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: body
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: true
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Body
+                    type: code
+                    icon: code
+                    listable: true
+                    instructions_position: above
+          display: Template
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+      -
+        handle: staging-code
+        field:
+          collapse: accordion
+          sets:
+            item:
+              display: Item
+              fields:
+                -
+                  handle: uid
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: UID
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+                -
+                  handle: path
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Path
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: name
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Name
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+                -
+                  handle: ext
+                  field:
+                    options:
+                      'null': 'Select one'
+                      html: HTML
+                      css: CSS
+                      js: JS
+                      jsx: JSX
+                      svelte: Svelte
+                      vue: Vue
+                      react: React
+                      11ty: 11ty
+                      php: PHP
+                      csharp: 'C#'
+                      xml: XML
+                      txt: TXT
+                      htaccess: HTACCESS
+                    multiple: false
+                    clearable: true
+                    searchable: true
+                    taggable: true
+                    push_tags: false
+                    cast_booleans: false
+                    default: 'null'
+                    display: Ext
+                    type: select
+                    icon: select
+                    listable: hidden
+                    instructions_position: above
+                    max_items: 1
+                    validate:
+                      - required
+                      - nullable
+                -
+                  handle: content
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: true
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Content
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+          display: Code
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+      -
+        handle: staging-link
+        field:
+          collapse: accordion
+          sets:
+            item:
+              display: Item
+              fields:
+                -
+                  handle: uid
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: UID
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+                -
+                  handle: content
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: false
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: sublime
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Content
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+          display: Link
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+      -
+        handle: staging-meta
+        field:
+          collapse: accordion
+          sets:
+            item:
+              display: Item
+              fields:
+                -
+                  handle: uid
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: UID
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+                -
+                  handle: content
+                  field:
+                    theme: light
+                    mode: htmlmixed
+                    mode_selectable: true
+                    indent_type: tabs
+                    indent_size: 4
+                    key_map: default
+                    line_numbers: true
+                    line_wrapping: true
+                    display: Content
+                    type: code
+                    icon: code
+                    listable: hidden
+                    instructions_position: above
+                    validate:
+                      - required
+          display: Meta
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+      -
+        handle: staging-script
+        field:
+          collapse: accordion
+          sets:
+            item:
+              display: Item
+              fields: {  }
+          display: Script
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+      -
+        handle: staging-style
+        field:
+          collapse: accordion
+          sets:
+            item:
+              display: Item
+              fields: {  }
+          display: Style
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+      -
+        handle: staging-image
+        field:
+          collapse: accordion
+          sets:
+            item:
+              display: Item
+              fields: {  }
+          display: Image
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+      -
+        handle: staging-video
+        field:
+          collapse: accordion
+          sets:
+            item:
+              display: Item
+              fields: {  }
+          display: Video
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+      -
+        handle: staging-font
+        field:
+          collapse: accordion
+          sets:
+            item:
+              display: Item
+              fields: {  }
+          display: Font
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
+      -
+        handle: staging-document
+        field:
+          collapse: accordion
+          sets:
+            item:
+              display: Item
+              fields: {  }
+          display: Document
+          type: replicator
+          icon: replicator
+          listable: hidden
+          instructions_position: above
   development:
     display: Development
     fields:
@@ -1001,11 +1840,11 @@ sections:
           icon: replicator
           listable: hidden
           instructions_position: above
-  staging:
-    display: Staging
+  local:
+    display: Local
     fields:
       -
-        handle: staging-host
+        handle: local-host
         field:
           collapse: accordion
           max_sets: 1
@@ -1341,7 +2180,7 @@ sections:
           listable: hidden
           instructions_position: above
       -
-        handle: staging-template
+        handle: local-template
         field:
           collapse: accordion
           sets:
@@ -1483,8 +2322,6 @@ sections:
                     icon: code
                     listable: hidden
                     instructions_position: above
-                    if:
-                      as: 'contains_any html,php,csharp'
                 -
                   handle: link
                   field:
@@ -1525,7 +2362,7 @@ sections:
                   handle: style
                   field:
                     theme: light
-                    mode: htmlmixed
+                    mode: css
                     mode_selectable: true
                     indent_type: tabs
                     indent_size: 4
@@ -1541,7 +2378,7 @@ sections:
                   handle: script
                   field:
                     theme: light
-                    mode: htmlmixed
+                    mode: javascript
                     mode_selectable: true
                     indent_type: tabs
                     indent_size: 4
@@ -1575,7 +2412,7 @@ sections:
           listable: hidden
           instructions_position: above
       -
-        handle: staging-code
+        handle: local-code
         field:
           collapse: accordion
           sets:
@@ -1674,7 +2511,7 @@ sections:
           listable: hidden
           instructions_position: above
       -
-        handle: staging-link
+        handle: local-link
         field:
           collapse: accordion
           sets:
@@ -1717,7 +2554,7 @@ sections:
           listable: hidden
           instructions_position: above
       -
-        handle: staging-meta
+        handle: local-meta
         field:
           collapse: accordion
           sets:
@@ -1741,7 +2578,7 @@ sections:
                   field:
                     theme: light
                     mode: htmlmixed
-                    mode_selectable: true
+                    mode_selectable: false
                     indent_type: tabs
                     indent_size: 4
                     key_map: default
@@ -1760,86 +2597,227 @@ sections:
           listable: hidden
           instructions_position: above
       -
-        handle: staging-script
+        handle: local-script
         field:
           collapse: accordion
           sets:
             item:
               display: Item
-              fields: {  }
+              fields:
+                -
+                  handle: uid
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: UID
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: file
+                  field:
+                    mode: list
+                    container: assets
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    max_files: 1
+                    display: File
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
           display: Script
           type: replicator
           icon: replicator
           listable: hidden
           instructions_position: above
       -
-        handle: staging-style
+        handle: local-style
         field:
           collapse: accordion
           sets:
             item:
               display: Item
-              fields: {  }
+              fields:
+                -
+                  handle: uid
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: UID
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: file
+                  field:
+                    mode: list
+                    container: assets
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    max_files: 1
+                    display: File
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
           display: Style
           type: replicator
           icon: replicator
           listable: hidden
           instructions_position: above
       -
-        handle: staging-image
+        handle: local-image
         field:
           collapse: accordion
           sets:
             item:
               display: Item
-              fields: {  }
+              fields:
+                -
+                  handle: uid
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: UID
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: file
+                  field:
+                    mode: list
+                    container: assets
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    max_files: 1
+                    display: File
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
           display: Image
           type: replicator
           icon: replicator
           listable: hidden
           instructions_position: above
       -
-        handle: staging-video
+        handle: local-video
         field:
           collapse: accordion
           sets:
             item:
               display: Item
-              fields: {  }
+              fields:
+                -
+                  handle: uid
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: UID
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: file
+                  field:
+                    mode: list
+                    container: assets
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    max_files: 1
+                    display: File
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
           display: Video
           type: replicator
           icon: replicator
           listable: hidden
           instructions_position: above
       -
-        handle: staging-font
+        handle: local-font
         field:
           collapse: accordion
           sets:
             item:
               display: Item
-              fields: {  }
+              fields:
+                -
+                  handle: uid
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: UID
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: file
+                  field:
+                    mode: list
+                    container: assets
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    max_files: 1
+                    display: File
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
           display: Font
           type: replicator
           icon: replicator
           listable: hidden
           instructions_position: above
       -
-        handle: staging-document
+        handle: local-document
         field:
           collapse: accordion
           sets:
             item:
               display: Item
-              fields: {  }
+              fields:
+                -
+                  handle: uid
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: UID
+                    type: text
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                -
+                  handle: file
+                  field:
+                    mode: list
+                    container: assets
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    max_files: 1
+                    display: File
+                    type: assets
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
           display: Document
           type: replicator
           icon: replicator
           listable: hidden
           instructions_position: above
-  production:
-    display: Production
-    fields: {  }
   sidebar:
     display: Sidebar
     fields:
@@ -1855,13 +2833,13 @@ sections:
       -
         handle: replicate
         field:
-          inline: false
           options:
-            all: All
-            sitemap: Sitemap
-            robottxt: RobotTxt
-            humantxt: HumanTxt
-            securitytxt: SecurityTxt
+            website: Website
+            websiteController: 'Website Controller'
+            sitemapXml: SitemapXml
+            robotTxt: RobotTxt
+            humanTxt: HumanTxt
+            securityTxt: SecurityTxt
             code: Code
             script: Script
             style: Style
@@ -1869,30 +2847,34 @@ sections:
             video: Video
             font: Font
             document: Document
+          multiple: true
+          clearable: true
+          searchable: true
+          taggable: false
+          push_tags: false
+          cast_booleans: false
           display: Replicate
-          type: checkboxes
-          icon: checkboxes
+          type: select
+          icon: select
           listable: hidden
-          instructions_position: above
+          instructions_position: below
       -
         handle: target
         field:
           options:
-            'null': 'Select one'
+            local: Local
             development: Development
             stage: Stage
             preview: Preview
             production: Production
           multiple: false
-          clearable: false
+          clearable: true
           searchable: true
           taggable: false
           push_tags: false
           cast_booleans: false
-          default: 'null'
           display: Target
           type: select
           icon: select
           listable: hidden
           instructions_position: above
-          max_items: 1

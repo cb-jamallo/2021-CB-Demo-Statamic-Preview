@@ -44,7 +44,7 @@ class GithubClass
 
         $this->schema = $_schema;
         $this->repo =  $this->schema['websiteBuild']['target'];
-        $this->repoBranch = $this->schema['websiteBuild']['environment']['slug'] . '-' . $this->repo;
+        $this->repoBranch = $this->schema['websiteBuild']['domain']['slug'] . '-' . $this->repo;
         $this->repoPath = $_repoPath;
     }
 

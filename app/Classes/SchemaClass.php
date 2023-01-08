@@ -201,7 +201,7 @@ class SchemaClass
             $this->buildPublishedSet();
             $this->buildStatusSet();
             
-            // Set Build Environment
+            // Set Build Domain
             $this->buildSlugSet();
             $this->buildTitleSet();
             $this->buildHostSet();
@@ -213,8 +213,8 @@ class SchemaClass
             
             // TESTING SHORTCODES
             // $a = $this->shortcodeClass->all('[one]One[/one] <h1> Here\'s a headline! </h1>  [two] Two [three] Three [four] Four [/four] [/three] [/two]. ');
-            // $t = $this->shortcodeClass->walkerTexasRanger([
-            //     'path' => '[website.environment.slug]',
+            // $t = $this->shortcodeClass->findAndReplace([
+            //     'path' => '[website.domain.slug]',
             //     'array' => $this->schema
             // ]);
 
@@ -233,7 +233,7 @@ class SchemaClass
             
             $errorMessage = sprintf( 
                 $this::ERROR_SCHEMA_WEBSITE_INIT,
-                'Failed to init for the Website '. $this->schema['website']['environment']['slug'] . ': <br />' . $_error->getMessage(),
+                'Failed to init for the Website '. $this->schema['website']['domain']['slug'] . ': <br />' . $_error->getMessage(),
             );
 
             // ToastClass::log(array(
@@ -274,7 +274,7 @@ class SchemaClass
                 'toastType' => 'error',
                 'toastMessage' => sprintf( 
                     $this::ERROR_SCHEMA_WEBSITE_CONTROLLER_INIT,
-                    'Failed to init for the WebsiteController '. $this->schema['websiteController']['environment']['slug'] . ': <br />' . $_error->getMessage(),
+                    'Failed to init for the WebsiteController '. $this->schema['websiteController']['domain']['slug'] . ': <br />' . $_error->getMessage(),
                 ),
                 'toastDuration' => 4000
             ));
@@ -301,8 +301,8 @@ class SchemaClass
         $this->schema['website']['replicate'] = $this->parseDataKey('website', 'replicate'); // Required Per-publish...
         $this->schema['website']['target'] = $this->parseDataKey('website', 'target'); // Required Per-publish...
         
-        // Environment
-        $this->schema['website']['environment'] = [
+        // Domain
+        $this->schema['website']['domain'] = [
             'slug' => $this->schema['website']['entry']->slug(), // Auto generated via lowercase-hyphenated Title
             'title' => $this->parseDataKey('website', 'title'), // Title
             'title_alias' => $this->parseDataKey('website', 'title_alias'), // Title Alias (If needed alternative for display)
@@ -376,8 +376,8 @@ class SchemaClass
             $this->schema['websiteController']['replicate'] = $this->parseDataKey( 'websiteController', 'replicate' ); //$this->schema['websiteController']['dataAugmented']['replicate']->raw();
             $this->schema['websiteController']['target'] = $this->parseDataKey( 'websiteController', 'target' ); //$this->schema['websiteController']['dataAugmented']['target']->raw();
             
-            // Environment
-            $this->schema['websiteController']['environment'] = [
+            // Domain
+            $this->schema['websiteController']['domain'] = [
                 'slug' => $this->schema['websiteController']['entry']->slug(), // Auto generated via lowercase-hyphenated Title
                 'title' => $this->parseDataKey('websiteController', 'title'), // Title
                 'host' => $this->parseDataKey('websiteController', 'host', true)[0],
@@ -557,14 +557,14 @@ class SchemaClass
     */
     protected function buildHostSet()
     { 
-        if ( !$this->schema['websiteController']['environment']['host'] ) throw new \Exception( 
+        if ( !$this->schema['websiteController']['domain']['host'] ) throw new \Exception( 
             sprintf(
                 $this::ERROR_SCHEMA_BUILD_HOST_MISSING,
-                $this->schema['websiteBuild']['environment']['slug']
+                $this->schema['websiteBuild']['domain']['slug']
             )
         );
 
-        return $this->schema['websiteBuild']['environment']['host'] = $this->schema['websiteController']['environment']['host'];
+        return $this->schema['websiteBuild']['domain']['host'] = $this->schema['websiteController']['domain']['host'];
     }
 
 
@@ -573,16 +573,16 @@ class SchemaClass
     */
     protected function buildSlugSet()
     {            
-        if ( empty( $this->schema['website']['environment']['slug'] ) ||
-             empty( $this->schema['websiteController']['environment']['slug'] ) ) throw new \Exception( 
+        if ( empty( $this->schema['website']['domain']['slug'] ) ||
+             empty( $this->schema['websiteController']['domain']['slug'] ) ) throw new \Exception( 
                 sprintf( 
                     $this::ERROR_SCHEMA_BUILD_SLUG_MISMATCH,
-                    $this->schema['website']['environment']['slug'],
-                    $this->schema['websiteController']['environment']['slug']
+                    $this->schema['website']['domain']['slug'],
+                    $this->schema['websiteController']['domain']['slug']
                 ));   
         
         // Handle env slug - always set by unique controller
-        $this->schema['websiteBuild']['environment']['slug'] = $this->schema['websiteController']['environment']['slug'];
+        $this->schema['websiteBuild']['domain']['slug'] = $this->schema['websiteController']['domain']['slug'];
         
         return;
     }
@@ -594,17 +594,17 @@ class SchemaClass
     protected function buildTitleSet()
     { 
         
-        if ( empty( $this->schema['website']['environment']['title'] ) ) throw new \Exception( 
+        if ( empty( $this->schema['website']['domain']['title'] ) ) throw new \Exception( 
             sprintf( 
                 $this::ERROR_SCHEMA_BUILD_TITLE_MISSING,
-                $this->schema['website']['environment']['title'],
+                $this->schema['website']['domain']['title'],
             )); 
 
         
         // Override w/ title alias if not empty...
-        return $this->schema['websiteBuild']['environment']['title'] = ( !empty( $this->schema['website']['environment']['title_alias'] ) ) 
-            ? $this->schema['website']['environment']['title_alias']
-            : $this->schema['website']['environment']['title'];
+        return $this->schema['websiteBuild']['domain']['title'] = ( !empty( $this->schema['website']['domain']['title_alias'] ) ) 
+            ? $this->schema['website']['domain']['title_alias']
+            : $this->schema['website']['domain']['title'];
     }
 
     /**
@@ -613,35 +613,35 @@ class SchemaClass
 
     protected function buildBaseSet()
     { 
-        if ( !$this->schema['websiteController']['environment']['host']['protocol'] || !$this->schema['websiteController']['environment']['host']['base'] ) throw new \Exception( 
+        if ( !$this->schema['websiteController']['domain']['host']['protocol'] || !$this->schema['websiteController']['domain']['host']['base'] ) throw new \Exception( 
             sprintf(
                 $this::ERROR_SCHEMA_BUILD_PROTOCOL_BASE_MISSING,
-                $this->schema['websiteController']['environment']['host']['protocol'],
-                $this->schema['websiteController']['environment']['host']['base']
+                $this->schema['websiteController']['domain']['host']['protocol'],
+                $this->schema['websiteController']['domain']['host']['base']
             )
         );
 
         // Override w/ title alias if not empty...
-        return $this->schema['websiteBuild']['environment']['host']['base'] = sprintf( 
+        return $this->schema['websiteBuild']['domain']['host']['base'] = sprintf( 
             '%s://%s', 
-            $this->schema['websiteController']['environment']['host']['protocol'], 
-            $this->schema['websiteController']['environment']['host']['base'] );
+            $this->schema['websiteController']['domain']['host']['protocol'], 
+            $this->schema['websiteController']['domain']['host']['base'] );
     }
 
     protected function buildCanonicalSet()
     { 
-        if ( !$this->schema['websiteController']['environment']['host']['protocol'] || !$this->schema['websiteController']['environment']['host']['base'] ) throw new \Exception( 
+        if ( !$this->schema['websiteController']['domain']['host']['protocol'] || !$this->schema['websiteController']['domain']['host']['base'] ) throw new \Exception( 
             sprintf(
                 $this::ERROR_SCHEMA_BUILD_PROTOCOL_BASE_MISSING,
-                $this->schema['websiteController']['environment']['host']['protocol'],
-                $this->schema['websiteController']['environment']['host']['base']
+                $this->schema['websiteController']['domain']['host']['protocol'],
+                $this->schema['websiteController']['domain']['host']['base']
             )
         );
 
-        return $this->schema['websiteBuild']['environment']['host']['canonical'] = sprintf( 
+        return $this->schema['websiteBuild']['domain']['host']['canonical'] = sprintf( 
             '%s://%s', 
-            $this->schema['websiteController']['environment']['host']['protocol'], 
-            $this->schema['websiteController']['environment']['host']['base'] );
+            $this->schema['websiteController']['domain']['host']['protocol'], 
+            $this->schema['websiteController']['domain']['host']['base'] );
     }
 
     protected function buildMetadataSet()
@@ -1128,8 +1128,8 @@ class SchemaClass
 
     public function initWebsiteControllerReset()
     {
-        $this->event->entry->set( 'replicate', 'null' );
-        $this->event->entry->set( 'target', 'null' );
+        $this->event->entry->set( 'replicate', null );
+        $this->event->entry->set( 'target', null );
     }
 
     public function initWebsiteControllerReplicate()
@@ -1196,8 +1196,8 @@ class SchemaClass
         if ( $this->schema['websiteBuild']['replicate'][0] === 'null' ) return;
 
         $fileEnv = 'build-' . $this->schema['websiteBuild']['target'];
-        $fileSlug = $this->schema['websiteBuild']['environment']['slug'];
-        $filePackage = $this->schema['websiteBuild']['environment']['host']['package'];
+        $fileSlug = $this->schema['websiteBuild']['domain']['slug'];
+        $filePackage = $this->schema['websiteBuild']['domain']['host']['package'];
         $filePath = explode ('/', $filePackage )[0];
         $fileName = explode ('/', $filePackage )[1];
         $fileRoot = str_replace( '//', '/', $fileSlug . '/' . $filePath . '/' );
@@ -1214,7 +1214,7 @@ class SchemaClass
             
             // Handle zip copy
             File::copy(
-                Storage::disk('assets')->path('') . $this->schema['websiteBuild']['environment']['host']['package'],
+                Storage::disk('assets')->path('') . $this->schema['websiteBuild']['domain']['host']['package'],
                 Storage::disk( $fileEnv )->path('') . $fileName
             );
 
@@ -1243,12 +1243,12 @@ class SchemaClass
     {
 
         // Handle no replicate of sitemap
-        if ( !$this->schema['websiteBuild']['environment']['host']['sitemap'][0] && !in_array( 'all', $this->schema['websiteBuild']['replicate'] ) ) return;
+        if ( !$this->schema['websiteBuild']['domain']['host']['sitemap'][0] && ( !in_array( 'sitemapXml', $this->schema['websiteBuild']['replicate'] ) || !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] ) ) ) return;
 
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
-        $fileSlug = strtolower( $this->schema['websiteBuild']['environment']['slug'] );
-        $filePath = strtolower( $this->schema['websiteBuild']['environment']['host']['sitemap'][0]['path'] );
-        $fileName = strtolower( $this->schema['websiteBuild']['environment']['host']['sitemap'][0]['uid'] );
+        $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
+        $filePath = strtolower( $this->schema['websiteBuild']['domain']['host']['sitemap'][0]['path'] );
+        $fileName = strtolower( $this->schema['websiteBuild']['domain']['host']['sitemap'][0]['uid'] );
         
         $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . $filePath, $fileName, 'xml' );
         $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . $filePath, $fileName, 'xml' );
@@ -1256,16 +1256,16 @@ class SchemaClass
         $nodeUrlSet = '<?xml version="1.0" encoding="UTF-8"?>'."\r".'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s'."\r".'</urlset>';
         $nodeUrlSetList = '';
         $nodeUrl = "\r\t".'<url>%s%s%s%s'."\r\t".'</url>';
-        $nodeLoc = "\r\t\t".'<loc>' . $this->schema['websiteBuild']['environment']['host']['canonical'].'%s</loc>'; 
+        $nodeLoc = "\r\t\t".'<loc>' . $this->schema['websiteBuild']['domain']['host']['canonical'].'%s</loc>'; 
         $nodeLastMod =  "\r\t\t".'<lastmod>' . $this->eventDate . '</lastmod>';
-        $nodeChangeFreq = "\r\t\t".'<changefreq>' . $this->schema['websiteBuild']['environment']['host']['sitemap'][0]['frequency'] . '</changefreq>';
-        $nodePriority = "\r\t\t".'<priority>' . $this->schema['websiteBuild']['environment']['host']['sitemap'][0]['priority'] . '</priority>';
+        $nodeChangeFreq = "\r\t\t".'<changefreq>' . $this->schema['websiteBuild']['domain']['host']['sitemap'][0]['frequency'] . '</changefreq>';
+        $nodePriority = "\r\t\t".'<priority>' . $this->schema['websiteBuild']['domain']['host']['sitemap'][0]['priority'] . '</priority>';
 
         // Handle remove sitemap
         if ( in_array( $fileSlug, Storage::disk( $fileEnv )->directories() ) && Storage::disk( $fileEnv )->has( $fileRoot ) ) Storage::disk( $fileEnv )->delete( $fileRoot );
 
         // Handle not generating new when not active
-        if ( !$this->schema['websiteBuild']['environment']['host']['sitemap'][0]['enabled'] ) return;
+        if ( !$this->schema['websiteBuild']['domain']['host']['sitemap'][0]['enabled'] ) return;
 
         // Handle build node link
         function buildSitemapLink( $_node, $_nodeUrlSetList, $_nodeUrl, $_nodeLoc, $_nodeLastMod, $_nodeChangeFreq, $_nodePriority )
@@ -1309,21 +1309,21 @@ class SchemaClass
     protected function replicateRobotTxt() 
     {
         // Handle no replicate of robottxt
-        if ( !in_array( 'robottxt', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'all', $this->schema['websiteBuild']['replicate'] ) ) return;
+        if ( !in_array( 'robotTxt', $this->schema['websiteBuild']['replicate'] ) || !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] ) ) return;
 
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
-        $fileSlug = strtolower( $this->schema['websiteBuild']['environment']['slug'] );
-        $filePath = strtolower( $this->schema['websiteBuild']['environment']['host']['robottxt'][0]['path'] );
-        $fileName = strtolower( $this->schema['websiteBuild']['environment']['host']['robottxt'][0]['uid'] ) . '.txt';
+        $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
+        $filePath = strtolower( $this->schema['websiteBuild']['domain']['host']['robottxt'][0]['path'] );
+        $fileName = strtolower( $this->schema['websiteBuild']['domain']['host']['robottxt'][0]['uid'] ) . '.txt';
         $fileRoot = str_replace( '//', '/', $fileSlug . '/' . $filePath . '/' );
         $fileGlobal = str_replace( '//', '/', $fileEnv . '/' . $fileSlug . '/' . $filePath . '/' . $fileName );
 
-        $fileContent = $this->schema['websiteBuild']['environment']['host']['robottxt'][0]['content']['code'];
+        $fileContent = $this->schema['websiteBuild']['domain']['host']['robottxt'][0]['content']['code'];
 
         // Handle remove robottxt
         if ( in_array( $fileSlug, Storage::disk('build-development')->directories() ) && Storage::disk('build-development')->has( $fileRoot . $fileName ) ) Storage::disk('build-development')->delete( $fileRoot . $fileName ); 
 
-        if ( !$this->schema['websiteBuild']['environment']['host']['robottxt'][0]['enabled'] ) return;
+        if ( !$this->schema['websiteBuild']['domain']['host']['robottxt'][0]['enabled'] ) return;
 
         // Handle replicate directories & file @ path
         Storage::disk('build-development')->put(
@@ -1336,21 +1336,21 @@ class SchemaClass
     protected function replicateHumanTxt()
     {
         // Handle no replicate of humantxt
-        if ( !in_array( 'humantxt', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'all', $this->schema['websiteBuild']['replicate'] ) ) return;
+        if ( !in_array( 'humanTxt', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] ) ) return;
 
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
-        $fileSlug = strtolower( $this->schema['websiteBuild']['environment']['slug'] );
-        $filePath = strtolower( $this->schema['websiteBuild']['environment']['host']['humantxt'][0]['path'] );
-        $fileName = strtolower( $this->schema['websiteBuild']['environment']['host']['humantxt'][0]['uid'] ) . '.txt';
+        $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
+        $filePath = strtolower( $this->schema['websiteBuild']['domain']['host']['humantxt'][0]['path'] );
+        $fileName = strtolower( $this->schema['websiteBuild']['domain']['host']['humantxt'][0]['uid'] ) . '.txt';
         $fileRoot = str_replace( '//', '/', $fileSlug . '/' . $filePath . '/' );
         $fileGlobal = str_replace( '//', '/', $fileEnv . '/' . $fileSlug . '/' . $filePath . '/' . $fileName );
 
-        $fileContent = $this->buildContentShortcodeFindAndReplace( $this->schema['websiteBuild']['environment']['host']['humantxt'][0]['content']['code'] );
+        $fileContent = $this->buildContentShortcodeFindAndReplace( $this->schema['websiteBuild']['domain']['host']['humantxt'][0]['content']['code'] );
 
         // Handle remove humantxt
         if ( in_array( $fileSlug, Storage::disk('build-development')->directories() ) && Storage::disk('build-development')->has( $fileRoot . $fileName ) ) Storage::disk('build-development')->delete( $fileRoot . $fileName ); 
 
-        if ( !$this->schema['websiteBuild']['environment']['host']['humantxt'][0]['enabled'] ) return;
+        if ( !$this->schema['websiteBuild']['domain']['host']['humantxt'][0]['enabled'] ) return;
 
         // Handle create directories & file @ path
         Storage::disk('build-development')->put(
@@ -1362,21 +1362,21 @@ class SchemaClass
     protected function replicateSecurityTxt()
     {
         // Handle no replicate of securitytxt
-        if ( !in_array( 'securitytxt', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'all', $this->schema['websiteBuild']['replicate'] ) ) return;
+        if ( !in_array( 'securityTxt', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] ) ) return;
 
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
-        $fileSlug = strtolower( $this->schema['websiteBuild']['environment']['slug'] );
-        $filePath = strtolower( $this->schema['websiteBuild']['environment']['host']['securitytxt'][0]['path'] );
-        $fileName = strtolower( $this->schema['websiteBuild']['environment']['host']['securitytxt'][0]['uid'] ) . '.txt';
+        $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
+        $filePath = strtolower( $this->schema['websiteBuild']['domain']['host']['securitytxt'][0]['path'] );
+        $fileName = strtolower( $this->schema['websiteBuild']['domain']['host']['securitytxt'][0]['uid'] ) . '.txt';
         $fileRoot = str_replace( '//', '/', $fileSlug . '/' . $filePath . '/' );
         $fileGlobal = str_replace( '//', '/', $fileEnv . '/' . $fileSlug . '/' . $filePath . '/' . $fileName );
 
-        $fileContent = $this->buildContentShortcodeFindAndReplace( $this->schema['websiteBuild']['environment']['host']['securitytxt'][0]['content']['code'] );
+        $fileContent = $this->buildContentShortcodeFindAndReplace( $this->schema['websiteBuild']['domain']['host']['securitytxt'][0]['content']['code'] );
 
         // Handle remove securitytxt
         if ( in_array( $fileSlug, Storage::disk('build-development')->directories() ) && Storage::disk('build-development')->has( $fileRoot . $fileName ) ) Storage::disk('build-development')->delete( $fileRoot . $fileName );
 
-        if ( !$this->schema['websiteBuild']['environment']['host']['securitytxt'][0]['enabled'] ) return;
+        if ( !$this->schema['websiteBuild']['domain']['host']['securitytxt'][0]['enabled'] ) return;
         
         // Handle create directories & file @ path
         Storage::disk('build-development')->put(
@@ -1389,7 +1389,7 @@ class SchemaClass
     {
         
         // Handle skip when no replicate for code
-        if ( !in_array( 'code', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'all', $this->schema['websiteBuild']['replicate'] ) ) return;
+        if ( !in_array( 'code', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] ) ) return;
         
         if ( $this->schema['websiteBuild']['blueprint'] === 'website' && isset( $this->schema['website']['code'] ) ) $fileCode = $this->schema['website']['code'];
         if ( $this->schema['websiteBuild']['blueprint'] === 'website_controller' && isset( $this->schema['websiteController']['code'] ) ) $fileCode = $this->schema['websiteController']['code'];
@@ -1400,7 +1400,7 @@ class SchemaClass
         {
             
             $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
-            $fileSlug = strtolower( $this->schema['websiteBuild']['environment']['slug'] );
+            $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
             $fileUid = $_fileCodeEntry['uid'];
             $fileName = $_fileCodeEntry['name'];
             $fileExt = $_fileCodeEntry['ext'];
@@ -1433,7 +1433,7 @@ class SchemaClass
             // website replicate rules
             $this->schema['websiteBuild']['blueprint'] === 'website' && sizeOf( $this->schema['websiteBuild']['replicate'] ) === 0
             // websiteController replicate rules
-            || $this->schema['websiteBuild']['blueprint'] === 'website_controller' && ( !in_array( $_asset, $this->schema['websiteBuild']['replicate'] ) && !in_array( 'all', $this->schema['websiteBuild']['replicate'] ) ) 
+            || $this->schema['websiteBuild']['blueprint'] === 'website_controller' && ( !in_array( $_asset, $this->schema['websiteBuild']['replicate'] ) && !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] ) ) 
         ) return;
         
         if ( $this->schema['websiteBuild']['blueprint'] === 'website' && isset( $this->schema['website'][$_asset] ) ) $file = $this->schema['website'][$_asset];
@@ -1445,7 +1445,7 @@ class SchemaClass
         {
 
             $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
-            $fileSlug = strtolower( $this->schema['websiteBuild']['environment']['slug'] );
+            $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
             $fileUid = $fileEntry['uid'];
             
             $filePath = $fileEntry['file'];
@@ -1491,7 +1491,7 @@ class SchemaClass
 
         // Handle replicate of website page
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
-        $fileSlug = strtolower( $this->schema['websiteBuild']['environment']['slug'] );
+        $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
         $fileUid = $this->schema['websiteBuild']['template']['uid'];
         $fileName = $this->schema['websiteBuild']['template']['name'];
         $fileExt = $this->schema['websiteBuild']['template']['ext'];
@@ -1520,9 +1520,9 @@ class SchemaClass
     {
         $buildEnv = Storage::disk( 'build-' . $this->schema['websiteBuild']['target'] );
         $buildType = $this->schema['websiteBuild']['target'];
-        $buildSlug = $this->schema['websiteBuild']['environment']['slug'];
-        $buildDirectoriesRoot = $buildEnv->directories( $this->schema['websiteBuild']['environment']['slug'] );
-        $buildDirectoriesNode = $buildEnv->directories( $this->schema['websiteBuild']['environment']['slug'] . '/node_modules' );
+        $buildSlug = $this->schema['websiteBuild']['domain']['slug'];
+        $buildDirectoriesRoot = $buildEnv->directories( $this->schema['websiteBuild']['domain']['slug'] );
+        $buildDirectoriesNode = $buildEnv->directories( $this->schema['websiteBuild']['domain']['slug'] . '/node_modules' );
         $buildDirectoryUserPath = 'cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin';
 
         // Handle old build remove
@@ -1563,19 +1563,23 @@ class SchemaClass
     {
 
         $regexShortcode = $this->shortcodeClass->all( $_string );
+
         $regexContent = $_string;
         
+        // Handle no shortcodes
+        if ( !$regexShortcode ) return $regexContent;
+
         forEach( $regexShortcode[0] as $regexShortcodeEntry )
         {
             if ( empty( $regexShortcodeEntry ) ) continue;
             
             $regexContent = str_replace( 
-                '[' . $regexShortcodeEntry . ']', 
-                $this->shortcodeClass->findAndReplace([
+                '[' . $regexShortcodeEntry . ']',          // 1. Shortcode string
+                $this->shortcodeClass->findAndReplace([    // 2. Shortcode replacement
                     'path' => $regexShortcodeEntry,
                     'array' => $this->schema
                 ]),
-                $regexContent
+                $regexContent                              // 3. Shortcode content origin
             );
 
         };

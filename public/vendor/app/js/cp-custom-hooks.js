@@ -1,78 +1,102 @@
 'use strict'
 
+/* 
+    Statamic Resources
+    =============================
+
+    - Hooks: https://statamic.dev/extending/hooks#prerequisites
+
+*/
+
+
 let schema = null;
 
-const statamicHookPayload = ( $_ARGS ) => {
 
-    return schema = ( $_ARGS.payload ) ? $_ARGS.payload.values : {};
+
+const statamicHookPayload = ( _collection ) => 
+{
+    return schema = {
+        'collection' : _collection.collection,
+        'payload': _collection.values
+    }
 }
 
-const statamicHookReject = ( $_ARGS ) => {
-
+const statamicHookReject = ( _message ) => 
+{
     Statamic.$progress.complete('base-entry-publish-form');
-    return $_ARGS.message;
+    return _message;
+}
+
+const statamicHookResolve = ( _message ) => 
+{
+    console.log( _message );
+    console.dir( schema.payload );
+    Statamic.$progress.complete('base-entry-publish-form');
+    return _message;
+}
+
+const statamicHookStart = ( _message ) => 
+{
+    console.log( _message );
+    console.dir( schema.payload );
+    return _message;
 }
 
 
-
-
-
-Statamic.$hooks.on('entry.saving', (resolve, reject, payload) => {
+Statamic.$hooks.on('entry.saving', (  resolve, reject, payload  ) => {
     
-    statamicHookPayload( { 'payload': payload });
-    resolve();
+    statamicHookPayload( payload );
+
+    resolve( statamicHookStart( `Save Start: ${ payload.collection }` ) );
 
 });
 
 
-Statamic.$hooks.on('entry.saved', (resolve, reject, payload) => {
+Statamic.$hooks.on('entry.saved', ( resolve, reject ) => {
     
-    resolve();
+    resolve( statamicHookResolve( `Save Complete: ${ schema.collection }` ) );
 
 });
 
 
-Statamic.$hooks.on('entry.publishing', (resolve, reject, payload) => {
+Statamic.$hooks.on('entry.publishing', ( resolve, reject ) => {
     
     
     if ( !schema )
     {
-        reject( statamicHookReject( { message: 'Publishing Aborted: Required schema missing or un-saved.' } ) );
+        reject( statamicHookReject( `Publish Abort: Required schema: ${ schema.collection }` ) );
     } 
     
     if ( schema?.target === 'none' )
     {
-        reject( statamicHookReject( { message: 'Publishing Aborted: A publishing target is required.' } ) );
+        reject( statamicHookReject( 'Publish Abort: A publishing target is required.' ) );
     } 
 
     if ( schema?.target === 'production' )
     {
         if (confirm('CAUTION: You have chosen to publish this page to production. Are you sure?')) {
             // Continue with the save action.
-            resolve( statamicHookReject( { message: 'Publishing Started.' } ) );
+            resolve( statamicHookStart( `Publish Start: ${ schema.collection} `) );
         } else {
-            // Cancel the save action. You can provide the error message.
-            reject( statamicHookReject( { message: 'Publishing Aborted.' } ) );
+            // Cancel the save action.
+            reject( statamicHookReject( `Publish Abort: ${ schema.collection} ` ) );
         }
     }
 
-    resolve();
+    resolve( statamicHookStart( `Publish Start: ${ schema.collection} `) );
 
 });
 
 
-Statamic.$hooks.on('entry.published', (resolve, reject, payload) => {
+Statamic.$hooks.on('entry.published', ( resolve, reject, payload ) => {
     
-    resolve('Build Complete.');
-    
-    var t = setTimeout(() => {
-        console.log('Published Now Refresh');
-        console.log(payload);
-        console.log(payload.response);
-        console.log(payload.response.data);
-        console.log(JSON.stringify(payload.response));
+    schema.payload = payload.response;
+    resolve( statamicHookStart( `Publish Complete: ${ schema.collection} `) );
+
+    let t = setTimeout(() => {
+        console.log( `Publish Refresh: ${ schema.collection} ` );
         window.location.reload( window.location + '#' + window.location.hash);
-        clearTimeout(t);
-    }, 10);
+        clearTimeout( t );
+    }, 500 );
 
 });

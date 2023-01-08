@@ -1,12 +1,12 @@
 ---
-id: 8fe0f1f3-c0b7-4b5e-9483-a18722504c5d
+id: 644131f9-1ab3-4e5a-bb06-7c6170657621
 blueprint: website
-title: Tekmountain.com
+title: TekMountain.com
 title_alias: Home
 development-template:
   -
     uid: default
-    path: src/route
+    path: /src/routes
     name: +page
     ext: svelte
     doctype:
@@ -19,7 +19,7 @@ development-template:
       code: null
       mode: htmlmixed
     title:
-      code: '<title>Home | [websitecontroller.domain.title]</title>'
+      code: '<title>Home Page | [websitecontroller.template.title]</title>'
       mode: htmlmixed
     link:
       code: null
@@ -28,30 +28,28 @@ development-template:
       code: null
       mode: htmlmixed
     style:
-      code: null
-      mode: css
+      code: |-
+        <style>
+        	/* Style */
+        </style>
+      mode: htmlmixed
     script:
-      code: null
-      mode: javascript
+      code: |-
+        <script>
+        	/* Script */
+        </script>
+      mode: htmlmixed
     body:
-      code: 'Home page'
+      code: |-
+        <svelte:head><!-- Auto Inject Title, Link, & Meta from Above -->
+        </svelte:head>
+        Hello Parent Page!
       mode: htmlmixed
     type: item
     enabled: true
 replicate:
-  - page
+  - 'null'
 target: development
-local-image:
-  -
-    uid: image
-    file: tekmountain-com/image/AdobeStock_233158786_Preview.jpeg
-    type: item
-    enabled: true
-  -
-    uid: image2
-    file: tekmountain-com/image/AdobeStock_291317597_Preview.jpeg
-    type: item
-    enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1673196693
+updated_at: 1672956275
 ---
