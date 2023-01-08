@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"local": "NODE_ENV=local VITE_ENV=local vite build",
+		"local": "NODE_ENV=local vite --mode development",
 		"development": "NODE_ENV=development vite build --mode development",
 		"staging": "NODE_ENV=staging vite build --mode staging",
 		"preview": "NODE_ENV=preview vite build --mode preview",
