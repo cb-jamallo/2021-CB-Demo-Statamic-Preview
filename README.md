@@ -49,9 +49,9 @@ The schema shortcodes are reserved template strings compiled during the publishi
 
 -  **[ schema.website... ]** Contains the data input into a Website Entry
 
--  **[ schema.controller... ]** Contains the data input into the Website Controller Entry that contains the same title value
+-  **[ schema.websiteController... ]** Contains the data input into the Website Controller Entry. Note: Should match the domain value to a corresponding Website Entry to work.
 
--  **[ schema.compiled... ]** Contains the data input that is compiled between the Website Entry, it's Website Controller Entry.
+-  **[ schema.websiteNavigation ]** Contains the Website Entry
 
   
 

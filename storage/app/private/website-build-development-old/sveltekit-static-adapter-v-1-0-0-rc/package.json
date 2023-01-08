@@ -1,0 +1,28 @@
+{
+	"name": "sveltekit-static-adapter-v-1-0-0-rc",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"local": "NODE_ENV=local VITE_ENV=local vite build",
+		"development": "NODE_ENV=development vite build --mode development",
+		"staging": "NODE_ENV=staging vite build --mode staging",
+		"preview": "NODE_ENV=preview vite build --mode preview",
+		"production": "NODE_ENV=production vite build --mode production"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-netlify": "^1.0.0",
+		"@sveltejs/adapter-static": "^1.0.1",
+		"@sveltejs/kit": "^1.0.7",
+		"autoprefixer": "^10.4.13",
+		"postcss": "^8.4.18",
+		"postcss-load-config": "^4.0.1",
+		"postcss-nested": "^6.0.0",
+		"postcss-purgecss": "^2.0.3",
+		"sass": "^1.55.0",
+		"svelte": "^3.44.0",
+		"svelte-preprocess": "^4.10.7",
+		"vite": "^4.0.0"
+	},
+	"type": "module"
+}
