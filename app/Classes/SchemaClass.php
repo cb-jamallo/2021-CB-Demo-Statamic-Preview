@@ -1430,8 +1430,6 @@ class SchemaClass
             );
         }
 
-        sleep(2);
-
     }
 
     protected function replicateAsset( $_asset )
@@ -1549,13 +1547,24 @@ class SchemaClass
             sleep(5);
         }
 
-        // Handle build
+        // Handle build locally ONLY
         //exec('cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin npm run ' . $buildType . ' 2>&1');
-        exec( $buildDirectoryUserPath . ' npm run ' . $buildType . ' 2>&1' );
+        if ( $buildType === 'local' ) exec( $buildDirectoryUserPath . ' npm run ' . $buildType . ' 2>&1' );
 
+        $t = exec( $buildDirectoryUserPath . ' git branch 2>&1' );
+
+        //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
+        $l = exec( 'git add ' . base_path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
+        $l = exec( 'git commit -m "Automated Commit" https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
+        $l = exec( 'git push origin main https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
+        ///Users/jamallo/Documents/CB-Web-Testing/2021-CB-Demo-Statamic-Preview/storage/app/private/website-build-development/tekmountain-com
+        //exec( $buildDirectoryUserPath . ' git add storage/app/private/website-build-development/tekmountain-com 2>&1' )
+        // exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" Users/jamallo/Documents/CB-Web-Testing/2021-CB-Demo-Statamic-Preview/storage/app/private/website-build-development/tekmountain-com 2>&1' )
         //sleep(5);
-        //$githubClass = new GithubClass( $this->schema, $buildDirectoryUserPath  );
-        //$githubClass->repoExec( ' git add ' . $buildEnvDirectory . ' && git commit -m "Automated Commit" && git push origin main' );
+        // $githubClass = new GithubClass( $this->schema, $buildDirectoryUserPath  );
+        // $githubClass->repoExec( 'git add ' . $buildEnvDirectory . '', base_path() );
+        // $githubClass->repoExec( 'git commit -m "Automated Commit"', base_path() );
+        // $githubClass->repoExec( 'git push origin main', base_path() );
         //$l = $githubClass->repoBranchReportLastCommit();
         //$commit = exec( $buildDirectoryUserPath . ' git add ' . $buildEnvDirectory . ' && git commit -m "Automated Commit" && git push origin main 2>&1' );
 

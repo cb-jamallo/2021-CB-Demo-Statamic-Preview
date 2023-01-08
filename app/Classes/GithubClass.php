@@ -61,7 +61,7 @@ class GithubClass
         );
         
         $process = proc_open(
-            $repoPath . ' ' . $_command,
+            $this->repoPath . ' ' . $_command,
             $descriptorspec,
             $pipes,
             $workdir,

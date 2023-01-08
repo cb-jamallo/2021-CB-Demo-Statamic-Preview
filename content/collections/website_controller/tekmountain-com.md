@@ -82,6 +82,7 @@ development-code:
         	  %sveltekit.head%
         	</head>
         	<body>
+        	  	Hello World!!!
         		%sveltekit.body%
         	</body>
         </html>
@@ -91,7 +92,7 @@ development-code:
   -
     uid: +error-svelte
     path: /src/routes
-    name: +page
+    name: +error
     ext: svelte
     content:
       code: |-
@@ -119,7 +120,7 @@ development-code:
   -
     uid: +layout-svelte
     path: /src/routes
-    name: +layout.svelte
+    name: +layout
     ext: svelte
     content:
       code: |-
@@ -172,5 +173,5 @@ local-code:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1673217531
+updated_at: 1673221262
 ---
