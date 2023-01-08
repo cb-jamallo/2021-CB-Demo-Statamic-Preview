@@ -1141,7 +1141,7 @@ class SchemaClass
         // Handle Replicate SitemapXml
         $this->replicateSitemapXml();
 
-        // Handle Replicate RobotTxt
+        // Handle Replicate robotTxt
         $this->replicateRobotTxt();
 
         // Handle Replicate HumanTxt
@@ -1308,22 +1308,24 @@ class SchemaClass
 
     protected function replicateRobotTxt() 
     {
-        // Handle no replicate of robottxt
-        if ( !in_array( 'robotTxt', $this->schema['websiteBuild']['replicate'] ) || !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] ) ) return;
+        // Handle no replicate of robotTxt
+        if ( !array_key_exists( 'robotTxt', $this->schema['websiteBuild']['domain']['host'] ) || (
+            !in_array( 'robotTxt', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] )
+        ) ) return;
 
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
         $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
-        $filePath = strtolower( $this->schema['websiteBuild']['domain']['host']['robottxt'][0]['path'] );
-        $fileName = strtolower( $this->schema['websiteBuild']['domain']['host']['robottxt'][0]['uid'] ) . '.txt';
+        $filePath = strtolower( $this->schema['websiteBuild']['domain']['host']['robotTxt'][0]['path'] );
+        $fileName = strtolower( $this->schema['websiteBuild']['domain']['host']['robotTxt'][0]['uid'] ) . '.txt';
         $fileRoot = str_replace( '//', '/', $fileSlug . '/' . $filePath . '/' );
         $fileGlobal = str_replace( '//', '/', $fileEnv . '/' . $fileSlug . '/' . $filePath . '/' . $fileName );
 
-        $fileContent = $this->schema['websiteBuild']['domain']['host']['robottxt'][0]['content']['code'];
+        $fileContent = $this->schema['websiteBuild']['domain']['host']['robotTxt'][0]['content']['code'];
 
-        // Handle remove robottxt
+        // Handle remove robotTxt
         if ( in_array( $fileSlug, Storage::disk('build-development')->directories() ) && Storage::disk('build-development')->has( $fileRoot . $fileName ) ) Storage::disk('build-development')->delete( $fileRoot . $fileName ); 
 
-        if ( !$this->schema['websiteBuild']['domain']['host']['robottxt'][0]['enabled'] ) return;
+        if ( !$this->schema['websiteBuild']['domain']['host']['robotTxt'][0]['enabled'] ) return;
 
         // Handle replicate directories & file @ path
         Storage::disk('build-development')->put(
@@ -1335,22 +1337,24 @@ class SchemaClass
 
     protected function replicateHumanTxt()
     {
-        // Handle no replicate of humantxt
-        if ( !in_array( 'humanTxt', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] ) ) return;
+        // Handle no replicate of humanTxt
+        if ( !array_key_exists( 'humanTxt', $this->schema['websiteBuild']['domain']['host'] ) || (
+            !in_array( 'humanTxt', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] )
+        ) ) return;
 
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
         $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
-        $filePath = strtolower( $this->schema['websiteBuild']['domain']['host']['humantxt'][0]['path'] );
-        $fileName = strtolower( $this->schema['websiteBuild']['domain']['host']['humantxt'][0]['uid'] ) . '.txt';
+        $filePath = strtolower( $this->schema['websiteBuild']['domain']['host']['humanTxt'][0]['path'] );
+        $fileName = strtolower( $this->schema['websiteBuild']['domain']['host']['humanTxt'][0]['uid'] ) . '.txt';
         $fileRoot = str_replace( '//', '/', $fileSlug . '/' . $filePath . '/' );
         $fileGlobal = str_replace( '//', '/', $fileEnv . '/' . $fileSlug . '/' . $filePath . '/' . $fileName );
 
-        $fileContent = $this->buildContentShortcodeFindAndReplace( $this->schema['websiteBuild']['domain']['host']['humantxt'][0]['content']['code'] );
+        $fileContent = $this->buildContentShortcodeFindAndReplace( $this->schema['websiteBuild']['domain']['host']['humanTxt'][0]['content']['code'] );
 
-        // Handle remove humantxt
+        // Handle remove humanTxt
         if ( in_array( $fileSlug, Storage::disk('build-development')->directories() ) && Storage::disk('build-development')->has( $fileRoot . $fileName ) ) Storage::disk('build-development')->delete( $fileRoot . $fileName ); 
 
-        if ( !$this->schema['websiteBuild']['domain']['host']['humantxt'][0]['enabled'] ) return;
+        if ( !$this->schema['websiteBuild']['domain']['host']['humanTxt'][0]['enabled'] ) return;
 
         // Handle create directories & file @ path
         Storage::disk('build-development')->put(
@@ -1361,22 +1365,24 @@ class SchemaClass
 
     protected function replicateSecurityTxt()
     {
-        // Handle no replicate of securitytxt
-        if ( !in_array( 'securityTxt', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] ) ) return;
+        // Handle no replicate of securityTxt
+         if ( !array_key_exists( 'securityTxt', $this->schema['websiteBuild']['domain']['host'] ) || (
+            !in_array( 'securityTxt', $this->schema['websiteBuild']['replicate'] ) && !in_array( 'websiteController', $this->schema['websiteBuild']['replicate'] )
+        ) ) return;
 
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
         $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
-        $filePath = strtolower( $this->schema['websiteBuild']['domain']['host']['securitytxt'][0]['path'] );
-        $fileName = strtolower( $this->schema['websiteBuild']['domain']['host']['securitytxt'][0]['uid'] ) . '.txt';
+        $filePath = strtolower( $this->schema['websiteBuild']['domain']['host']['securityTxt'][0]['path'] );
+        $fileName = strtolower( $this->schema['websiteBuild']['domain']['host']['securityTxt'][0]['uid'] ) . '.txt';
         $fileRoot = str_replace( '//', '/', $fileSlug . '/' . $filePath . '/' );
         $fileGlobal = str_replace( '//', '/', $fileEnv . '/' . $fileSlug . '/' . $filePath . '/' . $fileName );
 
-        $fileContent = $this->buildContentShortcodeFindAndReplace( $this->schema['websiteBuild']['domain']['host']['securitytxt'][0]['content']['code'] );
+        $fileContent = $this->buildContentShortcodeFindAndReplace( $this->schema['websiteBuild']['domain']['host']['securityTxt'][0]['content']['code'] );
 
-        // Handle remove securitytxt
+        // Handle remove securityTxt
         if ( in_array( $fileSlug, Storage::disk('build-development')->directories() ) && Storage::disk('build-development')->has( $fileRoot . $fileName ) ) Storage::disk('build-development')->delete( $fileRoot . $fileName );
 
-        if ( !$this->schema['websiteBuild']['domain']['host']['securitytxt'][0]['enabled'] ) return;
+        if ( !$this->schema['websiteBuild']['domain']['host']['securityTxt'][0]['enabled'] ) return;
         
         // Handle create directories & file @ path
         Storage::disk('build-development')->put(
@@ -1423,6 +1429,8 @@ class SchemaClass
                 $fileContent
             );
         }
+
+        sleep(2);
 
     }
 
@@ -1478,6 +1486,8 @@ class SchemaClass
             // Handle creation of file
             File::copy( $fileSourcePath, $fileDestinationPath );
         }
+
+        sleep(2);
     }
 
     protected function replicatePage()
@@ -1514,11 +1524,14 @@ class SchemaClass
             $fileContent
         );
 
+        sleep(2);
+
     }
 
     protected function replicateBuild() 
     {
         $buildEnv = Storage::disk( 'build-' . $this->schema['websiteBuild']['target'] );
+        $buildEnvDirectory = sprintf( '/storage/%s', explode( 'storage/', $buildEnv->path('') )[1] );
         $buildType = $this->schema['websiteBuild']['target'];
         $buildSlug = $this->schema['websiteBuild']['domain']['slug'];
         $buildDirectoriesRoot = $buildEnv->directories( $this->schema['websiteBuild']['domain']['slug'] );
@@ -1540,10 +1553,21 @@ class SchemaClass
         //exec('cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin npm run ' . $buildType . ' 2>&1');
         exec( $buildDirectoryUserPath . ' npm run ' . $buildType . ' 2>&1' );
 
+        //sleep(5);
+        //$githubClass = new GithubClass( $this->schema, $buildDirectoryUserPath  );
+        //$githubClass->repoExec( ' git add ' . $buildEnvDirectory . ' && git commit -m "Automated Commit" && git push origin main' );
+        //$l = $githubClass->repoBranchReportLastCommit();
+        //$commit = exec( $buildDirectoryUserPath . ' git add ' . $buildEnvDirectory . ' && git commit -m "Automated Commit" && git push origin main 2>&1' );
+
+        $stop = null;
+        // only commit from app root
+        // storage_path('app');
+        //sprintf( '/storage/%s', explode( 'storage/', $buildEnv->path('') )[1] )
+        
         // GOAL :: https://blog.jim-nielsen.com/2020/deploying-a-wannabe-monorepo-in-netlify/
         
         // Handle build commit
-        $githubClass = new GithubClass( $this->schema, $buildDirectoryUserPath  );
+        //$githubClass = new GithubClass( $this->schema, $buildDirectoryUserPath  );
 
         // $l = $githubClass->repoBranchReportStatus();
 

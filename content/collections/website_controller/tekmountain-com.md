@@ -57,7 +57,7 @@ development-code:
   -
     uid: env-development
     name: .
-    ext: env
+    ext: env-development
     content:
       code: |-
         # NODE VARS..
@@ -67,6 +67,7 @@ development-code:
       mode: htmlmixed
     type: item
     enabled: true
+    path: src/../
   -
     uid: app-html
     name: app
@@ -107,7 +108,7 @@ development-code:
     uid: +layout-js
     path: /src/routes
     name: +layout
-    ext: svelte
+    ext: js
     content:
       code: |-
         export const prerender = true;
@@ -171,5 +172,5 @@ local-code:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1673204108
+updated_at: 1673217531
 ---

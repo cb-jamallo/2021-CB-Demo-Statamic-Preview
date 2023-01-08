@@ -20,7 +20,7 @@ development-host:
         priority: '05'
         type: item
         enabled: true
-    robottxt:
+    robotTxt:
       -
         active: true
         uid: robots
@@ -34,7 +34,7 @@ development-host:
           mode: htmlmixed
         type: item
         enabled: true
-    humantxt:
+    humanTxt:
       -
         active: true
         uid: human
@@ -49,14 +49,14 @@ development-host:
           mode: shell
         type: item
         enabled: true
-    securitytxt:
+    securityTxt:
       -
         active: true
         uid: security
         path: /static
         content:
           code: |-
-            # Example: https://securitytxt.org
+            # Example: https://securityTxt.org
             Contact: mailto: security.[websiteBuild.environment.host.canonical].com
             Expires: 2042-01-01T05:00:00.000Z
           mode: htmlmixed

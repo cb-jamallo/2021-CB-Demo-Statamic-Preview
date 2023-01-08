@@ -201,7 +201,7 @@ sections:
                     listable: hidden
                     instructions_position: above
                 -
-                  handle: robottxt
+                  handle: robotTxt
                   field:
                     collapse: accordion
                     sets:
@@ -251,7 +251,7 @@ sections:
                     listable: hidden
                     instructions_position: above
                 -
-                  handle: humantxt
+                  handle: humanTxt
                   field:
                     collapse: accordion
                     max_sets: 1
@@ -306,7 +306,7 @@ sections:
                     listable: hidden
                     instructions_position: above
                 -
-                  handle: securitytxt
+                  handle: securityTxt
                   field:
                     collapse: accordion
                     sets:
@@ -1037,7 +1037,7 @@ sections:
                     listable: hidden
                     instructions_position: above
                 -
-                  handle: robottxt
+                  handle: robotTxt
                   field:
                     collapse: accordion
                     sets:
@@ -1087,7 +1087,7 @@ sections:
                     listable: hidden
                     instructions_position: above
                 -
-                  handle: humantxt
+                  handle: humanTxt
                   field:
                     collapse: accordion
                     max_sets: 1
@@ -1142,7 +1142,7 @@ sections:
                     listable: hidden
                     instructions_position: above
                 -
-                  handle: securitytxt
+                  handle: securityTxt
                   field:
                     collapse: accordion
                     sets:
@@ -2015,7 +2015,7 @@ sections:
                     listable: hidden
                     instructions_position: above
                 -
-                  handle: robottxt
+                  handle: robotTxt
                   field:
                     collapse: accordion
                     sets:
@@ -2065,7 +2065,7 @@ sections:
                     listable: hidden
                     instructions_position: above
                 -
-                  handle: humantxt
+                  handle: humanTxt
                   field:
                     collapse: accordion
                     max_sets: 1
@@ -2120,7 +2120,7 @@ sections:
                     listable: hidden
                     instructions_position: above
                 -
-                  handle: securitytxt
+                  handle: securityTxt
                   field:
                     collapse: accordion
                     sets:
@@ -2837,7 +2837,7 @@ sections:
             website: Website
             websiteController: 'Website Controller'
             sitemapXml: SitemapXml
-            robotTxt: RobotTxt
+            robotTxt: robotTxt
             humanTxt: HumanTxt
             securityTxt: SecurityTxt
             code: Code

@@ -56,22 +56,22 @@ The schema shortcodes are reserved template strings compiled during the publishi
   
 
 **Shortcode compiling process rules:**
-- All required fields must contain a value
+<!-- - All required fields must contain a value
 - Only cross-reference parallel fields shortcode
-	- Parallel fields both cross-referencing each others' shortcode will result in a failed compile
+	- Parallel fields both cross-referencing each others' shortcode will result in a failed compile -->
 
 **Shortcode compiling process conditions:**
 
-Cross-referencing can only be one-way. Two-way cross-referencing will cause the publishing process to fail.
+<!-- Cross-referencing can only be one-way. Two-way cross-referencing will cause the publishing process to fail.
 	- See example: Do Not Cross-Reference Two-way
 - A required value being empty in a matching field will cause the publishing process to fail.
 - An un-required empty value in a matching field will be discarded and default to the value its parallel.
 	- See example: Cross-Reference when one value is empty:
-- Matching fields that both cross-referencing the other will cause the publishing process to fail as it can only be compiled in one direction.
+- Matching fields that both cross-referencing the other will cause the publishing process to fail as it can only be compiled in one direction. -->
 
 **Do Not Two-way Cross-Reference**
 
-```html
+<!-- ```html
 Website Metadata Base cross-referencing the Website Controller Metadata Base
 [ schema.controller.metadata.base] will equal a string value of '[ schema.controller.metadata.base]'
 
@@ -80,10 +80,11 @@ Website Controller Metadata Base cross-referencing the Website Metadata Base
 
 Compiled Metadata Base will result in:
 [ schema.controller.metadata.base ] will equal null
-```
+``` -->
 
 **One-Way Cross-Reference Emtpy Value:**
-```html
+
+<!-- ```html
 
 Website Metadata Base with no value results in:
 [ schema.website.metadata.base] will equal a string value of  '';
@@ -93,12 +94,12 @@ Website Controller Metadata Base with a value of 'domain.com' results in:
 
 Compiled Metadata Base result:
 [ schema.controller.metadata.base ] will equal a string value of 'domain.com'
-```
+``` -->
 
 
 
 ### Metadata
-
+<!-- 
 **Base**
 
 HTML Url `<base>` tag value
@@ -140,4 +141,4 @@ HTML SEO `<title>` tag value
 
 **[ schema.controller.metatadata.description ]**
 
-HTML SEO `<meta name='description content='{ schema.controller.metatadata.title }'>` tag value
+HTML SEO `<meta name='description content='{ schema.controller.metatadata.title }'>` tag value -->

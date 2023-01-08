@@ -6,7 +6,7 @@ title_alias: Home
 development-template:
   -
     uid: default
-    path: src/route
+    path: src/routes
     name: +page
     ext: svelte
     doctype:
@@ -19,7 +19,7 @@ development-template:
       code: null
       mode: htmlmixed
     title:
-      code: '<title>Home | [websitecontroller.domain.title]</title>'
+      code: '<title>Home | [websiteController.domain.title]</title>'
       mode: htmlmixed
     link:
       code: null
@@ -53,5 +53,5 @@ local-image:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1673196693
+updated_at: 1673214857
 ---

@@ -1302,21 +1302,18 @@ sections:
         handle: target
         field:
           options:
-            'null': 'Select one'
             development: Development
             stage: Stage
             preview: Preview
             production: Production
           multiple: false
-          clearable: false
+          clearable: true
           searchable: true
           taggable: false
           push_tags: false
           cast_booleans: false
-          default: 'null'
           display: Target
           type: select
           icon: select
           listable: hidden
           instructions_position: above
-          max_items: 1
