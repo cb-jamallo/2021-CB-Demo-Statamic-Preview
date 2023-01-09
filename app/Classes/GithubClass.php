@@ -86,39 +86,6 @@ class GithubClass
         
         return $gitResult;
     }
-    
-    public function repoCommit( $_gitBranch, $_gitMessage, $_gitOptions ) 
-    {
-        $gitCommand = 'git commit -m [options] "[message]"';
-        $gitResult = $this->repoExec( $gitCommand );
-        
-        return $gitResult;
-    }
-
-    public function repoPush()
-    {
-        $git = exec('git ... 2>&1');
-        
-        return $git;
-    }
-
-    public function repoBranchCreate() 
-    {
-        return exec('git checkout -b [options] [branch] 2>&1');
-    }
-
-    public function repoBranchDelete( $_gitBranch, $_gitOptions )
-    {
-        return exec('git branch --delete [options] [branch] 2>&1');
-    }
-
-    public function repoBranchCheckout( $_gitBranch, $_gitOptions ) 
-    {
-        $gitCommand = sprintf( 'git checkout %s %s', $_gitOptions, $_gitBranch );
-        $gitResult = $this->repoExec( $gitCommand );
-
-        return $gitResult;
-    }
 
     public function repoBranchReportStatus( $_gitOptions = '' ) 
     {
