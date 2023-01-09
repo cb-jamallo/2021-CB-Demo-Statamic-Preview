@@ -38,9 +38,8 @@ development-template:
       mode: htmlmixed
     type: item
     enabled: true
-replicate:
-  - page
-target: development
+replicate: 'null'
+target: 'null'
 local-image:
   -
     uid: image
@@ -53,5 +52,5 @@ local-image:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1673214857
+updated_at: 1673282193
 ---
