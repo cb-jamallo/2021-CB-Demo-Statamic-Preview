@@ -1567,8 +1567,10 @@ class SchemaClass
         $l = exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
         $l = exec( $buildDirectoryUserPath . ' git remote set-url statamic 2>&1' );
         //$l = exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
-        $l = exec( $buildDirectoryUserPath . ' git -c "user.name=cb-jamallo" -c "user.email=jamamllo@castlebranch.com" push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
+        $l = exec( $buildDirectoryUserPath . ' git -c "user.name=cb-jamallo" -c "user.email=jamamllo@castlebranch.com" push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1', $output, $return_var );
         
+        $m = "Returned with status $return_var and output:\n";
+        $m = print_r($output, false );
         // SSH Teesting Command: ssh -T git@github.com
         // $githubClass = new GithubClass( $this->schema, $buildEnv->path('') . $buildSlug );
         // $githubClass->repoExec( $buildDirectoryUserPath . ' git add -A' );
