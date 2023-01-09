@@ -1557,15 +1557,17 @@ class SchemaClass
         // SSH Keygen command: ssh-keygen -o -t rsa -C "jamallo@castlebranch.com"
         // SSH Add command: ssh-add -K ~/.ssh/id_rsa
         // SSH passphrase command: 209734Jm
+        // https://statamic.com/forum/5247-enabling-automatic-git-push-ssh-key-not-being-used
         // Get PHP Shell command permissions: https://stackoverflow.com/questions/52680408/commit-changes-on-webserver-to-github-repo-using-php-not-working
         //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
         $l = exec( $buildDirectoryUserPath . ' whoami' );
         $l = exec( $buildDirectoryUserPath . ' id' );
+        $l = exec( $buildDirectoryUserPath . ' git remote -v' );
         $l = exec( $buildDirectoryUserPath . ' git add -A' );
         $l = exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
         $l = exec( $buildDirectoryUserPath . ' git remote set-url statamic 2>&1' );
-        $l = exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
-
+        //$l = exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
+        $l = exec( $buildDirectoryUserPath . ' git -c "user.name=cb-jamallo" -c "user.email=jamamllo@castlebranch.com" push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
         
         // SSH Teesting Command: ssh -T git@github.com
         // $githubClass = new GithubClass( $this->schema, $buildEnv->path('') . $buildSlug );
