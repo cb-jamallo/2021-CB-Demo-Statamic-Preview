@@ -78,7 +78,7 @@ development-code:
         <html lang="en">
         	<head>
         	  <title>TekMountain.com</title>
-        	  <link rel='canonical' href='[websiteController.domain.host.base]'>
+        	  <link rel='canonical' href='[websiteBuild.domain.host.base]'>
         	  %sveltekit.head%
         	</head>
         	<body>
@@ -172,5 +172,5 @@ local-code:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1673279225
+updated_at: 1673282052
 ---
