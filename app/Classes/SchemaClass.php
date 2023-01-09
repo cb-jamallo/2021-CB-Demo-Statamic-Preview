@@ -1553,27 +1553,16 @@ class SchemaClass
 
         // Handle git commit
         // Change credentials to app then back to system
-
         // https://jhooq.com/github-permission-denied-publickey/
-        // SSH Keygen command: ssh-keygen -o -t rsa -C "jamallo@castlebranch.com"
-        // SSH Add command: ssh-add -K ~/.ssh/id_rsa
-        // SSH passphrase command: 209734Jm
-        // SSH CHeck: ssh -T git@github.com
-        // SSH Check passphrase: 209734Jm
         // https://statamic.com/forum/5247-enabling-automatic-git-push-ssh-key-not-being-used
-        // Get PHP Shell command permissions: https://stackoverflow.com/questions/52680408/commit-changes-on-webserver-to-github-repo-using-php-not-working
-        //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
-        // $l = exec( $buildDirectoryUserPath . ' whoami' );
-        // $l = exec( $buildDirectoryUserPath . ' id' );
-        // $l = exec( $buildDirectoryUserPath . ' ssh -i /id_rsa -T git@github.com' );
-        // $l = exec( $buildDirectoryUserPath . ' git remote -v' );
-        $l = shell_exec( $buildDirectoryUserPath . ' git add -A' );
-        $l = shell_exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
-        // $l = shell_exec( $buildDirectoryUserPath . ' git config core.sshCommand "ssh -i /Users/jamallo/.ssh/id_rsa" 2>&1' );
-        // $l = shell_exec( $buildDirectoryUserPath . ' git push -u origin main 2>&1' );
-        // $l = shell_exec( $buildDirectoryUserPath . ' git remote set-url origin git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
-        // $l = shell_exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
-        $l = shell_exec( $buildDirectoryUserPath . ' git push https://' . env('CB_GITHUB_USERNAME'). ':' . env('CB_GITHUB_TOKEN') . '@github.com/' . env('CB_GITHUB_USERNAME'). '/' . env('CB_GITHUB_REPO') .' main 2>&1');
+        $github = shell_exec( $buildDirectoryUserPath . ' git ls-remote --heads origin development 2>&1' ); 
+        
+        $github = shell_exec( $buildDirectoryUserPath . ' git add -A' );
+        $github = shell_exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
+        $github = shell_exec( $buildDirectoryUserPath . ' git push https://' . env('CB_GITHUB_USERNAME'). ':' . env('CB_GITHUB_TOKEN') . '@github.com/' . env('CB_GITHUB_USERNAME'). '/' . env('CB_GITHUB_REPO') .' main 2>&1');
+        
+        
+        
         // $m = "Returned with status $return_var and output:\n";
         // $m = print_r($output, false );
         // SSH Teesting Command: ssh -T git@github.com
@@ -1582,6 +1571,8 @@ class SchemaClass
         // $githubClass->repoExec( $buildDirectoryUserPath . ' git commit -m "Automated Commit"' );
         // $githubClass->repoExec( $buildDirectoryUserPath . ' git remote set-url statamic' );
         // $githubClass->repoExec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main' );
+        
+
     }
 
     // Find and Replace string content for schema path shortcodes

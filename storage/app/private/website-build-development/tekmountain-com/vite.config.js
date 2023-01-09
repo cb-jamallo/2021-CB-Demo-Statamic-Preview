@@ -9,6 +9,8 @@ export default ({ mode }) => {
     // Extends 'process.env.*' with VITE_*-variables from '.env.(mode=production|development)'
     process.env = {...process.env, ...loadEnv(mode, process.cwd())};
 
+    console.log( mode );
+    console.dir( {...process.env} );
     return defineConfig({
         plugins: [sveltekit()]
     }); 
