@@ -48,11 +48,9 @@ class GithubClass
         $this->repoPath = $_repoPath;
     }
 
-    public function repoExec( $_command, $workdir = null ) 
+    public function repoExec( $_command ) 
     {
-        if (is_null($workdir)) {
-            $workdir = __DIR__;
-        }
+        $workdir = $this->repoPath ?? $workdir = __DIR__;
     
         $descriptorspec = array(
            0 => array("pipe", "r"),  // stdin

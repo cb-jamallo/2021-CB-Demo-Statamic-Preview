@@ -1543,7 +1543,7 @@ class SchemaClass
         // Install node_modules if not already
         if ( sizeof( $buildDirectoriesNode ) <= 0 ) 
         {
-            exec('cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin npm install 2>&1');
+            exec( $buildDirectoryUserPath . ' npm install 2>&1');
             sleep(5);
         }
 
@@ -1553,17 +1553,16 @@ class SchemaClass
 
         // Handle git commit
         // Change credentials to app then back to system
-        $t = exec( $buildDirectoryUserPath . ' git branch 2>&1' );
 
         //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
         //$l = exec( 'git add -A 2>&1' );
         //$l = exec( 'git commit -m "Automated Commit" 2>&1' );
         //$l = exec( 'git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
 
-        $githubClass = new GithubClass( $this->schema, base_path() );
-        $githubClass->repoExec( 'git add -A 2>&1' );
-        $githubClass->repoExec( 'git commit -m "Automated Commit"' );
-        $githubClass->repoExec( 'git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main' );
+        $githubClass = new GithubClass( $this->schema, $buildEnv->path('') . $buildSlug );
+        $githubClass->repoExec( $buildDirectoryUserPath . ' git add -A' );
+        $githubClass->repoExec( $buildDirectoryUserPath . ' git commit -m "Automated Commit"' );
+        $githubClass->repoExec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main' );
     }   
 
     // Find and Replace string content for schema path shortcodes
