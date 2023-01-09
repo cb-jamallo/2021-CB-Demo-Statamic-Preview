@@ -1560,18 +1560,21 @@ class SchemaClass
         $githubOrigin = env('CB_GITHUB_USERNAME'). ':' . env('CB_GITHUB_TOKEN') . '@github.com/' . env('CB_GITHUB_USERNAME'). '/' . env('CB_GITHUB_REPO');
         $githubOriginUrl = 'https://' . $githubOrigin .'.git';
         
+        // Handle main branch updates
         $github = shell_exec( $buildDirectoryUserPath . ' git checkout main 2>&1');
         $github = shell_exec( $buildDirectoryUserPath . ' git add -A' );
         $github = shell_exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
         $github = shell_exec( $buildDirectoryUserPath . ' git push https://' . $githubOrigin .'.git main 2>&1');
-        $github = shell_exec( $buildDirectoryUserPath . ' git push https://' . $githubOrigin .'.git main 2>&1');
         
+        // Handle delete: git push origin --delete tekmountain-com-development
+
+        // Handle target branch updates
+        $github = shell_exec( $buildDirectoryUserPath . ' git push https://' . $githubOrigin .'.git ' . $buildSlug . '-' . $buildType . ' 2>&1');
         // Handle new branch create and push upstream
-        // $github = shell_exec( $buildDirectoryUserPath . ' git ls-remote --heads ' . $githubOriginUrl .' development 2>&1' ); 
+        //$github = shell_exec( $buildDirectoryUserPath . ' git ls-remote --heads ' . $githubOriginUrl .' development 2>&1' ); 
         
         // if ( !github ) shell_exec( $buildDirectoryUserPath . ' git branch ' . $buildSlug . '-' . $buildType . ' && git push -u ' . $githubOriginUrl . ' ' . $buildSlug . '-' . $buildType . ' 2>&1');
         
-        // $github = shell_exec( $buildDirectoryUserPath . ' git push https://' . $githubOrigin .'.git ' . $buildSlug . '-' . $buildType . ' 2>&1');
         
         // $m = "Returned with status $return_var and output:\n";
         // $m = print_r($output, false );

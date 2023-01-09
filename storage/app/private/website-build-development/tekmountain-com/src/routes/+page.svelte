@@ -1,1 +1,1 @@
-<svelte:head><title>Home | tekmountain.com</title></svelte:head>Home page..........?
+<svelte:head><title>Home | tekmountain.com</title></svelte:head>Yahtzee!!!!
