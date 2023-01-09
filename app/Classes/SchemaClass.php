@@ -1555,7 +1555,7 @@ class SchemaClass
         // Unexpiring access token: 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
         $l = shell_exec( $buildDirectoryUserPath . ' git add -A' );
         $l = shell_exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
-        //$l = shell_exec( $buildDirectoryUserPath . ' git remote set-url origin git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
+        $l = shell_exec( $buildDirectoryUserPath . ' git remote set-url origin git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
         $l = shell_exec( $buildDirectoryUserPath . ' git push https://cb-jamallo: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@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
         
         // Keep for setting-up ssh
