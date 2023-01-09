@@ -1556,8 +1556,9 @@ class SchemaClass
         //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
         $l = exec( 'git add -A 2>&1' );
         $l = exec( 'git commit -m "Automated Commit" 2>&1' );
-        $l = exec( 'git push main https://cb-jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview 2>&1' );
-    
+        $l = exec( 'git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
+
+        exec('cd ' . $buildEnv->path('') . $buildSlug . '&& git push origin main 2>&1' );
     }
 
     // Find and Replace string content for schema path shortcodes
