@@ -1563,17 +1563,17 @@ class SchemaClass
         // https://statamic.com/forum/5247-enabling-automatic-git-push-ssh-key-not-being-used
         // Get PHP Shell command permissions: https://stackoverflow.com/questions/52680408/commit-changes-on-webserver-to-github-repo-using-php-not-working
         //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
-        $l = exec( $buildDirectoryUserPath . ' whoami' );
-        $l = exec( $buildDirectoryUserPath . ' id' );
-        $l = exec( $buildDirectoryUserPath . ' ssh -i /id_rsa -T git@github.com' );
-        $l = exec( $buildDirectoryUserPath . ' git remote -v' );
+        // $l = exec( $buildDirectoryUserPath . ' whoami' );
+        // $l = exec( $buildDirectoryUserPath . ' id' );
+        // $l = exec( $buildDirectoryUserPath . ' ssh -i /id_rsa -T git@github.com' );
+        // $l = exec( $buildDirectoryUserPath . ' git remote -v' );
         $l = exec( $buildDirectoryUserPath . ' git add -A' );
         $l = exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
-        $l = shell_exec( $buildDirectoryUserPath . ' git config core.sshCommand "ssh -i /Users/jamallo/.ssh/id_rsa" 2>&1' );
-        $l = shell_exec( $buildDirectoryUserPath . ' git push -u origin main 2>&1' );
-        $l = shell_exec( $buildDirectoryUserPath . ' git remote set-url origin git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
-        $l = shell_exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
-        $l = shell_exec( $buildDirectoryUserPath . ' git push https://cb-jamallo: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@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1');
+        // $l = shell_exec( $buildDirectoryUserPath . ' git config core.sshCommand "ssh -i /Users/jamallo/.ssh/id_rsa" 2>&1' );
+        // $l = shell_exec( $buildDirectoryUserPath . ' git push -u origin main 2>&1' );
+        // $l = shell_exec( $buildDirectoryUserPath . ' git remote set-url origin git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
+        // $l = shell_exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
+        $l = shell_exec( $buildDirectoryUserPath . ' git push https://cb-jamallo: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@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1');
         // $m = "Returned with status $return_var and output:\n";
         // $m = print_r($output, false );
         // SSH Teesting Command: ssh -T git@github.com
