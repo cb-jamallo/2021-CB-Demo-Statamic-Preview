@@ -1573,7 +1573,7 @@ class SchemaClass
         $l = shell_exec( $buildDirectoryUserPath . ' git push -u origin main 2>&1' );
         $l = shell_exec( $buildDirectoryUserPath . ' git remote set-url origin git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
         $l = shell_exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
-        $l = shell_exec( $buildDirectoryUserPath . ' git push https://cb-jamallo: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@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1');
+        $l = shell_exec( $buildDirectoryUserPath . ' git push https://cb-jamallo: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@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1');
         // $m = "Returned with status $return_var and output:\n";
         // $m = print_r($output, false );
         // SSH Teesting Command: ssh -T git@github.com
