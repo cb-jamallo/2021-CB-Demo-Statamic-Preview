@@ -1551,13 +1551,16 @@ class SchemaClass
         //exec('cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin npm run ' . $buildType . ' 2>&1');
         if ( $buildType === 'local' ) exec( $buildDirectoryUserPath . ' npm run ' . $buildType . ' 2>&1' );
 
+        // Handle git commit
+        // Change credentials to app then back to system
         $t = exec( $buildDirectoryUserPath . ' git branch 2>&1' );
 
         //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
         $l = exec( 'git add -A 2>&1' );
         $l = exec( 'git commit -m "Automated Commit" 2>&1' );
         $l = exec( 'git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
-
+        
+        pbcopy < ~/.ssh/id_ed25519
         exec('cd ' . $buildEnv->path('') . $buildSlug . '&& git push origin main 2>&1' );
     }
 
