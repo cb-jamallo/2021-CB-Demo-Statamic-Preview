@@ -1562,7 +1562,9 @@ class SchemaClass
         $githubClass = new GithubClass( $this->schema, $buildEnv->path('') . $buildSlug );
         $githubClass->repoExec( $buildDirectoryUserPath . ' git add -A' );
         $githubClass->repoExec( $buildDirectoryUserPath . ' git commit -m "Automated Commit"' );
-        $githubClass->repoExec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main' );
+        $githubClass->repoExec( $buildDirectoryUserPath . ' git remote set-url statamic' );
+        $githubClass->repoExec( $buildDirectoryUserPath . ' git push origin main' );
+        //$githubClass->repoExec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main' );
     }   
 
     // Find and Replace string content for schema path shortcodes
