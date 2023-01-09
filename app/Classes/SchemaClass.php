@@ -1565,6 +1565,7 @@ class SchemaClass
         //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
         $l = exec( $buildDirectoryUserPath . ' whoami' );
         $l = exec( $buildDirectoryUserPath . ' id' );
+        $l = exec( $buildDirectoryUserPath . ' git config user.email' );
         $l = exec( $buildDirectoryUserPath . ' git remote -v' );
         $l = exec( $buildDirectoryUserPath . ' git add -A' );
         $l = exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
