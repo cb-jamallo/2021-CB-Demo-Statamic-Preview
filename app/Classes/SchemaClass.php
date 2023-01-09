@@ -1554,9 +1554,12 @@ class SchemaClass
         // Handle git commit
         // Change credentials to app then back to system
 
+        // https://jhooq.com/github-permission-denied-publickey/
         // SSH Keygen command: ssh-keygen -o -t rsa -C "jamallo@castlebranch.com"
         // SSH Add command: ssh-add -K ~/.ssh/id_rsa
         // SSH passphrase command: 209734Jm
+        // SSH CHeck: ssh -T git@github.com
+        // SSH Check passphrase: 209734Jm
         // https://statamic.com/forum/5247-enabling-automatic-git-push-ssh-key-not-being-used
         // Get PHP Shell command permissions: https://stackoverflow.com/questions/52680408/commit-changes-on-webserver-to-github-repo-using-php-not-working
         //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
@@ -1568,7 +1571,7 @@ class SchemaClass
         //$l = exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
         $l = shell_exec( $buildDirectoryUserPath . ' git push origin main 2>&1' );
         
-        $l = exec( $buildDirectoryUserPath . ' git remote set-url statamic 2>&1' );
+        //$l = exec( $buildDirectoryUserPath . ' git remote set-url statamic 2>&1' );
         $l = shell_exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
         
         // $m = "Returned with status $return_var and output:\n";
@@ -1613,84 +1616,7 @@ class SchemaClass
 
      /*
 
-    <!-- Build Comment:
-    MODIEFER RULES: Data (*) Return data object instead of String
-    ...::data_php_array // PHP Array
-    ...::data_js_array // PHP/JS
-    ...::data_js_json // JS
-    ...::tag // string
-    ...::attribute // array
-    ...::modifier // array
-    ...::outer // string default
-    ...::inner // string
-    ...::children // array
-
-    MODIFIER RULES: FIND/REPLACE
-    [website.template.page :find=class='wrapper :replace=class='wrapper even]
-
-    MODIEFER RULES: ATTR (*) String(s)
-    :attribute_only=test1,...
-    :attribute_except=test1,...
-    :attribute_before=test~test2,...
-    :attribute_after=test~test2,...
-
-    MODIEFER RULES: ITEM (metadata, asset, misc???) String(s)
-    :item_only=test1,...
-    :item_except=test1,...
-    :item_merge_before=test1~test2,... // TBD...
-    :item_sort= // TBD...
-    :item_sort_before=test~test2
-    :item_sort_after=test~test2
-
-    MODIEFER RULES: OUTER/INNER (metadata, asset, template, misc) String(s)
-    :outer/inner
-    :outer/inner_query // Nested Tag Query TBD...
-    :outer/inner_replace=name~value,... // TBD
-    :inner/inner_replace_all=name~value,... // TBD
-
-    SHORTCODE GET EXAMPLE:
-    ex: returns <tag> string w/ modfidied attributes
-    [website_controller.template.page :attribute_only]
-
-    ex: returns attribute string w/ modfidied attributes
-    [website_controller.template.page::inner :attribute_only=...]
-
     
-    [website_controller.template.*.tag] // Returns: String Tag Attr's Only
-    [website_controller.template.*.attribute] // Returns: String Tag Attr's Only
-    [website_controller.template.*.modifier] // Returns: String Tag Mod's Only
-    [website_controller.template.*.outer] // Returns: String Default Outer Only
-    [website_controller.template.*.?inner] // DEFUALT Returns: String Tag Inner Only
-
-    [websiteController.template.build_html.body]
-        [website.meta.title] 
-        [website.template.build_html.body]
-    [/websiteController.template.build_html.body]
-
-    #1 Run Group Find/Replace
-        - Run Attr & List Find Replace
-    #2 Run Sinlge Find/Replace
-        - Run Attr & List Find Replace
-
-
-    // Ex:
-        - [websiteController.template.build_html.body]
-        - [websiteController.template.build_html.body_attr]
-        - [websiteController.template.build_html.body_content]
-
-    // Ex: merged
-        - [websiteBuild.template.build_html.body]
-        - [websiteBuild.template.build_html.body_attr]
-        - [websiteBuild.template.build_html.body_content]
-
-    // Ex: Except
-        - [websiteBuild.template.build_html.body_attr -attr_except=title1]
-        - [websiteBuild.metadata.link -except=title1]
-
-    // Ex: Only
-        - [websiteBuild.template.build_html.body_attr -attr_only=title1]
-        - [websiteBuild.metadata.link -except=title1]
-    -->
      */
 
 }
