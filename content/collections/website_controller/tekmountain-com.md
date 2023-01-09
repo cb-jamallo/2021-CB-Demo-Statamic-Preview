@@ -49,7 +49,7 @@ development-template:
       code: null
       mode: javascript
     body:
-      code: null
+      code: 'Hello World!!'
       mode: htmlmixed
     type: item
     enabled: true
@@ -82,26 +82,9 @@ development-code:
         	  %sveltekit.head%
         	</head>
         	<body>
-        	  	Iron Maiden. Up the irons
-        		%sveltekit.body%
+        	  	%sveltekit.body%
         	</body>
         </html>
-      mode: htmlmixed
-    type: item
-    enabled: true
-  -
-    uid: +error-svelte
-    path: /src/routes
-    name: +error
-    ext: svelte
-    content:
-      code: |-
-        <script>
-           import { page } from '$app/stores';
-        </script>
-
-        {@html JSON.stringify( $page )}
-        {$page.status}: {$page.error.message}
       mode: htmlmixed
     type: item
     enabled: true
@@ -157,6 +140,22 @@ development-code:
       mode: htmlmixed
     type: item
     enabled: true
+  -
+    uid: +error-svelte
+    path: /src/routes
+    name: +error
+    ext: svelte
+    content:
+      code: |-
+        <script>
+           import { page } from '$app/stores';
+        </script>
+
+        {@html JSON.stringify( $page )}
+        {$page.status}: {$page.error.message}
+      mode: htmlmixed
+    type: item
+    enabled: true
 local-code:
   -
     uid: htaccess
@@ -173,5 +172,5 @@ local-code:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1673279015
+updated_at: 1673279225
 ---

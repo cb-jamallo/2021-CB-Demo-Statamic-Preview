@@ -1543,13 +1543,13 @@ class SchemaClass
         // Install node_modules if not already
         if ( sizeof( $buildDirectoriesNode ) <= 0 ) 
         {
-            exec( $buildDirectoryUserPath . ' npm install 2>&1');
+            shell_exec( $buildDirectoryUserPath . ' npm install 2>&1');
             sleep(5);
         }
 
         // Handle build locally ONLY
         //exec('cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin npm run ' . $buildType . ' 2>&1');
-        if ( $buildType === 'local' ) exec( $buildDirectoryUserPath . ' npm run ' . $buildType . ' 2>&1' );
+        if ( $buildType === 'local' ) shell_exec( $buildDirectoryUserPath . ' npm run ' . $buildType . ' 2>&1' );
 
         // Handle git commit
         // Change credentials to app then back to system
@@ -1567,8 +1567,8 @@ class SchemaClass
         // $l = exec( $buildDirectoryUserPath . ' id' );
         // $l = exec( $buildDirectoryUserPath . ' ssh -i /id_rsa -T git@github.com' );
         // $l = exec( $buildDirectoryUserPath . ' git remote -v' );
-        $l = exec( $buildDirectoryUserPath . ' git add -A' );
-        $l = exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
+        $l = shell_exec( $buildDirectoryUserPath . ' git add -A' );
+        $l = shell_exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
         // $l = shell_exec( $buildDirectoryUserPath . ' git config core.sshCommand "ssh -i /Users/jamallo/.ssh/id_rsa" 2>&1' );
         // $l = shell_exec( $buildDirectoryUserPath . ' git push -u origin main 2>&1' );
         // $l = shell_exec( $buildDirectoryUserPath . ' git remote set-url origin git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
