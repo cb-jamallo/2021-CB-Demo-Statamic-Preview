@@ -1555,17 +1555,19 @@ class SchemaClass
         // Change credentials to app then back to system
 
         //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
-        //$l = exec( 'git add -A 2>&1' );
-        //$l = exec( 'git commit -m "Automated Commit" 2>&1' );
-        //$l = exec( 'git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
+        $l = exec( $buildDirectoryUserPath . ' git add -A' );
+        $l = exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
+        $l = exec( $buildDirectoryUserPath . ' git remote set-url statamic 2>&1' );
+        $l = exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
+        $l = exec( $buildDirectoryUserPath . ' 209734Jm 2>&1' );
 
         // SSH Keygen command: ssh-keygen -o -t rsa -C "jamallo@castlebranch.com"
         // SSH Teesting Command: ssh -T git@github.com
-        $githubClass = new GithubClass( $this->schema, $buildEnv->path('') . $buildSlug );
-        $githubClass->repoExec( $buildDirectoryUserPath . ' git add -A' );
-        $githubClass->repoExec( $buildDirectoryUserPath . ' git commit -m "Automated Commit"' );
-        $githubClass->repoExec( $buildDirectoryUserPath . ' git remote set-url statamic' );
-        $githubClass->repoExec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main' );
+        // $githubClass = new GithubClass( $this->schema, $buildEnv->path('') . $buildSlug );
+        // $githubClass->repoExec( $buildDirectoryUserPath . ' git add -A' );
+        // $githubClass->repoExec( $buildDirectoryUserPath . ' git commit -m "Automated Commit"' );
+        // $githubClass->repoExec( $buildDirectoryUserPath . ' git remote set-url statamic' );
+        // $githubClass->repoExec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main' );
     }   
 
     // Find and Replace string content for schema path shortcodes
