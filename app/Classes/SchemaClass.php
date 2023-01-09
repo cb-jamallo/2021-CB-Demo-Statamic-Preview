@@ -1565,8 +1565,10 @@ class SchemaClass
         $l = exec( $buildDirectoryUserPath . ' git remote -v' );
         $l = exec( $buildDirectoryUserPath . ' git add -A' );
         $l = exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
-        $l = exec( $buildDirectoryUserPath . ' git remote set-url statamic 2>&1' );
         //$l = exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
+        $l = shell_exec( $buildDirectoryUserPath . ' git push origin main 2>&1' );
+        
+        $l = exec( $buildDirectoryUserPath . ' git remote set-url statamic 2>&1' );
         $l = shell_exec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
         
         // $m = "Returned with status $return_var and output:\n";
