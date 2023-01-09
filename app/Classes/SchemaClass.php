@@ -1561,6 +1561,7 @@ class SchemaClass
         // Get PHP Shell command permissions: https://stackoverflow.com/questions/52680408/commit-changes-on-webserver-to-github-repo-using-php-not-working
         //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
         $l = exec( $buildDirectoryUserPath . ' whoami' );
+        $l = exec( $buildDirectoryUserPath . ' whoami' );
         $l = exec( $buildDirectoryUserPath . ' id' );
         $l = exec( $buildDirectoryUserPath . ' git remote -v' );
         $l = exec( $buildDirectoryUserPath . ' git add -A' );
