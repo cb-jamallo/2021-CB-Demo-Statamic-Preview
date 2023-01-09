@@ -1560,6 +1560,7 @@ class SchemaClass
         //$l = exec( 'git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main 2>&1' );
 
         // SSH Keygen command: ssh-keygen -o -t rsa -C "jamallo@castlebranch.com"
+        // SSH Teesting Command: ssh -T git@github.com
         $githubClass = new GithubClass( $this->schema, $buildEnv->path('') . $buildSlug );
         $githubClass->repoExec( $buildDirectoryUserPath . ' git add -A' );
         $githubClass->repoExec( $buildDirectoryUserPath . ' git commit -m "Automated Commit"' );
