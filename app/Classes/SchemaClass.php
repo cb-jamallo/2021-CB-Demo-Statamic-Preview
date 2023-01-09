@@ -1554,41 +1554,10 @@ class SchemaClass
         $t = exec( $buildDirectoryUserPath . ' git branch 2>&1' );
 
         //exec( 'git add ' . $buildEnv->path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
-        $l = exec( 'git add ' . base_path('') . ' https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
-        $l = exec( 'git commit -m "Automated Commit" https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
-        $l = exec( 'git push origin main https://jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview.git 2>&1' );
-        ///Users/jamallo/Documents/CB-Web-Testing/2021-CB-Demo-Statamic-Preview/storage/app/private/website-build-development/tekmountain-com
-        //exec( $buildDirectoryUserPath . ' git add storage/app/private/website-build-development/tekmountain-com 2>&1' )
-        // exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" Users/jamallo/Documents/CB-Web-Testing/2021-CB-Demo-Statamic-Preview/storage/app/private/website-build-development/tekmountain-com 2>&1' )
-        //sleep(5);
-        // $githubClass = new GithubClass( $this->schema, $buildDirectoryUserPath  );
-        // $githubClass->repoExec( 'git add ' . $buildEnvDirectory . '', base_path() );
-        // $githubClass->repoExec( 'git commit -m "Automated Commit"', base_path() );
-        // $githubClass->repoExec( 'git push origin main', base_path() );
-        //$l = $githubClass->repoBranchReportLastCommit();
-        //$commit = exec( $buildDirectoryUserPath . ' git add ' . $buildEnvDirectory . ' && git commit -m "Automated Commit" && git push origin main 2>&1' );
-
-        $stop = null;
-        // only commit from app root
-        // storage_path('app');
-        //sprintf( '/storage/%s', explode( 'storage/', $buildEnv->path('') )[1] )
-        
-        // GOAL :: https://blog.jim-nielsen.com/2020/deploying-a-wannabe-monorepo-in-netlify/
-        
-        // Handle build commit
-        //$githubClass = new GithubClass( $this->schema, $buildDirectoryUserPath  );
-
-        // $l = $githubClass->repoBranchReportStatus();
-
-        // $l = $githubClass->repoExists( 'test' ) ?? null;
-
-        // // Switch to website target branch
-        // $l = explode( '.md', $githubClass->repoBranchCheckout( '', 'test' ) );
-        // $l = $githubClass->repoBranchReportLastCommit();
-        
-        // // Switch back to main
-        // $l = $githubClass->repoBranchCheckout( '', 'main' );
-        // $l = $githubClass->repoBranchReportLastCommit();
+        $l = exec( 'git add -A 2>&1' );
+        $l = exec( 'git commit -m "Automated Commit" 2>&1' );
+        $l = exec( 'git push main https://cb-jamallo:1976-Hanover-PA@github.com/cb-jamallo/2021-CB-Demo-Statamic-Preview 2>&1' );
+    
     }
 
     // Find and Replace string content for schema path shortcodes
