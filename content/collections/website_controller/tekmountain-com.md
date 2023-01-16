@@ -268,7 +268,7 @@ local-code:
         </html>
       mode: htmlmixed
     type: item
-    enabled: true
+    enabled: false
   -
     uid: +layout-js
     path: /src/routes
@@ -280,7 +280,7 @@ local-code:
         export const ssr = false;
       mode: javascript
     type: item
-    enabled: true
+    enabled: false
   -
     uid: +layout-svelte
     path: /src/routes
@@ -320,7 +320,7 @@ local-code:
         </main>
       mode: htmlmixed
     type: item
-    enabled: true
+    enabled: false
   -
     uid: +error-svelte
     path: /src/routes
@@ -336,7 +336,7 @@ local-code:
         {$page.status}: {$page.error.message}
       mode: htmlmixed
     type: item
-    enabled: true
+    enabled: false
   -
     uid: netlify-toml
     path: src/../
@@ -349,10 +349,7 @@ local-code:
           ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF"
       mode: htmlmixed
     type: item
-    enabled: true
-replicate:
-  - websiteController
-target: local
+    enabled: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1673880426
+updated_at: 1673880651
 ---
