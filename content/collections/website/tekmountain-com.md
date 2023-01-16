@@ -34,12 +34,13 @@ development-template:
       code: null
       mode: javascript
     body:
-      code: 'Home page..........?'
+      code: Yahtzee!!!!
       mode: htmlmixed
     type: item
     enabled: true
-replicate: 'null'
-target: 'null'
+replicate:
+  - page
+target: local
 local-image:
   -
     uid: image
@@ -51,6 +52,41 @@ local-image:
     file: tekmountain-com/image/AdobeStock_291317597_Preview.jpeg
     type: item
     enabled: true
+local-template:
+  -
+    uid: default
+    path: src/routes
+    name: +page
+    ext: svelte
+    doctype:
+      code: null
+      mode: htmlmixed
+    html:
+      code: null
+      mode: htmlmixed
+    head:
+      code: null
+      mode: htmlmixed
+    title:
+      code: '<title>Home | [websiteController.domain.title]</title>'
+      mode: htmlmixed
+    link:
+      code: null
+      mode: htmlmixed
+    meta:
+      code: null
+      mode: htmlmixed
+    style:
+      code: null
+      mode: css
+    script:
+      code: null
+      mode: javascript
+    body:
+      code: 'Local build'
+      mode: htmlmixed
+    type: item
+    enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1673287274
+updated_at: 1673878660
 ---

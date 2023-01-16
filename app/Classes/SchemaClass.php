@@ -236,13 +236,13 @@ class SchemaClass
                 'Failed to init for the Website '. $this->schema['website']['domain']['slug'] . ': <br />' . $_error->getMessage(),
             );
 
-            // ToastClass::log(array(
-            //     'toastType' => 'error',
-            //     'toastMessage' => $errorMessag,
-            //     'toastDuration' => 4000
-            // ));
+            ToastClass::log(array(
+                'toastType' => 'error',
+                'toastMessage' => $errorMessage,
+                'toastDuration' => 4000
+            ));
 
-            throw new \Exception ( $errorMessage );
+            // throw new \Exception ( $errorMessage );
 
         }
 
@@ -1205,6 +1205,7 @@ class SchemaClass
         
         $zip = new ZipArchive();
 
+        $t = !Storage::disk( $fileEnv )->has( $fileSlug );
         // Handle replicate directories & file @ path
         if ( in_array( $fileSlug, Storage::disk('assets')->directories() ) 
             && Storage::disk('assets')->has( $filePackage )

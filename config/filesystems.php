@@ -78,6 +78,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'build-local' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private/website-build-local'),
+            'visibility' => 'private',
+        ],
+
         'build-development' => [
             'driver' => 'local',
             'root' => storage_path('app/private/website-build-development'),

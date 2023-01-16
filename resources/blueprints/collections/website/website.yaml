@@ -1302,6 +1302,7 @@ sections:
         handle: target
         field:
           options:
+            local: Local
             development: Development
             stage: Stage
             preview: Preview
