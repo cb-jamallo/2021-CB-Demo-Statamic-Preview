@@ -35,7 +35,8 @@
 </svelte:head>
 
 
-<main id="main" class='main {websitePageClass}'>
+<main id="main" class='main { websitePageClass }'>
+  {@html JSON.stringify( { websitePageClass } ) }
   <slot />
 </main>;
   const websiteNavigation = {"id":"8fe0f1f3-c0b7-4b5e-9483-a18722504c5d","title":"Home","slug":"","uri":"","enabled":true};
@@ -56,6 +57,7 @@
 </svelte:head>
 
 
-<main id="main" class='main {websitePageClass}'>
+<main id="main" class='main { websitePageClass }'>
+  {@html JSON.stringify( { websitePageClass } ) }
   <slot />
 </main>

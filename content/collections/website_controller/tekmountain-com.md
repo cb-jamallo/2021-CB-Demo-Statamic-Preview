@@ -303,6 +303,7 @@ local-code:
           //...
 
           /* Global Stores */
+          const websiteJson = [websiteJson];
           const websiteNavigation = [websiteBuild.navigation.json];
           let websitePageClass = 'home';
 
@@ -327,6 +328,7 @@ local-code:
       mode: htmlmixed
     type: item
     enabled: true
+run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674928077
+updated_at: 1674930052
 ---
