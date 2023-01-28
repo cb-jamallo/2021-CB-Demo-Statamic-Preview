@@ -1,5 +1,4 @@
 <script>
-
   /* Svelte imports */
   import { onMount, tick } from 'svelte';
   import { page } from '$app/stores';
@@ -8,13 +7,16 @@
   //...
 
   /* Global Stores */
+  /** @type {import('./$types').LayoutData} */
+  export let data;
+  
   let websitePageClass = 'home';
 
   onMount(async () => {
 	// #Await...
 	await tick();
 
-	console.log( page );
+	console.log( $page );
 
   });
 </script>
