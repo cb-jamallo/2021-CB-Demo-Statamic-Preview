@@ -142,8 +142,11 @@ development-code:
         	// #Await...
         	await tick();
 
-        	console.log( $page.data );
-
+        	console.log( page.data );
+        	
+        	const response = await fetch( '/lib/data/websiteBuild.json' );
+          	const responseJson = await res.json();
+        	console.log( responseJson );
           });
         </script>
 
@@ -344,5 +347,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674941321
+updated_at: 1674941659
 ---
