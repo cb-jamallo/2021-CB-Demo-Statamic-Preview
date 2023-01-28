@@ -11,8 +11,6 @@ export async function load( fetch, params, route, url, parent )
 	console.log( responseJson );
  	
   return {
-  	data: {
-	  navigation: responseJson
-	}
+  	props: responseJson
   }
 }

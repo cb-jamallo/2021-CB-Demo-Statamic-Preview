@@ -18,12 +18,12 @@
 	// #Await...
 	await tick();
 	
-	console.log( $$props )
-	console.log( $page )
-	console.log( {"id":"8fe0f1f3-c0b7-4b5e-9483-a18722504c5d","title":"Home","slug":"","uri":"","enabled":true} )
-	const response = await fetch( '/lib/data/websiteBuild.json' );
-  	const responseJson = await response.json();
-	console.log( responseJson );
+	console.log( $$props );
+	//console.log( $page );
+	//console.log( {"id":"8fe0f1f3-c0b7-4b5e-9483-a18722504c5d","title":"Home","slug":"","uri":"","enabled":true} )
+	//const response = await fetch( '/lib/data/websiteBuild.json' );
+  	//const responseJson = await response.json();
+	//console.log( responseJson );
   
   });
 </script>
