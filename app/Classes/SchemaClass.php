@@ -1139,12 +1139,14 @@ class SchemaClass
 
         $this->schema['websiteJson'] = json_encode(
             [
-                'website' => $this->schema['website'],
-                'websiteController' => $this->schema['websiteController'],
-                'websiteBuild' => $this->schema['websiteBuild'],
+                'website' => htmlspecialchars( $this->schema['website'] ),
+                'websiteController' => htmlspecialchars( $this->schema['websiteController'] ),
+                'websiteBuild' => htmlspecialchars( $this->schema['websiteBuild'] ),
             ], 
             JSON_UNESCAPED_SLASHES 
         );
+
+        $tst = null;
     }
 
     public function initWebsiteControllerReset()
