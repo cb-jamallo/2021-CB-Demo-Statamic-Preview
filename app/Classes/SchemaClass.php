@@ -1137,11 +1137,21 @@ class SchemaClass
         if ( array_key_exists( 'env', $this->schema['websiteController']['domain']['host'] ) ) $this->schema['websiteController']['domain']['host']['env']['private'] = null;
         if ( array_key_exists( 'env', $this->schema['websiteBuild']['domain']['host'] ) ) $this->schema['websiteBuild']['domain']['host']['env']['private'] = null;
 
+        $this->schema['website']['entry'] = null;
+        $this->schema['website']['root'] = null;
         $this->schema['website']['template'] = null;
         $this->schema['website']['code'] = null;
+        $this->schema['website']['navigation']['file'] = null;
+
+        $this->schema['websiteController']['entry'] = null;
+        $this->schema['websiteController']['root'] = null;
         $this->schema['websiteController']['domain']['host']['package'] = null;
         $this->schema['websiteController']['template'] = null;
         $this->schema['websiteController']['code'] = null;
+
+        $this->schema['websiteBuild']['entry'] = null;
+        $this->schema['websiteBuild']['template'] = null;
+        $this->schema['websiteBuild']['navigation']['file'] = null;
 
         $this->schema['websiteJson'] = htmlspecialchars( 
             json_encode(
