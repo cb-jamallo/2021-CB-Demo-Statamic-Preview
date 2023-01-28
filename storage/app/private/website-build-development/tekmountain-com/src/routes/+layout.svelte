@@ -26,6 +26,8 @@
 <svelte:head>
 </svelte:head>
 
+Debug page....
+{@debg websitePageClass}
 {@debug $page}
 {@debug page}
 <main id="main" class='main main-{ websitePageClass }'>

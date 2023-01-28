@@ -82,7 +82,9 @@ development-code:
         	  %sveltekit.head%
         	</head>
         	<body>
-        	  	%sveltekit.body%
+        	  	<div style="display: contents">
+        	  		%sveltekit.body%
+        	  	</div>
         	</body>
         </html>
       mode: htmlmixed
@@ -142,11 +144,9 @@ development-code:
         	// #Await...
         	await tick();
 
-        	console.log( $page.data );
-        	
-        	const response = await fetch( '/lib/data/websiteBuild.json' );
-          	const responseJson = await res.json();
-        	console.log( responseJson );
+        	//const response = await fetch( '/lib/data/websiteBuild.json' );
+          	//const responseJson = await res.json();
+        	//console.log( responseJson );
           });
         </script>
 
@@ -154,6 +154,8 @@ development-code:
         <svelte:head>
         </svelte:head>
 
+        {@debug $page}
+        {@debug page}
         <main id="main" class='main main-{ websitePageClass }'>
           <slot />
         </main>
@@ -347,5 +349,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674942055
+updated_at: 1674942256
 ---
