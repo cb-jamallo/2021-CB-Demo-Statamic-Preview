@@ -1305,8 +1305,8 @@ sections:
             local: Local
             development: Development
             stage: Stage
-            preview: Preview
             production: Production
+            live: Live
           multiple: false
           clearable: true
           searchable: true

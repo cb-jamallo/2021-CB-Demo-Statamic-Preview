@@ -2865,8 +2865,8 @@ sections:
             local: Local
             development: Development
             stage: Stage
-            preview: Preview
             production: Production
+            live: Live
           multiple: false
           clearable: true
           searchable: true
@@ -2878,3 +2878,14 @@ sections:
           icon: select
           listable: hidden
           instructions_position: above
+      -
+        handle: run
+        field:
+          default: false
+          display: Run
+          type: toggle
+          icon: toggle
+          listable: hidden
+          instructions_position: above
+          if:
+            target: 'contains_any preview, staging, development, local'

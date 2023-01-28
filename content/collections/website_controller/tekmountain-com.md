@@ -250,7 +250,9 @@ local-code:
         	  %sveltekit.head%
         	</head>
         	<body>
-        	  	%sveltekit.body%
+        	  	<div style="display: contents;">
+        	  	    %sveltekit.body%
+                </div>
         	</body>
         </html>
       mode: htmlmixed
@@ -326,5 +328,5 @@ local-code:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674927529
+updated_at: 1674928077
 ---

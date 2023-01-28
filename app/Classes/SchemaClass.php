@@ -119,6 +119,7 @@ class SchemaClass
         $this->schema['websiteBuild']['blueprint'] = $this->schema['websiteBuild']['event']->entry->blueprint()->handle();
         $this->schema['websiteBuild']['replicate'] = $this->schema['websiteBuild']['event']->entry->replicate;
         $this->schema['websiteBuild']['target'] = $this->schema['websiteBuild']['event']->entry->target;
+        $this->schema['websiteBuild']['run'] = $this->schema['websiteBuild']['event']->entry->run;
         
         //  Handle Build on Website Collection
         if ( $this->schema['websiteBuild']['blueprint'] === 'website' )
@@ -375,6 +376,7 @@ class SchemaClass
             // Replicate
             $this->schema['websiteController']['replicate'] = $this->parseDataKey( 'websiteController', 'replicate' ); //$this->schema['websiteController']['dataAugmented']['replicate']->raw();
             $this->schema['websiteController']['target'] = $this->parseDataKey( 'websiteController', 'target' ); //$this->schema['websiteController']['dataAugmented']['target']->raw();
+            $this->schema['websiteController']['run'] = $this->parseDataKey( 'websiteController', 'run' );
             
             // Domain
             $this->schema['websiteController']['domain'] = [
@@ -1531,7 +1533,8 @@ class SchemaClass
     {
         $buildEnv = Storage::disk( 'build-' . $this->schema['websiteBuild']['target'] );
         $buildEnvDirectory = sprintf( '/storage/%s', explode( 'storage/', $buildEnv->path('') )[1] );
-        $buildType = $this->schema['websiteBuild']['target'];
+        $buildTarget = $this->schema['websiteBuild']['target'];
+        $buildRun = $this->schema['websiteBuild']['run'];
         $buildSlug = $this->schema['websiteBuild']['domain']['slug'];
         $buildDirectoriesRoot = $buildEnv->directories( $this->schema['websiteBuild']['domain']['slug'] );
         $buildDirectoriesNode = $buildEnv->directories( $this->schema['websiteBuild']['domain']['slug'] . '/node_modules' );
@@ -1549,8 +1552,8 @@ class SchemaClass
         }
 
         // Handle build locally ONLY
-        //exec('cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin npm run ' . $buildType . ' 2>&1');
-        if ( $buildType === 'local' ) shell_exec( $buildDirectoryUserPath . ' npm run ' . $buildType . ' 2>&1' );
+        //exec('cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin npm run ' . $buildTarget . ' 2>&1');
+        if ( $buildRun && $buildTarget !== 'production' ) shell_exec( $buildDirectoryUserPath . ' npm run ' . $buildTarget . ' 2>&1' );
 
         // Handle git commit
         // Change credentials to app then back to system
@@ -1570,11 +1573,11 @@ class SchemaClass
         // Handle delete: git push origin --delete tekmountain-com-development
 
         // Handle target branch updates
-        $github = shell_exec( $buildDirectoryUserPath . ' git push https://' . $githubOrigin .'.git ' . $buildSlug . '-' . $buildType . ' 2>&1');
+        $github = shell_exec( $buildDirectoryUserPath . ' git push https://' . $githubOrigin .'.git ' . $buildSlug . '-' . $buildTarget . ' 2>&1');
         // Handle new branch create and push upstream
         //$github = shell_exec( $buildDirectoryUserPath . ' git ls-remote --heads ' . $githubOriginUrl .' development 2>&1' ); 
         
-        // if ( !github ) shell_exec( $buildDirectoryUserPath . ' git branch ' . $buildSlug . '-' . $buildType . ' && git push -u ' . $githubOriginUrl . ' ' . $buildSlug . '-' . $buildType . ' 2>&1');
+        // if ( !github ) shell_exec( $buildDirectoryUserPath . ' git branch ' . $buildSlug . '-' . $buildTarget . ' && git push -u ' . $githubOriginUrl . ' ' . $buildSlug . '-' . $buildTarget . ' 2>&1');
         
         
         // $m = "Returned with status $return_var and output:\n";
