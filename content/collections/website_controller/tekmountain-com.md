@@ -326,7 +326,7 @@ local-code:
         	// #Await...
         	await tick();
 
-        	console.log( $page.data );
+        	console.log( data );
 
           });
         </script>
@@ -343,5 +343,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674941060
+updated_at: 1674941214
 ---
