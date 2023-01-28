@@ -662,7 +662,7 @@ class SchemaClass
 
         $this->schema['websiteBuild']['navigation'] = $this->schema['website']['navigation'];
 
-        //$this->schema['websiteBuild']['navigation']['json'] = json_encode( $this->schema['websiteBuild']['navigation']['tree'], JSON_UNESCAPED_SLASHES );
+        $this->schema['websiteBuild']['navigation']['json'] = json_encode( $this->schema['websiteBuild']['navigation']['tree'], JSON_UNESCAPED_SLASHES );
 
     }
 
@@ -1112,9 +1112,6 @@ class SchemaClass
         // Handle Replicate
         $this->replicatePage();
 
-        // Handle Replicate JSON
-        $this->initWebsiteJsonReplicate();
-
         // Handle Replicate Code:
         $this->replicateCode();
 
@@ -1202,9 +1199,6 @@ class SchemaClass
 
         // Handle Rreplicate SecurityTxt
         $this->replicateSecurityTxt();
-
-        // Handle Replicate JSON
-        $this->initWebsiteJsonReplicate();
 
         // Handle Replicate Code
         $this->replicateCode();

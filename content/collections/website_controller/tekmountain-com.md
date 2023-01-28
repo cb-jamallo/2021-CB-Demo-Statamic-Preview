@@ -61,6 +61,7 @@ development-code:
     content:
       code: |-
         # NODE VARS..
+        NODE_ENV=development
 
         # VITE VARS
         VITE_ENV=development
@@ -365,5 +366,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674942978
+updated_at: 1674943081
 ---
