@@ -317,8 +317,6 @@ local-code:
           //...
 
           /* Global Stores */
-          const websiteBuildJson = null;
-          const websiteNavigation = [websiteBuild.navigation.json];
           let websitePageClass = 'home';
 
           onMount(async () => {
@@ -326,7 +324,6 @@ local-code:
         	await tick();
 
         	console.log( $page );
-        	console.log( websiteNavigation );
 
           });
         </script>
@@ -335,11 +332,7 @@ local-code:
         <svelte:head>
         </svelte:head>
 
-        ....
         <main id="main" class='main main-{ websitePageClass }'>
-          <pre>
-          	{@html JSON.stringify( { websiteBuildJson } ) }
-          </pre>
           <slot />
         </main>
       mode: htmlmixed
@@ -347,5 +340,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674939147
+updated_at: 1674939271
 ---

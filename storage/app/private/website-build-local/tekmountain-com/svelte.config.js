@@ -7,7 +7,7 @@ let adapterKit = null;
 
 if ( process.env.VITE_ENV === 'local' ) 
 {
-    adapter = adapterStatic;
+    adapter = adapterNetlify;
     adapterKit = {
         adapter: adapter({
             fallback: '404.html'
