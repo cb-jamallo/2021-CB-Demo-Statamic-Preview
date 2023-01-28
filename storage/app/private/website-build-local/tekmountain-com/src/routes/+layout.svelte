@@ -16,7 +16,7 @@
 	// #Await...
 	await tick();
 
-	console.log( $page.data );
+	console.log( data );
 
   });
 </script>

@@ -287,15 +287,15 @@ local-code:
         export const ssr = false;
 
 
-        export async function load( fetch, params, route, url, parent ) {
+        export async function load( fetch, params, route, url, parent ) 
+        {
           
-          const f = await fetch( '/lib/data/websiteBuild.json' )
-            .then(response => response.json())
-            .then(response => console.log(JSON.stringify(response)));
-          
+          const response = await fetch( '/lib/data/websiteBuild.json' );
+          const responseJson = await res.json();
+         
           return
           {
-        	test: f
+        	test: responseJson
           };
         }
       mode: javascript
@@ -343,5 +343,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674940838
+updated_at: 1674941060
 ---
