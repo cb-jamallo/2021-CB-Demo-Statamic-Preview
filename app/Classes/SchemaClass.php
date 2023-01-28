@@ -1163,7 +1163,7 @@ class SchemaClass
             );
         //));
 
-        $fileContent = $this->schema['websiteBuildJson'];
+        $fileContent = $this->schema['websiteBuildJson'] ;
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
