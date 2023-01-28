@@ -178,7 +178,7 @@ local-host:
     sitemap:
       -
         uid: sitemap
-        path: src/static
+        path: static
         frequency: monthly
         priority: '05'
         type: item
@@ -290,6 +290,7 @@ local-code:
     content:
       code: |-
         export const prerender = true;
+        export const trailingSlash = 'always';
         export const ssr = false;
       mode: javascript
     type: item
@@ -351,5 +352,5 @@ local-code:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674923371
+updated_at: 1674923614
 ---
