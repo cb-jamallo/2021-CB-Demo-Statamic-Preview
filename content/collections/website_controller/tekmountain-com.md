@@ -131,6 +131,9 @@ development-code:
           import { onMount, tick } from 'svelte';
           import { page } from '$app/stores';
           
+          console.log( page );
+          console.log( $page )
+          
           /* Component imports */
           //...
 
@@ -143,7 +146,9 @@ development-code:
           onMount(async () => {
         	// #Await...
         	await tick();
-
+        	
+        	console.log( page );
+        	console.log( $page )
         	//const response = await fetch( '/lib/data/websiteBuild.json' );
           	//const responseJson = await res.json();
         	//console.log( responseJson );
@@ -154,10 +159,6 @@ development-code:
         <svelte:head>
         </svelte:head>
 
-        Debug page....
-        {@debg websitePageClass}
-        {@debug $page}
-        {@debug page}
         <main id="main" class='main main-{ websitePageClass }'>
           <slot />
         </main>
@@ -351,5 +352,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674942432
+updated_at: 1674942556
 ---
