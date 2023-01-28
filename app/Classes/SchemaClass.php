@@ -1112,6 +1112,7 @@ class SchemaClass
         // Handle Replicate
         $this->replicatePage();
 
+        // Handle Replicate JSON
         $this->initWebsiteJsonReplicate();
 
         // Handle Replicate Code:
@@ -1133,20 +1134,20 @@ class SchemaClass
     public function initWebsiteJsonReplicate()
     {
         // Before exporting, nullify any current/future env info needed
-        if ( in_array( 'private', $this->schema['website']['env'] ) ) $this->schema['website']['env']['private'] = null;
-        if ( in_array( 'private', $this->schema['websiteController']['env'] ) ) $this->schema['websiteController']['env']['private'] = null;
-        if ( in_array( 'private', $this->schema['websiteBuild']['env'] ) ) $this->schema['websiteBuild']['env']['private'] = null;
+        if ( array_key_exists( 'env', $this->schema['website'] ) ) $this->schema['website']['env']['private'] = null;
+        if ( array_key_exists( 'env', $this->schema['websiteController'] ) ) $this->schema['websiteController']['env']['private'] = null;
+        if ( array_key_exists( 'env', $this->schema['websiteBuild'] ) ) $this->schema['websiteBuild']['env']['private'] = null;
 
-        $this->schema['websiteJson'] = json_encode(
-            [
-                'website' => htmlspecialchars( $this->schema['website'] ),
-                'websiteController' => htmlspecialchars( $this->schema['websiteController'] ),
-                'websiteBuild' => htmlspecialchars( $this->schema['websiteBuild'] ),
-            ], 
-            JSON_UNESCAPED_SLASHES 
+        $this->schema['websiteJson'] = htmlspecialchars( 
+            json_encode(
+                [
+                    'website' => $this->schema['website'] ,
+                    'websiteController' => $this->schema['websiteController'] ,
+                    'websiteBuild' => $this->schema['websiteBuild'] ,
+                ], 
+                JSON_UNESCAPED_SLASHES 
+            )
         );
-
-        $tst = null;
     }
 
     public function initWebsiteControllerReset()
@@ -1172,6 +1173,9 @@ class SchemaClass
 
         // Handle Rreplicate SecurityTxt
         $this->replicateSecurityTxt();
+
+        // Handle Replicate JSON
+        $this->initWebsiteJsonReplicate();
 
         // Handle Replicate Code
         $this->replicateCode();
