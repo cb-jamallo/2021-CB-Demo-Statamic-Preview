@@ -1133,36 +1133,29 @@ class SchemaClass
 
     public function initWebsiteJsonReplicate()
     {
-        // Before exporting, nullify any current/future env info needed
-        if ( array_key_exists( 'env', $this->schema['websiteController']['domain']['host'] ) ) unset( $this->schema['websiteController']['domain']['host']['env']['private'] );
-        if ( array_key_exists( 'env', $this->schema['websiteBuild']['domain']['host'] ) ) unset( $this->schema['websiteBuild']['domain']['host']['env']['private'] );
+        // unset( $this->schema['website']['entry'] );
+        // unset( $this->schema['website']['root'] );
+        // unset( $this->schema['website']['template']['doctype']['code'] );
+        // unset( $this->schema['website']['template']['html']['code'] );
+        // unset( $this->schema['website']['template']['head']['code'] );
+        // unset( $this->schema['website']['template']['title']['code'] );
+        // unset( $this->schema['website']['template']['link']['code'] );
+        // unset( $this->schema['website']['template']['meta']['code'] );
+        // unset( $this->schema['website']['template']['style']['code'] );
+        // unset( $this->schema['website']['template']['script']['code'] );
+        // unset( $this->schema['website']['template']['body']['code'] );
+        // unset( $this->schema['website']['metadata'] );
 
-        unset( $this->schema['website']['entry'] );
-        unset( $this->schema['website']['root'] );
-        unset( $this->schema['website']['template'] );
-        unset( $this->schema['website']['code'] );
-        unset( $this->schema['website']['navigation']['file'] );
-
-        unset( $this->schema['websiteController']['entry'] );
-        unset( $this->schema['websiteController']['root'] );
-        unset( $this->schema['websiteController']['domain']['host']['package'] );
-        unset( $this->schema['websiteController']['template'] );
-        unset( $this->schema['websiteController']['code'] );
-
-        unset( $this->schema['websiteBuild']['entry'] );
-        unset( $this->schema['websiteBuild']['template'] );
-        unset( $this->schema['websiteBuild']['navigation']['file'] );
-
-        // $this->schema['websiteJson'] = htmlspecialchars( 
-        //     json_encode(
-        //         [
-        //             'website' => $this->schema['website'] ,
-        //             'websiteController' => $this->schema['websiteController'] ,
-        //             'websiteBuild' => $this->schema['websiteBuild'] ,
-        //         ], 
-        //         JSON_UNESCAPED_SLASHES 
-        //     )
-        // );
+        $this->schema['websiteJson'] = str_replace( '<', '', str_replace( '>', '',  
+            json_encode(
+                [
+                    'website' => $this->schema['website'] ,
+                    'websiteController' => $this->schema['websiteController'] ,
+                    'websiteBuild' => $this->schema['websiteBuild'] ,
+                ], 
+                JSON_UNESCAPED_SLASHES 
+            )
+        ));
     }
 
     public function initWebsiteControllerReset()
