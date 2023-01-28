@@ -1153,16 +1153,16 @@ class SchemaClass
         unset( $this->schema['websiteBuild']['template'] );
         unset( $this->schema['websiteBuild']['navigation']['file'] );
 
-        $this->schema['websiteJson'] = htmlspecialchars( 
-            json_encode(
-                [
-                    'website' => $this->schema['website'] ,
-                    'websiteController' => $this->schema['websiteController'] ,
-                    'websiteBuild' => $this->schema['websiteBuild'] ,
-                ], 
-                JSON_UNESCAPED_SLASHES 
-            )
-        );
+        // $this->schema['websiteJson'] = htmlspecialchars( 
+        //     json_encode(
+        //         [
+        //             'website' => $this->schema['website'] ,
+        //             'websiteController' => $this->schema['websiteController'] ,
+        //             'websiteBuild' => $this->schema['websiteBuild'] ,
+        //         ], 
+        //         JSON_UNESCAPED_SLASHES 
+        //     )
+        // );
     }
 
     public function initWebsiteControllerReset()
