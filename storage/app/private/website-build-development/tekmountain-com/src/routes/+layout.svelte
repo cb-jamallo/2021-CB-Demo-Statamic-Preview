@@ -31,7 +31,6 @@
 <svelte:head>
 </svelte:head>
 
-{@html JSON.stringify( { ...$$props } ) }
 <main id="main" class='main main-{ websitePageClass }'>
   <slot />
 </main>
