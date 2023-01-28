@@ -1136,8 +1136,8 @@ class SchemaClass
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
         $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
         $filePath = $_fileCodeEntry['path'] ?? '/src' . $this->buildPageRouteTree( $this->schema['websiteBuild']['id'], $this->schema['websiteBuild']['navigation'] );
-        $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'websiteData', 'json' );
-        $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . 'static/lib/data', 'websiteData', 'json' );
+        $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'website', 'json' );
+        $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . 'static/lib/data', 'website', 'json' );
 
         unset( $this->schema['website']['entry'] );
         unset( $this->schema['website']['root'] );
@@ -1145,31 +1145,38 @@ class SchemaClass
         unset( $this->schema['website']['code'] );
         unset( $this->schema['website']['navigation']['file'] );
 
-        unset( $this->schema['websiteController']['entry'] );
-        unset( $this->schema['websiteController']['root'] );
-        unset( $this->schema['websiteController']['template'] );
-        unset( $this->schema['websiteController']['code'] );
-
-        unset( $this->schema['websiteBuild']['event'] );
-
-        $this->schema['websiteBuildJson'] = //str_replace( '<', '[', str_replace( '>', ']',  
-            json_encode(
-                [
-                    'website' => $this->schema['website'] ,
-                    'websiteController' => $this->schema['websiteController'] ,
-                    'websiteBuild' => $this->schema['websiteBuild'] ,
-                ], 
-                JSON_UNESCAPED_SLASHES 
-            );
-        //));
-
-        $fileContent = $this->schema['websiteBuildJson'] ;
+        $fileContent = $this->schema['website'];
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
             $fileRoot, 
             $fileContent
         );
+
+        unset( $this->schema['websiteController']['entry'] );
+        unset( $this->schema['websiteController']['root'] );
+        unset( $this->schema['websiteController']['template'] );
+        unset( $this->schema['websiteController']['code'] );
+        
+        $fileContent = $this->schema['websiteController'];
+
+        // Handle create directories & file @ path
+        Storage::disk( $fileEnv )->put(
+            str_replace( 'website.json', 'websiteController.json', $fileRoot ), 
+            $fileContent
+        );
+
+        unset( $this->schema['websiteBuild']['event'] );
+        unset( $this->schema['websiteBuild']['navigation']['file'] );
+
+        $fileContent = $this->schema['websiteBuild'];
+
+        // Handle create directories & file @ path
+        Storage::disk( $fileEnv )->put(
+            str_replace( 'website.json', 'websiteBuild.json', $fileRoot ), 
+            $fileContent
+        );
+
     }
 
     public function initWebsiteControllerReset()
