@@ -284,6 +284,19 @@ local-code:
         export const prerender = true;
         export const trailingSlash = 'always';
         export const ssr = false;
+
+
+        /** @type {import('./$types').LayoutLoad} */
+        export async function load( fetch, params, route, url, parent ) {
+          
+          const data = await fetch( '/lib/data/websiteBuild.json' )
+            .then(response => response.json())
+            .then(response => console.log(JSON.stringify(response)));
+          
+          return {
+            data: data
+          };
+        }
       mode: javascript
     type: item
     enabled: true
@@ -298,7 +311,8 @@ local-code:
 
           /* Svelte imports */
           import { onMount, tick } from 'svelte';
-
+          import { page } from '$app/stores';
+          
           /* Component imports */
           //...
 
@@ -312,6 +326,7 @@ local-code:
         	// #Await...
         	await tick();
 
+        	console.log( $page );
         	console.log( websiteNavigation );
 
           });
@@ -333,5 +348,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674937289
+updated_at: 1674938293
 ---

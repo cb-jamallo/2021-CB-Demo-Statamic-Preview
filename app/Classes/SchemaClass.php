@@ -1471,12 +1471,12 @@ class SchemaClass
             $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . $filePath, $fileName, $fileExt );
             $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . $filePath, $fileName, $fileExt );
 
-            // Handle deleting code
-            if ( !$_fileCodeEntry['enabled'] ) 
-            {
+            // Handle deleting old code
+            // if ( !$_fileCodeEntry['enabled'] || ) 
+            // {
                 Storage::disk( $fileEnv )->delete( $fileRoot );
-                continue;
-            }
+                //continue;
+            //}
             
             $fileContent = $this->buildContentShortcodeFindAndReplace( $_fileCodeEntry['content']['code'] );
             
