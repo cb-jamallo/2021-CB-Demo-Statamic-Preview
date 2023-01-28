@@ -300,7 +300,7 @@ local-code:
         VITE_ENV=local
       mode: htmlmixed
     type: item
-    enabled: false
+    enabled: true
     path: src/../
   -
     uid: app-html
@@ -321,7 +321,7 @@ local-code:
         </html>
       mode: htmlmixed
     type: item
-    enabled: false
+    enabled: true
   -
     uid: +layout-js
     path: /src/routes
@@ -334,7 +334,7 @@ local-code:
         export const ssr = false;
       mode: javascript
     type: item
-    enabled: false
+    enabled: true
   -
     uid: +error-svelte
     path: /src/routes
@@ -350,7 +350,7 @@ local-code:
         {$page.status}: {$page.error.message}
       mode: htmlmixed
     type: item
-    enabled: false
+    enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674924802
+updated_at: 1674924967
 ---
