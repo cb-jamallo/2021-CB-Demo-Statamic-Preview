@@ -1598,22 +1598,22 @@ class SchemaClass
         $regexContent = $_string;
         
         // Handle no shortcodes
-        if ( !$regexShortcode ) return $regexContent;
+        // if ( !$regexShortcode ) return $regexContent;
 
-        forEach( $regexShortcode[0] as $regexShortcodeEntry )
-        {
-            if ( empty( $regexShortcodeEntry ) ) continue;
+        // forEach( $regexShortcode[0] as $regexShortcodeEntry )
+        // {
+        //     if ( empty( $regexShortcodeEntry ) ) continue;
             
-            $regexContent = str_replace( 
-                '[' . $regexShortcodeEntry . ']',          // 1. Shortcode string
-                $this->shortcodeClass->findAndReplace([    // 2. Shortcode replacement
-                    'path' => $regexShortcodeEntry,
-                    'array' => $this->schema
-                ]),
-                $regexContent                              // 3. Shortcode content origin
-            );
+        //     $regexContent = str_replace( 
+        //         '[' . $regexShortcodeEntry . ']',          // 1. Shortcode string
+        //         $this->shortcodeClass->findAndReplace([    // 2. Shortcode replacement
+        //             'path' => $regexShortcodeEntry,
+        //             'array' => $this->schema
+        //         ]),
+        //         $regexContent                              // 3. Shortcode content origin
+        //     );
 
-        };
+        // };
 
         return $regexContent;
     }

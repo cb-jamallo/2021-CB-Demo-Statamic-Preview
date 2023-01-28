@@ -1,1 +1,0 @@
-/* Test Style 2 JS */
