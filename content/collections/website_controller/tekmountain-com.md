@@ -289,12 +289,13 @@ local-code:
 
         export async function load( fetch, params, route, url, parent ) {
           
-          const data = await fetch( '/lib/data/websiteBuild.json' )
+          const f = await fetch( '/lib/data/websiteBuild.json' )
             .then(response => response.json())
             .then(response => console.log(JSON.stringify(response)));
           
-          return {
-            data: data
+          return
+          {
+        	test: f
           };
         }
       mode: javascript
@@ -342,5 +343,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674940655
+updated_at: 1674940783
 ---

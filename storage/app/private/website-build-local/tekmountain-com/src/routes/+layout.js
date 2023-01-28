@@ -5,11 +5,12 @@ export const ssr = false;
 
 export async function load( fetch, params, route, url, parent ) {
   
-  const data = await fetch( '/lib/data/websiteBuild.json' )
+  const f = await fetch( '/lib/data/websiteBuild.json' )
     .then(response => response.json())
     .then(response => console.log(JSON.stringify(response)));
   
-  return {
-    data: data
+  return
+  {
+	test: f
   };
 }
