@@ -171,7 +171,7 @@ development-code:
     enabled: true
 local-host:
   -
-    base: tekmountain-com-loal.netlify.app
+    base: tekmountain-com-local.netlify.app
     protocol: https
     version: v-1-0-0
     package: _website-controller-host-packages/sveltekit-static-adapter-v-1-0-0-rc.zip
@@ -352,5 +352,5 @@ local-code:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674924967
+updated_at: 1674925076
 ---
