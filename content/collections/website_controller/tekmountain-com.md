@@ -276,18 +276,6 @@ local-code:
     type: item
     enabled: false
   -
-    uid: netlify-toml
-    path: src/../
-    name: netlify
-    ext: toml
-    content:
-      code: |-
-        [build]
-            ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF"
-      mode: shell
-    type: item
-    enabled: true
-  -
     uid: env-local
     name: .
     ext: env.local
@@ -351,5 +339,5 @@ local-code:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674926774
+updated_at: 1674926869
 ---
