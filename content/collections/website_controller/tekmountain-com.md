@@ -287,7 +287,7 @@ local-code:
           ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF"
       mode: htmlmixed
     type: item
-    enabled: true
+    enabled: false
   -
     uid: env-local
     name: .
@@ -352,5 +352,5 @@ local-code:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674925076
+updated_at: 1674925268
 ---
