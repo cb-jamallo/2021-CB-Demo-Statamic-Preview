@@ -1,5 +1,4 @@
 <script>
-
   /* Svelte imports */
   import { onMount, tick } from 'svelte';
 

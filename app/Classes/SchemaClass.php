@@ -662,7 +662,7 @@ class SchemaClass
 
         $this->schema['websiteBuild']['navigation'] = $this->schema['website']['navigation'];
 
-        $this->schema['websiteBuild']['navigation']['json'] = json_encode( $this->schema['websiteBuild']['navigation']['tree'], JSON_UNESCAPED_SLASHES );
+        //$this->schema['websiteBuild']['navigation']['json'] = json_encode( $this->schema['websiteBuild']['navigation']['tree'], JSON_UNESCAPED_SLASHES );
 
     }
 
@@ -1152,7 +1152,7 @@ class SchemaClass
 
         unset( $this->schema['websiteBuild']['event'] );
 
-        $fileContent = //str_replace( '<', '[', str_replace( '>', ']',  
+        $this->schema['websiteBuildJson'] = //str_replace( '<', '[', str_replace( '>', ']',  
             json_encode(
                 [
                     'website' => $this->schema['website'] ,
@@ -1162,6 +1162,8 @@ class SchemaClass
                 JSON_UNESCAPED_SLASHES 
             );
         //));
+
+        $fileContent = $this->schema['websiteBuildJson'];
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
@@ -1195,7 +1197,7 @@ class SchemaClass
         $this->replicateSecurityTxt();
 
         // Handle Replicate JSON
-        // $this->initWebsiteJsonReplicate();
+        $this->initWebsiteJsonReplicate();
 
         // Handle Replicate Code
         $this->replicateCode();
