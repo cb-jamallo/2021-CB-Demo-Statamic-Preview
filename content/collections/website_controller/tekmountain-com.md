@@ -163,7 +163,7 @@ development-code:
         	await tick();
         	
         	//console.log( $page );
-        	//console.log( [websiteBuild.navigation.json] )
+        	console.log( [websiteBuild.navigation.json] )
         	//const response = await fetch( '/lib/data/websiteBuild.json' );
           	//const responseJson = await response.json();
         	//console.log( responseJson );
@@ -369,5 +369,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674944635
+updated_at: 1674944754
 ---
