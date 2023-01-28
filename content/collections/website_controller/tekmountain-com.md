@@ -112,6 +112,7 @@ development-code:
     content:
       code: |-
         export const prerender = true;
+        export const trailingSlashes = 'always';
         export const ssr = false;
       mode: javascript
     type: item
@@ -124,7 +125,6 @@ development-code:
     content:
       code: |-
         <script>
-
           /* Svelte imports */
           import { onMount, tick } from 'svelte';
           import { page } from '$app/stores';
@@ -133,6 +133,9 @@ development-code:
           //...
 
           /* Global Stores */
+          /** @type {import('./$types').LayoutData} */
+          export let data;
+          
           let websitePageClass = 'home';
 
           onMount(async () => {
@@ -306,7 +309,6 @@ local-code:
     content:
       code: |-
         <script>
-
           /* Svelte imports */
           import { onMount, tick } from 'svelte';
           import { page } from '$app/stores';
@@ -315,13 +317,16 @@ local-code:
           //...
 
           /* Global Stores */
+          /** @type {import('./$types').LayoutData} */
+          export let data;
+          
           let websitePageClass = 'home';
 
           onMount(async () => {
         	// #Await...
         	await tick();
 
-        	console.log( page );
+        	console.log( $page );
 
           });
         </script>
@@ -338,5 +343,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674940105
+updated_at: 1674940371
 ---
