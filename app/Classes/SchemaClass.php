@@ -1113,7 +1113,7 @@ class SchemaClass
         $this->replicatePage();
 
         // Handle Replicate JSON
-        //$this->initWebsiteJsonReplicate();
+        $this->initWebsiteJsonReplicate();
 
         // Handle Replicate Code:
         $this->replicateCode();
@@ -1204,7 +1204,7 @@ class SchemaClass
         $this->replicateSecurityTxt();
 
         // Handle Replicate JSON
-        //$this->initWebsiteJsonReplicate();
+        $this->initWebsiteJsonReplicate();
 
         // Handle Replicate Code
         $this->replicateCode();

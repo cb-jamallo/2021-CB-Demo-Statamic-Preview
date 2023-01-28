@@ -131,7 +131,6 @@ development-code:
           import { onMount, tick } from 'svelte';
           import { page } from '$app/stores';
           
-          console.log( page );
           console.log( $page )
           
           /* Component imports */
@@ -147,11 +146,12 @@ development-code:
         	// #Await...
         	await tick();
         	
-        	console.log( page );
         	console.log( $page )
-        	//const response = await fetch( '/lib/data/websiteBuild.json' );
-          	//const responseJson = await res.json();
-        	//console.log( responseJson );
+        	
+        	const response = await fetch( '/lib/data/websiteBuild.json' );
+          	const responseJson = await response.json();
+        	console.log( responseJson );
+          
           });
         </script>
 
@@ -352,5 +352,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674942556
+updated_at: 1674942692
 ---
