@@ -1112,6 +1112,8 @@ class SchemaClass
         // Handle Replicate
         $this->replicatePage();
 
+        $this->initWebsiteJsonReplicate();
+
         // Handle Replicate Code:
         $this->replicateCode();
 
@@ -1126,6 +1128,23 @@ class SchemaClass
         // Handle Replicate
         $this->replicateBuild();
             
+    }
+
+    public function initWebsiteJsonReplicate()
+    {
+        // Before exporting, nullify any current/future env info needed
+        if ( in_array( 'private', $this->schema['website']['env'] ) ) $this->schema['website']['env']['private'] = null;
+        if ( in_array( 'private', $this->schema['websiteController']['env'] ) ) $this->schema['websiteController']['env']['private'] = null;
+        if ( in_array( 'private', $this->schema['websiteBuild']['env'] ) ) $this->schema['websiteBuild']['env']['private'] = null;
+
+        $this->schema['websiteJson'] = json_encode(
+            [
+                'website' => $this->schema['website'],
+                'websiteController' => $this->schema['websiteController'],
+                'websiteBuild' => $this->schema['websiteBuild'],
+            ], 
+            JSON_UNESCAPED_SLASHES 
+        );
     }
 
     public function initWebsiteControllerReset()
@@ -1544,16 +1563,21 @@ class SchemaClass
         if ( in_array( $buildSlug . '/.svelte-kit', $buildDirectoriesRoot ) ) $buildEnv->deleteDirectory( $buildSlug . '/.svelte-kit' );
         if ( in_array( $buildSlug . '/build', $buildDirectoriesRoot ) ) $buildEnv->deleteDirectory( $buildSlug . '/build' );
         
-        // Install node_modules if not already
-        if ( sizeof( $buildDirectoriesNode ) <= 0 ) 
-        {
-            shell_exec( $buildDirectoryUserPath . ' npm install 2>&1');
-            sleep(5);
-        }
+        
 
-        // Handle build locally ONLY
-        //exec('cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin npm run ' . $buildTarget . ' 2>&1');
-        if ( $buildRun && $buildTarget !== 'production' ) shell_exec( $buildDirectoryUserPath . ' npm run ' . $buildTarget . ' 2>&1' );
+        // Handle build run ONLY when not a live deploy
+        if ( $buildRun && $buildTarget !== 'live' ) 
+        {
+            // Install node_modules if not already
+            if ( sizeof( $buildDirectoriesNode ) <= 0 ) 
+            {
+                shell_exec( $buildDirectoryUserPath . ' npm install 2>&1');
+                sleep(5);
+            }
+
+            //exec('cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin npm run ' . $buildTarget . ' 2>&1');
+            shell_exec( $buildDirectoryUserPath . ' npm run ' . $buildTarget . ' 2>&1' );
+        }
 
         // Handle git commit
         // Change credentials to app then back to system
