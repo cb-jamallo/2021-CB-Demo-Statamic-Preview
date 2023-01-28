@@ -12,7 +12,7 @@ export async function load({ fetch, params })
  	
   
   return {
-  	one: export const prerender = true;
+  	'one': export const prerender = true;
 export const trailingSlash = 'always';
 export const ssr = false;
 
@@ -26,7 +26,7 @@ export async function load({ fetch, params })
  	
   
   return {
-  	one: ['two', 'three']
+  	'one': ['two', 'three']
   }
   
 }
