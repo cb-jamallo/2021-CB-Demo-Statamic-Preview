@@ -2,7 +2,7 @@ export const prerender = true;
 export const trailingSlash = 'always';
 export const ssr = false;
 
-*/
+/*
 export async function load( fetch, params, route, url, parent ) {
   
   const data = await fetch( '/lib/data/websiteBuild.json' )

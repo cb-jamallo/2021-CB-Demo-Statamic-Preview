@@ -285,7 +285,7 @@ local-code:
         export const trailingSlash = 'always';
         export const ssr = false;
 
-
+        */
         export async function load( fetch, params, route, url, parent ) {
           
           const data = await fetch( '/lib/data/websiteBuild.json' )
@@ -296,6 +296,7 @@ local-code:
             data: data
           };
         }
+        */
       mode: javascript
     type: item
     enabled: true
@@ -339,5 +340,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674939503
+updated_at: 1674939616
 ---
