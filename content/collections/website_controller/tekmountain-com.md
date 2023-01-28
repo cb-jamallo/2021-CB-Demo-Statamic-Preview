@@ -283,8 +283,8 @@ local-code:
     content:
       code: |-
         [build]
-          ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF"
-      mode: yaml-frontmatter
+            ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF"
+      mode: shell
     type: item
     enabled: true
   -
@@ -351,5 +351,5 @@ local-code:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674925486
+updated_at: 1674925596
 ---
