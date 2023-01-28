@@ -1133,8 +1133,8 @@ class SchemaClass
 
     public function initWebsiteJsonReplicate()
     {
-        // unset( $this->schema['website']['entry'] );
-        // unset( $this->schema['website']['root'] );
+        unset( $this->schema['website']['entry'] );
+        unset( $this->schema['website']['root'] );
         // unset( $this->schema['website']['template']['doctype']['code'] );
         // unset( $this->schema['website']['template']['html']['code'] );
         // unset( $this->schema['website']['template']['head']['code'] );
@@ -1145,8 +1145,14 @@ class SchemaClass
         // unset( $this->schema['website']['template']['script']['code'] );
         // unset( $this->schema['website']['template']['body']['code'] );
         // unset( $this->schema['website']['metadata'] );
+        // unset( $this->schema['website']['navigation']]'file'] );
 
-        $this->schema['websiteJson'] = str_replace( '<', '', str_replace( '>', '',  
+        unset( $this->schema['websiteController']['entry'] );
+        unset( $this->schema['websiteController']['root'] );
+
+        unset( $this->schema['websiteBuild']['event'] );
+
+        $this->schema['websiteJson'] = str_replace( '<', '[', str_replace( '>', ']',  
             json_encode(
                 [
                     'website' => $this->schema['website'] ,
