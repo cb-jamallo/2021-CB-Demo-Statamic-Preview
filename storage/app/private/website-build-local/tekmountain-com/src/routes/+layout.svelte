@@ -43,8 +43,7 @@
   const websiteNavigation = [websiteBuild.navigation.json];
   let websitePageClass = 'home';
 
-  onMount(async () =>
-		  {
+  onMount(async () => {
 	// #Await...
 	await tick();
 
@@ -68,8 +67,7 @@
   const websiteNavigation = [websiteBuild.navigation.json];
   let websitePageClass = 'home';
 
-  onMount(async () =>
-		  {
+  onMount(async () => {
 	// #Await...
 	await tick();
 
@@ -92,8 +90,7 @@
 </main>;
   let websitePageClass = 'home';
 
-  onMount(async () =>
-		  {
+  onMount(async () => {
 	// #Await...
 	await tick();
 
@@ -138,8 +135,7 @@
   const websiteNavigation = [websiteBuild.navigation.json];
   let websitePageClass = 'home';
 
-  onMount(async () =>
-		  {
+  onMount(async () => {
 	// #Await...
 	await tick();
 
@@ -163,8 +159,7 @@
   const websiteNavigation = [websiteBuild.navigation.json];
   let websitePageClass = 'home';
 
-  onMount(async () =>
-		  {
+  onMount(async () => {
 	// #Await...
 	await tick();
 
@@ -187,8 +182,7 @@
 </main>;
   let websitePageClass = 'home';
 
-  onMount(async () =>
-		  {
+  onMount(async () => {
 	// #Await...
 	await tick();
 
