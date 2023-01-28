@@ -1134,9 +1134,14 @@ class SchemaClass
     public function initWebsiteJsonReplicate()
     {
         // Before exporting, nullify any current/future env info needed
-        if ( array_key_exists( 'env', $this->schema['website'] ) ) $this->schema['website']['env']['private'] = null;
-        if ( array_key_exists( 'env', $this->schema['websiteController'] ) ) $this->schema['websiteController']['env']['private'] = null;
-        if ( array_key_exists( 'env', $this->schema['websiteBuild'] ) ) $this->schema['websiteBuild']['env']['private'] = null;
+        if ( array_key_exists( 'env', $this->schema['websiteController']['domain']['host'] ) ) $this->schema['websiteController']['domain']['host']['env']['private'] = null;
+        if ( array_key_exists( 'env', $this->schema['websiteBuild']['domain']['host'] ) ) $this->schema['websiteBuild']['domain']['host']['env']['private'] = null;
+
+        $this->schema['website']['template'] = null;
+        $this->schema['website']['code'] = null;
+        $this->schema['websiteController']['domain']['host']['package'] = null;
+        $this->schema['websiteController']['template'] = null;
+        $this->schema['websiteController']['code'] = null;
 
         $this->schema['websiteJson'] = htmlspecialchars( 
             json_encode(

@@ -303,7 +303,7 @@ local-code:
           //...
 
           /* Global Stores */
-          const websiteJson = [websiteJson];
+          const websiteJson = htmlDecode( [websiteJson] );
           const websiteNavigation = [websiteBuild.navigation.json];
           let websitePageClass = 'home';
 
@@ -334,5 +334,5 @@ replicate:
   - websiteController
 target: local
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674930690
+updated_at: 1674931341
 ---
