@@ -1608,7 +1608,8 @@ class SchemaClass
                 '[' . $regexShortcodeEntry . ']',          // 1. Shortcode string
                 $this->shortcodeClass->findAndReplace([    // 2. Shortcode replacement
                     'path' => $regexShortcodeEntry,
-                    'array' => $this->schema
+                    'array' => $this->schema,
+                    'content' => $regexContent
                 ]),
                 $regexContent                              // 3. Shortcode content origin
             );

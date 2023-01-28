@@ -215,24 +215,24 @@ class ShortcodeClass
     {
         $array = $_ARGS['array'];
         $array_original = $_ARGS['array_original'] ?? $_ARGS['array'];
+        
         $path = explode( '.', str_replace( '[', '', str_replace( ']', '', $_ARGS['path'] ) ) );
         $path_original = $_ARGS['path_original'] ?? $_ARGS['path'];
         $path_target = array_shift( $path );
         
+        $content = $_ARGS['content'];
+        
         if ( count( $path ) === 0 )
         {
 
-            // Target array reserved named index
-            //if ( $path_target === 'tag' || $path_target === 'outer' || $path_target === 'inner' ) return $array[ $path_target ];
-
-            // Target array...
+            // Target array w/ existing path target
             if ( is_array( $array ) && isset( $array[ $path_target ] ) ) return $array[ $path_target ];
 
-            // Target string
+            // Target $array reduced to string value
             if ( !is_array( $array ) && !empty( $array ) ) return $array;
 
-            // We got nothin'!
-            throw new \Exception( sprintf( 'Path data %s Not Found', $path_original ) );
+            // We got nothin to change...return content.
+            return $content;
         }
 
         if ( isset( $array[ $path_target ] ) && is_array( $array[ $path_target ] ) )
@@ -241,7 +241,8 @@ class ShortcodeClass
                 'array' => $array[ $path_target ],
                 'array_original' => $array_original,
                 'path' => implode( '.', $path ),
-                'path_original' => $path_original
+                'path_original' => $path_original,
+                'content' => $content
             ]);
         }
 
