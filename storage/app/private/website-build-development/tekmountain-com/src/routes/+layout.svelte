@@ -32,5 +32,6 @@
 </svelte:head>
 
 <main id="main" class='main main-{ websitePageClass }'>
+  Hello!
   <slot />
 </main>

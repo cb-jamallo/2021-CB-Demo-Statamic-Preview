@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"local": "NODE_ENV=local VITE_ENV=local vite build",
-		"development": "NODE_ENV=development vite build --mode development",
+		"development": "NODE_ENV=development vite dev --mode development",
 		"staging": "NODE_ENV=staging vite build --mode staging",
 		"preview": "NODE_ENV=preview vite build --mode preview",
 		"production": "NODE_ENV=production vite build --mode production"

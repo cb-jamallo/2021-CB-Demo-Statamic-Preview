@@ -121,12 +121,12 @@ development-code:
 
         export async function load( fetch, params, route, url, parent ) 
         {
-          
+          /*
             const response = await fetch( '/lib/data/websiteBuild.json' );
           	const responseJson = await response.json();
         	console.log( responseJson );
          	
-          /*
+          
           return {
           	props: responseJson
           }
@@ -368,5 +368,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674943966
+updated_at: 1674944078
 ---
