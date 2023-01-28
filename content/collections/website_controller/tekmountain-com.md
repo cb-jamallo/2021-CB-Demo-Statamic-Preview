@@ -112,7 +112,7 @@ development-code:
     content:
       code: |-
         export const prerender = true;
-        export const trailingSlashes = 'always';
+        export const trailingSlash = 'always';
         export const ssr = false;
       mode: javascript
     type: item
@@ -347,5 +347,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674941856
+updated_at: 1674941969
 ---

@@ -1,7 +1,7 @@
 <script>
   /* Svelte imports */
   import { onMount, tick } from 'svelte';
-  //import { page } from '$app/stores';
+  import { page } from '$app/stores';
   
   /* Component imports */
   //...
@@ -16,7 +16,7 @@
 	// #Await...
 	await tick();
 
-	//console.log( page.data );
+	console.log( $page.data );
 	
 	const response = await fetch( '/lib/data/websiteBuild.json' );
   	const responseJson = await res.json();
