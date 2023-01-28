@@ -1136,8 +1136,8 @@ class SchemaClass
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
         $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
         $filePath = $_fileCodeEntry['path'] ?? '/src' . $this->buildPageRouteTree( $this->schema['websiteBuild']['id'], $this->schema['websiteBuild']['navigation'] );
-        $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'website', 'json' );
-        $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . 'static/lib/data', 'website', 'json' );
+        // $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'website', 'json' );
+        // $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . 'static/lib/data', 'website', 'json' );
 
         unset( $this->schema['website']['entry'] );
         unset( $this->schema['website']['root'] );
@@ -1145,11 +1145,11 @@ class SchemaClass
         unset( $this->schema['website']['code'] );
         unset( $this->schema['website']['navigation']['file'] );
 
-        $fileContent = $this->schema['website'];
+        $fileContent = json_encode( $this->schema['website'] , JSON_UNESCAPED_SLASHES );
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
-            $fileRoot, 
+            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'website', 'json' ), 
             $fileContent
         );
 
@@ -1158,22 +1158,22 @@ class SchemaClass
         unset( $this->schema['websiteController']['template'] );
         unset( $this->schema['websiteController']['code'] );
         
-        $fileContent = $this->schema['websiteController'];
+        $fileContent = json_encode( $this->schema['websiteController'] , JSON_UNESCAPED_SLASHES );
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
-            str_replace( 'website.json', 'websiteController.json', $fileRoot ), 
+            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'websiteController', 'json' ), 
             $fileContent
         );
 
         unset( $this->schema['websiteBuild']['event'] );
         unset( $this->schema['websiteBuild']['navigation']['file'] );
 
-        $fileContent = $this->schema['websiteBuild'];
+        $fileContent = json_encode( $this->schema['websiteBuild'] , JSON_UNESCAPED_SLASHES );
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
-            str_replace( 'website.json', 'websiteBuild.json', $fileRoot ), 
+            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'websiteBuild', 'json' ), 
             $fileContent
         );
 
