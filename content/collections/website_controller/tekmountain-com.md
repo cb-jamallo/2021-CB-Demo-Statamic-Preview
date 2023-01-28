@@ -55,9 +55,9 @@ development-template:
     enabled: true
 development-code:
   -
-    uid: env-development
+    uid: env-staging
     name: .
-    ext: env-development
+    ext: env.development
     content:
       code: |-
         # NODE VARS..
@@ -369,5 +369,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674944360
+updated_at: 1674944635
 ---
