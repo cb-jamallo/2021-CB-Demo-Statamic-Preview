@@ -10,7 +10,9 @@ export async function load( fetch, params, route, url, parent )
   	const responseJson = await response.json();
 	console.log( responseJson );
  	
+  /*
   return {
   	props: responseJson
   }
+  */
 }
