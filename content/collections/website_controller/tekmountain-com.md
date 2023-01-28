@@ -309,6 +309,9 @@ local-code:
     content:
       code: |-
         <script>
+          /** @type {import('./$types').LayoutData} */
+          export let data;
+          
           /* Svelte imports */
           import { onMount, tick } from 'svelte';
           import { page } from '$app/stores';
@@ -317,8 +320,6 @@ local-code:
           //...
 
           /* Global Stores */
-          /** @type {import('./$types').LayoutData} */
-          export let data;
           
           let websitePageClass = 'home';
 
@@ -343,5 +344,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674941214
+updated_at: 1674941321
 ---
