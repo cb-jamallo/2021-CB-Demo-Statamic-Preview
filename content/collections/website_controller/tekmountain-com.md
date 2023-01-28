@@ -119,7 +119,7 @@ development-code:
         export const ssr = false;
 
 
-        export async function load( fetch, params, route, url, parent ) 
+        export async function load( fetch, params ) 
         {
           
             const response = await fetch( '/lib/data/websiteBuild.json' );
@@ -369,5 +369,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674944894
+updated_at: 1674945060
 ---
