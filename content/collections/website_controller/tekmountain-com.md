@@ -321,8 +321,7 @@ local-code:
           const websiteNavigation = [websiteBuild.navigation.json];
           let websitePageClass = 'home';
 
-          onMount(async () =>
-        		  {
+          onMount(async () => {
         	// #Await...
         	await tick();
 
@@ -348,5 +347,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674938631
+updated_at: 1674938773
 ---
