@@ -286,7 +286,6 @@ local-code:
         export const ssr = false;
 
 
-        /** @type {import('./$types').LayoutLoad} */
         export async function load( fetch, params, route, url, parent ) {
           
           const data = await fetch( '/lib/data/websiteBuild.json' )
@@ -340,5 +339,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674939271
+updated_at: 1674939503
 ---
