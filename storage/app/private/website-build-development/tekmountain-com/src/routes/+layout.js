@@ -3,7 +3,7 @@ export const trailingSlash = 'always';
 export const ssr = false;
 
 
-export async function load( fetch, params, route, url, parent ) 
+export async function load( fetch, params ) 
 {
   
     const response = await fetch( '/lib/data/websiteBuild.json' );
