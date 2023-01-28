@@ -7,7 +7,7 @@ development-host:
     base: tekmountain-com-dev.netlify.app
     protocol: https
     version: v-1-0-0
-    package: _website-controller-host-packages/sveltekit-static-adapter-v-1-0-0-rc.zip
+    package: _website-controller-host-packages/sveltekit-adapter-netlify-v-1-0-0-rc.zip
     sitemap:
       -
         uid: sitemap
@@ -89,6 +89,22 @@ development-code:
     type: item
     enabled: true
   -
+    uid: +error-svelte
+    path: /src/routes
+    name: +error
+    ext: svelte
+    content:
+      code: |-
+        <script>
+           import { page } from '$app/stores';
+        </script>
+
+        {@html JSON.stringify( $page )}
+        {$page.status}: {$page.error.message}
+      mode: htmlmixed
+    type: item
+    enabled: true
+  -
     uid: +layout-js
     path: /src/routes
     name: +layout
@@ -140,41 +156,12 @@ development-code:
       mode: htmlmixed
     type: item
     enabled: true
-  -
-    uid: +error-svelte
-    path: /src/routes
-    name: +error
-    ext: svelte
-    content:
-      code: |-
-        <script>
-           import { page } from '$app/stores';
-        </script>
-
-        {@html JSON.stringify( $page )}
-        {$page.status}: {$page.error.message}
-      mode: htmlmixed
-    type: item
-    enabled: true
-  -
-    uid: netlify-toml
-    path: src/../
-    name: netlify
-    ext: toml
-    content:
-      code: |-
-        #https://docs.netlify.com/configure-builds/overview/
-        [build]
-          ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF"
-      mode: htmlmixed
-    type: item
-    enabled: true
 local-host:
   -
     base: tekmountain-com-local.netlify.app
     protocol: https
     version: v-1-0-0
-    package: _website-controller-host-packages/sveltekit-static-adapter-v-1-0-0-rc.zip
+    package: _website-controller-host-packages/sveltekit-adapter-netlify-v-1-0-0-rc.zip
     sitemap:
       -
         uid: sitemap
@@ -236,6 +223,69 @@ local-code:
     type: item
     enabled: false
   -
+    uid: env-local
+    name: .
+    ext: env.local
+    content:
+      code: |-
+        # NODE VARS..
+
+        # VITE VARS
+        VITE_ENV=local
+      mode: htmlmixed
+    type: item
+    enabled: true
+    path: src/../
+  -
+    uid: app-html
+    name: app
+    ext: html
+    content:
+      code: |-
+        <!DOCTYPE html>
+        <html lang="en">
+        	<head>
+        	  <title>TekMountain.com</title>
+        	  <link rel='canonical' href='[websiteBuild.domain.host.base]'>
+        	  %sveltekit.head%
+        	</head>
+        	<body>
+        	  	%sveltekit.body%
+        	</body>
+        </html>
+      mode: htmlmixed
+    type: item
+    enabled: true
+  -
+    uid: +error-svelte
+    path: /src/routes
+    name: +error
+    ext: svelte
+    content:
+      code: |-
+        <script>
+           import { page } from '$app/stores';
+        </script>
+
+        {@html JSON.stringify( $page )}
+        {$page.status}: {$page.error.message}
+      mode: htmlmixed
+    type: item
+    enabled: true
+  -
+    uid: +layout-js
+    path: /src/routes
+    name: +layout
+    ext: js
+    content:
+      code: |-
+        export const prerender = true;
+        export const trailingSlash = 'always';
+        export const ssr = false;
+      mode: javascript
+    type: item
+    enabled: true
+  -
     uid: +layout-svelte
     path: /src/routes
     name: +layout
@@ -274,70 +324,7 @@ local-code:
         </main>
       mode: htmlmixed
     type: item
-    enabled: false
-  -
-    uid: env-local
-    name: .
-    ext: env.local
-    content:
-      code: |-
-        # NODE VARS..
-
-        # VITE VARS
-        VITE_ENV=local
-      mode: htmlmixed
-    type: item
-    enabled: true
-    path: src/../
-  -
-    uid: app-html
-    name: app
-    ext: html
-    content:
-      code: |-
-        <!DOCTYPE html>
-        <html lang="en">
-        	<head>
-        	  <title>TekMountain.com</title>
-        	  <link rel='canonical' href='[websiteBuild.domain.host.base]'>
-        	  %sveltekit.head%
-        	</head>
-        	<body>
-        	  	%sveltekit.body%
-        	</body>
-        </html>
-      mode: htmlmixed
-    type: item
-    enabled: true
-  -
-    uid: +layout-js
-    path: /src/routes
-    name: +layout
-    ext: js
-    content:
-      code: |-
-        export const prerender = true;
-        export const trailingSlash = 'always';
-        export const ssr = false;
-      mode: javascript
-    type: item
-    enabled: true
-  -
-    uid: +error-svelte
-    path: /src/routes
-    name: +error
-    ext: svelte
-    content:
-      code: |-
-        <script>
-           import { page } from '$app/stores';
-        </script>
-
-        {@html JSON.stringify( $page )}
-        {$page.status}: {$page.error.message}
-      mode: htmlmixed
-    type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674926869
+updated_at: 1674927529
 ---
