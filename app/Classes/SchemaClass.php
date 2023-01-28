@@ -1135,24 +1135,20 @@ class SchemaClass
     {
         unset( $this->schema['website']['entry'] );
         unset( $this->schema['website']['root'] );
-        // unset( $this->schema['website']['template']['doctype']['code'] );
-        // unset( $this->schema['website']['template']['html']['code'] );
-        // unset( $this->schema['website']['template']['head']['code'] );
-        // unset( $this->schema['website']['template']['title']['code'] );
-        // unset( $this->schema['website']['template']['link']['code'] );
-        // unset( $this->schema['website']['template']['meta']['code'] );
-        // unset( $this->schema['website']['template']['style']['code'] );
-        // unset( $this->schema['website']['template']['script']['code'] );
-        // unset( $this->schema['website']['template']['body']['code'] );
-        // unset( $this->schema['website']['metadata'] );
-        // unset( $this->schema['website']['navigation']]'file'] );
+        unset( $this->schema['website']['navigation']['file'] );
 
         unset( $this->schema['websiteController']['entry'] );
         unset( $this->schema['websiteController']['root'] );
 
         unset( $this->schema['websiteBuild']['event'] );
 
-        $this->schema['websiteJson'] = str_replace( '<', '[', str_replace( '>', ']',  
+        $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
+        $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
+        $filePath = $_fileCodeEntry['path'] ?? '/src' . $this->buildPageRouteTree( $this->schema['websiteBuild']['id'], $this->schema['websiteBuild']['navigation'] );
+        $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'websiteData', 'json' );
+        $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . 'static/lib/data', 'websiteData', 'json' );
+
+        $fileContent = //str_replace( '<', '[', str_replace( '>', ']',  
             json_encode(
                 [
                     'website' => $this->schema['website'] ,
@@ -1160,8 +1156,14 @@ class SchemaClass
                     'websiteBuild' => $this->schema['websiteBuild'] ,
                 ], 
                 JSON_UNESCAPED_SLASHES 
-            )
-        ));
+            );
+        //));
+
+        // Handle create directories & file @ path
+        Storage::disk( $fileEnv )->put(
+            $fileRoot, 
+            $fileContent
+        );
     }
 
     public function initWebsiteControllerReset()
