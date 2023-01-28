@@ -124,9 +124,7 @@ development-code:
             //const response = await fetch( '/lib/data/websiteBuild.json' );
           	//const responseJson = await response.json();
         	// console.log( responseJson );
-            return {
-          	  'one': ['two', 'three']
-        	}
+            return {}
           
         }
       mode: javascript
@@ -366,5 +364,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674950038
+updated_at: 1674950145
 ---
