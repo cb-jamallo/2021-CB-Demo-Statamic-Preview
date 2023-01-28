@@ -127,9 +127,7 @@ development-code:
         	console.log( responseJson );
          	
           return {
-          	data: {
-        	  navigation: responseJson
-        	}
+          	props: responseJson
           }
         }
       mode: javascript
@@ -162,12 +160,12 @@ development-code:
         	// #Await...
         	await tick();
         	
-        	console.log( $$props )
-        	console.log( $page )
-        	console.log( [websiteBuild.navigation.json] )
-        	const response = await fetch( '/lib/data/websiteBuild.json' );
-          	const responseJson = await response.json();
-        	console.log( responseJson );
+        	console.log( $$props );
+        	//console.log( $page );
+        	//console.log( [websiteBuild.navigation.json] )
+        	//const response = await fetch( '/lib/data/websiteBuild.json' );
+          	//const responseJson = await response.json();
+        	//console.log( responseJson );
           
           });
         </script>
@@ -369,5 +367,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674943511
+updated_at: 1674943645
 ---
