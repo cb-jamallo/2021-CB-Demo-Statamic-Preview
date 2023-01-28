@@ -67,7 +67,7 @@ local-template:
       code: null
       mode: htmlmixed
     title:
-      code: '<title>Home | [websiteController.domain.title]</title>'
+      code: '<title>TekMountain.com | [websiteController.domain.title]</title>'
       mode: htmlmixed
     link:
       code: null
@@ -82,10 +82,10 @@ local-template:
       code: null
       mode: javascript
     body:
-      code: 'Local build'
+      code: 'Welcome to TekMountain....'
       mode: htmlmixed
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674927052
+updated_at: 1674927672
 ---
