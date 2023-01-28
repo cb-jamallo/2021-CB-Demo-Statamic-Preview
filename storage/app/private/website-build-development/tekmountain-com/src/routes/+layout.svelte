@@ -16,11 +16,9 @@
 	// #Await...
 	await tick();
 
-	console.log( $page.data );
-	
-	const response = await fetch( '/lib/data/websiteBuild.json' );
-  	const responseJson = await res.json();
-	console.log( responseJson );
+	//const response = await fetch( '/lib/data/websiteBuild.json' );
+  	//const responseJson = await res.json();
+	//console.log( responseJson );
   });
 </script>
 
@@ -28,6 +26,8 @@
 <svelte:head>
 </svelte:head>
 
+{@debug $page}
+{@debug page}
 <main id="main" class='main main-{ websitePageClass }'>
   <slot />
 </main>
