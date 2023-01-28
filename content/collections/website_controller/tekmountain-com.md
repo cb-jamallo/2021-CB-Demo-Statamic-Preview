@@ -127,20 +127,19 @@ development-code:
 
           /* Svelte imports */
           import { onMount, tick } from 'svelte';
-
+          import { page } from '$app/stores';
+          
           /* Component imports */
           //...
 
           /* Global Stores */
-          const websiteNavigation = null;
           let websitePageClass = 'home';
 
-          onMount(async () =>
-        		  {
+          onMount(async () => {
         	// #Await...
         	await tick();
 
-        	console.log( websiteNavigation );
+        	console.log( page );
 
           });
         </script>
@@ -149,8 +148,7 @@ development-code:
         <svelte:head>
         </svelte:head>
 
-
-        <main id="main" class='main {websitePageClass}'>
+        <main id="main" class='main main-{ websitePageClass }'>
           <slot />
         </main>
       mode: htmlmixed
@@ -340,5 +338,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674939774
+updated_at: 1674939983
 ---
