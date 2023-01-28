@@ -1,14 +1,14 @@
 <script>
   /* Svelte imports */
   import { onMount, tick } from 'svelte';
-  import { page } from '$app/stores';
+  //import { page } from '$app/stores';
   
   /* Component imports */
   //...
 
   /* Global Stores */
   /** @type {import('./$types').LayoutData} */
-  export let data;
+  //export let data;
   
   let websitePageClass = 'home';
 
@@ -16,7 +16,7 @@
 	// #Await...
 	await tick();
 
-	console.log( page.data );
+	//console.log( page.data );
 	
 	const response = await fetch( '/lib/data/websiteBuild.json' );
   	const responseJson = await res.json();

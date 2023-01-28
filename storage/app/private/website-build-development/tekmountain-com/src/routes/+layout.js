@@ -1,3 +1,3 @@
 export const prerender = true;
-export const trailingSlashes = 'always';
+export const trailingSlash = 'always';
 export const ssr = false;
