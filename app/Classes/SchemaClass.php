@@ -1134,24 +1134,24 @@ class SchemaClass
     public function initWebsiteJsonReplicate()
     {
         // Before exporting, nullify any current/future env info needed
-        if ( array_key_exists( 'env', $this->schema['websiteController']['domain']['host'] ) ) $this->schema['websiteController']['domain']['host']['env']['private'] = null;
-        if ( array_key_exists( 'env', $this->schema['websiteBuild']['domain']['host'] ) ) $this->schema['websiteBuild']['domain']['host']['env']['private'] = null;
+        if ( array_key_exists( 'env', $this->schema['websiteController']['domain']['host'] ) ) unset( $this->schema['websiteController']['domain']['host']['env']['private'] );
+        if ( array_key_exists( 'env', $this->schema['websiteBuild']['domain']['host'] ) ) unset( $this->schema['websiteBuild']['domain']['host']['env']['private'] );
 
-        $this->schema['website']['entry'] = null;
-        $this->schema['website']['root'] = null;
-        $this->schema['website']['template'] = null;
-        $this->schema['website']['code'] = null;
-        $this->schema['website']['navigation']['file'] = null;
+        unset( $this->schema['website']['entry'] );
+        unset( $this->schema['website']['root'] );
+        unset( $this->schema['website']['template'] );
+        unset( $this->schema['website']['code'] );
+        unset( $this->schema['website']['navigation']['file'] );
 
-        $this->schema['websiteController']['entry'] = null;
-        $this->schema['websiteController']['root'] = null;
-        $this->schema['websiteController']['domain']['host']['package'] = null;
-        $this->schema['websiteController']['template'] = null;
-        $this->schema['websiteController']['code'] = null;
+        unset( $this->schema['websiteController']['entry'] );
+        unset( $this->schema['websiteController']['root'] );
+        unset( $this->schema['websiteController']['domain']['host']['package'] );
+        unset( $this->schema['websiteController']['template'] );
+        unset( $this->schema['websiteController']['code'] );
 
-        $this->schema['websiteBuild']['entry'] = null;
-        $this->schema['websiteBuild']['template'] = null;
-        $this->schema['websiteBuild']['navigation']['file'] = null;
+        unset( $this->schema['websiteBuild']['entry'] );
+        unset( $this->schema['websiteBuild']['template'] );
+        unset( $this->schema['websiteBuild']['navigation']['file'] );
 
         $this->schema['websiteJson'] = htmlspecialchars( 
             json_encode(
