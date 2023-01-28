@@ -236,9 +236,22 @@ local-code:
     type: item
     enabled: false
   -
+    uid: netlify-toml
+    path: src/../
+    name: netlify
+    ext: toml
+    content:
+      code: |-
+        #https://docs.netlify.com/configure-builds/overview/
+        [build]
+          ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF"
+      mode: htmlmixed
+    type: item
+    enabled: true
+  -
     uid: env-local
     name: .
-    ext: env-local
+    ext: env.local
     content:
       code: |-
         # NODE VARS..
@@ -268,7 +281,7 @@ local-code:
         </html>
       mode: htmlmixed
     type: item
-    enabled: false
+    enabled: true
   -
     uid: +layout-js
     path: /src/routes
@@ -280,7 +293,7 @@ local-code:
         export const ssr = false;
       mode: javascript
     type: item
-    enabled: false
+    enabled: true
   -
     uid: +layout-svelte
     path: /src/routes
@@ -336,20 +349,10 @@ local-code:
         {$page.status}: {$page.error.message}
       mode: htmlmixed
     type: item
-    enabled: false
-  -
-    uid: netlify-toml
-    path: src/../
-    name: netlify
-    ext: toml
-    content:
-      code: |-
-        #https://docs.netlify.com/configure-builds/overview/
-        [build]
-          ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF"
-      mode: htmlmixed
-    type: item
-    enabled: false
+    enabled: true
+replicate:
+  - websiteController
+target: local
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1673880651
+updated_at: 1674922418
 ---
