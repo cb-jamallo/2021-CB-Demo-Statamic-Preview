@@ -1133,20 +1133,24 @@ class SchemaClass
 
     public function initWebsiteJsonReplicate()
     {
-        unset( $this->schema['website']['entry'] );
-        unset( $this->schema['website']['root'] );
-        unset( $this->schema['website']['navigation']['file'] );
-
-        unset( $this->schema['websiteController']['entry'] );
-        unset( $this->schema['websiteController']['root'] );
-
-        unset( $this->schema['websiteBuild']['event'] );
-
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
         $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
         $filePath = $_fileCodeEntry['path'] ?? '/src' . $this->buildPageRouteTree( $this->schema['websiteBuild']['id'], $this->schema['websiteBuild']['navigation'] );
         $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'websiteData', 'json' );
         $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . 'static/lib/data', 'websiteData', 'json' );
+
+        unset( $this->schema['website']['entry'] );
+        unset( $this->schema['website']['root'] );
+        unset( $this->schema['website']['template'] );
+        unset( $this->schema['website']['code'] );
+        unset( $this->schema['website']['navigation']['file'] );
+
+        unset( $this->schema['websiteController']['entry'] );
+        unset( $this->schema['websiteController']['root'] );
+        unset( $this->schema['websiteController']['template'] );
+        unset( $this->schema['websiteController']['code'] );
+
+        unset( $this->schema['websiteBuild']['event'] );
 
         $fileContent = //str_replace( '<', '[', str_replace( '>', ']',  
             json_encode(
