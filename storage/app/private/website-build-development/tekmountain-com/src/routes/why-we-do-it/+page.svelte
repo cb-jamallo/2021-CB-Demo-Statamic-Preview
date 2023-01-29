@@ -1,1 +1,1 @@
-<svelte:head> <title>Why We Do It</title></svelte:head>
+<svelte:head> <title>Why We Do It | tekmountain.com</title></svelte:head>

@@ -1149,6 +1149,7 @@ class SchemaClass
 
         unset( $this->schema['website']['entry'] );
         unset( $this->schema['website']['root'] );
+        unset( $this->schema['website']['parent'] );
         unset( $this->schema['website']['template'] );
         unset( $this->schema['website']['code'] );
         unset( $this->schema['website']['navigation']['root'] );
@@ -1232,7 +1233,7 @@ class SchemaClass
     
     }
 
-    protected function buildPageRouteTree ( $_id, $_navigation, $_path = '' )
+    protected function buildPageRouteTree( $_id, $_navigation, $_path = '' )
     {
         $id = $_id;
         $navigation = $_navigation['tree'] ?? $_navigation;

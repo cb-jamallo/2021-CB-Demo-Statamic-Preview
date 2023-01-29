@@ -1,6 +1,5 @@
 ---
 id: c025df8d-4362-4fc9-8676-bf13ff46eff2
-published: false
 blueprint: website
 title: 'Why We Do it'
 development-template:
@@ -43,8 +42,7 @@ development-template:
     enabled: true
 parent: 8fe0f1f3-c0b7-4b5e-9483-a18722504c5d
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675022188
-replicate:
-  - page
-target: development
+updated_at: 1675022195
+replicate: 'null'
+target: 'null'
 ---
