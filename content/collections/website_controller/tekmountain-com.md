@@ -164,9 +164,11 @@ development-code:
             		response = await fetch( '/lib/data/website/websiteBuildReport.js' );
               		dataWebsiteBuildReport = await response.json();
             	}
+              
+                const searchEntries = url.searchParams.entries();
               	
               
-                return { url.searchParams.entries(), dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
+                return { searchEntries, dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
               
             }
           mode: javascript
@@ -408,5 +410,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675015410
+updated_at: 1675015500
 ---
