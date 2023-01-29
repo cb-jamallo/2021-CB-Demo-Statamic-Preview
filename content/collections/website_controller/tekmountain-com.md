@@ -55,22 +55,6 @@ development-template:
     enabled: true
 development-code:
   -
-    uid: env-development
-    name: .
-    ext: env.development
-    content:
-      code: |-
-        # NODE VARS..
-        NODE_ENV=development
-
-        # VITE VARS
-        VITE_ENV=development
-      mode: htmlmixed
-    type: item
-    enabled: false
-    path: src/../
-    group: false
-  -
     uid: app-html
     name: app
     ext: html
@@ -397,5 +381,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675011352
+updated_at: 1675011402
 ---
