@@ -1549,7 +1549,7 @@ sections:
                 -
                   handle: collection
                   field:
-                    collapse: false
+                    collapse: accordion
                     sets:
                       item:
                         display: Item

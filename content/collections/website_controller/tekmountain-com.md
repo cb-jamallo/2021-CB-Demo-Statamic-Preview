@@ -75,7 +75,7 @@ development-code:
         </html>
       mode: htmlmixed
     type: item
-    enabled: true
+    enabled: false
     group: false
   -
     uid: +error-svelte
@@ -92,7 +92,7 @@ development-code:
         {$page.status}: {$page.error.message}
       mode: htmlmixed
     type: item
-    enabled: true
+    enabled: false
     group: false
   -
     uid: +layout-js
@@ -117,7 +117,7 @@ development-code:
         }
       mode: javascript
     type: item
-    enabled: true
+    enabled: false
     group: false
   -
     uid: +layout-svelte
@@ -165,7 +165,7 @@ development-code:
         </main>
       mode: htmlmixed
     type: item
-    enabled: true
+    enabled: false
     group: false
   -
     group: true
@@ -192,8 +192,117 @@ development-code:
           mode: htmlmixed
         type: item
         enabled: true
+      -
+        uid: app-html
+        name: app
+        ext: html
+        content:
+          code: |-
+            <!DOCTYPE html>
+            <html lang="en">
+            	<head>
+            	  <title>TekMountain.com</title>
+            	  <link rel='canonical' href='[websiteBuild.domain.host.base]'>
+            	  %sveltekit.head%
+            	</head>
+            	<body>
+            	  	<div style="display: contents">
+            	  		%sveltekit.body%
+            	  	</div>
+            	</body>
+            </html>
+          mode: htmlmixed
+        type: item
+        enabled: true
+      -
+        uid: +error-svelte
+        path: /src/routes
+        name: +error
+        ext: svelte
+        content:
+          code: |-
+            <script>
+               import { page } from '$app/stores';
+            </script>
+
+            {@html JSON.stringify( $page )}
+            {$page.status}: {$page.error.message}
+          mode: htmlmixed
+        type: item
+        enabled: true
+      -
+        uid: +layout-js
+        path: /src/routes
+        name: +layout
+        ext: js
+        content:
+          code: |-
+            export const prerender = true;
+            export const trailingSlash = 'always';
+            export const ssr = false;
+
+            /** @type {import('./$types').LayoutLoad} */
+            export async function load({ fetch, params, url }) 
+            {
+                const response = await fetch( '/lib/data/websiteBuild.json' );
+              	const responseJson = await response.json();
+            	const websiteBuild = responseJson;
+              
+                return { websiteBuild };
+              
+            }
+          mode: javascript
+        type: item
+        enabled: true
+      -
+        uid: +layout-svelte
+        path: /src/routes
+        name: +layout
+        ext: svelte
+        content:
+          code: |-
+            <script>
+              /* Svelte imports */
+              import { onMount, tick } from 'svelte';
+              import { page } from '$app/stores';
+              
+              console.log( $page )
+              
+              /* Component imports */
+              //.....
+
+              /* Global Stores */
+              /** @type {import('./$types').LayoutData} */
+              //export let data;
+              
+              let websitePageClass = 'home';
+
+              onMount(async () => {
+            	// #Await...
+            	await tick();
+            	
+            	//console.log( $page );
+            	console.log( [websiteBuild.navigation.json] )
+            	//const response = await fetch( '/lib/data/websiteBuild.json' );
+              	//const responseJson = await response.json();
+            	//console.log( responseJson );
+              
+              });
+            </script>
+
+
+            <svelte:head>
+            </svelte:head>
+
+            <main id="main" class='main main-{ websitePageClass }'>
+              Hello World!!!
+              <slot />
+            </main>
+          mode: htmlmixed
+        type: item
+        enabled: true
     type: item
-    enabled: true
+    enabled: false
 local-host:
   -
     base: tekmountain-com-local.netlify.app
@@ -380,6 +489,9 @@ local-code:
     type: item
     enabled: true
 run: false
+replicate:
+  - websiteController
+target: development
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675011402
+updated_at: 1675013298
 ---

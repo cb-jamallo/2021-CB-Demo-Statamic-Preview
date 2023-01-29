@@ -1457,16 +1457,9 @@ class SchemaClass
 
         foreach( $fileCode as $_fileCodeEntry )
         {
-            
-            // Handle single file.
-            if (  !$_fileCodeEntry['group'] ) 
-            {
-                $this->replicateCodeEntry(  $_fileCodeEntry );
-                continue;
-            }
-            
+            if ( !$_fileCodeEntry['group'] ) continue;
             // Handle collection
-            $this->replicateCodeGroup( $_fileCodeEntry['collection'] );
+            $this->replicateCodeGroup( $_fileCodeEntry );
 
         }
 
@@ -1474,13 +1467,13 @@ class SchemaClass
 
     protected function replicateCodeGroup( $_fileCodeEntryGroup )
     {
-        foreach( $_fileCodeEntryGroup as $_fileCodeEntry )
+        foreach( $_fileCodeEntryGroup['collection'] as $_fileCodeEntry )
         {
-            $this->replicateCodeEntry(  $_fileCodeEntry );
+            $this->replicateCodeEntry( $_fileCodeEntry, $_fileCodeEntryGroup['enabled'] );
         }
     }
 
-    protected function replicateCodeEntry( $_fileCodeEntry )
+    protected function replicateCodeEntry(  $_fileCodeEntry, $_fileCodeEntryGroupEnabled )
     {
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
         $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
@@ -1492,9 +1485,9 @@ class SchemaClass
         $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . $filePath, $fileName, $fileExt );
 
         // Handle deleting old code
-        if ( !$_fileCodeEntry['enabled'] ) 
+        if ( !$_fileCodeEntryGroupEnabled || !$_fileCodeEntry['enabled'] ) 
         {
-            Storage::disk( $fileEnv )->delete( $fileRoot );
+            $this->replicateCodeEntryDelete( $fileEnv, $fileRoot );
             return; // continue
         }
         
@@ -1505,6 +1498,11 @@ class SchemaClass
             $fileRoot, 
             $fileContent
         );
+    }
+
+    protected function replicateCodeEntryDelete( $_fileEnv, $_fileRoot )
+    {
+        Storage::disk( $_fileEnv )->delete( $_fileRoot );
     }
 
     protected function replicateAsset( $_asset )
