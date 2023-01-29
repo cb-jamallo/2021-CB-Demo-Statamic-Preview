@@ -191,11 +191,12 @@ development-code:
               /** @type {import('./$types').LayoutData} */
               export let data;
               
-              export let pagePathname = $page.url.pathname;
-              export let pagePathnameParts = $page.url.pathname.split( '/' );
-              export let pageName = ( pagePathnameParts.length === 1 ) 
-              	? 'home' 
-              	: pagePathnameParts[ pagePathnameParts.length -1 ];
+              const pageRouteId = $page.route.id;
+              const pageName = ( pageRouteId === null ) 
+              	? 'error'
+              	:  ( pageRouteId === null )
+              		? 'home' 
+              		: pageRouteId;
               
               onMount(async () => {
             	// #Await...
@@ -407,5 +408,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675025342
+updated_at: 1675025624
 ---

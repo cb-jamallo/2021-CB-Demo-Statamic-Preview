@@ -16,7 +16,7 @@
   	? 'error'
   	:  ( pageRouteId === null )
   		? 'home' 
-  		: pageRouteId;
+  		: pageRouteId.replace('/', '');
   
   onMount(async () => {
 	// #Await...
