@@ -1151,7 +1151,7 @@ class SchemaClass
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
-            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data/website', 'website', 'js' ), 
+            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data/website', 'websiteReport', 'js' ), 
             $fileContent
         );
 
@@ -1164,7 +1164,7 @@ class SchemaClass
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
-            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data/website', 'websiteController', 'js' ), 
+            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data/website', 'websiteControllerReport', 'js' ), 
             $fileContent
         );
 
@@ -1175,7 +1175,7 @@ class SchemaClass
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
-            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data/website', 'websiteBuild', 'js' ), 
+            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data/website', 'websiteBuildReport', 'js' ), 
             $fileContent
         );
 
@@ -1408,7 +1408,7 @@ class SchemaClass
         $fileRoot = str_replace( '//', '/', $fileSlug . '/' . $filePath . '/' );
         $fileGlobal = str_replace( '//', '/', $fileEnv . '/' . $fileSlug . '/' . $filePath . '/' . $fileName );
 
-        $fileContent = $this->buildContentShortcodeFindAndReplace( $this->schema['websiteBuild']['domain']['host']['humanTxt'][0]['content']['code'] );
+        $fileContent = $this->replicateContentShortcodeFindAndReplace( $this->schema['websiteBuild']['domain']['host']['humanTxt'][0]['content']['code'] );
 
         // Handle remove humanTxt
         if ( in_array( $fileSlug, Storage::disk('build-development')->directories() ) && Storage::disk('build-development')->has( $fileRoot . $fileName ) ) Storage::disk('build-development')->delete( $fileRoot . $fileName ); 
@@ -1436,7 +1436,7 @@ class SchemaClass
         $fileRoot = str_replace( '//', '/', $fileSlug . '/' . $filePath . '/' );
         $fileGlobal = str_replace( '//', '/', $fileEnv . '/' . $fileSlug . '/' . $filePath . '/' . $fileName );
 
-        $fileContent = $this->buildContentShortcodeFindAndReplace( $this->schema['websiteBuild']['domain']['host']['securityTxt'][0]['content']['code'] );
+        $fileContent = $this->replicateContentShortcodeFindAndReplace( $this->schema['websiteBuild']['domain']['host']['securityTxt'][0]['content']['code'] );
 
         // Handle remove securityTxt
         if ( in_array( $fileSlug, Storage::disk('build-development')->directories() ) && Storage::disk('build-development')->has( $fileRoot . $fileName ) ) Storage::disk('build-development')->delete( $fileRoot . $fileName );
@@ -1497,7 +1497,7 @@ class SchemaClass
             return; // continue
         }
         
-        $fileContent = $this->buildContentShortcodeFindAndReplace( $_fileCodeEntry['content']['code'] );
+        $fileContent = $this->replicateContentShortcodeFindAndReplace( $_fileCodeEntry['content']['code'] );
         
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
@@ -1586,7 +1586,7 @@ class SchemaClass
         $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . $filePath, $fileName, $fileExt );
         $fileGlobal = $this->buildPageRouteCleaned(  $fileEnv . '/' . $fileSlug . '/' . $filePath, $fileName, $fileExt );
 
-        $fileContent = $this->buildContentShortcodeFindAndReplace( $this->schema['websiteBuild']['template']['output'] );
+        $fileContent = $this->replicateContentShortcodeFindAndReplace( $this->schema['websiteBuild']['template']['output'] );
         
         // Handle delete when not enabled.
         if ( !$this->schema['websiteBuild']['template']['enabled'] )
@@ -1674,7 +1674,7 @@ class SchemaClass
     }
 
     // Find and Replace string content for schema path shortcodes
-    protected function buildContentShortcodeFindAndReplace( $_string )
+    protected function replicateContentShortcodeFindAndReplace( $_string )
     {
 
         $regexShortcode = $this->shortcodeClass->all( $_string );
