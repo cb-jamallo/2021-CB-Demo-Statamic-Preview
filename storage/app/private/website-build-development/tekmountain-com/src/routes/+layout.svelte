@@ -17,7 +17,7 @@
 	await tick();
 	
 	console.log( data );
-	console.log( $page )
+	console.log( $page );
   
   });
 </script>
