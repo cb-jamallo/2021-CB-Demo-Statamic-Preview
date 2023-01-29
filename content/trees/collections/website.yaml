@@ -1,18 +1,10 @@
 tree:
   -
-    entry: 644131f9-1ab3-4e5a-bb06-7c6170657621
-    children:
-      -
-        entry: 6134a0ca-717e-4251-8d41-d93319d3d010
-        children:
-          -
-            entry: f9c3bdc2-d09f-4563-8e9f-bf48a9e6245a
-  -
-    entry: e25d3846-1644-4294-9bab-fbe693a12b04
-  -
     entry: 8fe0f1f3-c0b7-4b5e-9483-a18722504c5d
     children:
       -
         entry: c025df8d-4362-4fc9-8676-bf13ff46eff2
-      -
-        entry: 133b1a5b-eaf6-45e9-bdaa-45c42c6554ae
+  -
+    entry: 6134a0ca-717e-4251-8d41-d93319d3d010
+  -
+    entry: f9c3bdc2-d09f-4563-8e9f-bf48a9e6245a
