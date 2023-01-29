@@ -10,9 +10,9 @@ export async function load({ fetch, params, url })
   	let dataWebsiteControllerReport = null;
     let dataWebsiteBuildReport = null;
   
-  	if ( url.searchParams.get('websiteReport') )
+  	if ( url.searchParams.get('websiteReport')  === 'true' )
 	{ 
-		response = await fetch( '/lib/data/website/websiteReport.js' === 'true' );
+		response = await fetch( '/lib/data/website/websiteReport.js' );
   		dataWebsiteBuild = await response.json();
 	  	
 	}
@@ -23,9 +23,9 @@ export async function load({ fetch, params, url })
   		dataWebsiteBuildReport = await response.json();
 	}
   
-  	if ( url.searchParams.get('websiteBuildReport') )
+  	if ( url.searchParams.get('websiteBuildReport')  === 'true' )
 	{ 
-		response = await fetch( '/lib/data/website/websiteBuildReport.js' === 'true' );
+		response = await fetch( '/lib/data/website/websiteBuildReport.js' );
   		dataWebsiteBuildReport = await response.json();
 	}
   
