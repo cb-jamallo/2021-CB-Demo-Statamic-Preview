@@ -31,6 +31,9 @@
 <svelte:head>
 </svelte:head>
 
+<header class='header' tabindex='0'>
+</header>
+
 <main id="main" class='main main-{ pageName }'>
   Hello World!!!
   <slot />

@@ -81,11 +81,13 @@ development-code:
         ext: env.development
         content:
           code: |-
-            # NODE VARS..
+            # NODE VARS
             NODE_ENV=development
 
             # VITE VARS
             VITE_ENV=development
+            VITE_SITE_TITLE=Castle Branch
+            VITE_SITE_TITLE_SEPARATOR=|
           mode: htmlmixed
         type: item
         enabled: true
@@ -169,11 +171,10 @@ development-code:
               	dataWebsiteBuildNavigation = await data.json();
                 
               	return { 
-            	  dataWebsiteReport, 
+            	  dataWebsiteReport,
             	  dataWebsiteControllerReport,
-            	  dataWebsiteBuildReport, 
-            	  dataWebsiteBuildNavigation, 
-            	  
+            	  dataWebsiteBuildReport,
+            	  dataWebsiteBuildNavigation,
             	};
               
             }
@@ -211,8 +212,7 @@ development-code:
             	// #Await...
             	await tick();
             	
-            	console.log( data );
-            	console.log( $page );
+            	//$page.data = data
               
               });
             </script>
@@ -220,6 +220,9 @@ development-code:
 
             <svelte:head>
             </svelte:head>
+
+            <header class='header' tabindex='0'>
+            </header>
 
             <main id="main" class='main main-{ pageName }'>
               Hello World!!!
@@ -230,6 +233,47 @@ development-code:
         enabled: true
     type: item
     enabled: true
+  -
+    name: 'Component Stores'
+    collection:
+      -
+        uid: store-js
+        path: /src/lib/components/_stores
+        name: store
+        ext: js
+        content:
+          code: |-
+            import { writable } from 'svelte/store';
+
+            let Store = writable({
+
+                headerLogo: true,
+                ttpl: true,
+                disqus: false
+
+            });
+
+            export default Store;
+          mode: htmlmixed
+        type: item
+        enabled: true
+      -
+        uid: store-env-vars
+        path: /src/lib/components/_stores
+        name: store-env-vars
+        ext: js
+        content:
+          code: |-
+            export const StoreEnvVars = 
+            {
+                siteTitle: import.meta.env.VITE_SITE_TITLE,
+                siteTitleSeparator: import.meta.env.VITE_SITE_TITLE_SEPARATOR,
+            }
+          mode: htmlmixed
+        type: item
+        enabled: true
+    type: item
+    enabled: false
 local-host:
   -
     base: tekmountain-com-local.netlify.app
@@ -416,6 +460,9 @@ local-code:
     type: item
     enabled: true
 run: false
+replicate:
+  - websiteController
+target: development
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675026345
+updated_at: 1675027954
 ---
