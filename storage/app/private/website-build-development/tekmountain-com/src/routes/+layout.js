@@ -30,6 +30,6 @@ export async function load({ fetch, params, url })
 	}
   	
   
-    return { dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
+    return { url.searchParams.entries(), dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
   
 }

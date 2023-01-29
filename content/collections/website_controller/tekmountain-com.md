@@ -141,11 +141,32 @@ development-code:
             /** @type {import('./$types').LayoutLoad} */
             export async function load({ fetch, params, url }) 
             {
-                const response = await fetch( '/lib/data/websiteBuild.json' );
-              	const responseJson = await response.json();
-            	const websiteBuild = responseJson;
+                let data = null;
+              	let dataWebsiteReport = null;
+              	let dataWebsiteControllerReport = null;
+                let dataWebsiteBuildReport = null;
               
-                return { websiteBuild };
+              	if ( url.searchParams.get('websiteReport') )
+            	{ 
+            		response = await fetch( '/lib/data/website/websiteReport.js' );
+              		dataWebsiteBuild = await response.json();
+            	  	
+            	}
+              	
+                if ( url.searchParams.get('websiteControllerReport') )
+            	{ 
+            		response = await fetch( '/lib/data/website/websiteControllerReport.js' );
+              		dataWebsiteBuildReport = await response.json();
+            	}
+              
+              	if ( url.searchParams.get('websiteBuildReport') )
+            	{ 
+            		response = await fetch( '/lib/data/website/websiteBuildReport.js' );
+              		dataWebsiteBuildReport = await response.json();
+            	}
+              	
+              
+                return { dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
               
             }
           mode: javascript
@@ -387,5 +408,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675014656
+updated_at: 1675015245
 ---
