@@ -1123,12 +1123,15 @@ class SchemaClass
         $this->replicateAsset( 'font' );
         $this->replicateAsset( 'document' );
 
+        // Handle Replicate Json
+        $this->replicateBuildJson();
+
         // Handle Replicate
         $this->replicateBuild();
             
     }
 
-    public function initWebsiteJsonReplicate()
+    public function replicateBuildJson()
     {
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
         $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
@@ -1213,6 +1216,9 @@ class SchemaClass
         $this->replicateAsset( 'font' );
         $this->replicateAsset( 'document' );
 
+        // Handle Replicate Json
+        $this->replicateBuildJson();
+        
         // Handle Replicate
         $this->replicateBuild();
     
