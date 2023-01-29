@@ -18,7 +18,7 @@ development-template:
       code: null
       mode: htmlmixed
     title:
-      code: 'Why We Do It | [websiteController.template.title]'
+      code: 'Why We Do It | [websiteController.domain.title]'
       mode: htmlmixed
     link:
       code: null
@@ -35,15 +35,14 @@ development-template:
     body:
       code: |-
         <svelte:head>
-          <title>[websiteBuild.template.title]</title>
+          <title>...</title>
         <svelte:head>
       mode: htmlmixed
     type: item
     enabled: true
 parent: 8fe0f1f3-c0b7-4b5e-9483-a18722504c5d
-target: development
-replicate:
-  - page
+target: 'null'
+replicate: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675019300
+updated_at: 1675019757
 ---

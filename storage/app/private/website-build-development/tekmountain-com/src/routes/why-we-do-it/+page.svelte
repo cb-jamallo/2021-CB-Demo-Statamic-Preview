@@ -1,1 +1,1 @@
-<svelte:head> <title>...</title><svelte:head>
+<svelte:head> <title>...</title></svelte:head>
