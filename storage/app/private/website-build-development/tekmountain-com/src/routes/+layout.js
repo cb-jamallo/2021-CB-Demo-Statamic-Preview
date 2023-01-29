@@ -32,6 +32,6 @@ export async function load({ fetch, params, url })
     const urlSearchParams = url.searchParams;
   	
   
-    return { searchEntries, dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
+    return { urlSearchParams, dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
   
 }

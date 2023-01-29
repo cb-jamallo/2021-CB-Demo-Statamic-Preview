@@ -165,7 +165,7 @@ development-code:
               		dataWebsiteBuildReport = await response.json();
             	}
               
-                const searchEntries = url.searchParams.entries();
+                const urlSearchParams = url.searchParams;
               	
               
                 return { searchEntries, dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
@@ -411,5 +411,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675015815
+updated_at: 1675016005
 ---
