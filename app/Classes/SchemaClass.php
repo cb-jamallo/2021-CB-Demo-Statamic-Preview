@@ -1715,6 +1715,8 @@ class SchemaClass
                 ]),
                 $regexContent                              // 3. Shortcode content origin
             );
+
+            sleep(2);
         };
 
         return $regexContent;

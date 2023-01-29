@@ -33,7 +33,7 @@ class ShortcodeClass
     public $shortcodePatternTag = '/\[[^\:|\s|\/]{1,}\s?[^\]]{1,}\]/UX';
     public $shortcodePatternAttribute = '/(\s?[^\=]{1,}\=\'[^\']{1,}\'){1,}/UX';
     public $shortcodePatternAttributeKeyModifier = '/([^\:]*\:)?([^\:]*)(\:[^\:]*)?/';
-    public $shortcodePatternGroup = '#\[(shortcode)\:?([^\s|\]]*)?\s?([^\]]*)\](?:((?:[^\[]|\[(?!\/?shortcode\s?[^\]]*)|(?R))+)\[\/shortcode[^\]]*\])?#';
+    public $shortcodePatternGroup = '#\[\[(shortcode)\:?([^\s|\]]*)?\s?([^\]]*)\](?:((?:[^\[]|\[(?!\/?shortcode\s?[^\]]*)|(?R))+)\[\/shortcode[^\]]*\]\])?#';
 
     /**
     * @method array get()
@@ -237,6 +237,8 @@ class ShortcodeClass
 
         if ( isset( $array[ $path_target ] ) && is_array( $array[ $path_target ] ) )
         {
+
+            sleep(1);
             return $this->findAndReplace([ 
                 'array' => $array[ $path_target ],
                 'array_original' => $array_original,
@@ -246,7 +248,7 @@ class ShortcodeClass
             ]);
         }
 
-        return $array[ $path_target ];
+        return ( $array[ $path_target ] ) ? $array[ $path_target ] : $content;
     }
 
 
