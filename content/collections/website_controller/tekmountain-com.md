@@ -69,6 +69,7 @@ development-code:
     type: item
     enabled: true
     path: src/../
+    group: false
   -
     uid: app-html
     name: app
@@ -91,6 +92,7 @@ development-code:
       mode: htmlmixed
     type: item
     enabled: true
+    group: false
   -
     uid: +error-svelte
     path: /src/routes
@@ -107,6 +109,7 @@ development-code:
       mode: htmlmixed
     type: item
     enabled: true
+    group: false
   -
     uid: +layout-js
     path: /src/routes
@@ -119,17 +122,18 @@ development-code:
         export const ssr = false;
 
         /** @type {import('./$types').LayoutLoad} */
-        export async function load({ fetch, params }) 
+        export async function load({ fetch, params, url }) 
         {
             const response = await fetch( '/lib/data/websiteBuild.json' );
           	const responseJson = await response.json();
-        	// console.log( responseJson );
-            return { responseJson };
+
+            return { responseJson, params, url };
           
         }
       mode: javascript
     type: item
     enabled: true
+    group: false
   -
     uid: +layout-svelte
     path: /src/routes
@@ -175,6 +179,29 @@ development-code:
           <slot />
         </main>
       mode: htmlmixed
+    type: item
+    enabled: true
+    group: false
+  -
+    group: false
+    uid: t1
+    path: /static
+    name: test2
+    ext: html
+    content:
+      code: t
+      mode: htmlmixed
+    collection:
+      -
+        uid: test
+        path: /static
+        name: test
+        ext: txt
+        content:
+          code: test...
+          mode: htmlmixed
+        type: item
+        enabled: true
     type: item
     enabled: true
 local-host:
@@ -363,6 +390,9 @@ local-code:
     type: item
     enabled: true
 run: false
+replicate:
+  - websiteController
+target: development
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1674950312
+updated_at: 1675009061
 ---

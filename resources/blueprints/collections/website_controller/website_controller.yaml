@@ -1442,6 +1442,15 @@ sections:
               display: Item
               fields:
                 -
+                  handle: group
+                  field:
+                    default: false
+                    display: Group
+                    type: toggle
+                    icon: toggle
+                    listable: hidden
+                    instructions_position: above
+                -
                   handle: uid
                   field:
                     input_type: text
@@ -1453,6 +1462,8 @@ sections:
                     instructions_position: above
                     validate:
                       - required
+                    if:
+                      group: 'equals false'
                 -
                   handle: path
                   field:
@@ -1463,6 +1474,8 @@ sections:
                     icon: text
                     listable: hidden
                     instructions_position: above
+                    if:
+                      group: 'equals false'
                 -
                   handle: name
                   field:
@@ -1475,6 +1488,8 @@ sections:
                     instructions_position: above
                     validate:
                       - required
+                    if:
+                      group: 'equals false'
                 -
                   handle: ext
                   field:
@@ -1509,6 +1524,8 @@ sections:
                     validate:
                       - required
                       - nullable
+                    if:
+                      group: 'equals false'
                 -
                   handle: content
                   field:
@@ -1527,6 +1544,104 @@ sections:
                     instructions_position: above
                     validate:
                       - required
+                    if:
+                      group: 'equals false'
+                -
+                  handle: collection
+                  field:
+                    collapse: false
+                    sets:
+                      item:
+                        display: Item
+                        fields:
+                          -
+                            handle: uid
+                            field:
+                              input_type: text
+                              antlers: false
+                              display: UID
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                              validate:
+                                - required
+                          -
+                            handle: path
+                            field:
+                              input_type: text
+                              antlers: false
+                              display: Path
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                          -
+                            handle: name
+                            field:
+                              input_type: text
+                              antlers: false
+                              display: Name
+                              type: text
+                              icon: text
+                              listable: hidden
+                              instructions_position: above
+                              validate:
+                                - required
+                          -
+                            handle: ext
+                            field:
+                              placeholder: 'Choose one or add a custom'
+                              options:
+                                html: HTML
+                                xml: XML
+                                css: CSS
+                                js: JS
+                                jsx: JSX
+                                svelte: Svelte/Kit
+                                vue: Vue
+                                php: PHP
+                                cs: 'C#'
+                                txt: TXT
+                                htaccess: HTACCESS
+                                toml: Toml
+                                yaml: Yaml
+                                md: MD
+                                mdx: MDX
+                              multiple: false
+                              clearable: true
+                              searchable: true
+                              taggable: true
+                              push_tags: false
+                              cast_booleans: false
+                              display: Ext
+                              type: select
+                              icon: select
+                              listable: hidden
+                              instructions_position: above
+                          -
+                            handle: content
+                            field:
+                              theme: light
+                              mode: htmlmixed
+                              mode_selectable: true
+                              indent_type: tabs
+                              indent_size: 4
+                              key_map: default
+                              line_numbers: true
+                              line_wrapping: false
+                              display: Content
+                              type: code
+                              icon: code
+                              listable: hidden
+                              instructions_position: above
+                    display: Collection
+                    type: replicator
+                    icon: replicator
+                    listable: hidden
+                    instructions_position: above
+                    if:
+                      group: 'equals true'
           display: Code
           type: replicator
           icon: replicator

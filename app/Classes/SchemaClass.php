@@ -1140,7 +1140,9 @@ class SchemaClass
         unset( $this->schema['website']['root'] );
         unset( $this->schema['website']['template'] );
         unset( $this->schema['website']['code'] );
+        unset( $this->schema['website']['navigation']['root'] );
         unset( $this->schema['website']['navigation']['file'] );
+        unset( $this->schema['website']['navigation']['yaml'] );
 
         $fileContent = json_encode( $this->schema['website'] , JSON_UNESCAPED_SLASHES );
 
@@ -1456,31 +1458,49 @@ class SchemaClass
         foreach( $fileCode as $_fileCodeEntry )
         {
             
-            $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
-            $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
-            $fileUid = $_fileCodeEntry['uid'];
-            $fileName = $_fileCodeEntry['name'];
-            $fileExt = $_fileCodeEntry['ext'];
-            $filePath = $_fileCodeEntry['path'] ?? '/src' . $this->buildPageRouteTree( $this->schema['websiteBuild']['id'], $this->schema['websiteBuild']['navigation'] );
-            $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . $filePath, $fileName, $fileExt );
-            $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . $filePath, $fileName, $fileExt );
+            // Handle single file.
+            if (  !$_fileCodeEntry['group'] ) $this->replicateCodeEntry(  $_fileCodeEntry );
+            
+            // Handle collection
+            $this->replicateCodeGroup( $_fileCodeEntry['group'] );
 
-            // Handle deleting old code
-            if ( !$_fileCodeEntry['enabled'] ) 
-            {
-                Storage::disk( $fileEnv )->delete( $fileRoot );
-                continue;
-            }
-            
-            $fileContent = $this->buildContentShortcodeFindAndReplace( $_fileCodeEntry['content']['code'] );
-            
-            // Handle create directories & file @ path
-            Storage::disk( $fileEnv )->put(
-                $fileRoot, 
-                $fileContent
-            );
         }
 
+    }
+
+    protected function replicateCodeGroup( $_fileCodeEntryGroup )
+    {
+        foreach( $_fileCodeEntryGroup as $_fileCodeEntry )
+        {
+            $this->replicateCodeEntry(  $_fileCodeEntry );
+        }
+    }
+
+    protected function replicateCodeEntry( $_fileCodeEntry )
+    {
+        $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
+        $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
+        $fileUid = $_fileCodeEntry['uid'];
+        $fileName = $_fileCodeEntry['name'];
+        $fileExt = $_fileCodeEntry['ext'];
+        $filePath = $_fileCodeEntry['path'] ?? '/src' . $this->buildPageRouteTree( $this->schema['websiteBuild']['id'], $this->schema['websiteBuild']['navigation'] );
+        $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . $filePath, $fileName, $fileExt );
+        $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . $filePath, $fileName, $fileExt );
+
+        // Handle deleting old code
+        if ( !$_fileCodeEntry['enabled'] ) 
+        {
+            Storage::disk( $fileEnv )->delete( $fileRoot );
+            return; // continue
+        }
+        
+        $fileContent = $this->buildContentShortcodeFindAndReplace( $_fileCodeEntry['content']['code'] );
+        
+        // Handle create directories & file @ path
+        Storage::disk( $fileEnv )->put(
+            $fileRoot, 
+            $fileContent
+        );
     }
 
     protected function replicateAsset( $_asset )

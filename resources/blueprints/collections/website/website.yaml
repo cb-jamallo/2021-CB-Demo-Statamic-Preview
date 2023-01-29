@@ -378,6 +378,8 @@ sections:
                     instructions_position: above
                     validate:
                       - required
+                    if:
+                      organize: 'equals false'
                 -
                   handle: path
                   field:
@@ -388,6 +390,8 @@ sections:
                     icon: text
                     listable: hidden
                     instructions_position: above
+                    if:
+                      organize: 'equals false'
                 -
                   handle: name
                   field:
@@ -400,6 +404,8 @@ sections:
                     instructions_position: above
                     validate:
                       - required
+                    if:
+                      organize: 'equals false'
                 -
                   handle: ext
                   field:
@@ -430,6 +436,8 @@ sections:
                     max_items: 1
                     validate:
                       - required
+                    if:
+                      organize: 'equals false'
                 -
                   handle: content
                   field:
@@ -448,6 +456,8 @@ sections:
                     instructions_position: above
                     validate:
                       - required
+                    if:
+                      organize: 'equals false'
           display: Code
           type: replicator
           icon: replicator
