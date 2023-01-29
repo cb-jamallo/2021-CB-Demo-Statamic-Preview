@@ -921,6 +921,14 @@ class SchemaClass
             $this::ERROR_SCHEMA_BUILD_TEMPLATE_AS_HEAD_TITLE_MISSING
         );
 
+
+        // Handle empty title tag
+        if ( !str_contains( $this->schema['websiteController']['template']['title']['code'], '<title>' ) ) 
+        {
+            $this->schema['websiteBuild']['template']['title']['output'] = '';
+            return;
+        }
+
         $websiteController = $this->tagClass->get([
             'regexTag' => ['title'],
             'regexContent' => $this->schema['websiteController']['template']['title']['code'] ?? ''
@@ -1070,19 +1078,19 @@ class SchemaClass
         })( $website, $websiteController );
 
         // Inject <body>
-        $this->schema['websiteBuild']['template']['output'] = 
-            $this->schema['websiteBuild']['template']['script']['output']
-                . $this->schema['websiteBuild']['template']['body']['output']
-                    . $this->schema['websiteBuild']['template']['style']['output'];
+        $this->schema['websiteBuild']['template']['output'] = $this->schema['websiteBuild']['template']['body']['output'];
+            // $this->schema['websiteBuild']['template']['script']['output']
+            //     . $this->schema['websiteBuild']['template']['body']['output']
+            //         . $this->schema['websiteBuild']['template']['style']['output'];
 
-        // Inject <svelte:head>
-        if ( !str_contains( $this->schema['websiteBuild']['template']['output'], '<svelte:head>') ) $this->schema['websiteBuild']['template']['output'] = '<svelte:head></svelte:head>' . $this->schema['websiteBuild']['template']['output'];
+        // // Inject <svelte:head>
+        // if ( !str_contains( $this->schema['websiteBuild']['template']['output'], '<svelte:head>') ) $this->schema['websiteBuild']['template']['output'] = '<svelte:head></svelte:head>' . $this->schema['websiteBuild']['template']['output'];
         
-        // Inject <title>
-        $this->schema['websiteBuild']['template']['output'] = str_replace( '<svelte:head>', '<svelte:head>' . $this->schema['websiteBuild']['template']['title']['output'], $this->schema['websiteBuild']['template']['output'] );
+        // // Inject <title>
+        // $this->schema['websiteBuild']['template']['output'] = str_replace( '<svelte:head>', '<svelte:head>' . $this->schema['websiteBuild']['template']['title']['output'], $this->schema['websiteBuild']['template']['output'] );
     
         // Inject <link ...> & <meta ...>
-        $this->schema['websiteBuild']['template']['output'] = str_replace( '</title>', '</title>' . $this->schema['websiteBuild']['template']['metadata']['output'], $this->schema['websiteBuild']['template']['output'] );
+        // $this->schema['websiteBuild']['template']['output'] = str_replace( '</title>', '</title>' . $this->schema['websiteBuild']['template']['metadata']['output'], $this->schema['websiteBuild']['template']['output'] );
         
     }
     

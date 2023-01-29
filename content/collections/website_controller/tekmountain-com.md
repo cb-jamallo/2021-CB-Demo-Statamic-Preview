@@ -149,17 +149,17 @@ development-code:
               	if ( url.searchParams.get('websiteReport')  === 'true' )
             	{ 
             		data = await fetch( '/lib/data/website/websiteReport.js' );
-              		dataWebsiteBuild = await data.json();
+              		dataWebsiteReport = await data.json();
             	  	
             	}
               	
-                if ( url.searchParams.get('websiteControllerReport') === 'true' )
+                if ( url.searchParams?.get('websiteControllerReport') === 'true' )
             	{ 
             		data = await fetch( '/lib/data/website/websiteControllerReport.js' );
-              		dataWebsiteBuildReport = await data.json();
+              		dataWebsiteControllerReport = await data.json();
             	}
               
-              	if ( url.searchParams.get('websiteBuildReport')  === 'true' )
+              	if ( url.searchParams?.get('websiteBuildReport') === 'true' )
             	{ 
             		data = await fetch( '/lib/data/website/websiteBuildReport.js' );
               		dataWebsiteBuildReport = await data.json();
@@ -408,5 +408,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675016824
+updated_at: 1675017050
 ---
