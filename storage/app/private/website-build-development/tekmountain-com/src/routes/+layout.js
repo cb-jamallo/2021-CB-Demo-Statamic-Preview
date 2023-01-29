@@ -29,7 +29,7 @@ export async function load({ fetch, params, url })
   		dataWebsiteBuildReport = await response.json();
 	}
   
-    const searchEntries = url.searchParams.entries();
+    const urlSearchParams = url.searchParams;
   	
   
     return { searchEntries, dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
