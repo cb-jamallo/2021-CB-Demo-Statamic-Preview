@@ -1151,7 +1151,7 @@ class SchemaClass
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
-            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'website', 'json' ), 
+            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data/website', 'website', 'js' ), 
             $fileContent
         );
 
@@ -1164,7 +1164,7 @@ class SchemaClass
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
-            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'websiteController', 'json' ), 
+            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data/website', 'websiteController', 'js' ), 
             $fileContent
         );
 
@@ -1175,7 +1175,7 @@ class SchemaClass
 
         // Handle create directories & file @ path
         Storage::disk( $fileEnv )->put(
-            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'websiteBuild', 'json' ), 
+            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data/website', 'websiteBuild', 'js' ), 
             $fileContent
         );
 
@@ -1218,7 +1218,7 @@ class SchemaClass
 
         // Handle Replicate Json
         $this->replicateBuildJson();
-        
+
         // Handle Replicate
         $this->replicateBuild();
     
