@@ -7,7 +7,8 @@ export async function load({ fetch, params, url })
 {
     const response = await fetch( '/lib/data/websiteBuild.json' );
   	const responseJson = await response.json();
-
-    return { responseJson, params, url };
+	const websiteBuild = responseJson;
+  
+    return { websiteBuild };
   
 }
