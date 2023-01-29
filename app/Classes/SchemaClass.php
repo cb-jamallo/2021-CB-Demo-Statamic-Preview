@@ -1480,6 +1480,8 @@ class SchemaClass
         foreach( $fileCode as $_fileCodeEntry )
         {
             // Handle collection
+            if ( !$_fileCodeEntry['collection'] ) continue;
+
             $this->replicateCodeGroup( $_fileCodeEntry );
         }
 

@@ -273,7 +273,7 @@ development-code:
         type: item
         enabled: true
     type: item
-    enabled: false
+    enabled: true
 local-host:
   -
     base: tekmountain-com-local.netlify.app
@@ -464,5 +464,5 @@ replicate:
   - websiteController
 target: development
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675027954
+updated_at: 1675028255
 ---
