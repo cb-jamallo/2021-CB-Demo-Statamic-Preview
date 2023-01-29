@@ -1520,8 +1520,6 @@ class SchemaClass
             $fileRoot, 
             $fileContent
         );
-
-        sleep(1);
     }
 
     protected function replicateCodeEntryDelete( $_fileEnv, $_fileRoot )
@@ -1581,8 +1579,6 @@ class SchemaClass
             // Handle creation of file
             File::copy( $fileSourcePath, $fileDestinationPath );
         }
-
-        sleep(1);
     }
 
     protected function replicatePage()
@@ -1618,9 +1614,6 @@ class SchemaClass
             $fileRoot, 
             $fileContent
         );
-
-        sleep(1);
-
     }
 
     protected function replicateBuild() 
@@ -1647,7 +1640,6 @@ class SchemaClass
             if ( sizeof( $buildDirectoriesNode ) <= 0 ) 
             {
                 shell_exec( $buildDirectoryUserPath . ' npm install 2>&1');
-                sleep(1);
             }
 
             //exec('cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin npm run ' . $buildTarget . ' 2>&1');
@@ -1715,8 +1707,6 @@ class SchemaClass
                 ]),
                 $regexContent                              // 3. Shortcode content origin
             );
-
-            sleep(2);
         };
 
         return $regexContent;
