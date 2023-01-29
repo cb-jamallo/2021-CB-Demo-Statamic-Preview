@@ -7,11 +7,15 @@
   //.....
 
   /* Global Stores */
+  
   /** @type {import('./$types').LayoutData} */
   export let data;
   
-  let websitePageClass = 'home';
-
+  export let pagePathname = page.url.pathname;
+  export let pagePathnameParts = page.url.pathname.split( '/' );
+  
+  export let pageName = pagePathnameParts[ pagePathnameParts.length -1 ];
+  
   onMount(async () => {
 	// #Await...
 	await tick();
@@ -26,7 +30,7 @@
 <svelte:head>
 </svelte:head>
 
-<main id="main" class='main main-{ websitePageClass }'>
+<main id="main" class='main main-{ pageName }'>
   Hello World!!!
   <slot />
 </main>

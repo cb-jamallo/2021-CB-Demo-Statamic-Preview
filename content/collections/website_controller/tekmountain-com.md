@@ -197,7 +197,7 @@ development-code:
             	await tick();
             	
             	console.log( data );
-            	console.log( $page )
+            	console.log( $page );
               
               });
             </script>
@@ -402,5 +402,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675024394
+updated_at: 1675024528
 ---
