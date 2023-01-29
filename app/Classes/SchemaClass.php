@@ -1188,6 +1188,13 @@ class SchemaClass
             $fileContent
         );
 
+        // Handle Navigation
+        // Handle create directories & file @ path
+        Storage::disk( $fileEnv )->put(
+            $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data/website', 'websiteBuildNavigation', 'js' ), 
+            json_encode( $this->schema['websiteBuild']['navigation']['tree'] , JSON_UNESCAPED_SLASHES )
+        );
+
     }
 
     public function initWebsiteControllerReset()
