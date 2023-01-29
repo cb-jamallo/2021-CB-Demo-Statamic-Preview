@@ -1442,41 +1442,6 @@ sections:
               display: Item
               fields:
                 -
-                  handle: group
-                  field:
-                    default: false
-                    display: Group
-                    type: toggle
-                    icon: toggle
-                    listable: hidden
-                    instructions_position: above
-                -
-                  handle: uid
-                  field:
-                    input_type: text
-                    antlers: false
-                    display: UID
-                    type: text
-                    icon: text
-                    listable: hidden
-                    instructions_position: above
-                    validate:
-                      - required
-                    if:
-                      group: 'equals false'
-                -
-                  handle: path
-                  field:
-                    input_type: text
-                    antlers: false
-                    display: Path
-                    type: text
-                    icon: text
-                    listable: hidden
-                    instructions_position: above
-                    if:
-                      group: 'equals false'
-                -
                   handle: name
                   field:
                     input_type: text
@@ -1488,64 +1453,6 @@ sections:
                     instructions_position: above
                     validate:
                       - required
-                    if:
-                      group: 'equals false'
-                -
-                  handle: ext
-                  field:
-                    options:
-                      'null': 'Select one'
-                      html: HTML
-                      css: CSS
-                      js: JS
-                      jsx: JSX
-                      svelte: Svelte
-                      vue: Vue
-                      react: React
-                      11ty: 11ty
-                      php: PHP
-                      csharp: 'C#'
-                      xml: XML
-                      txt: TXT
-                      htaccess: HTACCESS
-                    multiple: false
-                    clearable: true
-                    searchable: true
-                    taggable: true
-                    push_tags: false
-                    cast_booleans: false
-                    default: 'null'
-                    display: Ext
-                    type: select
-                    icon: select
-                    listable: hidden
-                    instructions_position: above
-                    max_items: 1
-                    validate:
-                      - required
-                      - nullable
-                    if:
-                      group: 'equals false'
-                -
-                  handle: content
-                  field:
-                    theme: light
-                    mode: htmlmixed
-                    mode_selectable: true
-                    indent_type: tabs
-                    indent_size: 4
-                    key_map: default
-                    line_numbers: true
-                    line_wrapping: true
-                    display: Content
-                    type: code
-                    icon: code
-                    listable: hidden
-                    instructions_position: above
-                    validate:
-                      - required
-                    if:
-                      group: 'equals false'
                 -
                   handle: collection
                   field:
@@ -1640,8 +1547,6 @@ sections:
                     icon: replicator
                     listable: hidden
                     instructions_position: above
-                    if:
-                      group: 'equals true'
           display: Code
           type: replicator
           icon: replicator
