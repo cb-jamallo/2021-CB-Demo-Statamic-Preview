@@ -67,7 +67,7 @@ development-code:
         VITE_ENV=development
       mode: htmlmixed
     type: item
-    enabled: true
+    enabled: false
     path: src/../
     group: false
   -
@@ -194,12 +194,17 @@ development-code:
       mode: htmlmixed
     collection:
       -
-        uid: test
-        path: /static
-        name: test
-        ext: txt
+        uid: env-development
+        path: src/../
+        name: .
+        ext: env.development
         content:
-          code: test..
+          code: |-
+            # NODE VARS..
+            NODE_ENV=development
+
+            # VITE VARS
+            VITE_ENV=development
           mode: htmlmixed
         type: item
         enabled: true
@@ -392,5 +397,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675011115
+updated_at: 1675011352
 ---
