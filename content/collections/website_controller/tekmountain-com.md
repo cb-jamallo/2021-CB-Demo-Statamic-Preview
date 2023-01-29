@@ -58,7 +58,7 @@ development-code:
     group: true
     uid: t1
     path: /static
-    name: test2
+    name: Core
     ext: html
     content:
       code: t
@@ -377,5 +377,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675013627
+updated_at: 1675014038
 ---

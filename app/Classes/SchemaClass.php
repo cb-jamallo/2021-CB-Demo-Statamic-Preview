@@ -1576,7 +1576,7 @@ class SchemaClass
         $fileUid = $this->schema['websiteBuild']['template']['uid'];
         $fileName = $this->schema['websiteBuild']['template']['name'];
         $fileExt = $this->schema['websiteBuild']['template']['ext'];
-        $filePath = ( $this->schema['websiteBuild']['template']['path'] ?? '/src' ) . '/' . $this->buildPageRouteTree( $this->schema['websiteBuild']['id'], $this->schema['websiteBuild']['navigation'] );
+        $filePath = ( $this->schema['websiteBuild']['template']['path'] ?? '' ) . '/' . $this->buildPageRouteTree( $this->schema['websiteBuild']['id'], $this->schema['websiteBuild']['navigation'] );
         $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . $filePath, $fileName, $fileExt );
         $fileGlobal = $this->buildPageRouteCleaned(  $fileEnv . '/' . $fileSlug . '/' . $filePath, $fileName, $fileExt );
 
