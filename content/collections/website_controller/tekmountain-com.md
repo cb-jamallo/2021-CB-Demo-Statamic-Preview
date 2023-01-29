@@ -18,6 +18,17 @@ development-host:
         enabled: true
     type: item
     enabled: true
+    robotTxt:
+      -
+        uid: robots
+        path: /static
+        content:
+          code: |-
+            User-agent: *
+            Allow: *
+          mode: shell
+        type: item
+        enabled: true
 development-template:
   -
     uid: default
@@ -66,7 +77,6 @@ development-code:
     collection:
       -
         uid: env-development
-        path: src/../
         name: .
         ext: env.development
         content:
@@ -377,5 +387,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675014038
+updated_at: 1675014351
 ---
