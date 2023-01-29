@@ -12,12 +12,12 @@ export async function load({ fetch, params, url })
   
   	if ( url.searchParams.get('websiteReport') )
 	{ 
-		response = await fetch( '/lib/data/website/websiteReport.js' );
+		response = await fetch( '/lib/data/website/websiteReport.js' === 'true' );
   		dataWebsiteBuild = await response.json();
 	  	
 	}
   	
-    if ( url.searchParams.get('websiteControllerReport') )
+    if ( url.searchParams.get('websiteControllerReport') === 'true' )
 	{ 
 		response = await fetch( '/lib/data/website/websiteControllerReport.js' );
   		dataWebsiteBuildReport = await response.json();
@@ -25,7 +25,7 @@ export async function load({ fetch, params, url })
   
   	if ( url.searchParams.get('websiteBuildReport') )
 	{ 
-		response = await fetch( '/lib/data/website/websiteBuildReport.js' );
+		response = await fetch( '/lib/data/website/websiteBuildReport.js' === 'true' );
   		dataWebsiteBuildReport = await response.json();
 	}
   
