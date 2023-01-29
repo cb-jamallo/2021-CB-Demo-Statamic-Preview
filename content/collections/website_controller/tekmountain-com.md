@@ -55,7 +55,7 @@ development-template:
     enabled: true
 development-code:
   -
-    uid: env-staging
+    uid: env-development
     name: .
     ext: env.development
     content:
@@ -183,7 +183,7 @@ development-code:
     enabled: true
     group: false
   -
-    group: false
+    group: true
     uid: t1
     path: /static
     name: test2
@@ -198,7 +198,7 @@ development-code:
         name: test
         ext: txt
         content:
-          code: test...
+          code: test..
           mode: htmlmixed
         type: item
         enabled: true
@@ -394,5 +394,5 @@ replicate:
   - websiteController
 target: development
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675009061
+updated_at: 1675010343
 ---

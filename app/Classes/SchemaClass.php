@@ -1459,10 +1459,14 @@ class SchemaClass
         {
             
             // Handle single file.
-            if (  !$_fileCodeEntry['group'] ) $this->replicateCodeEntry(  $_fileCodeEntry );
+            if (  !$_fileCodeEntry['group'] ) 
+            {
+                $this->replicateCodeEntry(  $_fileCodeEntry );
+                continue;
+            }
             
             // Handle collection
-            $this->replicateCodeGroup( $_fileCodeEntry['group'] );
+            $this->replicateCodeGroup( $_fileCodeEntry['collection'] );
 
         }
 
