@@ -131,7 +131,7 @@ class SchemaNavigationClass
             'title' => $entryTitle,
             'slug' => $entrySlug,
             'uri' => $entryUri,
-            'enabled' => $entryEnabled,
+            'enabled' => json_encode( $entryEnabled ),
         );
 
         if ( isset( $_ARGS['breadcrumb'] ) )
