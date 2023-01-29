@@ -149,25 +149,23 @@ development-code:
               	if ( url.searchParams.get('websiteReport')  === 'true' )
             	{ 
             		data = await fetch( '/lib/data/website/websiteReport.js' );
-              		dataWebsiteBuild = await response.json();
+              		dataWebsiteBuild = await data.json();
             	  	
             	}
               	
                 if ( url.searchParams.get('websiteControllerReport') === 'true' )
             	{ 
             		data = await fetch( '/lib/data/website/websiteControllerReport.js' );
-              		dataWebsiteBuildReport = await response.json();
+              		dataWebsiteBuildReport = await data.json();
             	}
               
               	if ( url.searchParams.get('websiteBuildReport')  === 'true' )
             	{ 
             		data = await fetch( '/lib/data/website/websiteBuildReport.js' );
-              		dataWebsiteBuildReport = await response.json();
+              		dataWebsiteBuildReport = await data.json();
             	}
-              	
-              	const urlSearchParams = url.searchParams;
                 
-              	return { urlSearchParams, dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
+              	return { dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
               
             }
           mode: javascript
@@ -410,5 +408,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675016501
+updated_at: 1675016631
 ---
