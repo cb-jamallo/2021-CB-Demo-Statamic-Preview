@@ -232,7 +232,7 @@ development-code:
         type: item
         enabled: true
     type: item
-    enabled: true
+    enabled: false
   -
     name: 'Component Stores'
     collection:
@@ -273,7 +273,7 @@ development-code:
         type: item
         enabled: true
     type: item
-    enabled: true
+    enabled: false
   -
     name: 'Component Nav'
     collection:
@@ -540,7 +540,7 @@ development-code:
         type: item
         enabled: true
     type: item
-    enabled: true
+    enabled: false
   -
     name: 'Component Section'
     collection:
@@ -642,7 +642,7 @@ development-code:
             </style>
           mode: htmlmixed
         type: item
-        enabled: true
+        enabled: false
       -
         uid: section-gray
         path: /src/lib/components
@@ -687,7 +687,7 @@ development-code:
             </style>
           mode: htmlmixed
         type: item
-        enabled: true
+        enabled: false
       -
         uid: section-white
         path: /src/lib/components
@@ -731,9 +731,9 @@ development-code:
             </style>
           mode: htmlmixed
         type: item
-        enabled: true
+        enabled: false
     type: item
-    enabled: true
+    enabled: false
   -
     name: 'Component Brand'
     collection:
@@ -1230,7 +1230,7 @@ development-code:
         type: item
         enabled: true
     type: item
-    enabled: false
+    enabled: true
 local-host:
   -
     base: tekmountain-com-local.netlify.app
@@ -1417,6 +1417,9 @@ local-code:
     type: item
     enabled: true
 run: false
+replicate:
+  - websiteController
+target: development
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675029224
+updated_at: 1675030714
 ---
