@@ -146,9 +146,9 @@ development-code:
               	let dataWebsiteControllerReport = null;
                 let dataWebsiteBuildReport = null;
               
-              	if ( url.searchParams.get('websiteReport') )
+              	if ( url.searchParams.get('websiteReport')  === 'true' )
             	{ 
-            		response = await fetch( '/lib/data/website/websiteReport.js' === 'true' );
+            		response = await fetch( '/lib/data/website/websiteReport.js' );
               		dataWebsiteBuild = await response.json();
             	  	
             	}
@@ -159,9 +159,9 @@ development-code:
               		dataWebsiteBuildReport = await response.json();
             	}
               
-              	if ( url.searchParams.get('websiteBuildReport') )
+              	if ( url.searchParams.get('websiteBuildReport')  === 'true' )
             	{ 
-            		response = await fetch( '/lib/data/website/websiteBuildReport.js' === 'true' );
+            		response = await fetch( '/lib/data/website/websiteBuildReport.js' );
               		dataWebsiteBuildReport = await response.json();
             	}
               
@@ -411,5 +411,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675016238
+updated_at: 1675016355
 ---
