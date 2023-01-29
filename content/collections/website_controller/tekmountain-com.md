@@ -187,11 +187,15 @@ development-code:
               //.....
 
               /* Global Stores */
+              
               /** @type {import('./$types').LayoutData} */
               export let data;
               
-              let websitePageClass = 'home';
-
+              export let pagePathname = page.url.pathname;
+              export let pagePathnameParts = page.url.pathname.split( '/' );
+              
+              export let pageName = pagePathnameParts[ pagePathnameParts.length -1 ];
+              
               onMount(async () => {
             	// #Await...
             	await tick();
@@ -206,7 +210,7 @@ development-code:
             <svelte:head>
             </svelte:head>
 
-            <main id="main" class='main main-{ websitePageClass }'>
+            <main id="main" class='main main-{ pageName }'>
               Hello World!!!
               <slot />
             </main>
@@ -402,5 +406,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675024528
+updated_at: 1675025002
 ---

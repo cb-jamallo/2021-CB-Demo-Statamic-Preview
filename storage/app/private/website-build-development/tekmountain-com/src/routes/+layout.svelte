@@ -11,10 +11,10 @@
   /** @type {import('./$types').LayoutData} */
   export let data;
   
-  export let pagePathname = page.url.pathname;
-  export let pagePathnameParts = page.url.pathname.split( '/' );
-  
-  export let pageName = pagePathnameParts[ pagePathnameParts.length -1 ];
+  //export let pagePathname = $page.url.pathname;
+  //export let pagePathnameParts = $page.url.pathname.split( '/' );
+  //export let pageName = pagePathnameParts[ pagePathnameParts.length -1 ];
+  export let pageName = '';
   
   onMount(async () => {
 	// #Await...
