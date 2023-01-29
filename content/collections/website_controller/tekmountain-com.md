@@ -193,7 +193,7 @@ development-code:
 
               /* Global Stores */
               /** @type {import('./$types').LayoutData} */
-              //export let data;
+              export let data;
               
               let websitePageClass = 'home';
 
@@ -410,5 +410,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675015500
+updated_at: 1675015631
 ---
