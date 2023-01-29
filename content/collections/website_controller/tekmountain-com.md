@@ -66,8 +66,231 @@ development-template:
     enabled: true
 development-code:
   -
+    group: true
+    uid: t1
+    path: /static
+    name: Core
+    ext: html
+    content:
+      code: t
+      mode: htmlmixed
+    collection:
+      -
+        uid: env-development
+        name: .
+        ext: env.development
+        content:
+          code: |-
+            # NODE VARS
+            NODE_ENV=development
+
+            # VITE VARS
+            VITE_ENV=development
+            VITE_SITE_TITLE=Castle Branch
+            VITE_SITE_TITLE_SEPARATOR=|
+          mode: htmlmixed
+        type: item
+        enabled: true
+      -
+        uid: app-html
+        name: app
+        ext: html
+        content:
+          code: |-
+            <!DOCTYPE html>
+            <html lang="en">
+            	<head>
+            	  <title>TekMountain.com</title>
+            	  <link rel='canonical' href='[[[websiteBuild.domain.host.base]]]'>
+            	  %sveltekit.head%
+            	</head>
+            	<body>
+            	  	<div style="display: contents">
+            	  		%sveltekit.body%
+            	  	</div>
+            	</body>
+            </html>
+          mode: htmlmixed
+        type: item
+        enabled: true
+      -
+        uid: +error-svelte
+        path: /src/routes
+        name: +error
+        ext: svelte
+        content:
+          code: |-
+            <script>
+               import { page } from '$app/stores';
+            </script>
+
+            {@html JSON.stringify( $page )}
+            {$page.status}: {$page.error.message}
+          mode: htmlmixed
+        type: item
+        enabled: true
+      -
+        uid: +layout-js
+        path: /src/routes
+        name: +layout
+        ext: js
+        content:
+          code: |-
+            export const prerender = true;
+            export const trailingSlash = 'always';
+            export const ssr = false;
+
+            /** @type {import('./$types').LayoutLoad} */
+            export async function load({ fetch, params, url }) 
+            {
+                let data = null;
+                let dataWebsiteReport = null;
+              	let dataWebsiteControllerReport = null;
+                let dataWebsiteBuildReport = null;
+              	let dataWebsiteBuildNavigation = null;
+              	
+              	if ( url.searchParams.get('websiteReport')  === 'true' )
+            	{ 
+            		data = await fetch( '/lib/data/website/websiteReport.js' );
+              		dataWebsiteReport = await data.json();
+            	}
+              	
+                if ( url.searchParams?.get('websiteControllerReport') === 'true' )
+            	{ 
+            		data = await fetch( '/lib/data/website/websiteControllerReport.js' );
+              		dataWebsiteControllerReport = await data.json();
+            	}
+              
+              	if ( url.searchParams?.get('websiteBuildReport') === 'true' )
+            	{ 
+            		data = await fetch( '/lib/data/website/websiteBuildReport.js' );
+              		dataWebsiteBuildReport = await data.json();
+            	}
+              
+              	data = await fetch( '/lib/data/website/websiteBuildNavigation.js' );
+              	dataWebsiteBuildNavigation = await data.json();
+                
+              	return { 
+            	  dataWebsiteReport,
+            	  dataWebsiteControllerReport,
+            	  dataWebsiteBuildReport,
+            	  dataWebsiteBuildNavigation,
+            	};
+              
+            }
+          mode: javascript
+        type: item
+        enabled: true
+      -
+        uid: +layout-svelte
+        path: /src/routes
+        name: +layout
+        ext: svelte
+        content:
+          code: |-
+            <script>
+              /* Svelte imports */
+              import { onMount, tick } from 'svelte';
+              import { page } from '$app/stores';
+              
+              /* Component imports */
+              //.....
+
+              /* Global Stores */
+              
+              /** @type {import('./$types').LayoutData} */
+              export let data;
+              
+              const pageRouteId = $page.route.id;
+              const pageName = ( pageRouteId === null ) 
+              	? 'error'
+              	:  ( pageRouteId === null )
+              		? 'home' 
+              		: pageRouteId.replace('/', '');
+              
+              onMount(async () => {
+            	// #Await...
+            	await tick();
+            	
+            	//$page.data = data
+              
+              });
+            </script>
+
+
+            <svelte:head>
+            </svelte:head>
+
+            <header class='header' tabindex='0'>
+            </header>
+
+            <main id="main" class='main main-{ pageName }'>
+              Hello World!!!
+              <slot />
+            </main>
+          mode: htmlmixed
+        type: item
+        enabled: true
+    type: item
+    enabled: true
+  -
     name: 'Component TTPL'
     collection:
+      -
+        uid: ttpl-sign-up-modal
+        path: /src/lib/components
+        name: tpl-sign-up-modal
+        ext: svelte
+        content:
+          code: |-
+            <script>
+              
+                'use strict';
+
+                /**
+                * Import Svelte Core JS
+                */
+
+                import { tick, onMount, afterUpdate } from 'svelte';
+
+                /**
+                 * Import Svelte Components
+                 */
+
+
+                /**
+                  * Import Custom JS
+                */
+                
+                /**
+                  * Export Custom JS
+                */
+
+                export let active = false;
+
+                onMount(async () => 
+                {
+                    //
+                    tick();
+                    
+                });
+
+                afterUpdate(async () => 
+                {
+                    //
+                    tick();
+                
+                });
+
+            </script>
+
+
+            <svelte:head>
+                <script src="/lib/js/modal-subscribe.js"></script>
+            </svelte:head>
+          mode: htmlmixed
+        type: item
+        enabled: true
       -
         uid: ttpl-sign-up
         name: ttpl-sign-up
@@ -438,174 +661,6 @@ development-code:
         path: /src/lib/components
     type: item
     enabled: true
-  -
-    group: true
-    uid: t1
-    path: /static
-    name: Core
-    ext: html
-    content:
-      code: t
-      mode: htmlmixed
-    collection:
-      -
-        uid: env-development
-        name: .
-        ext: env.development
-        content:
-          code: |-
-            # NODE VARS
-            NODE_ENV=development
-
-            # VITE VARS
-            VITE_ENV=development
-            VITE_SITE_TITLE=Castle Branch
-            VITE_SITE_TITLE_SEPARATOR=|
-          mode: htmlmixed
-        type: item
-        enabled: true
-      -
-        uid: app-html
-        name: app
-        ext: html
-        content:
-          code: |-
-            <!DOCTYPE html>
-            <html lang="en">
-            	<head>
-            	  <title>TekMountain.com</title>
-            	  <link rel='canonical' href='[[[websiteBuild.domain.host.base]]]'>
-            	  %sveltekit.head%
-            	</head>
-            	<body>
-            	  	<div style="display: contents">
-            	  		%sveltekit.body%
-            	  	</div>
-            	</body>
-            </html>
-          mode: htmlmixed
-        type: item
-        enabled: true
-      -
-        uid: +error-svelte
-        path: /src/routes
-        name: +error
-        ext: svelte
-        content:
-          code: |-
-            <script>
-               import { page } from '$app/stores';
-            </script>
-
-            {@html JSON.stringify( $page )}
-            {$page.status}: {$page.error.message}
-          mode: htmlmixed
-        type: item
-        enabled: true
-      -
-        uid: +layout-js
-        path: /src/routes
-        name: +layout
-        ext: js
-        content:
-          code: |-
-            export const prerender = true;
-            export const trailingSlash = 'always';
-            export const ssr = false;
-
-            /** @type {import('./$types').LayoutLoad} */
-            export async function load({ fetch, params, url }) 
-            {
-                let data = null;
-                let dataWebsiteReport = null;
-              	let dataWebsiteControllerReport = null;
-                let dataWebsiteBuildReport = null;
-              	let dataWebsiteBuildNavigation = null;
-              	
-              	if ( url.searchParams.get('websiteReport')  === 'true' )
-            	{ 
-            		data = await fetch( '/lib/data/website/websiteReport.js' );
-              		dataWebsiteReport = await data.json();
-            	}
-              	
-                if ( url.searchParams?.get('websiteControllerReport') === 'true' )
-            	{ 
-            		data = await fetch( '/lib/data/website/websiteControllerReport.js' );
-              		dataWebsiteControllerReport = await data.json();
-            	}
-              
-              	if ( url.searchParams?.get('websiteBuildReport') === 'true' )
-            	{ 
-            		data = await fetch( '/lib/data/website/websiteBuildReport.js' );
-              		dataWebsiteBuildReport = await data.json();
-            	}
-              
-              	data = await fetch( '/lib/data/website/websiteBuildNavigation.js' );
-              	dataWebsiteBuildNavigation = await data.json();
-                
-              	return { 
-            	  dataWebsiteReport,
-            	  dataWebsiteControllerReport,
-            	  dataWebsiteBuildReport,
-            	  dataWebsiteBuildNavigation,
-            	};
-              
-            }
-          mode: javascript
-        type: item
-        enabled: true
-      -
-        uid: +layout-svelte
-        path: /src/routes
-        name: +layout
-        ext: svelte
-        content:
-          code: |-
-            <script>
-              /* Svelte imports */
-              import { onMount, tick } from 'svelte';
-              import { page } from '$app/stores';
-              
-              /* Component imports */
-              //.....
-
-              /* Global Stores */
-              
-              /** @type {import('./$types').LayoutData} */
-              export let data;
-              
-              const pageRouteId = $page.route.id;
-              const pageName = ( pageRouteId === null ) 
-              	? 'error'
-              	:  ( pageRouteId === null )
-              		? 'home' 
-              		: pageRouteId.replace('/', '');
-              
-              onMount(async () => {
-            	// #Await...
-            	await tick();
-            	
-            	//$page.data = data
-              
-              });
-            </script>
-
-
-            <svelte:head>
-            </svelte:head>
-
-            <header class='header' tabindex='0'>
-            </header>
-
-            <main id="main" class='main main-{ pageName }'>
-              Hello World!!!
-              <slot />
-            </main>
-          mode: htmlmixed
-        type: item
-        enabled: true
-    type: item
-    enabled: true
 local-host:
   -
     base: tekmountain-com-local.netlify.app
@@ -793,5 +848,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675033021
+updated_at: 1675033155
 ---
