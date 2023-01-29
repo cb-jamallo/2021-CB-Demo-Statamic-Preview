@@ -204,17 +204,4 @@
     <img src='/lib/images/ttpl-menu-icon-mobile-blue-light.svg' alt='Menu Icon' />
 </button>
 
-
-<!-- 
-<li class="submenu">
-    <a href="/ttpl-study/sub" aria-haspopup="true" aria-expanded="false">
-        Sub
-    </a>
-    <ul>
-        <li><a href="/">...page</a></li>
-        <li><a href="/">...page</a></li>
-    </ul>
-</li> 
--->
-
 <style lang='postcss'></style>

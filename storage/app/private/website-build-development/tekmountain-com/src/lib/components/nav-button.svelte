@@ -1,5 +1,5 @@
 <button>
-    <slot></slot>
+  <slot></slot>
 </button>
 
 <style lang='postcss'></style>

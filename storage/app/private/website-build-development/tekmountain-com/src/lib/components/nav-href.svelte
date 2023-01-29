@@ -1,5 +1,5 @@
 <a {...$$restProps}>
- <slot></slot>
+  <slot></slot>
 </a>
 
 <style lang='postcss'></style>
