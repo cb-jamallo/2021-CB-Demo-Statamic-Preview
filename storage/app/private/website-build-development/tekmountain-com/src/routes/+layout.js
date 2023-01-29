@@ -28,8 +28,10 @@ export async function load({ fetch, params, url })
 		response = await fetch( '/lib/data/website/websiteBuildReport.js' );
   		dataWebsiteBuildReport = await response.json();
 	}
+  
+    const searchEntries = url.searchParams.entries();
   	
   
-    return { url.searchParams.entries(), dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
+    return { searchEntries, dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
   
 }
