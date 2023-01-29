@@ -142,15 +142,15 @@ development-code:
             export async function load({ fetch, params, url }) 
             {
                 let data = null;
-              	let dataWebsiteReport = null;
+                let dataWebsiteReport = null;
               	let dataWebsiteControllerReport = null;
                 let dataWebsiteBuildReport = null;
-              
+              	let dataWebsiteBuildNavigation = null;
+              	
               	if ( url.searchParams.get('websiteReport')  === 'true' )
             	{ 
             		data = await fetch( '/lib/data/website/websiteReport.js' );
               		dataWebsiteReport = await data.json();
-            	  	
             	}
               	
                 if ( url.searchParams?.get('websiteControllerReport') === 'true' )
@@ -164,8 +164,17 @@ development-code:
             		data = await fetch( '/lib/data/website/websiteBuildReport.js' );
               		dataWebsiteBuildReport = await data.json();
             	}
+              
+              	data = await fetch( '/lib/data/website/websiteNavigation.js' );
+              	dataWebsiteBuildNavigation = await data.json();
                 
-              	return { dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
+              	return { 
+            	  dataWebsiteReport, 
+            	  dataWebsiteControllerReport,
+            	  dataWebsiteBuildReport, 
+            	  dataWebsiteBuildNavigation, 
+            	  
+            	};
               
             }
           mode: javascript
@@ -408,5 +417,5 @@ local-code:
     enabled: true
 run: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675025805
+updated_at: 1675026215
 ---

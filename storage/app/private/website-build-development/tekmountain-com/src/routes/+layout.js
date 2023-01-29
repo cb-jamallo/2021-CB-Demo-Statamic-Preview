@@ -29,7 +29,7 @@ export async function load({ fetch, params, url })
   		dataWebsiteBuildReport = await data.json();
 	}
   
-  	data = await fetch( '/lib/data/website/websiteNavigation.js' );
+  	data = await fetch( '/lib/data/website/websiteBuildNavigation.js' );
   	dataWebsiteBuildNavigation = await data.json();
     
   	return { 
