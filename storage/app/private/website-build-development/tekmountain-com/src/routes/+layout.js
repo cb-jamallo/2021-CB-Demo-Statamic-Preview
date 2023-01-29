@@ -13,17 +13,17 @@ export async function load({ fetch, params, url })
   	if ( url.searchParams.get('websiteReport')  === 'true' )
 	{ 
 		data = await fetch( '/lib/data/website/websiteReport.js' );
-  		dataWebsiteBuild = await data.json();
+  		dataWebsiteReport = await data.json();
 	  	
 	}
   	
-    if ( url.searchParams.get('websiteControllerReport') === 'true' )
+    if ( url.searchParams?.get('websiteControllerReport') === 'true' )
 	{ 
 		data = await fetch( '/lib/data/website/websiteControllerReport.js' );
-  		dataWebsiteBuildReport = await data.json();
+  		dataWebsiteControllerReport = await data.json();
 	}
   
-  	if ( url.searchParams.get('websiteBuildReport')  === 'true' )
+  	if ( url.searchParams?.get('websiteBuildReport') === 'true' )
 	{ 
 		data = await fetch( '/lib/data/website/websiteBuildReport.js' );
   		dataWebsiteBuildReport = await data.json();
