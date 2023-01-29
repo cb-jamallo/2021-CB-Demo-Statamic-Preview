@@ -33,11 +33,10 @@ export async function load({ fetch, params, url })
   	dataWebsiteBuildNavigation = await data.json();
     
   	return { 
-	  dataWebsiteReport, 
+	  dataWebsiteReport,
 	  dataWebsiteControllerReport,
-	  dataWebsiteBuildReport, 
-	  dataWebsiteBuildNavigation, 
-	  
+	  dataWebsiteBuildReport,
+	  dataWebsiteBuildNavigation,
 	};
   
 }

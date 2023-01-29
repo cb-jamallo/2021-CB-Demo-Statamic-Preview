@@ -22,8 +22,7 @@
 	// #Await...
 	await tick();
 	
-	console.log( data );
-	console.log( $page );
+	//$page.data = data
   
   });
 </script>
