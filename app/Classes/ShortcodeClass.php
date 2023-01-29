@@ -30,10 +30,10 @@ class ShortcodeClass
     */
     
     public $shortcodePlaceholder = 'shortcode';
-    public $shortcodePatternTag = '/\[[^\:|\s|\/]{1,}\s?[^\]]{1,}\]/UX';
+    public $shortcodePatternTag = '/\[\[\[[^\:|\s|\/]{1,}\s?[^\]]{1,}\]\]\]/UX';
     public $shortcodePatternAttribute = '/(\s?[^\=]{1,}\=\'[^\']{1,}\'){1,}/UX';
     public $shortcodePatternAttributeKeyModifier = '/([^\:]*\:)?([^\:]*)(\:[^\:]*)?/';
-    public $shortcodePatternGroup = '#\[\[(shortcode)\:?([^\s|\]]*)?\s?([^\]]*)\](?:((?:[^\[]|\[(?!\/?shortcode\s?[^\]]*)|(?R))+)\[\/shortcode[^\]]*\]\])?#';
+    public $shortcodePatternGroup = '#\[\[\[(shortcode)\:?([^\s|\]]*)?\s?([^\]]*)\](?:((?:[^\[]|\[(?!\/?shortcode\s?[^\]]*)|(?R))+)\[\/shortcode[^\]]*\]\]\])?#';
 
     /**
     * @method array get()
@@ -62,6 +62,10 @@ class ShortcodeClass
     **/
     public function all( $_STRING )
     {
+
+        // Handle when we don't have shortcodes...
+        if ( !str_contains( '[[[', $_STRING ) && !str_contains( ']]]', $_STRING ) ) return null;
+
         preg_match_all(
             $this->shortcodePatternTag,
             $_STRING,
@@ -73,11 +77,6 @@ class ShortcodeClass
         {
             return $regexMatchEntry = str_replace('[',  '', str_replace( ']', '', $regexMatchEntry ) );
         });
-
-        // $regexMatch = $this->get([
-        //     'regexShortcode' => $regexMatch[0],
-        //     'regexContent' => $_STRING
-        // ]);
 
         return $regexMatch;
     }
