@@ -13,24 +13,22 @@ export async function load({ fetch, params, url })
   	if ( url.searchParams.get('websiteReport')  === 'true' )
 	{ 
 		data = await fetch( '/lib/data/website/websiteReport.js' );
-  		dataWebsiteBuild = await response.json();
+  		dataWebsiteBuild = await data.json();
 	  	
 	}
   	
     if ( url.searchParams.get('websiteControllerReport') === 'true' )
 	{ 
 		data = await fetch( '/lib/data/website/websiteControllerReport.js' );
-  		dataWebsiteBuildReport = await response.json();
+  		dataWebsiteBuildReport = await data.json();
 	}
   
   	if ( url.searchParams.get('websiteBuildReport')  === 'true' )
 	{ 
 		data = await fetch( '/lib/data/website/websiteBuildReport.js' );
-  		dataWebsiteBuildReport = await response.json();
+  		dataWebsiteBuildReport = await data.json();
 	}
-  	
-  	const urlSearchParams = url.searchParams;
     
-  	return { urlSearchParams, dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
+  	return { dataWebsiteReport, dataWebsiteBuildReport, dataWebsiteControllerReport };
   
 }
