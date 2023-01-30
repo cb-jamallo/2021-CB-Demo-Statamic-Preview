@@ -1251,9 +1251,10 @@ class SchemaClass
         {
             foreach( $navigation['children'] as $navigationChild )
             {
-                if ( !str_contains( $id, json_encode( $navigationChild, JSON_UNESCAPED_SLASHES ) ) ) continue;
-                
-                return $this->buildPageRouteTree( $_id, $navigationChild, $path );
+                if ( $id !== $navigationChild['id'] && $navigationChild['children'] )
+                {
+                    return $this->buildPageRouteTree( $_id, $navigationChild, $path );
+                }
             }
         }
 
