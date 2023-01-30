@@ -4835,6 +4835,66 @@ development-image:
     file: tekmountain-com/image/favicon/favicon-16x16.png
     type: item
     enabled: true
+  -
+    uid: apple-icon
+    file: tekmountain-com/image/favicon/apple-icon.png
+    type: item
+    enabled: true
+  -
+    uid: apple-icon-precomposed
+    file: tekmountain-com/image/favicon/apple-icon-precomposed.png
+    type: item
+    enabled: true
+  -
+    uid: apple-icon-180x180
+    file: tekmountain-com/image/favicon/apple-icon-180x180.png
+    type: item
+    enabled: true
+  -
+    uid: apple-icon-152x152
+    file: tekmountain-com/image/favicon/apple-icon-152x152.png
+    type: item
+    enabled: true
+  -
+    uid: apple-icon-144x144
+    file: tekmountain-com/image/favicon/apple-icon-144x144.png
+    type: item
+    enabled: true
+  -
+    uid: apple-icon-120x120
+    file: tekmountain-com/image/favicon/apple-icon-120x120.png
+    type: item
+    enabled: true
+  -
+    uid: apple-icon-120x120
+    file: tekmountain-com/image/favicon/apple-icon-120x120.png
+    type: item
+    enabled: true
+  -
+    uid: apple-icon-114x114
+    file: tekmountain-com/image/favicon/apple-icon-114x114.png
+    type: item
+    enabled: true
+  -
+    uid: apple-icon-76x76
+    file: tekmountain-com/image/favicon/apple-icon-76x76.png
+    type: item
+    enabled: true
+  -
+    uid: apple-icon-72x72
+    file: tekmountain-com/image/favicon/apple-icon-72x72.png
+    type: item
+    enabled: true
+  -
+    uid: apple-icon-60x60
+    file: tekmountain-com/image/favicon/apple-icon-60x60.png
+    type: item
+    enabled: true
+  -
+    uid: apple-icon-57x57
+    file: tekmountain-com/image/favicon/apple-icon-57x57.png
+    type: item
+    enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675043399
+updated_at: 1675043825
 ---
