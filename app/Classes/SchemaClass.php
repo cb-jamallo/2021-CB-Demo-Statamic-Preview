@@ -1254,7 +1254,7 @@ class SchemaClass
             {
                 $target = $this->buildPageRouteTree( $id, $navigationChild, $path );
 
-                if ( $id === $navigation['id'] && $id === $target ) return $target;
+                if ( $id === $target ) return $navigationChild['uri'];
             }
         }
 
