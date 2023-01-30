@@ -1246,12 +1246,13 @@ class SchemaClass
         $navigation = $_navigation['tree'] ?? $_navigation;
         $path = isset( $_navigation['tree'] ) ? $_navigation['tree']['uri'] : $navigation['uri'] ?? '/';
 
+        // Handle root first
         if ( $id !== $navigation['id'] && array_key_exists( 'children', $navigation ) )
         {
-            foreach( $navigation['children'] as $navigationChild )
-            {
-                return $this->buildPageRouteTree( $_id, $navigationChild, $path );
-            }
+        //     foreach( $navigation['children'] as $navigationChild )
+        //     {
+        //         return $this->buildPageRouteTree( $_id, $navigationChild, $path );
+        //     }
         }
 
         return $path;
