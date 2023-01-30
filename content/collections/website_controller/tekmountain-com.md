@@ -510,18 +510,20 @@ development-code:
 
             <style global lang="scss">
 
-                @import "$lib/css/font.css";
-                @import "$lib/css/reset.css";
-                @import "$lib/css/variable.css";
-                @import "$lib/css/typography.css";
-                @import "$lib/css/button.css";
-                @import "$lib/css/block.css";
-                @import "$lib/css/grid.css";
-                @import "$lib/css/global.css";
-                @import "$lib/css/ttpl-sign-up.css";
-                
-              // body { background-size: 100% auto; background-image: url('/lib/images/onionskin-hero-desktop.png'); background-repeat: no-repeat; }
-
+              @import "$lib/css/font.css";
+              @import "$lib/css/reset.css";
+              @import "$lib/css/variable.css";
+              @import "$lib/css/typography.css";
+              @import "$lib/css/button.css";
+              @import "$lib/css/block.css";
+              @import "$lib/css/grid.css";
+              @import "$lib/css/global.css";
+              @import "$lib/css/ttpl-sign-up.css";
+              
+              /*
+              body { background-size: 100% auto; background-image: url('/lib/images/onionskin-hero-desktop.png'); background-repeat: no-repeat; }
+              */
+              
             </style>
           mode: htmlmixed
         type: item
@@ -5786,5 +5788,5 @@ development-document:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675047085
+updated_at: 1675047194
 ---
