@@ -4278,6 +4278,68 @@ development-code:
           mode: htmlmixed
         type: item
         enabled: true
+      -
+        uid: tekmountain-logo
+        path: /src/lib/components
+        name: tekmountain-logo
+        ext: svelte
+        content:
+          code: |-
+            <script>
+
+                /**
+                 * Import Svelte Components
+                */
+                
+
+                /**
+                * Import Svelte Core JS
+                */
+                
+                import { tick, onMount } from 'svelte';
+                // import { base, assets } from '$app/paths';
+                // import { getStores, navigating, page, session, updated } from '$app/stores';
+                // import { page } from '@sveltejs/kit/app/stores.js' SSR REQUIRED FOR THIS TO FUNCTION
+
+                /**
+                * Import Custom JS
+                */
+                
+                /**
+                * Export Custom JS
+                */
+                export let logoDirection = 'horizontal'; // horizontal | vertical
+                export let logoType = 'normal'; // normal | reversed
+                export let logoAlt = 'TekMountain logo mark and logo type'; // normal | reversed
+                
+
+                onMount(() =>
+                {
+                    // Perf delay tick.
+                    tick();
+                    
+                });
+            </script>
+
+            {#if logoDirection === 'horizontal' }
+                {#if logoType === 'normal' }
+                    <img src='/lib/images/tekmountain-logo-horizontal-color.svg' {...$$restProps} alt='{logoAlt}' />
+                {:else}
+                    <img src='/lib/images/tekmountain-logo-horizontal-reversed.svg'  {...$$restProps} alt='{logoAlt}' />
+                {/if}
+            {:else}
+                {#if logoType === 'normal' }
+                    <img src='/lib/images/tekmountain-logo-vertical-color.svg'  {...$$restProps} alt='{logoAlt}' />
+                {:else}
+                    <img src='/lib/images/tekmountain-logo-vertical-reversed.svg' {...$$restProps} alt='{logoAlt}' />
+                {/if}
+            {/if}
+
+
+            <style lang='postcss'></style>
+          mode: htmlmixed
+        type: item
+        enabled: true
     type: item
     enabled: true
   -
@@ -5788,5 +5850,5 @@ development-document:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675047194
+updated_at: 1675047335
 ---
