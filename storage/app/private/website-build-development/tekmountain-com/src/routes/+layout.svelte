@@ -198,7 +198,8 @@
 
 <main id="main" class='main main-{ pageName }'>
     <slot />
-    {#if $Store.disqus }
+    
+  {#if $Store.disqus }
         <section tabindex="0" class="grid margin-bottom-6--sm margin-top-6--sm margin-top-4--lg  margin-bottom-4--lg">
             <div id='disqus_thread' class="padding-x-4--sm padding-x-4--lg"></div>
         </section>

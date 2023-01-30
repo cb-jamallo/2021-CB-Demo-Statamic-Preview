@@ -1,30 +1,12 @@
 <script>
 
-    /**
-     * Import Svelte Components
-    */
-    
-
-    /**
-    * Import Svelte Core JS
-    */
-    
+    /* SVELTE/KIT IMPORTS */
     import { tick, onMount, afterUpdate } from 'svelte';
-    // import { base, assets } from '$app/paths';
-    import { page } from '$app/stores'; // getStores, navigating, session, updated
+    import { page } from '$app/stores';
 
-    /**
-    * Import Custom JS
-    */
-    
-    /**
-    * Export Custom JS
-    */
-
-    /*
-        NAVIGATION
-    */
-
+	/* CUSTOM IMPORTS */
+  
+  	/* CUSTOM JS */
     let navMain = null;
     let navMainUl = null;
     let navMainButton = null;
@@ -41,17 +23,20 @@
         navMainInitMobile();
         navMainInitDesktop();
         
-        // navMainResize();
-        // window.dispatchEvent(new Event('resize'));
+        /* 
+		navMainResize();
+        window.dispatchEvent(new Event('resize'));
+		*/
     }
 
     const navMainResize = () =>
     {
         window.addEventListener('resize', ( _event ) => 
         {
-            // if ( window.outerWidth <= 768) return navMainMobile();
-            
-            // return navMainInitDesktop();
+            /*
+			if ( window.outerWidth <= 768) return navMainMobile();
+            return navMainInitDesktop();
+			*/
         });
     }
 
@@ -107,17 +92,20 @@
 
                 parent.classList.toggle('expanded');
 
-                // if ( parent.classList.contains('expanded') )
-                // { 
+                /*
+				if ( parent.classList.contains('expanded') )
+                {
+				*/
                     parentLink.setAttribute('aria-expanded', String(parent.classList.contains('expanded')));
                     parentButton.setAttribute('aria-expanded', String(parent.classList.contains('expanded')));
-                // } 
-                // else 
-                // {
-                //     parentLink.setAttribute('aria-expanded', 'false');
-                //     parentButton.setAttribute('aria-expanded', 'false');
-                // }
-
+                /*
+				} 
+                else 
+                {
+                   parentLink.setAttribute('aria-expanded', 'false');
+                   parentButton.setAttribute('aria-expanded', 'false');
+                }
+				*/
                 _event.preventDefault();
                 _event.stopPropagation();
 
@@ -129,7 +117,7 @@
         
         let navMainActiveClass = 'nav-main-a-active';
         let navMainPath =  $page.url.pathname;
-        let navMainPathParts = $page.url.pathname.split('/').filter( _n => _n ); // remove empty items...
+        let navMainPathParts = $page.url.pathname.split('/').filter( _n => _n );
         let navMainPathParts1 = navMainPathParts[0];
 
         
@@ -139,12 +127,10 @@
 
                 if ( ( navMainPath === '/' && _index === 0) || navMainPathParts1?.includes( _link.innerText.toLowerCase().split(' ').join('-') ) ) 
                 {
-                    // Set new...
                     _link.classList.add( navMainActiveClass );
                 }
                 else
                 {
-                    // Clear all...
                     _link.classList.remove( navMainActiveClass );
                 }
 
@@ -153,15 +139,9 @@
 
     onMount(async () => {
         
-        // Perf delay tick.
         tick();
 
         navMainInit();
-        //console.log($base);
-        //console.log($navigating);
-        //console.log($page);
-        //console.log($session);
-        //console.log($updated);
     });
 
     afterUpdate( async() => {
@@ -174,7 +154,6 @@
 </script>
 
 <!-- @html{process.env.NODE_ENV} -->
-
 <nav class='nav-main nav-main-open' {...$$restProps} role="navigation" aria-label="Main Navigation">
     <a href='#main' class='nav-main-skip-link sr-only'>Skip Menu Items</a>
     <ul id='nav-main' class='nav-main-ul'>

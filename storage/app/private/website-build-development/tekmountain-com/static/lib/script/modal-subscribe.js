@@ -21,8 +21,10 @@ const formBannerAnimate = () =>
     
     let blocksLoop = 0;
 
-    // Slide-up banner
-    anime({
+    /*
+	Slide-up banner
+    */
+  	anime({
         targets: [formBanner],
         opacity: [0, 1],
         delay: 1750,
@@ -31,7 +33,6 @@ const formBannerAnimate = () =>
         begin: ( _anim ) =>
         {
             if ( window.outerWidth <= 767 ) blocks[1].style.opacity = 0;
-            //_anim.animatables[0].target.classList.remove('sr-only'); 
             console.log('begin banner animation....', formBanner.classList);
             formBanner.classList.remove('.sr-only'); 
             console.log('begin banner animation....', formBanner.classList);
@@ -97,7 +98,9 @@ const formBannerAnimate = () =>
 
 };
 
-/** Form modal open */
+/** 
+Form modal open 
+*/
 const formModalOpen = () => {
 
     formModal.classList.add('active');
@@ -116,7 +119,9 @@ const formModalOpen = () => {
 
 };
 
-/** Form modal close */
+/** 
+Form modal close 
+*/
 const formModalClose = () => {
 
     anime({
@@ -132,7 +137,9 @@ const formModalClose = () => {
     });
 };
 
-/** Form serialization */
+/** 
+Form serialization 
+*/
 const formDataSerialize = ( _form ) =>
 {
     let formDataSerialized = {};
@@ -168,17 +175,23 @@ document.addEventListener('DOMContentLoaded', () =>
     formThankYou = document.querySelector('.modal-form-thank-you');
     formError = document.querySelector('.modal-form-error');
 
-    /** Enable form submit */
+    /** 
+	Enable form submit 
+	*/
     form.addEventListener('submit', ( _event ) =>
     {
         _event.preventDefault();
         _event.stopPropagation();
     
-        // Submit Gate Test: Honeypot as inputis empty.
+        /*
+		Submit Gate Test: Honeypot as inputis empty.
+		*/
         if ( document.querySelector('input[name=_confirm]').value !== '' ) return;
     
-        // Submit Gate Test:  Honeypot as checked.
-        if ( document.querySelector('input[name=_confirm2]').checked ) return;
+        /*
+		Submit Gate Test:  Honeypot as checked.
+        */
+	  	if ( document.querySelector('input[name=_confirm2]').checked ) return;
     
         formLoader.classList.remove('hidden');
         formSubmit.value = '';
@@ -188,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () =>
             formData.form = 'TekMountain Newsletter Signup';
             formData.url = window.location.href;
         
-        //fetch('https://submit-form.com/Y6utqnzM', // Test Form
+        /* fetch('https://submit-form.com/Y6utqnzM', // Test Form */
         fetch('https://submit-form.com/zv3SOHms', // Live Form
         {
             method: 'post',
@@ -216,16 +229,16 @@ document.addEventListener('DOMContentLoaded', () =>
         return false;
     });
     
-    /** Enable form submit ability after minimal input */
+    /* Enable form submit ability after minimal input */
     let formEnable = ( _event ) =>
     {   
 
-        // Submit Gate Test: Ensure proper user event types triggered to test required validity
+        /* Submit Gate Test: Ensure proper user event types triggered to test required validity */
         if ( _event.type !== 'pointerdown' && ( _event.type !== 'keydown' && _event?.key?.toLowerCase() !== 'tab' ) ) return;
         
         console.log( 'banner', _event.type, formSubmit, formBanner )
     
-        // Submit Gate Test: Required fields validated for enabling submit button
+        /* Submit Gate Test: Required fields validated for enabling submit button */
         if ( !document.querySelector('input[name=name]').checkValidity() ||
              !document.querySelector('input[name=email]').checkValidity() ||
              !document.querySelector('input[name=company]').checkValidity() ) return;
@@ -236,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () =>
     form.addEventListener( 'pointerdown', formEnable, false);
     form.addEventListener( 'keydown', formEnable, false);
     
-    /** Automate honeypot add after delay... */
+    /* Automate honeypot add after delay... */
     let formDelay = setTimeout( () =>
     {
         const honeypot = document.createElement("input");
