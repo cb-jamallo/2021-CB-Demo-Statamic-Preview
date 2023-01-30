@@ -41,5 +41,5 @@
 
 
 <svelte:head>
-    <script src="/lib/js/modal-subscribe.js"></script>
+    <script src="/lib/script/modal-subscribe.js"></script>
 </svelte:head>

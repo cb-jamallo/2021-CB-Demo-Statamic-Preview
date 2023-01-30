@@ -241,6 +241,120 @@ development-template:
             <div class='swiper-scrollbar'></div>
           </div>
         </section>
+
+        <style global lang="scss">
+
+          :root {
+
+            --what-drives-us-swiper-prev-width: 12vw;
+            --what-drives-us-swiper-prev-left: 0;
+            --what-drives-us-swiper-prev-bottom: 0;
+            --what-drives-us-swiper-next-width: 12vw;
+            --what-drives-us-swiper-next-left: 13vw;
+            --what-drives-us-swiper-next-bottom: 0;
+
+            --invested-copy-type-size: var(--type-size);
+
+
+            --bio-figcaption-top: 81vw;
+
+            --bio-figcaption-child-padding: .75vw 0 0;
+
+            --bio-full-figcaption-margin: 0;
+            --bio-full-figcaption-padding: 0;
+
+            --bio-full-name-type-size: var(--type-size);
+            --bio-full-name-type-line-height: 1.1;
+
+            --bio-org-link-type-size: 3.238vw;
+            --bio-org-link-type-line-height: 1.1;
+
+            --bio-credentials-type-size: 3.238vw;
+            --bio-credentials-type-line-height: 1.1;
+
+            --bio-title-type-size: 3.238vw;
+            --bio-title-type-line-height: 1.1;
+          }
+
+          @media only screen and (min-width: 768px)
+          {
+            :root {
+
+                --what-drives-us-swiper-prev-width: 5vw;
+                --what-drives-us-swiper-prev-left: 0;
+                --what-drives-us-swiper-prev-bottom: 0;
+                --what-drives-us-swiper-next-width: 5vw;
+                --what-drives-us-swiper-next-left: 5.75vw;
+                --what-drives-us-swiper-next-bottom: 0;
+
+                --invested-copy-type-size: 1.5vw;
+
+                --bio-figcaption-top: 28.5vw;
+
+                --bio-figcaption-child-padding: .25vw 0 0;
+
+                --bio-full-figcaption-margin: 0;
+                --bio-full-figcaption-padding: 0;
+
+                --bio-full-name-type-size: var(--type-size);
+                --bio-full-name-type-line-height: 1.1;
+
+                --bio-credentials-type-size: 1.25vw;
+                --bio-credentials-type-line-height: 1.1;
+
+                --bio-org-link-type-size: 1.25vw;
+                --bio-org-link-type-line-height: 1.1;
+
+                --bio-title-type-size: 1.25vw;
+                --bio-title-type-line-height: 1.1;
+            }
+
+          }
+
+
+          .what-drives-us-detail { display: none; opacity: 0; }
+
+          .swiper-button-prev-unique,
+          .swiper-button-next-unique { position: absolute; z-index: 2; bottom: 0; }
+
+          .swiper-button-prev-unique { z-index: 3; width: var(--what-drives-us-swiper-prev-width); left: var(--what-drives-us-swiper-prev-left); bottom: var(--what-drives-us-swiper-prev-bottom); }
+          .swiper-button-next-unique { z-index: 2; width: var(--what-drives-us-swiper-next-width); left: var(--what-drives-us-swiper-next-left); bottom: var(--what-drives-us-swiper-next-bottom); }
+
+          
+          .invested-copy { font-size: var(--invested-copy-type-size); }
+
+          .bio-figcaption { position: absolute; top: var(--bio-figcaption-top); }
+          
+          .bio-figcaption > * { display: block; }
+
+          .bio-figcaption > *:not(:nth-child(1)) { padding: var(--bio-figcaption-child-padding); }
+
+          .bio-full-name {
+
+            font-size: var(--bio-full-name-type-size);
+            line-height: var(--bio-full-name-type-line-height);
+            font-weight: var(--type-weight-medium);
+          }
+
+          .bio-credentials {
+            font-size: var(--bio-credentials-type-size);
+            line-height: var(--bio-credentials-type-line-height);
+            font-weight: var(--type-weight-medium);
+          }
+
+          .bio-org-link {
+            font-size: var(--bio-org-link-type-size);
+            line-height: var(--bio-org-link-type-line-height);
+            font-weight: var(--bio-org-link-type-weight);
+          }
+
+          .bio-title {
+            font-size: var(--bio-title-type-size);
+            line-height: var(--bio-title-type-line-height);
+            font-weight: var(--bio-title-type-weight);
+          }
+          
+        </style>
       mode: htmlmixed
     type: item
     enabled: true
@@ -327,5 +441,5 @@ development-image:
     enabled: true
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675052172
+updated_at: 1675052259
 ---
