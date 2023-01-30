@@ -245,16 +245,18 @@
 
 <style global lang="scss">
 
-    @import "$lib/css/font.css";
-    @import "$lib/css/reset.css";
-    @import "$lib/css/variable.css";
-    @import "$lib/css/typography.css";
-    @import "$lib/css/button.css";
-    @import "$lib/css/block.css";
-    @import "$lib/css/grid.css";
-    @import "$lib/css/global.css";
-    @import "$lib/css/ttpl-sign-up.css";
-    
-  // body { background-size: 100% auto; background-image: url('/lib/images/onionskin-hero-desktop.png'); background-repeat: no-repeat; }
-
+  @import "$lib/css/font.css";
+  @import "$lib/css/reset.css";
+  @import "$lib/css/variable.css";
+  @import "$lib/css/typography.css";
+  @import "$lib/css/button.css";
+  @import "$lib/css/block.css";
+  @import "$lib/css/grid.css";
+  @import "$lib/css/global.css";
+  @import "$lib/css/ttpl-sign-up.css";
+  
+  /*
+  body { background-size: 100% auto; background-image: url('/lib/images/onionskin-hero-desktop.png'); background-repeat: no-repeat; }
+  */
+  
 </style>
