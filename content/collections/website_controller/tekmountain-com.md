@@ -5819,6 +5819,26 @@ development-image:
     file: tekmountain-com/image/tekmountain-logo-mark-reversed.svg
     type: item
     enabled: true
+  -
+    uid: tekmountain-logo-horizontal-color
+    file: tekmountain-com/image/tekmountain-logo-horizontal-color.svg
+    type: item
+    enabled: true
+  -
+    uid: tekmountain-logo-horizontal-reversed
+    file: tekmountain-com/image/tekmountain-logo-horizontal-reversed.svg
+    type: item
+    enabled: true
+  -
+    uid: tekmountain-logo-vertical-color
+    file: tekmountain-com/image/tekmountain-logo-vertical-color.svg
+    type: item
+    enabled: true
+  -
+    uid: tekmountain-logo-vertical-color
+    file: tekmountain-com/image/tekmountain-logo-vertical-reversed.svg
+    type: item
+    enabled: true
 development-document:
   -
     uid: castlebranch-oadn-confposter-2021-proof
@@ -5841,5 +5861,5 @@ development-document:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675050439
+updated_at: 1675051702
 ---
