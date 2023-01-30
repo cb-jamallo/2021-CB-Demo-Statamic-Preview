@@ -38,8 +38,8 @@ development-template:
     type: item
     enabled: true
 parent: 8fe0f1f3-c0b7-4b5e-9483-a18722504c5d
-replicate:
-  - page
+replicate: 'null'
+target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675087310
+updated_at: 1675087368
 ---
