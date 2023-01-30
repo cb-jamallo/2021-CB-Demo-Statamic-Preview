@@ -381,9 +381,9 @@ development-code:
             	  swiperConfig.grabCursor = true;
 
             	  let swiperInstance = new Swiper( swiper, swiperConfig );
-            	  // swiperInstance.on('slideChange', function () {
+            	  /* swiperInstance.on('slideChange', function () {
             	  //   console.log('slide changed');
-            	  // });
+            	  }); */
             	  swiperInstances.push( swiperInstance );
 
             	  return {
@@ -401,13 +401,13 @@ development-code:
             	  // #Await...
             	  await tick();
 
-            	  //$page.data = data
+            	  /* $page.data = data */
             	  $Store.ttpl = ( window.location.href.includes( 'ttpl-study' ) );
 
             	});
 
             	afterUpdate(async () => {
-            	  //
+            	  
             	  tick();
 
             	  swiperInstanceListInit();
@@ -5849,5 +5849,5 @@ development-document:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675047537
+updated_at: 1675047660
 ---
