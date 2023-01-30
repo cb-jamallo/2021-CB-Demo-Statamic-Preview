@@ -60,7 +60,7 @@ development-template:
       code: null
       mode: javascript
     body:
-      code: 'Main Template Body'
+      code: null
       mode: htmlmixed
     type: item
     enabled: true
@@ -5566,5 +5566,5 @@ development-document:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675045452
+updated_at: 1675046435
 ---
