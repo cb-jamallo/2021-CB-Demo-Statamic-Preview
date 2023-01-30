@@ -1,11 +1,12 @@
 ---
-id: 69f6f070-c533-4213-abba-b8af407ea4ec
+id: 785879d1-9782-4240-a37e-add7b81d4399
+published: false
 blueprint: website
-title: 'Global Ambassador'
+title: 'What We Do'
 development-template:
   -
     uid: default
-    path: /src/routes/why-we-do-it
+    path: /src/routes/
     name: +page
     ext: svelte
     doctype:
@@ -33,13 +34,14 @@ development-template:
       code: null
       mode: javascript
     body:
-      code: 'Why we do it...'
+      code: 'What We Do...'
       mode: htmlmixed
     type: item
     enabled: true
-parent: c025df8d-4362-4fc9-8676-bf13ff46eff2
-replicate: 'null'
-target: 'null'
+parent: 8fe0f1f3-c0b7-4b5e-9483-a18722504c5d
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675086859
+updated_at: 1675086971
+replicate:
+  - page
+target: development
 ---
