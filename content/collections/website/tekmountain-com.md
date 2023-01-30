@@ -162,6 +162,85 @@ development-template:
             <div class="background-pattern z-1"></div>
           </div>
         </section>
+
+        <section tabindex="0" class="grid margin-top-12--sm margin-top-8--lg">
+          <div class="padding-x-4--sm padding-x-6--lg place-self-start-center text-align-center--lg">
+            <h3 class="h3">Industries We Serve</h3>
+            <p class="p">Innovation truly works when access to market is significant.</p>
+          </div>
+          <div class='swiper swiper-full' data-swiper={JSON.stringify({
+            'mobile':  { 'config' : { 'direction': 'horizontal', 'loop': false, 'autoHeight': true, 'slidesPerView': 1.2, 'spaceBetween': 10, 'scrollbar': false  } }, 
+            'desktop': { 'config' : { 'direction': 'horizontal', 'loop': false, 'autoHeight': true, 'slidesPerView': 3.3, 'spaceBetween': 15, 'scrollbar': true  } }
+          })}>
+            <div class="swiper-wrapper padding-top-3--sm padding-top-2--lg padding-bottom-1--lg">
+              <div class="swiper-slide flip grid grid-stacked">
+                <div class="flip-front z-2 grid grid-stacked">
+                    <picture class='flip-front-icon z-3 place-self-end-end'>
+                        <img src='/lib/images/icon-arrow-flip.svg' />
+                    </picture>
+                    <h4 class="z-2 flip-front-header place-self-center-center">Healthcare</h4>
+                    <picture class="z-1">
+                        <source srcset="/lib/images/home/industries-we-serve/tekmountain-healthcare-mobile.jpg, /lib/images/home/industries-we-serve/tekmountain-healthcare-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                        <source srcset="/lib/images/home/industries-we-serve/tekmountain-healthcare-desktop.jpg, /lib/images/home/industries-we-serve/tekmountain-healthcare-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                        <img src="/lib/images/home/industries-we-serve/tekmountain-healthcare-mobile.jpg" alt="...">
+                    </picture>
+                </div>
+                <div class="flip-back z-1 grid">
+                  <p class="flip-back-p-large place-self-center-center">Students performing clinicals at <strong class="flip-back-strong-large">94%</strong> of U.S. hospitals</p>
+                </div>
+              </div>
+              <div class="swiper-slide flip grid grid-stacked">
+                <div class="flip-front z-2 grid grid-stacked">
+                    <picture class='flip-front-icon z-3 place-self-end-end'>
+                        <img src='/lib/images/icon-arrow-flip.svg' />
+                    </picture>
+                  <h4 class="z-2 flip-front-header place-self-center-center">Higher<br> Education</h4>
+                  <picture class="z-1">
+                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-highered-mobile.jpg, /lib/images/home/industries-we-serve/tekmountain-highered-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-highered-desktop.jpg, /lib/images/home/industries-we-serve/tekmountain-highered-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                    <img src="/lib/images/home/industries-we-serve/tekmountain-highered-mobile.jpg" alt="...">
+                  </picture>
+                </div>
+                <div class="flip-back z-1 grid">
+                  <p class="flip-back-p-large place-self-center-center"><strong class="flip-back-strong-large">18,700</strong> health professions programs</p>
+                </div>
+              </div>
+              <div class="swiper-slide flip grid grid-stacked">
+                <div class="flip-front z-2 grid grid-stacked">
+                    <picture class='flip-front-icon z-3 place-self-end-end'>
+                        <img src='/lib/images/icon-arrow-flip.svg' />
+                    </picture>
+                  <h4 class="z-2 flip-front-header place-self-center-center">Nursing<br> Students</h4>
+                  <picture class="z-1">
+                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-students-mobile.jpg, /lib/images/home/industries-we-serve/tekmountain-students-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-students-desktop.jpg, /lib/images/home/industries-we-serve/tekmountain-students-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                    <img src="/lib/images/home/industries-we-serve/tekmountain-students-mobile.jpg" alt="...">
+                  </picture>
+                </div>
+                <div class="flip-back z-1 grid">
+                  <p class="flip-back-p-large place-self-center-center"><strong class="flip-back-strong-large">70%</strong> of our Nation's Healthcare Students</p>
+                </div>
+              </div>
+              <div class="swiper-slide flip grid grid-stacked">
+                <div class="flip-front z-2 grid grid-stacked">
+                    <picture class='flip-front-icon z-3 place-self-end-end'>
+                        <img src='/lib/images/icon-arrow-flip.svg' />
+                    </picture>
+                  <h4 class="z-2 flip-front-header place-self-center-center">Associations</h4>
+                  <picture class="z-1">
+                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-associations-mobile.jpg, /lib/images/home/industries-we-serve/tekmountain-associations-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-associations-desktop.jpg, /lib/images/home/industries-we-serve/tekmountain-associations-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                    <img src="/lib/images/home/industries-we-serve/tekmountain-associations-mobile.jpg" alt="...">
+                  </picture>
+                </div>
+                <div class="flip-back z-1 grid">
+                  <p class="flip-back-p-large place-self-center-center">Well established partnerships with the Nation's most significant associations</p>
+                </div>
+              </div>
+            </div>
+            <div class='swiper-scrollbar'></div>
+          </div>
+        </section>
       mode: htmlmixed
     type: item
     enabled: true
@@ -248,5 +327,5 @@ development-image:
     enabled: true
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675051921
+updated_at: 1675052172
 ---
