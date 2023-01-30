@@ -3,20 +3,22 @@
   import { onMount, afterUpdate, tick } from 'svelte';
   import { page } from '$app/stores';
   
+  /** @type {import('./$types').LayoutData} */
+  export let data;
+  
+  
   /* 3RD-PARTY IMPORTS */
   
+  
   /* CUSTOM IMPORTS */
-  import Store from '$lib/components/_stores/store';
   import TekMountainLogo from "$lib/components/tekmountain-logo.svelte";
   import NavAHref from "$lib/components/nav-ahref.svelte";
   import NavMenuMain from "$lib/components/nav-menu-main.svelte";
   import TTPLSignup from "$lib/components/ttpl-sign-up.svelte";
-
-  /* Global Stores */
+  import Store from '$lib/components/_stores/store'
   
-  /** @type {import('./$types').LayoutData} */
-  export let data;
   
+  /* CUSTOM JS */
   const pageRouteId = $page.route.id;
   const pageName = ( pageRouteId === null ) 
   	? 'error'

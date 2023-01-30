@@ -263,15 +263,17 @@ development-code:
         content:
           code: |-
             <script>
-              /* Svelte imports */
+              /* SVELTE/KIT IMPORTS */
               import { onMount, afterUpdate, tick } from 'svelte';
               import { page } from '$app/stores';
               
-              /* Component imports */
+              /* 3RD-PARTY IMPORTS */
+              
+              /* CUSTOM IMPORTS */
+              import Store from '$lib/components/_stores/store';
               import TekMountainLogo from "$lib/components/tekmountain-logo.svelte";
               import NavAHref from "$lib/components/nav-ahref.svelte";
               import NavMenuMain from "$lib/components/nav-menu-main.svelte";
-
               import TTPLSignup from "$lib/components/ttpl-sign-up.svelte";
 
               /* Global Stores */
@@ -5849,5 +5851,5 @@ development-document:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675047660
+updated_at: 1675048851
 ---
