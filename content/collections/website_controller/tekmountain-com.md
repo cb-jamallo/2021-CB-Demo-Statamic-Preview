@@ -4668,6 +4668,549 @@ development-code:
         path: /src/lib/components
     type: item
     enabled: true
+  -
+    name: Script
+    collection:
+      -
+        uid: modal-subscribe
+        path: /static/lib/script
+        name: modal-subscribe
+        ext: js
+        content:
+          code: |-
+            'use struct';
+
+
+            let formBanner = null;
+            let formModal = null;
+            let formModalCloseBtn = null;
+            let form = null;
+            let formLoader = null;
+            let formSubmit = null;
+            let formThankYou = null;
+            let formError = null;
+
+            const formBannerAnimate = () => 
+            {
+                console.log('banner animation called', formBanner.classList);
+                let blocks = [ 
+                    document.querySelector('.banner .header'),
+                    document.querySelector('.banner .body'),
+                    document.querySelector('.banner-content')
+                ];
+                
+                let blocksLoop = 0;
+
+                // Slide-up banner
+                anime({
+                    targets: [formBanner],
+                    opacity: [0, 1],
+                    delay: 1750,
+                    duration: 250,
+                    loop: false,
+                    begin: ( _anim ) =>
+                    {
+                        if ( window.outerWidth <= 767 ) blocks[1].style.opacity = 0;
+                        //_anim.animatables[0].target.classList.remove('sr-only'); 
+                        console.log('begin banner animation....', formBanner.classList);
+                        formBanner.classList.remove('.sr-only'); 
+                        console.log('begin banner animation....', formBanner.classList);
+                    },
+                    complete: ( _anim ) =>
+                    {
+                        formBanner.style.opacity = .5;
+                        formBanner.classList.remove('sr-only'); 
+                        if ( window.outerWidth <= 767 )
+                        {
+                            let loop1 = anime({
+                                targets: [blocks[0]],
+                                delay: 2000,
+                                opacity: [1, 0],
+                                duration: 1200,
+                                endDelay: 2250,
+                                direction: 'alternate',
+                                loop: true,
+                                easing: 'easeInOutSine'
+                            });
+
+                            let loop2 = anime({
+                                targets: [blocks[1]],
+                                delay: 2000,
+                                opacity: [0, 1],
+                                duration: 1200,
+                                endDelay: 2250,
+                                direction: 'alternate',
+                                loop: true,
+                                begin: ( _anim ) => {
+
+                                    anime({
+                                        targets: [blocks[2]],
+                                        delay: -250,
+                                        opacity: [0, 1],
+                                        marginBottom: ['-16.367vw', '16.067vw'], 
+                                        duration: 750,
+                                        easing: 'easeInOutSine'
+                                    });
+                                },
+                                loopComplete: () => { 
+                                    blocksLoop++;
+                                    if ( blocksLoop > 4 )
+                                    {
+                                        loop1.pause;
+                                        loop2.pause;
+                                        anime({
+                                            targets: [blocks[2]],
+                                            delay: 0,
+                                            marginBottom: '-20vw',
+                                            duration: 500,
+                                            loop: false,
+                                            easing: 'easeInOutSine'
+                                        });
+                                    }
+                                },
+                                easing: 'easeInOutSine'
+                            });
+                        }
+                    },
+                    easing: 'easeInOutSine'
+                });
+
+            };
+
+            /** Form modal open */
+            const formModalOpen = () => {
+
+                formModal.classList.add('active');
+
+                anime({
+                    targets: [formModal],
+                    delay: 0,
+                    opacity: [0, 1],
+                    translateY: ['100vh', '0vh'],
+                    duration: 250,
+                    easing: 'easeInOutSine',
+                    begin: ( _anim ) => {
+                        formModal.classList.add('active');
+                    }
+                });
+
+            };
+
+            /** Form modal close */
+            const formModalClose = () => {
+
+                anime({
+                    targets: [formModal],
+                    delay: 0,
+                    opacity: [1, 0],
+                    translateY: ['1vh', '100vh'],
+                    duration: 250,
+                    easing: 'easeInOutSine',
+                    complete: ( _anim ) => {
+                        formModal.classList.remove('active');
+                    }
+                });
+            };
+
+            /** Form serialization */
+            const formDataSerialize = ( _form ) =>
+            {
+                let formDataSerialized = {};
+                for (let [key, value] of new FormData( _form ) )
+                {
+                    if (formDataSerialized[key] !== undefined)
+                    {
+                        if (!Array.isArray(formDataSerialized[key]))
+                        {
+                            formDataSerialized[key] = [formDataSerialized[key]];
+                        }
+
+                        formDataSerialized[key].push(value);
+                    } else
+                    {
+                        formDataSerialized[key] = value;
+                    }
+                }
+
+                return formDataSerialized;
+            }
+
+            document.addEventListener('DOMContentLoaded', () =>
+            {
+                formBanner = document.querySelector('.banner');
+                
+                formModal = document.querySelector('.modal');
+                formModalCloseBtn = document.querySelector('.modal-close-btn');
+
+                form = document.querySelector('.modal-form-subscribe');
+                formLoader = document.querySelector('.modal-form-loader');
+                formSubmit = document.querySelector('.modal-form-submit');
+                formThankYou = document.querySelector('.modal-form-thank-you');
+                formError = document.querySelector('.modal-form-error');
+
+                /** Enable form submit */
+                form.addEventListener('submit', ( _event ) =>
+                {
+                    _event.preventDefault();
+                    _event.stopPropagation();
+                
+                    // Submit Gate Test: Honeypot as inputis empty.
+                    if ( document.querySelector('input[name=_confirm]').value !== '' ) return;
+                
+                    // Submit Gate Test:  Honeypot as checked.
+                    if ( document.querySelector('input[name=_confirm2]').checked ) return;
+                
+                    formLoader.classList.remove('hidden');
+                    formSubmit.value = '';
+                    
+                    let formData = formDataSerialize( _event.target );
+                        formData.site = 'tekmountain.com'
+                        formData.form = 'TekMountain Newsletter Signup';
+                        formData.url = window.location.href;
+                    
+                    //fetch('https://submit-form.com/Y6utqnzM', // Test Form
+                    fetch('https://submit-form.com/zv3SOHms', // Live Form
+                    {
+                        method: 'post',
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8'
+                        },
+                        body: JSON.stringify( formData )
+                    }).then(function(response)
+                    {
+                        return response.json();
+                    }).then(function(data)
+                    {
+                        form.classList.add('hidden'); 
+                        
+                        if ( data?.name === formData?.name )
+                        {
+                            formThankYou.classList.remove('hidden');
+                        }
+                        else
+                        {
+                            formError.classList.remove('hidden');
+                        }
+                    });
+                
+                    return false;
+                });
+                
+                /** Enable form submit ability after minimal input */
+                let formEnable = ( _event ) =>
+                {   
+
+                    // Submit Gate Test: Ensure proper user event types triggered to test required validity
+                    if ( _event.type !== 'pointerdown' && ( _event.type !== 'keydown' && _event?.key?.toLowerCase() !== 'tab' ) ) return;
+                    
+                    console.log( 'banner', _event.type, formSubmit, formBanner )
+                
+                    // Submit Gate Test: Required fields validated for enabling submit button
+                    if ( !document.querySelector('input[name=name]').checkValidity() ||
+                         !document.querySelector('input[name=email]').checkValidity() ||
+                         !document.querySelector('input[name=company]').checkValidity() ) return;
+                    
+                    formSubmit.removeAttribute("disabled");
+                }
+                
+                form.addEventListener( 'pointerdown', formEnable, false);
+                form.addEventListener( 'keydown', formEnable, false);
+                
+                /** Automate honeypot add after delay... */
+                let formDelay = setTimeout( () =>
+                {
+                    const honeypot = document.createElement("input");
+                          honeypot.setAttribute('type', 'checkbox');
+                          honeypot.setAttribute('name', '_confirm2');
+                          honeypot.setAttribute('style', 'display:none');
+                          honeypot.setAttribute('autocomplete', 'off');
+                    
+                    form.appendChild( honeypot );
+                
+                    clearTimeout( formDelay );
+                
+                }, 2500);
+                
+                /** Open form */
+                formBanner.addEventListener( 'pointerdown', ( _event ) => {
+                    formModalOpen();
+                });
+                
+                /** Close form */
+                formModalCloseBtn.addEventListener( 'pointerdown', ( _event ) => {
+                    formModalClose();
+                });
+                
+                formBannerAnimate();
+
+            });
+          mode: javascript
+        type: item
+        enabled: true
+    type: item
+    enabled: true
+  -
+    name: Style
+    collection:
+      -
+        uid: ttpl-detail
+        path: /static/lib/style
+        name: ttpl-detail
+        ext: css
+        content:
+          code: |-
+            /* discover.tekmountain.com {} */
+
+            /*
+                -------------------------------------------------
+                SECTION 1:
+                -------------------------------------------------
+            */
+
+            .tmpl-section1 { z-index: 1; min-height: 100vh; } 
+
+            .tmpl-section1-header { color: var(--color-blue-dark); }
+
+            .tmpl-section1-background { overflow: hidden; }
+
+            .h1-xxl { color: var(--color-blue-dark); display: block; }
+            .h1-xl { color: var(--color-gray-light); display: block; }
+            .p { text-transform: initial; font-family: var(--type-family); font-weight: var(--type-weight-medium); font-style: italic; color: var(--color-gray-medium); }
+
+            @media only screen and (max-width: 767px)
+            {
+                .tmpl-section1-header { margin-top: 40.5vw; }
+                .h1-xxl { font-size: 15.85vw; }
+                .h1-xl { font-size: 22.45vw; margin-top: 1.85vw; }
+                .p { font-size: 5.45vw; padding: 0 16vw; line-height: 1.10; margin-top: 4vw; margin-right: 0 !important; }
+            }
+
+            @media only screen and (min-width: 768px)
+            {
+                .tmpl-section1-header { margin-top: 21.1vw; }
+                .h1-xxl { font-size: 7.2vw; margin-left: 11.45vw;}
+                .h1-xl { font-size: 10.2vw; margin-top: .45vw; margin-left: 11.45vw;  }
+                .p { text-align: center; font-size: 2.225vw; line-height: 1.05; margin-top: 2.5vw !important; margin-right: 57vw !important; margin-left: 11.45vw !important; line-height: 1.10 !important; }
+            }
+
+            /*
+                -------------------------------------------------
+                SECTION 2:
+                -------------------------------------------------
+            */
+
+            .tmpl-section2 { z-index: 2; display: block; background-color: var(--color-gray-bright); }
+
+            @media only screen and (max-width: 10000000px)
+            {
+                .tmpl-section2 { padding: 4.477vw 12.477vw; }
+            }
+
+            @media only screen and (max-width: 767px)
+            {
+                .tmpl-section2 { padding: 14.477vw 7.477vw; }
+            }
+
+            /*
+                -------------------------------------------------
+                SECTION 3:
+                -------------------------------------------------
+            */
+
+            .tmpl-section3 { overflow: hidden;  }
+            /* background-color: var(--color-white); */
+
+            .tmpl-section3-background picture { overflow: hidden; }
+
+            .tmpl-section3-h2 { background-color: var(--color-white); }
+
+            .tmpl-section3-h2 strong { font-weight: var(--type-weight-bold); }
+
+            .tmpl-section3-components { position: relative; background-color: var(--color-gray-bright); text-align: center; }
+            .tmpl-section3-components * { color: var(--color-gray-medium);  }
+
+            .tmpl-section3-component-slide-title { font-weight: var(--type-weight-bold); color: var(--color-gray-medium); }
+
+            .tmpl-section3-component-slide-link { color: var(--color-blue-light); border: none; background: none; cursor: pointer; }
+
+            .tmpl-section3-component-slide-description { display: none; opacity: 0; }
+
+            .tmpl-section3-hypothesis { background-color: var(--color-gray-medium); }
+            .tmpl-section3-hypothesis * { font-family: var(--type-family-header); color: var(--color-gray-bright); }
+
+            .tmpl-section3-hypothesis li { font-family: 'industry', sans-serif; font-weight: 300; font-style: normal; background-repeat: no-repeat; list-style: none; }
+            .tmpl-section3-hypothesis li:nth-child(1) { background-image: url('/lib/images/what-we-do/ttpl-study/details/ttpl-ol-1.png') }
+            .tmpl-section3-hypothesis li:nth-child(2) { background-image: url("/lib/images/what-we-do/ttpl-study/details/ttpl-ol-2.png"); }
+            .tmpl-section3-hypothesis li:nth-child(3) { background-image: url("/lib/images/what-we-do/ttpl-study/details/ttpl-ol-3.png"); }
+
+            .swiper-pagination-bullet-active { background-color: var(--color-blue-light); transform: scale(1.5); }
+
+            .tmpl-section3-component-slide { position: relative; }
+            .tmpl-section3-component-slid-front,
+            .tmpl-section3-component-slide-back { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: grid; place-content: center center; }
+
+            .tmpl-section3-component-slide-back { display: none; }
+            .tmpl-section3-compontent-close { position: absolute; display: none; background: none; cursor: pointer; }
+
+            @media only screen and (max-width: 767px)
+            {
+                :root {
+                    --swiper-pagination-bullet-horizontal-gap: 1.45vw;
+                }
+
+                .tmpl-section3-background { margin-top: 46vw; }
+
+                .tmpl-section3-components { margin-top: 100vw; }
+
+                .tmpl-section3-component-slide-icon { width: 55vw; }
+
+                .tmpl-section3-component-slide-title,
+                .tmpl-section3-component-slide-back p:nth-of-type(1) strong { font-size: 5.75vw; }
+
+                .tmpl-section3-component-slide-link,
+                .tmpl-section3-component-slide-back p:nth-of-type(2) { font-size: 4.15vw; }
+
+                .swiper-pagination-bullets.swiper-pagination-horizontal { bottom: 6vw; }
+
+                .tmpl-section3-components,
+                .swiper, .swiper-wrapper, .swiper-slide { height: auto;  }
+
+                .tmpl-section3-components .swiper-full { margin: 0 !important; }
+
+                .tmpl-section3-components,
+                .tmpl-section3-components .swiper,
+                .tmpl-section3-components .swiper-wrapper,
+                .tmpl-section3-components .swiper-slide,
+                .tmpl-section3-components .swiper-slide-front,
+                .tmpl-section3-components .swiper-slide-back { width: 100vw !important; max-width: 100vw !important; }
+
+
+                .tmpl-section3-component-slide-front,
+                .tmpl-section3-component-slide-back { padding: 14.477vw 7.477vw 18.477vw; }
+
+                .tmpl-section3-compontent-close { top: 4vw; right: 4vw; }
+                .tmpl-section3-compontent-close-img { width: 100%; height: auto; }
+
+                .tmpl-section3-h2,
+                .tmpl-section3-h2 strong { font-family: var(--type-family-header); text-align: center; font-size: 5.65vw; line-height: 1.25; padding: 14.477vw 0 0; }
+
+                .tmpl-section3-hypothesis { padding: 14.477vw 7.477vw; }
+
+                .tmpl-section3-hypothesis p,
+                .tmpl-section3-hypothesis p strong { font-size: 5.65vw; line-height: 1.25; text-align: center; }
+
+                .tmpl-section3-hypothesis ol { margin-top: 7.477vw !important; }
+                .tmpl-section3-hypothesis li { text-align: left; background-position: 0vw 1vw; padding-top: 2vw; margin-left: 3.477vw; margin-right: 7.477vw; padding-left: 8.477vw; }
+
+            }
+
+            @media only screen and (min-width: 768px)
+            {
+                :root {
+                    --swiper-pagination-bullet-horizontal-gap: .75vw;
+                }
+
+                .tmpl-section3-h2 { line-height: 1.25; padding: 6.477vw 0; max-height: 25vw; }
+                .tmpl-section3-h2,
+                .tmpl-section3-h2 strong { font-family: var(--type-family-header); text-align: center; font-size: 3.229vw; }
+
+                .tmpl-section3-components { margin-left: 12.75vw; }
+                
+                .tmpl-section3-components .swiper { margin-left: 0 !important; }
+
+                .tmpl-section3-components,
+                .tmpl-section3-components .swiper,
+                .tmpl-section3-components .swiper-wrapper,
+                .tmpl-section3-components .swiper-slide,
+                .tmpl-section3-components .swiper-slide-front,
+                .tmpl-section3-components .swiper-slide-back { width: 36.75vw; max-width: 36.75vw; height: 39.45vw; max-height: 39.45vw; }
+
+                .tmpl-section3-component-slide-icon { margin-top: 4.25vw; width: 130%; margin-left: -1.5vw; }
+
+                .tmpl-section3-component-slide-title,
+                .tmpl-section3-component-slide-back p:nth-of-type(1) strong { font-size: 1.85vw; }
+
+                .tmpl-section3-component-slide-link,
+                .tmpl-section3-component-slide-back p:nth-of-type(2) { font-size: 1.5vw; }
+
+                .swiper-pagination-bullets.swiper-pagination-horizontal { bottom: 2vw; }
+
+                .tmpl-section3-component-slide-front,
+                .tmpl-section3-component-slide-back {  padding: 4.477vw 8.477vw; }
+
+                .tmpl-section3-compontent-close { top: 2vw; right: 2vw; }
+                .tmpl-section3-compontent-close-img { width: 100%; height: auto; }
+
+                .tmpl-section3-hypothesis {  width: 36.75vw; height: 39.45vw; margin-top: 68vw; margin-right: 12.75vw; padding: 4vw 4.477vw; }
+
+                .tmpl-section3-hypothesis p,
+                .tmpl-section3-hypothesis p strong { font-size: 1.45vw; line-height: 1.25; text-align: left; }
+
+                .tmpl-section3-hypothesis li { font-size: 1.025vw; background-position: 0vw .5vw; padding-top: .825vw; padding-left: 3.477vw; }
+
+            }
+
+            /*
+                -------------------------------------------------
+                SECTION 4:
+                -------------------------------------------------
+            */
+
+            .tmpl-section4-h2 { font-weight: var(--type-weight-medium); }
+
+            .tmpl-section4-h2,
+            .tmpl-section4-h2 strong { font-family: var(--type-family-header); color: var(--color-gray-medium);  text-align: center; }
+
+            .tmpl-section4-h2 strong { font-weight: var(--type-weight-bold); }
+
+            .tmpl-section4-h3,
+            .tmpl-section4-h3 * { display: block; }
+
+            .tmpl-section4-h3 { color: var(--color-blue-dark); font-weight: var(--type-weight-bold); }
+            .tmpl-section4-h3 * { color: var(--color-gray-medium); font-weight: var(--type-weight-normal);  }
+
+            .tmpl-section4 li { font-family: 'industry', sans-serif; font-weight: 300; font-style: normal; background-repeat: no-repeat; list-style: none;}
+            .tmpl-section4 li:nth-child(1) { background-image: url('/lib/images/what-we-do/ttpl-study/details/ttpl-ol-blue-1.png') }
+            .tmpl-section4 li:nth-child(2) { background-image: url("/lib/images/what-we-do/ttpl-study/details/ttpl-ol-blue-2.png"); }
+            .tmpl-section4 li:nth-child(3) { background-image: url("/lib/images/what-we-do/ttpl-study/details/ttpl-ol-blue-3.png"); }
+            .tmpl-section4 li:nth-child(4) { background-image: url("/lib/images/what-we-do/ttpl-study/details/ttpl-ol-blue-4.png"); }
+            .tmpl-section4 li:nth-child(5) { background-image: url("/lib/images/what-we-do/ttpl-study/details/ttpl-ol-blue-5.png"); }
+
+            @media only screen and (max-width: 767px)
+            {
+                .tmpl-section4,
+                .tmpl-section4 + .tmpl-section4 { padding: 0 7.477vw 4.477vw; }
+
+                .tmpl-section4 .grid div + div { margin-top: 4.5vw; }
+
+                .tmpl-section4-h2,
+                .tmpl-section4-h2 * { font-size: 5.65vw; line-height: 1.25; margin-top: 14.477vw; margin-bottom: 4.477vw; }
+
+                .tmpl-section4 li { background-size: 7.667vw; background-position: 0vw 0vw; padding-top: 1.367vw; padding-left: 10.677vw; padding-bottom: 4.367vw; }
+                .tmpl-section4 li + li { margin-top: 0.367vw !important; }
+            }
+
+
+            @media only screen and (min-width: 768px)
+            {
+
+                .tmpl-section4 { padding: 14.477vw 7.477vw 0; }
+
+                .tmpl-section4 + .tmpl-section4 { padding-top: 7.477vw; }
+
+                .tmpl-section4-h2,
+                .tmpl-section4-h2 strong { font-size: 2.277vw; line-height: 1.15; }
+
+                .tmpl-section4 .grid { margin-top: 6.477vw; column-gap: var(--type-column-gap);  }
+
+                .tmpl-section4 li { background-size: 2vw; background-position: 0vw .5vw; padding-top: .667vw; padding-left: 2.677vw; }
+                .tmpl-section4 li + li { margin-top: 0.667vw !important; }
+            }
+          mode: css
+        type: item
+        enabled: true
+    type: item
+    enabled: true
 local-host:
   -
     base: tekmountain-com-local.netlify.app
@@ -5002,5 +5545,5 @@ development-image:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675044764
+updated_at: 1675044983
 ---
