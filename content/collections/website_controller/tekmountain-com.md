@@ -3715,6 +3715,20 @@ development-code:
           mode: htmlmixed
         type: item
         enabled: true
+      -
+        uid: template-functions
+        path: /src/lib/store
+        name: template-functions
+        ext: js
+        content:
+          code: |-
+            export const TemplateParseTitle = ( _title ) =>
+            {
+              return `${_title} | Castle Branch`;
+            }
+          mode: htmlmixed
+        type: item
+        enabled: true
     type: item
     enabled: true
   -
@@ -4777,5 +4791,5 @@ development-font:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675037682
+updated_at: 1675038013
 ---
