@@ -1502,7 +1502,7 @@ class SchemaClass
         $fileUid = $_fileCodeEntry['uid'];
         $fileName = $_fileCodeEntry['name'];
         $fileExt = $_fileCodeEntry['ext'];
-        $filePath = $_fileCodeEntry['path'] ?? '/src' . $this->buildPageRouteTree( $this->schema['websiteBuild']['id'], $this->schema['websiteBuild']['navigation'] );
+        $filePath = $_fileCodeEntry['path'] ?? '' . $this->buildPageRouteTree( $this->schema['websiteBuild']['id'], $this->schema['websiteBuild']['navigation'] );
         $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . $filePath, $fileName, $fileExt );
         $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . $filePath, $fileName, $fileExt );
 
