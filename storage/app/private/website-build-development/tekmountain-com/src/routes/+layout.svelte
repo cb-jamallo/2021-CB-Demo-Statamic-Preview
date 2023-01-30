@@ -117,9 +117,9 @@
 	  swiperConfig.grabCursor = true;
 
 	  let swiperInstance = new Swiper( swiper, swiperConfig );
-	  // swiperInstance.on('slideChange', function () {
+	  /* swiperInstance.on('slideChange', function () {
 	  //   console.log('slide changed');
-	  // });
+	  }); */
 	  swiperInstances.push( swiperInstance );
 
 	  return {
@@ -137,13 +137,13 @@
 	  // #Await...
 	  await tick();
 
-	  //$page.data = data
+	  /* $page.data = data */
 	  $Store.ttpl = ( window.location.href.includes( 'ttpl-study' ) );
 
 	});
 
 	afterUpdate(async () => {
-	  //
+	  
 	  tick();
 
 	  swiperInstanceListInit();
