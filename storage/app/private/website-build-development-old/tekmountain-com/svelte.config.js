@@ -16,6 +16,7 @@ if ( process.env.VITE_ENV === 'local' )
 }
 else
 {
+    console.log( 'Netify Adapter Run');
     adapter = adapterNetlify;
     adapterKit = {
         adapter: adapter({
