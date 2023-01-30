@@ -35,6 +35,33 @@ development-template:
       mode: javascript
     body:
       code: |-
+        <script>
+        	'use strict';
+
+            /* SVELTE/KIT IMPORTS */
+
+            import { tick, onMount, afterUpdate } from 'svelte';
+            import Store from '$lib/components/_stores/store';
+
+        	/* CUSTOM IMPORTS */
+
+            import TekMountainLogo from "$lib/components/tekmountain-logo.svelte";
+            import NavAHref from "$lib/components/nav-ahref.svelte";
+            import NavMenuMain from "$lib/components/nav-menu-main.svelte";
+
+            import TTPLSignup from "$lib/components/ttpl-sign-up.svelte";
+          
+          	/* CUSTOM JS */
+          
+        	let ttpl = false;
+          
+        	onMount(async () => {	
+        	  	tick();
+        		$Store.ttpl = ( window.location.href.includes( 'ttpl-study' ) );
+        	}); 
+          
+        </script>
+
         <svelte:head>
           
           <title>{ TemplateParseTitle( `TekMountain` ) }</title>
@@ -415,5 +442,5 @@ development-image:
     enabled: true
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675049495
+updated_at: 1675049675
 ---
