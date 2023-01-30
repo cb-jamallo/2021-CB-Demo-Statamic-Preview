@@ -35,6 +35,5 @@
 </header>
 
 <main id="main" class='main main-{ pageName }'>
-  Hello World!!!
   <slot />
 </main>
