@@ -1246,19 +1246,17 @@ class SchemaClass
         $navigation = $_navigation['tree'] ?? $_navigation;
         $path = isset( $_navigation['tree'] ) ? $_navigation['tree']['uri'] : $navigation['uri'] ?? '/';
 
-        // Handle root first
-        if ( $id !== $navigation['id'] && array_key_exists( 'children', $navigation ) )
+        if ( $id === $navigation['id'] ) return $path;
+
+        if ( array_key_exists( 'children', $navigation ) )
         {
             foreach( $navigation['children'] as $navigationChild )
             {
-                if ( $id !== $navigationChild['id'] && $navigationChild['children'] )
-                {
-                    return $this->buildPageRouteTree( $_id, $navigationChild, $path );
-                }
+                 return $this->buildPageRouteTree( $id, $navigationChild, $path );
             }
         }
 
-        return $path;
+        return '';
     }
 
     protected function buildPageRouteCleaned( $_filePath, $_fileName, $_fileExt )
