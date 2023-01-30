@@ -45,7 +45,6 @@ development-template:
 
           import { StoreEnvVars } from "$lib/components/_stores/store-env-vars";
           import { TemplateParseTitle } from "$lib/components/_stores/template-functions";
-          // import { page } from '@sveltejs/kit/app/stores.js' SSR REQUIRED FOR THIS TO FUNCTION
 
           /**
            * Import Svelte Components
@@ -663,5 +662,5 @@ development-image:
     enabled: true
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675046719
+updated_at: 1675047698
 ---
