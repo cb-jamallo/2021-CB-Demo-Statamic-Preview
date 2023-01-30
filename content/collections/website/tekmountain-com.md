@@ -71,6 +71,26 @@ development-template:
           <title>{ TemplateParseTitle( `TekMountain` ) }</title>
           <meta name='description' content='...' />
         </svelte:head>
+
+
+        <section tabindex="0" class="section-1 grid grid-stacked">
+            <div class="z-2 grid place-self-center-center--sm place-self-start-center--lg padding-x-4--sm padding-x-4--lg">
+                <h1 class="h1 z-1 ">
+                    <span class="h1-small">We see people</span>
+                    <span>Differently</span>
+                </h1>
+                <p class="hp"><span>Including 70% of the Nation's Nursing Students.</span></p>
+                <!-- <p class="hp"><span>We Know What 70% of the Nation's Emerging Nurses are Thinking.</span></p> -->
+                <!-- <a class="z-2 place-self-end-center margin-top-2--lg" href="/what-we-do"><button class="button-primary--lg" tabindex="-1">Learn More</button></a> -->
+            </div>
+            <div class="z-1">
+            <picture class="picture-object-fit-cover z-1">
+                <source srcset="/lib/images/home/hero/home-hero-collage-mobile.jpg, /lib/images/home/hero/home-hero-collage-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                <source srcset="/lib/images/home/hero/home-hero-collage-desktop.jpg, /lib/images/home/hero/home-hero-collage-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                <img src="/lib/images/home/hero/home-hero-collage-mobile.jpg" alt="Collage of diverse nursing student portraits">
+            </picture>
+            </div>
+        </section>
       mode: htmlmixed
     type: item
     enabled: true
@@ -157,5 +177,5 @@ development-image:
     enabled: true
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675051553
+updated_at: 1675051785
 ---
