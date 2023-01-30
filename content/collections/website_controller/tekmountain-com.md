@@ -145,7 +145,7 @@ development-code:
             }
           mode: htmlmixed
         type: item
-        enabled: false
+        enabled: true
         path: /static
       -
         uid: app-html
@@ -5002,5 +5002,5 @@ development-image:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675044686
+updated_at: 1675044764
 ---
