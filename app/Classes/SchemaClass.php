@@ -1255,8 +1255,6 @@ class SchemaClass
                  return $this->buildPageRouteTree( $id, $navigationChild, $path );
             }
         }
-
-        return '';
     }
 
     protected function buildPageRouteCleaned( $_filePath, $_fileName, $_fileExt )
