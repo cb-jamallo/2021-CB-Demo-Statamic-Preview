@@ -3357,6 +3357,7 @@ development-code:
           mode: css
         type: item
         enabled: true
+        ext: css
       -
         uid: ttpl-sign-up
         path: /src/lib/css
@@ -4764,9 +4765,6 @@ local-code:
     type: item
     enabled: true
 run: false
-replicate:
-  - websiteController
-target: development
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675036695
+updated_at: 1675037086
 ---
