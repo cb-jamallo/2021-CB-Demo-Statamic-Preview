@@ -92,6 +92,61 @@ development-code:
         type: item
         enabled: true
       -
+        uid: site-manifest
+        name: site
+        ext: manifest
+        content:
+          code: |-
+            {
+                "name": "TekMountain.com",
+                "short_name": "TekMountain.com",
+                "icons": [
+                    {
+                        "src": "/lib/image/favicon/android-icon-36x36.png",
+                        "sizes": "36x36",
+                        "type": "image/png",
+                        "density": "0.75"
+                       },
+                       {
+                        "src": "/lib/image/favicon/android-icon-48x48.png",
+                        "sizes": "48x48",
+                        "type": "image/png",
+                        "density": "1.0"
+                       },
+                       {
+                        "src": "/lib/image/favicon/android-icon-72x72.png",
+                        "sizes": "72x72",
+                        "type": "image/png",
+                        "density": "1.5"
+                       },
+                       {
+                        "src": "/lib/image/favicon/android-icon-96x96.png",
+                        "sizes": "96x96",
+                        "type": "image/png",
+                        "density": "2.0"
+                       },
+                       {
+                        "src": "/lib/image/favicon/android-icon-144x144.png",
+                        "sizes": "144x144",
+                        "type": "image/png",
+                        "density": "3.0"
+                       },
+                       {
+                        "src": "/lib/image/favicon/android-icon-192x192.png",
+                        "sizes": "192x192",
+                        "type": "image/png",
+                        "density": "4.0"
+                       }
+                ],
+                "theme_color": "#ffffff",
+                "background_color": "#ffffff",
+                "start_url": "https://tekmountain.com",
+                "display": "standalone"
+            }
+          mode: htmlmixed
+        type: item
+        enabled: true
+      -
         uid: app-html
         name: app
         ext: html
@@ -103,21 +158,21 @@ development-code:
             	  <meta charset="utf-8" />
             		<meta name="viewport" content="width=device-width, initial-scale=1" />
             		<meta name="msapplication-TileColor" content="#ffffff">
-            		<meta name="msapplication-TileImage" content="/lib/images/favicon/ms-icon-144x144.png">
+            		<meta name="msapplication-TileImage" content="/lib/image/favicon/ms-icon-144x144.png">
             		<meta name="theme-color" content="#ffffff">
-            		<link rel="apple-touch-icon" sizes="57x57" href="/lib/images/favicon/apple-icon-57x57.png">
-            		<link rel="apple-touch-icon" sizes="60x60" href="/lib/images/favicon/apple-icon-60x60.png">
-            		<link rel="apple-touch-icon" sizes="72x72" href="/lib/images/favicon/apple-icon-72x72.png">
-            		<link rel="apple-touch-icon" sizes="76x76" href="/lib/images/favicon/apple-icon-76x76.png">
-            		<link rel="apple-touch-icon" sizes="114x114" href="/lib/images/favicon/apple-icon-114x114.png">
-            		<link rel="apple-touch-icon" sizes="120x120" href="/lib/images/favicon/apple-icon-120x120.png">
-            		<link rel="apple-touch-icon" sizes="144x144" href="/lib/images/favicon/apple-icon-144x144.png">
-            		<link rel="apple-touch-icon" sizes="152x152" href="/lib/images/favicon/apple-icon-152x152.png">
-            		<link rel="apple-touch-icon" sizes="180x180" href="/lib/images/favicon/apple-icon-180x180.png">
-            		<link rel="icon" type="image/png" sizes="192x192"  href="/lib/images/favicon/android-icon-192x192.png">
-            		<link rel="icon" type="image/png" sizes="32x32" href="/lib/images/favicon/favicon-32x32.png">
-            		<link rel="icon" type="image/png" sizes="96x96" href="/lib/images/favicon/favicon-96x96.png">
-            		<link rel="icon" type="image/png" sizes="16x16" href="/lib/images/favicon/favicon-16x16.png">
+            		<link rel="apple-touch-icon" sizes="57x57" href="/lib/image/favicon/apple-icon-57x57.png">
+            		<link rel="apple-touch-icon" sizes="60x60" href="/lib/image/favicon/apple-icon-60x60.png">
+            		<link rel="apple-touch-icon" sizes="72x72" href="/lib/image/favicon/apple-icon-72x72.png">
+            		<link rel="apple-touch-icon" sizes="76x76" href="/lib/image/favicon/apple-icon-76x76.png">
+            		<link rel="apple-touch-icon" sizes="114x114" href="/lib/image/favicon/apple-icon-114x114.png">
+            		<link rel="apple-touch-icon" sizes="120x120" href="/lib/image/favicon/apple-icon-120x120.png">
+            		<link rel="apple-touch-icon" sizes="144x144" href="/lib/image/favicon/apple-icon-144x144.png">
+            		<link rel="apple-touch-icon" sizes="152x152" href="/lib/image/favicon/apple-icon-152x152.png">
+            		<link rel="apple-touch-icon" sizes="180x180" href="/lib/image/favicon/apple-icon-180x180.png">
+            		<link rel="icon" type="image/png" sizes="192x192"  href="/lib/image/favicon/android-icon-192x192.png">
+            		<link rel="icon" type="image/png" sizes="32x32" href="/lib/image/favicon/favicon-32x32.png">
+            		<link rel="icon" type="image/png" sizes="96x96" href="/lib/image/favicon/favicon-96x96.png">
+            		<link rel="icon" type="image/png" sizes="16x16" href="/lib/image/favicon/favicon-16x16.png">
             		<link rel="manifest" href="/site.webmanifest">
             	  %sveltekit.head%
             	</head>
@@ -4946,5 +5001,5 @@ development-image:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675044190
+updated_at: 1675044520
 ---
