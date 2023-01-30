@@ -462,7 +462,8 @@ development-code:
 
             <main id="main" class='main main-{ pageName }'>
                 <slot />
-                {#if $Store.disqus }
+                
+              {#if $Store.disqus }
                     <section tabindex="0" class="grid margin-bottom-6--sm margin-top-6--sm margin-top-4--lg  margin-bottom-4--lg">
                         <div id='disqus_thread' class="padding-x-4--sm padding-x-4--lg"></div>
                     </section>
@@ -4073,31 +4074,13 @@ development-code:
           code: |-
             <script>
 
-                /**
-                 * Import Svelte Components
-                */
-                
-
-                /**
-                * Import Svelte Core JS
-                */
-                
+                /* SVELTE/KIT IMPORTS */
                 import { tick, onMount, afterUpdate } from 'svelte';
-                // import { base, assets } from '$app/paths';
-                import { page } from '$app/stores'; // getStores, navigating, session, updated
+                import { page } from '$app/stores';
 
-                /**
-                * Import Custom JS
-                */
-                
-                /**
-                * Export Custom JS
-                */
-
-                /*
-                    NAVIGATION
-                */
-
+            	/* CUSTOM IMPORTS */
+              
+              	/* CUSTOM JS */
                 let navMain = null;
                 let navMainUl = null;
                 let navMainButton = null;
@@ -4114,17 +4097,20 @@ development-code:
                     navMainInitMobile();
                     navMainInitDesktop();
                     
-                    // navMainResize();
-                    // window.dispatchEvent(new Event('resize'));
+                    /* 
+            		navMainResize();
+                    window.dispatchEvent(new Event('resize'));
+            		*/
                 }
 
                 const navMainResize = () =>
                 {
                     window.addEventListener('resize', ( _event ) => 
                     {
-                        // if ( window.outerWidth <= 768) return navMainMobile();
-                        
-                        // return navMainInitDesktop();
+                        /*
+            			if ( window.outerWidth <= 768) return navMainMobile();
+                        return navMainInitDesktop();
+            			*/
                     });
                 }
 
@@ -4180,17 +4166,20 @@ development-code:
 
                             parent.classList.toggle('expanded');
 
-                            // if ( parent.classList.contains('expanded') )
-                            // { 
+                            /*
+            				if ( parent.classList.contains('expanded') )
+                            {
+            				*/
                                 parentLink.setAttribute('aria-expanded', String(parent.classList.contains('expanded')));
                                 parentButton.setAttribute('aria-expanded', String(parent.classList.contains('expanded')));
-                            // } 
-                            // else 
-                            // {
-                            //     parentLink.setAttribute('aria-expanded', 'false');
-                            //     parentButton.setAttribute('aria-expanded', 'false');
-                            // }
-
+                            /*
+            				} 
+                            else 
+                            {
+                               parentLink.setAttribute('aria-expanded', 'false');
+                               parentButton.setAttribute('aria-expanded', 'false');
+                            }
+            				*/
                             _event.preventDefault();
                             _event.stopPropagation();
 
@@ -4202,7 +4191,7 @@ development-code:
                     
                     let navMainActiveClass = 'nav-main-a-active';
                     let navMainPath =  $page.url.pathname;
-                    let navMainPathParts = $page.url.pathname.split('/').filter( _n => _n ); // remove empty items...
+                    let navMainPathParts = $page.url.pathname.split('/').filter( _n => _n );
                     let navMainPathParts1 = navMainPathParts[0];
 
                     
@@ -4212,12 +4201,10 @@ development-code:
 
                             if ( ( navMainPath === '/' && _index === 0) || navMainPathParts1?.includes( _link.innerText.toLowerCase().split(' ').join('-') ) ) 
                             {
-                                // Set new...
                                 _link.classList.add( navMainActiveClass );
                             }
                             else
                             {
-                                // Clear all...
                                 _link.classList.remove( navMainActiveClass );
                             }
 
@@ -4226,15 +4213,9 @@ development-code:
 
                 onMount(async () => {
                     
-                    // Perf delay tick.
                     tick();
 
                     navMainInit();
-                    //console.log($base);
-                    //console.log($navigating);
-                    //console.log($page);
-                    //console.log($session);
-                    //console.log($updated);
                 });
 
                 afterUpdate( async() => {
@@ -4247,7 +4228,6 @@ development-code:
             </script>
 
             <!-- @html{process.env.NODE_ENV} -->
-
             <nav class='nav-main nav-main-open' {...$$restProps} role="navigation" aria-label="Main Navigation">
                 <a href='#main' class='nav-main-skip-link sr-only'>Skip Menu Items</a>
                 <ul id='nav-main' class='nav-main-ul'>
@@ -4290,51 +4270,36 @@ development-code:
           code: |-
             <script>
 
-                /**
-                 * Import Svelte Components
-                */
-                
+            	/* SVELTE/KIT IMPORTS */
+            	import { tick, onMount } from 'svelte';
 
-                /**
-                * Import Svelte Core JS
-                */
-                
-                import { tick, onMount } from 'svelte';
-                // import { base, assets } from '$app/paths';
-                // import { getStores, navigating, page, session, updated } from '$app/stores';
-                // import { page } from '@sveltejs/kit/app/stores.js' SSR REQUIRED FOR THIS TO FUNCTION
+            	/* CUSTOM IMPORTS */
 
-                /**
-                * Import Custom JS
-                */
-                
-                /**
-                * Export Custom JS
-                */
-                export let logoDirection = 'horizontal'; // horizontal | vertical
-                export let logoType = 'normal'; // normal | reversed
-                export let logoAlt = 'TekMountain logo mark and logo type'; // normal | reversed
-                
+            	/* CUSTOM JS */
+            	export let logoDirection = 'horizontal'; // horizontal | vertical
+            	export let logoType = 'normal'; // normal | reversed
+            	export let logoAlt = 'TekMountain logo mark and logo type'; // normal | reversed
 
-                onMount(() =>
-                {
-                    // Perf delay tick.
-                    tick();
-                    
-                });
+
+            	onMount(() =>
+            			{
+            	  tick();
+
+            	});
+              
             </script>
 
             {#if logoDirection === 'horizontal' }
                 {#if logoType === 'normal' }
-                    <img src='/lib/images/tekmountain-logo-horizontal-color.svg' {...$$restProps} alt='{logoAlt}' />
+                    <img src='/lib/image/tekmountain-logo-horizontal-color.svg' {...$$restProps} alt='{logoAlt}' />
                 {:else}
-                    <img src='/lib/images/tekmountain-logo-horizontal-reversed.svg'  {...$$restProps} alt='{logoAlt}' />
+                    <img src='/lib/image/tekmountain-logo-horizontal-reversed.svg'  {...$$restProps} alt='{logoAlt}' />
                 {/if}
             {:else}
                 {#if logoType === 'normal' }
-                    <img src='/lib/images/tekmountain-logo-vertical-color.svg'  {...$$restProps} alt='{logoAlt}' />
+                    <img src='/lib/image/tekmountain-logo-vertical-color.svg'  {...$$restProps} alt='{logoAlt}' />
                 {:else}
-                    <img src='/lib/images/tekmountain-logo-vertical-reversed.svg' {...$$restProps} alt='{logoAlt}' />
+                    <img src='/lib/image/tekmountain-logo-vertical-reversed.svg' {...$$restProps} alt='{logoAlt}' />
                 {/if}
             {/if}
 
@@ -4988,8 +4953,10 @@ development-code:
                 
                 let blocksLoop = 0;
 
-                // Slide-up banner
-                anime({
+                /*
+            	Slide-up banner
+                */
+              	anime({
                     targets: [formBanner],
                     opacity: [0, 1],
                     delay: 1750,
@@ -4998,7 +4965,6 @@ development-code:
                     begin: ( _anim ) =>
                     {
                         if ( window.outerWidth <= 767 ) blocks[1].style.opacity = 0;
-                        //_anim.animatables[0].target.classList.remove('sr-only'); 
                         console.log('begin banner animation....', formBanner.classList);
                         formBanner.classList.remove('.sr-only'); 
                         console.log('begin banner animation....', formBanner.classList);
@@ -5064,7 +5030,9 @@ development-code:
 
             };
 
-            /** Form modal open */
+            /** 
+            Form modal open 
+            */
             const formModalOpen = () => {
 
                 formModal.classList.add('active');
@@ -5083,7 +5051,9 @@ development-code:
 
             };
 
-            /** Form modal close */
+            /** 
+            Form modal close 
+            */
             const formModalClose = () => {
 
                 anime({
@@ -5099,7 +5069,9 @@ development-code:
                 });
             };
 
-            /** Form serialization */
+            /** 
+            Form serialization 
+            */
             const formDataSerialize = ( _form ) =>
             {
                 let formDataSerialized = {};
@@ -5135,17 +5107,23 @@ development-code:
                 formThankYou = document.querySelector('.modal-form-thank-you');
                 formError = document.querySelector('.modal-form-error');
 
-                /** Enable form submit */
+                /** 
+            	Enable form submit 
+            	*/
                 form.addEventListener('submit', ( _event ) =>
                 {
                     _event.preventDefault();
                     _event.stopPropagation();
                 
-                    // Submit Gate Test: Honeypot as inputis empty.
+                    /*
+            		Submit Gate Test: Honeypot as inputis empty.
+            		*/
                     if ( document.querySelector('input[name=_confirm]').value !== '' ) return;
                 
-                    // Submit Gate Test:  Honeypot as checked.
-                    if ( document.querySelector('input[name=_confirm2]').checked ) return;
+                    /*
+            		Submit Gate Test:  Honeypot as checked.
+                    */
+            	  	if ( document.querySelector('input[name=_confirm2]').checked ) return;
                 
                     formLoader.classList.remove('hidden');
                     formSubmit.value = '';
@@ -5155,7 +5133,7 @@ development-code:
                         formData.form = 'TekMountain Newsletter Signup';
                         formData.url = window.location.href;
                     
-                    //fetch('https://submit-form.com/Y6utqnzM', // Test Form
+                    /* fetch('https://submit-form.com/Y6utqnzM', // Test Form */
                     fetch('https://submit-form.com/zv3SOHms', // Live Form
                     {
                         method: 'post',
@@ -5183,16 +5161,16 @@ development-code:
                     return false;
                 });
                 
-                /** Enable form submit ability after minimal input */
+                /* Enable form submit ability after minimal input */
                 let formEnable = ( _event ) =>
                 {   
 
-                    // Submit Gate Test: Ensure proper user event types triggered to test required validity
+                    /* Submit Gate Test: Ensure proper user event types triggered to test required validity */
                     if ( _event.type !== 'pointerdown' && ( _event.type !== 'keydown' && _event?.key?.toLowerCase() !== 'tab' ) ) return;
                     
                     console.log( 'banner', _event.type, formSubmit, formBanner )
                 
-                    // Submit Gate Test: Required fields validated for enabling submit button
+                    /* Submit Gate Test: Required fields validated for enabling submit button */
                     if ( !document.querySelector('input[name=name]').checkValidity() ||
                          !document.querySelector('input[name=email]').checkValidity() ||
                          !document.querySelector('input[name=company]').checkValidity() ) return;
@@ -5203,7 +5181,7 @@ development-code:
                 form.addEventListener( 'pointerdown', formEnable, false);
                 form.addEventListener( 'keydown', formEnable, false);
                 
-                /** Automate honeypot add after delay... */
+                /* Automate honeypot add after delay... */
                 let formDelay = setTimeout( () =>
                 {
                     const honeypot = document.createElement("input");
@@ -5831,6 +5809,16 @@ development-image:
     file: tekmountain-com/image/favicon/ms-icon-70x70.png
     type: item
     enabled: true
+  -
+    uid: tekmountain-logo-mark-color
+    file: tekmountain-com/image/tekmountain-logo-mark-color.svg
+    type: item
+    enabled: true
+  -
+    uid: tekmountain-logo-mark-reversed
+    file: tekmountain-com/image/tekmountain-logo-mark-reversed.svg
+    type: item
+    enabled: true
 development-document:
   -
     uid: castlebranch-oadn-confposter-2021-proof
@@ -5853,5 +5841,5 @@ development-document:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675049182
+updated_at: 1675050439
 ---
