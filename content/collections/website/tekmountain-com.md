@@ -35,99 +35,6 @@ development-template:
       mode: javascript
     body:
       code: |-
-        <script>
-            
-          /**
-          * Import Svelte Core JS
-          */
-          
-          import { tick, onMount, afterUpdate } from 'svelte';
-
-          import { StoreEnvVars } from "$lib/components/_stores/store-env-vars";
-          import { TemplateParseTitle } from "$lib/components/_stores/template-functions";
-
-          /**
-           * Import Svelte Components
-          */
-
-
-          /**
-          * Import Custom JS
-          */
-          
-          /**
-          * Export Custom JS
-          */
-
-          let swiperInitWhatDrivesUs = ( _swiper ) => {
-
-            console.log( _swiper.activeIndex )
-
-            const swiperSlideDetails = document.querySelectorAll('.what-drives-us-detail');
-
-            const swiperSlideDetailHide = () =>
-            {
-              swiperSlideDetails.forEach( ( _item, _itemIndex ) => {
-
-                _item.style.display = 'none';
-                _item.style.opacity = 0;
-              
-              });
-            }
-
-            const swiperSlideDetailShow = ( _i ) =>
-            {
-                
-              swiperSlideDetails.forEach( ( _item, _itemIndex ) => {
-                
-                _item.style.display = 'none';
-                _item.style.opacity = 0;
-                
-                if ( _itemIndex + 1 === _swiper.activeIndex ||
-                     _itemIndex + 1 === 1 && _swiper.activeIndex > swiperSlideDetails.length ||
-                     ( _itemIndex + 1 === swiperSlideDetails.length && _swiper.activeIndex === 0 )
-                )
-                {
-                  _item.style.display = 'initial';
-                  _item.style.opacity = 1;
-                }
-
-              });
-            }
-
-
-            _swiper.on('slideChange', function ( _slide ) {
-                console.log('slide changed', _swiper.activeIndex );
-
-                swiperSlideDetailShow( _swiper.activeIndex );
-            });
-
-            swiperSlideDetailHide();
-            swiperSlideDetailShow(1);
-          }
-
-          onMount(async () => 
-          {
-              tick();
-          });
-
-          afterUpdate(async () => 
-          {
-              tick();
-
-              let temp = setInterval( () => {
-
-                if ( window.swiperInstances );
-                clearInterval(temp);
-                swiperInitWhatDrivesUs(  window.swiperInstances[0] );
-
-              }, 10);
-              
-          });
-
-        </script>
-
-
         <svelte:head>
           
           <title>{ TemplateParseTitle( `TekMountain` ) }</title>
@@ -307,159 +214,6 @@ development-template:
           </div>
         </section>
 
-
-        <!--
-        <section tabindex="0" class="grid margin-bottom-12--sm margin-top-12--sm margin-top-8--lg margin-bottom-8--lg">
-            <div class="padding-x-4--sm padding-x-6--lg text-align-center--lg">
-              <h3 class="h3">Leadership<br class="br--sm"> &amp; Partnership</h3>
-              <p>Get to know us and our partners.</p>
-            </div>
-            <div class="swiper swiper-full swiper-full-4up" data-swiper={JSON.stringify({ 
-              'mobile': { 'config' : { 'direction':'horizontal','loop':false,'autoHeight':true,'slidesPerView':1.2,'spaceBetween':10,'scrollbar':false } },
-              'desktop': { 'config' : { 'destroy':true } }
-            })}>
-              <div class="swiper-wrapper grid--lg grid-3--lg grid-col-gap-1--lg grid-row-gap-5--lg padding-x-4--lg margin-top-3--sm padding-bottom-9--sm margin-top-2--lg padding-bottom-4--lg">
-                <figure class="bio swiper-slide flip grid grid-stacked">
-                  <figcaption class="bio-figcaption place-self-start-start z-3">
-                    <span class="bio-full-name">Robyn Begley</span>
-                    <span class="bio-credentials">DNP, RN, NEA-BC, FAAN</span>
-                    <a class="bio-org-link" href="https://www.aonl.org/about/leadership-team/chief-executive-officer" target="_blank">AONL.org</a>
-                  </figcaption>
-                  <div class="flip-front z-2">
-                    <picture>
-                      <img src="/lib/images/home/leadership-bios/leadership-bio-robyn-begley.jpg" alt="">
-                    </picture>
-                  </div>
-                  <div class="flip-back z-1 grid">
-                    <div class="place-self-center-center">
-                      <p class="bio-title">CEO of the American Organization of Nursing Leadership (AONL)</p>
-                      <p class="bio-title">Chief Nursing Officer, SVP Workforce, American Hospital Association (AHA)</p>
-                    </div>
-                  </div>
-                </figure>
-                <figure class="bio swiper-slide flip grid grid-stacked">
-                  <figcaption class="bio-figcaption place-self-start-start z-3">
-                    <span class="bio-full-name">Donna Meyer</span>
-                    <span class="bio-credentials">MSN, RN, ANEF, FAADN, FAAN</span>
-                    <a class="bio-org-link" href="https://oadn.org/people/donna-meyer/" target="_blank">OADN.org</a>
-                  </figcaption>
-                  <div class="flip-front z-2">
-                    <picture>
-                      <img src="/lib/images/home/leadership-bios/leadership-bio-donna-meyer.jpg" alt="">
-                    </picture>
-                  </div>
-                  <div class="flip-back z-1 grid">
-                    <div class="place-self-center-center">
-                      <p class="bio-title">CEO of the Organization of Associate Degree Nursing (OADN)</p>
-                    </div>
-                  </div>
-                </figure>
-                <figure class="bio swiper-slide flip grid grid-stacked">
-                  <figcaption class="bio-figcaption place-self-start-start z-3">
-                    <span class="bio-full-name">Dr. Deborah Trautman</span>
-                    <span class="bio-credentials">PhD, RN, FAAN</span>
-                    <a class="bio-org-link" href="https://www.aacnnursing.org/News-Information/Spokesperson-Bios/Deborah-Trautman" target="_blank">AACNNURSING.org</a>
-                  </figcaption>
-                  <div class="flip-front z-2">
-                    <picture>
-                      <img src="/lib/images/home/leadership-bios/leadership-bio-deborah-trautman.jpg" alt="">
-                    </picture>
-                  </div>
-                  <div class="flip-back z-1 grid">
-                    <div class="place-self-center-center">
-                      <p class="bio-title">President and CEO of the American Association of Colleges of Nursing (AACN)</p>
-                    </div>
-                  </div>
-                </figure>
-                <figure class="bio swiper-slide flip grid grid-stacked">
-                  <figcaption class="bio-figcaption place-self-start-start z-3">
-                    <span class="bio-full-name">Pamela Thompson</span>
-                    <span class="bio-credentials">MS, RN, CENP, FAAN</span>
-                    <a class="bio-org-link" href="https://www.linkedin.com/in/pamthompsonrn" target="_blank">AONL.org</a>
-                  </figcaption>
-                  <div class="flip-front z-2">
-                    <picture>
-                      <img src="/lib/images/home/leadership-bios/leadership-bio-pamela-thompson.jpg" alt="">
-                    </picture>
-                  </div>
-                  <div class="flip-back z-1 grid">
-                    <div class="place-self-center-center">
-                      <p class="bio-title">Retired, CEO Emeritus of the American Organization for Nursing Leadership (AONL)</p>
-                    </div>
-                  </div>
-                </figure>
-                <figure class="bio swiper-slide flip grid grid-stacked">
-                  <figcaption class="bio-figcaption place-self-start-start z-3">
-                    <span class="bio-full-name">Dr. Amy Garcia</span>
-                    <span class="bio-credentials">DNP, MSN, RN</span>
-                    <a class="bio-org-link" href="https://www.kumc.edu/agarcia5.html" target="_blank">KUMC.edu</a>
-                  </figcaption>
-                  <div class="flip-front z-2">
-                    <picture>
-                      <img src="/lib/images/home/leadership-bios/leadership-bio-amy-garcia.jpg" alt="">
-                    </picture>
-                  </div>
-                  <div class="flip-back z-1 grid">
-                    <div class="place-self-center-center">
-                      <p class="bio-title">Associate Clinical Professor and Director of Practice at the University of Kansas School of Nursing</p>
-                      <p class="bio-title">Principal Investigator,<br> TTPL Study</p>
-                    </div>
-                  </div>
-                </figure>
-                <figure class="bio swiper-slide flip grid grid-stacked">
-                  <figcaption class="bio-figcaption place-self-start-start z-3">
-                    <span class="bio-full-name">Dr. Nelda Godfrey</span>
-                    <span class="bio-credentials">PhD, RN, ACNS-BC, FAAN, ANEFF</span>
-                    <a class="bio-org-link" href="https://www.kumc.edu/ngodfrey.html" target="_blank">KUMC.edu</a>
-                  </figcaption>
-                  <div class="flip-front z-2">
-                    <picture>
-                      <img src="/lib/images/home/leadership-bios/leadership-bio-nelda-godfrey.jpg" alt="">
-                    </picture>
-                  </div>
-                  <div class="flip-back z-1 grid">
-                    <div class="place-self-center-center">
-                      <p class="bio-title">Associate Dean for Innovative Partnerships and Practice at the University of Kansas School of Nursing</p>
-                      <p class="bio-title">Professor, University of Kansas School of Nursing.</p>
-                      <p class="bio-title">Co-Investigator,<br> TTPL Study</p>
-                    </div>
-                  </div>
-                </figure>
-                <figure class="bio swiper-slide flip flip-none grid grid-stacked">
-                    <figcaption class="bio-figcaption place-self-start-start z-3">
-                        <span class="bio-full-name">Brett Martin</span>
-                    </figcaption>
-                    <div class="flip-front z-2">
-                        <picture>
-                        <img src="/lib/images/home/leadership-bios/leadership-bio-brett-martin.jpg" alt="">
-                        </picture>
-                    </div>
-                </figure>
-                <figure class="bio swiper-slide flip flip-none grid grid-stacked">
-                    <figcaption class="bio-figcaption place-self-start-start z-3">
-                        <span class="bio-full-name">Greg Larnder</span>
-                    </figcaption>
-                    <div class="flip-front z-2">
-                        <picture>
-                        <img src="/lib/images/home/leadership-bios/leadership-bio-greg-larnder.jpg" alt="">
-                        </picture>
-                    </div>
-                </figure>
-                <figure class="bio swiper-slide flip flip-none grid grid-stacked">
-                    <figcaption class="bio-figcaption place-self-start-start z-3">
-                        <span class="bio-full-name">Mike Flack</span>
-                    </figcaption>
-                    <div class="flip-front z-2">
-                        <picture>
-                        <img src="/lib/images/home/leadership-bios/leadership-bio-mike-flack.jpg" alt="">
-                        </picture>
-                    </div>
-                </figure>
-              </div>
-            </div>
-        </section>
-        -->
-
         <style global lang="scss">
 
           :root {
@@ -529,7 +283,6 @@ development-template:
 
           }
 
-
           .what-drives-us-detail { display: none; opacity: 0; }
 
           .swiper-button-prev-unique,
@@ -571,8 +324,7 @@ development-template:
             line-height: var(--bio-title-type-line-height);
             font-weight: var(--bio-title-type-weight);
           }
-          
-
+         
         </style>
       mode: htmlmixed
     type: item
@@ -660,5 +412,5 @@ development-image:
     enabled: true
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675047769
+updated_at: 1675048069
 ---
