@@ -92,9 +92,9 @@ development-code:
         type: item
         enabled: true
       -
-        uid: site-manifest
+        uid: site-webmanifest
         name: site
-        ext: manifest
+        ext: webmanifest
         content:
           code: |-
             {
@@ -5545,5 +5545,5 @@ development-image:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675044983
+updated_at: 1675045084
 ---
