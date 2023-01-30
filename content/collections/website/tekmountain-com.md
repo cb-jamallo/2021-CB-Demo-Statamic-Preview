@@ -85,9 +85,9 @@ development-template:
             </div>
             <div class="z-1">
             <picture class="picture-object-fit-cover z-1">
-                <source srcset="/lib/images/home/hero/home-hero-collage-mobile.jpg, /lib/images/home/hero/home-hero-collage-mobile@2x.jpg 2x" media="(max-width: 767px)">
-                <source srcset="/lib/images/home/hero/home-hero-collage-desktop.jpg, /lib/images/home/hero/home-hero-collage-desktop@2x.jpg 2x" media="(min-width: 768px)">
-                <img src="/lib/images/home/hero/home-hero-collage-mobile.jpg" alt="Collage of diverse nursing student portraits">
+                <source srcset="/lib/image/home/hero/home-hero-collage-mobile.jpg, /lib/image/home/hero/home-hero-collage-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                <source srcset="/lib/image/home/hero/home-hero-collage-desktop.jpg, /lib/image/home/hero/home-hero-collage-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                <img src="/lib/image/home/hero/home-hero-collage-mobile.jpg" alt="Collage of diverse nursing student portraits">
             </picture>
             </div>
         </section>
@@ -135,16 +135,16 @@ development-template:
                 <div class="swiper-wrapper">
                   <div class="swiper-slide swiper-slide-square">
                      <picture class="picture-object-fit-cover">
-                      <source srcset="/lib/images/home/what-drives-us/innovation-mobile.jpg, /lib/images/home/what-drives-us/innovation-mobile@2x.jpg 2x" media="(max-width: 767px)">
-                        <source srcset="/lib/images/home/what-drives-us/innovation-desktop.jpg, /lib/images/home/what-drives-us/innovation-desktop@2x.jpg 2x" media="(min-width: 768px)">
-                      <img src="/lib/images/home/what-drives-us/innovation-mobile.jpg" alt="">
+                      <source srcset="/lib/image/home/what-drives-us/innovation-mobile.jpg, /lib/image/home/what-drives-us/innovation-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                        <source srcset="/lib/image/home/what-drives-us/innovation-desktop.jpg, /lib/image/home/what-drives-us/innovation-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                      <img src="/lib/image/home/what-drives-us/innovation-mobile.jpg" alt="">
                     </picture>
                   </div>
                   <div class="swiper-slide swiper-slide-square">
                     <picture class="picture-object-fit-cover">
-                      <source srcset="/lib/images/home/what-drives-us/individual-at-the-center-mobile.jpg, /lib/images/home/what-drives-us/individual-at-the-center-mobile@2x.jpg 2x" media="(max-width: 767px)">
-                        <source srcset="/lib/images/home/what-drives-us/individual-at-the-center-desktop.jpg, /lib/images/home/what-drives-us/individual-at-the-center-desktop@2x.jpg 2x" media="(min-width: 768px)">
-                      <img src="/lib/images/home/what-drives-us/individual-at-the-center-mobile.jpg" alt="">
+                      <source srcset="/lib/image/home/what-drives-us/individual-at-the-center-mobile.jpg, /lib/image/home/what-drives-us/individual-at-the-center-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                        <source srcset="/lib/image/home/what-drives-us/individual-at-the-center-desktop.jpg, /lib/image/home/what-drives-us/individual-at-the-center-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                      <img src="/lib/image/home/what-drives-us/individual-at-the-center-mobile.jpg" alt="">
                     </picture>
                   </div>
                   <div class="swiper-slide swiper-slide-square">
@@ -155,8 +155,8 @@ development-template:
                     </picture>
                   </div>
                 </div>
-                <picture class="swiper-button-prev-unique"><img src='/lib/images/home/what-drives-us/icon-carousel-arrow-left.svg' alt='Carousel previious left control button'></picture>
-                <picture class="swiper-button-next-unique"><img src='/lib/images/home/what-drives-us/icon-carousel-arrow-right.svg' alt='Carousel next slide control button'></picture>
+                <picture class="swiper-button-prev-unique"><img src='/lib/image/home/what-drives-us/icon-carousel-arrow-left.svg' alt='Carousel previious left control button'></picture>
+                <picture class="swiper-button-next-unique"><img src='/lib/image/home/what-drives-us/icon-carousel-arrow-right.svg' alt='Carousel next slide control button'></picture>
               </div>
             </div>
             <div class="background-pattern z-1"></div>
@@ -176,13 +176,13 @@ development-template:
               <div class="swiper-slide flip grid grid-stacked">
                 <div class="flip-front z-2 grid grid-stacked">
                     <picture class='flip-front-icon z-3 place-self-end-end'>
-                        <img src='/lib/images/icon-arrow-flip.svg' />
+                        <img src='/lib/image/icon-arrow-flip.svg' />
                     </picture>
                     <h4 class="z-2 flip-front-header place-self-center-center">Healthcare</h4>
                     <picture class="z-1">
-                        <source srcset="/lib/images/home/industries-we-serve/tekmountain-healthcare-mobile.jpg, /lib/images/home/industries-we-serve/tekmountain-healthcare-mobile@2x.jpg 2x" media="(max-width: 767px)">
-                        <source srcset="/lib/images/home/industries-we-serve/tekmountain-healthcare-desktop.jpg, /lib/images/home/industries-we-serve/tekmountain-healthcare-desktop@2x.jpg 2x" media="(min-width: 768px)">
-                        <img src="/lib/images/home/industries-we-serve/tekmountain-healthcare-mobile.jpg" alt="...">
+                        <source srcset="/lib/image/home/industries-we-serve/tekmountain-healthcare-mobile.jpg, /lib/image/home/industries-we-serve/tekmountain-healthcare-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                        <source srcset="/lib/image/home/industries-we-serve/tekmountain-healthcare-desktop.jpg, /lib/image/home/industries-we-serve/tekmountain-healthcare-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                        <img src="/lib/image/home/industries-we-serve/tekmountain-healthcare-mobile.jpg" alt="...">
                     </picture>
                 </div>
                 <div class="flip-back z-1 grid">
@@ -196,9 +196,9 @@ development-template:
                     </picture>
                   <h4 class="z-2 flip-front-header place-self-center-center">Higher<br> Education</h4>
                   <picture class="z-1">
-                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-highered-mobile.jpg, /lib/images/home/industries-we-serve/tekmountain-highered-mobile@2x.jpg 2x" media="(max-width: 767px)">
-                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-highered-desktop.jpg, /lib/images/home/industries-we-serve/tekmountain-highered-desktop@2x.jpg 2x" media="(min-width: 768px)">
-                    <img src="/lib/images/home/industries-we-serve/tekmountain-highered-mobile.jpg" alt="...">
+                    <source srcset="/lib/image/home/industries-we-serve/tekmountain-highered-mobile.jpg, /lib/image/home/industries-we-serve/tekmountain-highered-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                    <source srcset="/lib/image/home/industries-we-serve/tekmountain-highered-desktop.jpg, /lib/image/home/industries-we-serve/tekmountain-highered-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                    <img src="/lib/image/home/industries-we-serve/tekmountain-highered-mobile.jpg" alt="...">
                   </picture>
                 </div>
                 <div class="flip-back z-1 grid">
@@ -212,9 +212,9 @@ development-template:
                     </picture>
                   <h4 class="z-2 flip-front-header place-self-center-center">Nursing<br> Students</h4>
                   <picture class="z-1">
-                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-students-mobile.jpg, /lib/images/home/industries-we-serve/tekmountain-students-mobile@2x.jpg 2x" media="(max-width: 767px)">
-                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-students-desktop.jpg, /lib/images/home/industries-we-serve/tekmountain-students-desktop@2x.jpg 2x" media="(min-width: 768px)">
-                    <img src="/lib/images/home/industries-we-serve/tekmountain-students-mobile.jpg" alt="...">
+                    <source srcset="/lib/image/home/industries-we-serve/tekmountain-students-mobile.jpg, /lib/image/home/industries-we-serve/tekmountain-students-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                    <source srcset="/lib/image/home/industries-we-serve/tekmountain-students-desktop.jpg, /lib/image/home/industries-we-serve/tekmountain-students-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                    <img src="/lib/image/home/industries-we-serve/tekmountain-students-mobile.jpg" alt="...">
                   </picture>
                 </div>
                 <div class="flip-back z-1 grid">
@@ -228,9 +228,9 @@ development-template:
                     </picture>
                   <h4 class="z-2 flip-front-header place-self-center-center">Associations</h4>
                   <picture class="z-1">
-                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-associations-mobile.jpg, /lib/images/home/industries-we-serve/tekmountain-associations-mobile@2x.jpg 2x" media="(max-width: 767px)">
-                    <source srcset="/lib/images/home/industries-we-serve/tekmountain-associations-desktop.jpg, /lib/images/home/industries-we-serve/tekmountain-associations-desktop@2x.jpg 2x" media="(min-width: 768px)">
-                    <img src="/lib/images/home/industries-we-serve/tekmountain-associations-mobile.jpg" alt="...">
+                    <source srcset="/lib/image/home/industries-we-serve/tekmountain-associations-mobile.jpg, /lib/image/home/industries-we-serve/tekmountain-associations-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                    <source srcset="/lib/image/home/industries-we-serve/tekmountain-associations-desktop.jpg, /lib/image/home/industries-we-serve/tekmountain-associations-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                    <img src="/lib/image/home/industries-we-serve/tekmountain-associations-mobile.jpg" alt="...">
                   </picture>
                 </div>
                 <div class="flip-back z-1 grid">
@@ -441,5 +441,5 @@ development-image:
     enabled: true
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675052259
+updated_at: 1675052607
 ---
