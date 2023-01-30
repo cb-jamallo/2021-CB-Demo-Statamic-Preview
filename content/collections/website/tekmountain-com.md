@@ -115,6 +115,53 @@ development-template:
             </div>
           </div>
         </section>
+
+        <section tabindex="0" class="grid grid-2--lg grid-2-alt--sm grid-col-gap-4 padding-x-4 padding-top-12--sm margin-top-8--lg">
+          <div class="margin-top-4--sm place-self-center-center">
+            <h3 class="h3">What drives us?</h3>
+            <div class='grid grid-stacked'>
+              <p class="p z-1 what-drives-us-detail">At tekMountain, innovation transforms insight into the breakthrough ideas that drive dynamic change. Progress is measured through meaningful solutions that are influential in real markets &mdash; and delivered at significant scale for critical impact. For us, innovation never stops, because it is never done.</p>
+              <p class="p z-2 what-drives-us-detail">People are not commodities. We seek to deeply understand the challenges an opportunities of each individual, working to make certain their dreams, desires, competencies, skills, passions and accomplishments define them on their own terms. By placing a truly unique individual at the center of their professional journey, we are able to address problems through clear solutions that are as unique as they are.</p>
+              <p class="p z-3 what-drives-us-detail">Data and insight are the lifeblood of innovation, but they must be collected and used responsibly. Research drive us and leads us. The forces and factors that ignite every new idea, analysis, or development are all born of the same commitment to data and insight. tekMountain insight is freely shared for the common good of the industries we serve.</p>
+            </div>
+          </div>
+          <div class="grid grid-stacked">
+            <div class="z-2">
+              <div id="swiper-what-drives-us" class="swiper" data-swiper={JSON.stringify({ 
+                'id': 'whatDrivesUs',
+                'mobile': { 'config' : { 'direction':'horizontal','loop':true,'autoHeight':true,'slidesPerView': 1,'spaceBetween':0,'scrollbar': false, navigation: { nextEl: '.swiper-button-next-unique', prevEl: '.swiper-button-prev-unique' } } },
+                'desktop': { 'config' : { 'direction':'horizontal','loop':true,'autoHeight':true,'slidesPerView': 1,'spaceBetween':0,'scrollbar': false, navigation: { nextEl: '.swiper-button-next-unique', prevEl: '.swiper-button-prev-unique' } } }
+              })}>
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide swiper-slide-square">
+                     <picture class="picture-object-fit-cover">
+                      <source srcset="/lib/images/home/what-drives-us/innovation-mobile.jpg, /lib/images/home/what-drives-us/innovation-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                        <source srcset="/lib/images/home/what-drives-us/innovation-desktop.jpg, /lib/images/home/what-drives-us/innovation-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                      <img src="/lib/images/home/what-drives-us/innovation-mobile.jpg" alt="">
+                    </picture>
+                  </div>
+                  <div class="swiper-slide swiper-slide-square">
+                    <picture class="picture-object-fit-cover">
+                      <source srcset="/lib/images/home/what-drives-us/individual-at-the-center-mobile.jpg, /lib/images/home/what-drives-us/individual-at-the-center-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                        <source srcset="/lib/images/home/what-drives-us/individual-at-the-center-desktop.jpg, /lib/images/home/what-drives-us/individual-at-the-center-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                      <img src="/lib/images/home/what-drives-us/individual-at-the-center-mobile.jpg" alt="">
+                    </picture>
+                  </div>
+                  <div class="swiper-slide swiper-slide-square">
+                    <picture class="picture-object-fit-cover">
+                      <source srcset="/lib/images/home/what-drives-us/data-insight-mobile.jpg, /lib/images/home/what-drives-us/data-insight-mobile@2x.jpg 2x" media="(max-width: 767px)">
+                      <source srcset="/lib/images/home/what-drives-us/data-insight-desktop.jpg, /lib/images/home/what-drives-us/data-insight-desktop@2x.jpg 2x" media="(min-width: 768px)">
+                      <img src="/lib/images/home/what-drives-us/data-insight-mobile.jpg" alt="">
+                    </picture>
+                  </div>
+                </div>
+                <picture class="swiper-button-prev-unique"><img src='/lib/images/home/what-drives-us/icon-carousel-arrow-left.svg' alt='Carousel previious left control button'></picture>
+                <picture class="swiper-button-next-unique"><img src='/lib/images/home/what-drives-us/icon-carousel-arrow-right.svg' alt='Carousel next slide control button'></picture>
+              </div>
+            </div>
+            <div class="background-pattern z-1"></div>
+          </div>
+        </section>
       mode: htmlmixed
     type: item
     enabled: true
@@ -201,5 +248,5 @@ development-image:
     enabled: true
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675051856
+updated_at: 1675051921
 ---
