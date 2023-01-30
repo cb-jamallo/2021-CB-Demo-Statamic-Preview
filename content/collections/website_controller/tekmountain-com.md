@@ -4895,6 +4895,36 @@ development-image:
     file: tekmountain-com/image/favicon/apple-icon-57x57.png
     type: item
     enabled: true
+  -
+    uid: android-icon-192x192
+    file: tekmountain-com/image/favicon/android-icon-192x192.png
+    type: item
+    enabled: true
+  -
+    uid: android-icon-144x144
+    file: tekmountain-com/image/favicon/android-icon-144x144.png
+    type: item
+    enabled: true
+  -
+    uid: android-icon-96x96
+    file: tekmountain-com/image/favicon/android-icon-96x96.png
+    type: item
+    enabled: true
+  -
+    uid: android-icon-72x72
+    file: tekmountain-com/image/favicon/android-icon-72x72.png
+    type: item
+    enabled: true
+  -
+    uid: android-icon-48x48
+    file: tekmountain-com/image/favicon/android-icon-48x48.png
+    type: item
+    enabled: true
+  -
+    uid: android-icon-36x36
+    file: tekmountain-com/image/favicon/android-icon-36x36.png
+    type: item
+    enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675043825
+updated_at: 1675044037
 ---
