@@ -4811,6 +4811,11 @@ development-font:
     enabled: true
 development-image:
   -
+    uid: browser-config
+    file: tekmountain-com/image/favicon/browserconfig.xml
+    type: item
+    enabled: true
+  -
     uid: favicon-io
     file: tekmountain-com/image/favicon/favicon.ico
     type: item
@@ -4831,5 +4836,5 @@ development-image:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675043310
+updated_at: 1675043399
 ---
