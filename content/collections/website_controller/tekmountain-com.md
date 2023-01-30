@@ -4925,6 +4925,26 @@ development-image:
     file: tekmountain-com/image/favicon/android-icon-36x36.png
     type: item
     enabled: true
+  -
+    uid: ms-icon-310x310
+    file: tekmountain-com/image/favicon/ms-icon-310x310.png
+    type: item
+    enabled: true
+  -
+    uid: ms-icon-150x150
+    file: tekmountain-com/image/favicon/ms-icon-150x150.png
+    type: item
+    enabled: true
+  -
+    uid: ms-icon-144x144
+    file: tekmountain-com/image/favicon/ms-icon-144x144.png
+    type: item
+    enabled: true
+  -
+    uid: ms-icon-70x70
+    file: tekmountain-com/image/favicon/ms-icon-70x70.png
+    type: item
+    enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675044037
+updated_at: 1675044190
 ---
