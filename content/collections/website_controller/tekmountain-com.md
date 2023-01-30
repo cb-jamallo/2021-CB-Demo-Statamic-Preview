@@ -100,10 +100,10 @@ development-code:
             <!DOCTYPE html>
             <html lang="en">
             	<head>
-            	  <!-- Svelte head -->
             	  %sveltekit.head%
             	</head>
             	<body>
+            	   Static HTML
             	  	<div style="display: contents">
             	  		%sveltekit.body%
             	  	</div>
@@ -4790,5 +4790,5 @@ development-font:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675041018
+updated_at: 1675041159
 ---

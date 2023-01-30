@@ -19,7 +19,7 @@ development-template:
       code: null
       mode: htmlmixed
     title:
-      code: '<title>Home | [websiteController.domain.title]</title>'
+      code: '<title>TekMountain Home | [websiteController.domain.title]</title>'
       mode: htmlmixed
     link:
       code: null
@@ -580,7 +580,8 @@ development-template:
       mode: htmlmixed
     type: item
     enabled: true
-replicate: 'null'
+replicate:
+  - 'null'
 target: 'null'
 local-image:
   -
@@ -629,5 +630,5 @@ local-template:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675037786
+updated_at: 1675041254
 ---
