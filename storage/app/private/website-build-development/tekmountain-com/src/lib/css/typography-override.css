@@ -1,0 +1,6 @@
+:is(h2,h3,h4,h5,h6.leader,address,blockquote,dd,dl,dt,fieldset,figcaption,figure,footer,form,header,hr,ol,p,pre,table,tfoot,ul,li)
++
+:is(h2,h3,h4,h5,h6,.leader,address,blockquote,dd,dl,dt,fieldset,figcaption,figure,footer,form,header,hr,ol,p,pre,table,tfoot,ul,li)
+{
+    margin-top: 3.75vw;
+}

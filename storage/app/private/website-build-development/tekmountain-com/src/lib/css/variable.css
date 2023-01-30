@@ -1,0 +1,248 @@
+:root
+{
+    
+    /*
+        ----------------------------------------------------
+        FAMILY
+        ----------------------------------------------------
+    */
+
+    --type-family: 'forma-djr-micro', sans-serif;;
+    --type-family-header: 'industry', sans-serif;
+
+    /*
+        ----------------------------------------------------
+        WEIGHT
+        ----------------------------------------------------
+    */
+
+    --type-weight-exrta-thin: 100;
+    --type-weight-thin: 200;
+    --type-weight-light: 300;
+    --type-weight-normal: 400;
+    --type-weight-medium: 500;
+    --type-weight-demi: 600;
+    --type-weight-bold: 700;
+    --type-weight-extra-bold: 800;
+    --type-weight-black: 900;
+
+    /*
+        ----------------------------------------------------
+        STYLE
+        ----------------------------------------------------
+    */
+
+    --type-style-normal: normal;
+    --type-style-oblique: oblique;
+    --type-style-italic: italic;
+    
+    /*
+        ----------------------------------------------------
+        SIZE & LINE-HEIGHT
+        ----------------------------------------------------
+    */
+
+    --type-size: 3.738vw;
+    --type-line-height: 1.5;
+    
+    --type-size-h1: calc(12.75vw + 1px);
+    --type-size-h1-small: calc(5.15vw + 1px);
+    --type-line-height-h1-small: 1.25;
+    --type-size-h1-small-lower: calc(5.15vw + 1px);
+    --type-line-height-h1-small-lower: 1.25;
+    --type-line-height-h1: .7365;
+    --type-size-h1-margin: 0;
+
+    --type-size-hp: calc(4.85vw + 1px);
+    --type-line-height-hp: .7365;
+
+    --type-size-h1-alt: calc(12.85vw + 1px);
+    --type-size-line-height-h1-alt: .275;
+    --type-size-h1-alt-margin: 16vw 0 0;
+    --type-size-h1-alt-padding: 0;
+
+    --type-size-h1-small-alt: calc(3.25vw + 1px);
+    --type-size-h1-small-line-height: .275;
+    --type-size-h1-small-alt-margin: 16vw 0 0;
+    --type-size-h1-small-alt-padding: 0;
+
+    --type-size-h1-alt-divider-width: 3vw;
+    --type-size-h1-alt-divider-height: .35vw;
+    --type-size-h1-alt-divider-margin: 6.75vw 0 0;
+
+    --type-size-hp-alt: calc(4.85vw + 1px);
+    --type-weight-hp-alt: var(--type-weight-medium);
+    --type-line-height-hp-alt: 1.15;
+    --type-size-hp-alt-margin: 4vw 0 0;
+    --type-size-hp-alt-padding: 0;
+
+    
+    --type-size-h2: calc(9.45vw + 1px);
+    --type-line-height-h2: 1.15;
+
+    --type-size-h3: calc(7.243vw + 1px);
+    --type-line-height-h3: 1.15;
+
+    --type-size-h4: calc(6.075vw + 1px);
+    --type-line-height-h4: 1.15;
+
+    --type-size-h5: calc(5.75vw + 1px);
+    --type-line-height-h5: 1;
+
+    --type-size-h6: calc(5vw + 1px);
+    --type-line-height-h6: 1;
+
+    /*
+        ----------------------------------------------------
+        GAP
+        ----------------------------------------------------
+    */
+
+    --type-column-gap: 4vw;
+
+    /*
+        ----------------------------------------------------
+        Colors
+        ----------------------------------------------------
+    */
+
+    --color-white: #FFF;
+    --color-black: #000;
+
+    --color-blue-dark: #02395B;
+    --color-blue-light: #4BBEEC;
+
+    /* --color-gray-bright: #E4E4E4; */
+    --color-gray-bright: #F6F6F7;
+    --color-gray-light: #BCBCBC;
+    --color-gray-medium: #8D8D8D;
+    --color-gray-dark: #747474;
+    --color-gray-cool-dark: #5D6772;
+
+    --color-green: #7AC64E;
+    --color-orange: #FF9F31;
+
+    /*
+        ----------------------------------------------------
+        SPACING
+        ----------------------------------------------------
+    */
+
+    --spacing-base: 2vw; /* var(--spacing-8--lg); */
+
+}
+
+@media only screen and (min-width: 768px)
+{
+
+    :root
+    {
+
+        /*
+            ----------------------------------------------------
+            SIZE & LINE-HEIGHT
+            ----------------------------------------------------
+        */
+        
+        --type-size: 1.667vw;
+        --type-line-height: 1.35;
+
+        --type-size--lg: 2.367vw;
+        --type-line-height--lg: 3.75vw;
+
+
+        --type-size-h1: calc(12.75vw + 1px);
+        --type-line-height-h1: .7365;
+        --type-size-h1-margin: 0;
+
+        --type-size-h1-small: calc(5.15vw + 1px);
+        --type-line-height-h1-small: 1.2;
+
+        --type-size-hp: calc(5.5vw + 1px);
+        --type-line-height-hp: .7365;
+
+        --type-size-h1-alt: calc(6.85vw + 1px);
+        --type-size-line-height-h1-alt: .275;
+        --type-size-h1-alt-margin: 16vw 0 0;
+        --type-size-h1-alt-padding: 0;
+
+        --type-size-h1-small-alt: calc(3.25vw + 1px);
+        --type-size-h1-small-line-height: .275;
+        --type-size-h1-small-alt-margin: 16vw 0 0;
+        --type-size-h1-small-alt-padding: 0;
+
+        --type-size-h1-alt-divider-width: 3vw;
+        --type-size-h1-alt-divider-height: .175vw;
+        --type-size-h1-alt-divider-margin: 3.75vw auto 0;
+
+        --type-size-hp-alt: calc(2.85vw + 1px);
+        --type-weight-hp-alt: var(--type-weight-medium);
+        --type-line-height-hp-alt: 1;
+        --type-size-hp-alt-margin: 2.75vw 0 0;
+        --type-size-hp-alt-padding: 0 var(--spacing-4x);
+
+
+        --type-size-h2: calc(4.271vw + 1px);
+        --type-line-height-h2: 1.375;
+
+
+        --type-size-h3: calc(2.646vw + 1px);
+        --type-line-height-h3: 1.175;
+
+
+        --type-size-h4: calc(2.046vw + 1px);
+        --type-line-height-h4: 1.175;
+
+        --type-size-h5: calc(1.65vw + 1px);
+        --type-line-height-h5: 1;
+
+        --type-size-h6: calc(1.35vw + 1px);
+        --type-line-height-h6: 1;
+
+
+        /*
+            ----------------------------------------------------
+            GAP
+            ----------------------------------------------------
+        */
+
+        --type-column-gap: 4vw;
+
+        /*
+            ----------------------------------------------------
+            SPACING
+            ----------------------------------------------------
+        */
+        
+        --spacing-base: 2vw; /* var(--spacing-8--lg); */
+    }
+}
+
+:root
+{
+    --spacing-0x: 0vw;
+    --spacing-1x: calc(var(--spacing-base) + 1px);
+    --spacing-2x: calc(calc(var(--spacing-base) * 2) + 1px);
+    --spacing-3x: calc(calc(var(--spacing-base) * 3) + 1px);
+    --spacing-4x: calc(calc(var(--spacing-base) * 4) + 1px);
+    --spacing-5x: calc(calc(var(--spacing-base) * 5) + 1px);
+    --spacing-6x: calc(calc(var(--spacing-base) * 6) + 1px);
+    --spacing-7x: calc(calc(var(--spacing-base) * 7) + 1px);
+    --spacing-8x: calc(calc(var(--spacing-base) * 8) + 1px);
+    --spacing-9x: calc(calc(var(--spacing-base) * 9) + 1px);
+    --spacing-10x: calc(calc(var(--spacing-base) * 10) + 1px);
+    --spacing-11x: calc(calc(var(--spacing-base) * 11) + 1px);
+    --spacing-12x: calc(calc(var(--spacing-base) * 12) + 1px);
+    --spacing-13x: calc(calc(var(--spacing-base) * 13) + 1px);
+    --spacing-14x: calc(calc(var(--spacing-base) * 14) + 1px);
+    --spacing-15x: calc(calc(var(--spacing-base) * 15) + 1px);
+    --spacing-16x: calc(calc(var(--spacing-base) * 16) + 1px);
+    --spacing-17x: calc(calc(var(--spacing-base) * 17) + 1px);
+    --spacing-18x: calc(calc(var(--spacing-base) * 18) + 1px);
+    --spacing-19x: calc(calc(var(--spacing-base) * 19) + 1px);
+    --spacing-20x: calc(calc(var(--spacing-base) * 20) + 1px);
+    --spacing-21x: calc(calc(var(--spacing-base) * 21) + 1px);
+    --spacing-22x: calc(calc(var(--spacing-base) * 22) + 1px);
+    --spacing-23x: calc(calc(var(--spacing-base) * 23) + 1px);
+    --spacing-24x: calc(calc(var(--spacing-base) * 24) + 1px);
+}

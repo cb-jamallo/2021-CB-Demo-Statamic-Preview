@@ -1,0 +1,17 @@
+.section-post-references {
+    color: var(--color-white);
+    background-color: var(--color-gray-cool-dark);
+}
+
+.section-post-references-ol li::before {
+    background: var(--color-blue-light);
+}
+
+.section-post-references-link,
+.section-post-references-link:link,
+.section-post-references-link:focus,
+.section-post-references-link:visited {
+    margin: 0 0;
+    color: var(--color-white);
+    overflow-wrap: break-word;
+}

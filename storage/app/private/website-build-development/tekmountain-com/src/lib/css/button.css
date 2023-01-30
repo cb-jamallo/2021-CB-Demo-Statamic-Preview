@@ -1,0 +1,113 @@
+:root
+{
+
+    /*
+        ----------------------------------------------------
+        BUTTON : PRIMARY
+        ----------------------------------------------------
+    */
+        
+        --button-primary-type-size: var(--type-size);
+        --button-primary-type-weight: var(--type-weight-medium);
+        --button-primary-color: var(--color-white);
+        --button-primary-background-color: var(--color-blue-light);
+        --button-primary-border: none;
+        --button-primary-border-radius: 1.168vw;
+        --button-primary-margin: 0;
+        --button-primary-padding: 1.869vw 3.738vw;
+
+
+        --button-primary-alt-color: var(--color-white);
+        --button-primary-alt-background-color: var(--color-blue-light);
+        --button-primary-alt-border: .5vw solid var(--color-white);
+        --button-primary-alt-border-radius: 1.168vw;
+        --button-primary-alt-margin: 0;
+
+    /*
+        ----------------------------------------------------
+        BUTTON : PRIMARY : LG
+        ----------------------------------------------------
+    */
+
+    --button-primary-type-size--lg: var(--type-size--lg);
+    --button-primary-type-weight--lg: var(--type-weight-bold);
+    --button-primary-type-line-height--lg: var(--type-line-height--lg);
+
+    /*
+        ----------------------------------------------------
+        BUTTON : SECONDARY
+        ----------------------------------------------------
+    */
+
+}
+
+@media only screen and (min-width: 768px)
+{
+
+    :root
+    {
+        /*
+            ----------------------------------------------------
+            BUTTON : PRIMARY
+            ----------------------------------------------------
+        */
+
+        
+        --button-primary-type-size: var(--type-size);
+        --button-primary-border-radius: 0.55vw;
+        --button-primary-padding: .75vw 2vw;
+
+        --button-primary-alt-type-size: var(--type-size);
+        --button-primary-alt-border: .15vw solid var(--color-white);
+        --button-primary-alt-border-radius: 1.168vw;
+
+        /*
+            ----------------------------------------------------
+            BUTTON : SECONDARY
+            ----------------------------------------------------
+        */
+    }
+}
+
+
+ .button-primary
+{ 
+    font-size: var(--button-primary-type-size);
+    font-weight: var(--button-primary-type-weight);
+    line-height: var(--line-height);
+    /* border-radius: var(--button-primary-border-radius); */
+    background-color: var(--button-primary-background-color);
+    color: var(--button-primary-color);
+    padding: var(--button-primary-padding);
+    margin: var(--button-primary-margin);
+    border: var(--button-primary-border);
+}
+
+.button-primary--lg
+{ 
+    font-size: var(--button-primary-type-size--lg);
+    font-weight: var(--button-primary-type-weight--lg);
+    line-height: var(--button-primary-type-line-height--lg);
+    /* border-radius: var(--button-primary-border-radius); */
+    background-color: var(--button-primary-background-color);
+    color: var(--button-primary-color);
+    padding: var(--button-primary-padding);
+    margin: var(--button-primary-margin);
+    border: var(--button-primary-border);
+ }
+
+
+
+
+ .button-primary-alt
+ { 
+     font-size: var(--button-primary-type-size);
+     font-weight: var(--button-primary-type-weight);
+     line-height: var(--line-height);
+     border: var(--button-primary-alt-border);
+     /* border-radius: var(--button-primary-alt-border-radius); */
+     background-color: var(--button-primary-alt-background-color);
+     color: var(--button-primary-alt-color);
+     padding: var(--button-primary-padding);
+     margin: var(--button-primary-margin);
+ }

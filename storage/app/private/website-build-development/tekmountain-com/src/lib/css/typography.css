@@ -1,0 +1,175 @@
+/* 
+    -------------------------------------------------
+    ELEMENTS: BASE
+    -------------------------------------------------
+*/
+
+body { font-size: var(--type-size); font-weight: var(--type-weight-light); line-height: var(--type-line-height); } 
+
+/*
+    -------------------------------------------------
+    ELEMENTS: H SIZES:
+    -------------------------------------------------
+*/
+
+.h1, .h2, .h3, .h4, .h5, .h6 { font-family: var(--type-family-header);}
+
+.h1 { font-size: var(--type-size-h1); line-height: var(--type-line-height-h1); font-weight: var(--type-weight-bold); text-transform: uppercase; }
+.h1-alt { font-size: var(--type-size-h1-alt); line-height: var(--type-line-height-h1-alt); font-weight: var(--type-weight-bold); text-transform: uppercase; }
+
+.h2 { font-size: var(--type-size-h2); line-height: var(--type-line-height-h2); font-weight: var(--type-weight-bold); text-transform: uppercase; }
+
+.h3 { font-size: var(--type-size-h3); line-height: var(--type-line-height-h3); font-weight: var(--type-weight-medium); text-transform: uppercase; }
+
+.h4 { font-size: var(--type-size-h4); line-height: var(--type-line-height-h4); font-weight: var(--type-weight-medium); text-transform: uppercase; }
+
+.h5 { font-size: var(--type-size-h5); line-height: var(--type-line-height-h5); font-weight: var(--type-weight-medium); text-transform: uppercase; }
+
+.h6 { font-size: var(--type-size-h6); line-height: var(--type-line-height-h6); font-weight: var(--type-weight-medium); text-transform: uppercase; }
+
+/*
+    -------------------------------------------------
+    ELEMENT: LINK
+    -------------------------------------------------
+*/
+
+a, a:hover, a:focus, a:visited { color: var(--color-blue-light); }
+
+/*
+    -------------------------------------------------
+    ELEMENT: STRONG
+    -------------------------------------------------
+*/
+
+strong { font-weight: var(--type-weight-medium); }
+
+/*
+    -------------------------------------------------
+    ELEMENT: LIST
+    -------------------------------------------------
+*/
+
+.li:before { background: url('') no-repeat 0 0; background-position: center center; background-size: 100% auto; content: ''; position: absolute; }
+
+/*
+    ----------------------------------------------------
+    ELEMENT: BREAKS
+    ----------------------------------------------------
+*/
+ 
+.br--sm,.br--lg { display: none; }
+
+@media only screen and (min-width: 0px) and (max-width: 767px)
+{
+    .br--sm { display: block; }
+}
+
+@media only screen and (min-width: 768px) and (min-width: 768px)
+{
+    .br--lg { display: block; }
+}
+
+/*
+    ----------------------------------------------------
+        ALIGNMENT
+    ----------------------------------------------------
+*/
+
+.text-align-start { text-align: start; }
+.text-align-center { text-align: center; }
+.text-align-end { text-align: end; }
+
+@media only screen and (max-width: 767px)
+{
+    .text-align-start--sm { text-align: start; }
+    .text-align-center--sm { text-align: center; }
+    .text-align-end--sm { text-align: end; }
+}
+
+@media only screen and (min-width: 768px)
+{
+    .text-align-start--lg { text-align: start; }
+    .text-align-center--lg { text-align: center; }
+    .text-align-end--lg { text-align: end; }
+}
+
+
+
+/*
+    ----------------------------------------------------
+    SPACING
+    ----------------------------------------------------
+*/
+
+.typeset > *:first-child { margin-top: 0; }
+.typeset > *:last-child { margin-bottom: 0; }
+
+.typeset-2 { columns: 2; column-gap: var(--type-column-gap); orphans: 3; }
+.typeset-3 { columns: 3; column-gap: var(--type-column-gap); orphans: 3; }
+.typeset-4 { columns: 4; column-gap: var(--type-column-gap); orphans: 3; }
+
+
+/*
+    Mobile
+*/
+@media only screen and (max-width: 767px)
+{
+
+    .typeset-2--sm { columns: 2; column-gap: var(--type-column-gap); }
+    .typeset-3--sm { columns: 3; column-gap: var(--type-column-gap); }
+    .typeset-4--sm { columns: 4; column-gap: var(--type-column-gap); }
+
+    /* Base: Content Block spacing */
+    .h1 + :is(h2,h3,h4,h5,h6,.h3,.h4,.h5,.h6,.leader,address,blockquote,dd,dl,dt,fieldset,figcaption,figure,footer,form,header,hr,ol,p,pre,table,tfoot,ul,li)
+    {
+        margin-top: 4.15vw;
+    }
+
+    .h2 + :is(h2,h3,h4,h5,h6,.h3,.h4,.h5,.h6,.leader,address,blockquote,dd,dl,dt,fieldset,figcaption,figure,footer,form,header,hr,ol,p,pre,table,tfoot,ul,li)
+    {
+        margin-top: 3.15vw;
+    }
+
+    :is(h2,h3,h4,h5,h6,.h3,.h4,.h5,.h6,.leader,address,blockquote,dd,dl,dt,fieldset,figcaption,figure,footer,form,header,hr,ol,p,pre,table,tfoot,ul,li)
+    +
+    :is(h2,h3,h4,h5,h6,.h3,.h4,.h5,.h6,.leader,address,blockquote,dd,dl,dt,fieldset,figcaption,figure,footer,form,header,hr,ol,p,pre,table,tfoot,ul,li),
+    .p
+    {
+        margin-top: 2.75vw;
+    }
+
+    .li { display: inline-block; margin-left: 6.346vw; }
+
+    .li:before { width: 4vw; height: 4vw; top: 1vw; left: -6.346vw; }
+}
+
+@media only screen and (min-width: 768px)
+{
+
+    .typeset-2--lg { columns: 2; column-gap: var(--type-column-gap); }
+    .typeset-3--lg { columns: 3; column-gap: var(--type-column-gap); }
+    .typeset-4--lg { columns: 4; column-gap: var(--type-column-gap); }
+
+    /* Base: Content Block spacing */
+    .h1 + :is(h2,h3,h4,h5,h6,.h2, .h3,.h4,.h5,.h6,.leader,address,blockquote,dd,dl,dt,fieldset,figcaption,figure,footer,form,header,hr,ol,p,pre,table,tfoot,ul,li)
+    {
+        margin-top: 2.15vw;
+    }
+
+    .h2 + :is(h2,h3,h4,h5,h6,.h2,.h3,.h4,.h5,.h6,.leader,address,blockquote,dd,dl,dt,fieldset,figcaption,figure,footer,form,header,hr,ol,p,pre,table,tfoot,ul,li)
+    {
+        margin-top: 1.75vw;
+    }
+
+    :is(h2,h3,h4,h5,h6,.h2,.h3,.h4,.h5,.h6,.leader,address,blockquote,dd,dl,dt,fieldset,figcaption,figure,footer,form,header,hr,ol,p,pre,table,tfoot,ul,li)
+    +
+    :is(h2,h3,h4,h5,h6,.h2,.h3,.h4,.h5,.h6,.leader,address,blockquote,dd,dl,dt,fieldset,figcaption,figure,footer,form,header,hr,ol,p,pre,table,tfoot,ul,li),
+    .p
+    {
+        margin-top: 1.346vw;
+    }
+
+    .li { display: inline-block; margin-left: 3.646vw; }
+
+    .li:before { width: 2vw; height: 2vw; top: 0vw; left: -2.846vw; }
+}
