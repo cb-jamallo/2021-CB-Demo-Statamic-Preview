@@ -1250,9 +1250,12 @@ class SchemaClass
 
         if ( array_key_exists( 'children', $navigation ) )
         {
-            foreach( $navigation['children'] as $navigationChild )
+            if ( count( $navigation['children'] ) >= 1)
             {
-                 return $this->buildPageRouteTree( $id, $navigationChild, $path );
+                foreach( $navigation['children'] as $navigationChild )
+                {
+                    return $this->buildPageRouteTree( $id, $navigationChild, $path );
+                }
             }
         }
     }
