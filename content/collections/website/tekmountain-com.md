@@ -646,7 +646,22 @@ development-image:
     file: tekmountain-com/image/home/hero/home-hero-collage-mobile@2x.jpg
     type: item
     enabled: true
+  -
+    uid: icon-carousel-arrow-right
+    file: tekmountain-com/image/home/industries-we-serve/icon-carousel-arrow-right.svg
+    type: item
+    enabled: true
+  -
+    uid: tekmountain-associations-desktop-1x
+    file: tekmountain-com/image/home/industries-we-serve/tekmountain-associations-desktop.jpg
+    type: item
+    enabled: true
+  -
+    uid: tekmountain-associations-desktop-2x
+    file: tekmountain-com/image/home/industries-we-serve/tekmountain-associations-desktop@2x.jpg
+    type: item
+    enabled: true
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675046194
+updated_at: 1675046380
 ---
