@@ -5,7 +5,7 @@ title: 'Global Ambassador'
 development-template:
   -
     uid: default
-    path: /src/routes/why-we-do-it
+    path: /src/routes
     name: +page
     ext: svelte
     doctype:
@@ -33,7 +33,7 @@ development-template:
       code: null
       mode: javascript
     body:
-      code: 'Why we do it...'
+      code: 'Global Ambassador...'
       mode: htmlmixed
     type: item
     enabled: true
@@ -41,5 +41,5 @@ parent: c025df8d-4362-4fc9-8676-bf13ff46eff2
 replicate: 'null'
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675087201
+updated_at: 1675087266
 ---
