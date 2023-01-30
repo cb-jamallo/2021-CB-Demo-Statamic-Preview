@@ -9,6 +9,9 @@ tree:
             entry: 69f6f070-c533-4213-abba-b8af407ea4ec
       -
         entry: 785879d1-9782-4240-a37e-add7b81d4399
+        children:
+          -
+            entry: bc428b58-d6fe-4541-81b9-ebf0faae27ee
   -
     entry: 6134a0ca-717e-4251-8d41-d93319d3d010
   -
