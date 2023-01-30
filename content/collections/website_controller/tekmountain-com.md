@@ -5544,6 +5544,27 @@ development-image:
     file: tekmountain-com/image/favicon/ms-icon-70x70.png
     type: item
     enabled: true
+development-document:
+  -
+    uid: castlebranch-oadn-confposter-2021-proof
+    file: tekmountain-com/document/insights/CastleBranch_OADN_ConfPoster_2021_PROOF.pdf
+    type: item
+    enabled: true
+  -
+    uid: castlebranch-oadn-whitepaper-final
+    file: tekmountain-com/document/insights/CastleBranch_OADNWhitePaper_FINAL.pdf
+    type: item
+    enabled: true
+  -
+    uid: essentials-executive-summary
+    file: tekmountain-com/document/insights/Essentials-Executive-Summary.pdf
+    type: item
+    enabled: true
+  -
+    uid: essentials-implications-for-nursing-regulations
+    file: tekmountain-com/document/insights/Essentials-Implications-for-Nursing-Regulations.pdf
+    type: item
+    enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675045084
+updated_at: 1675045452
 ---
