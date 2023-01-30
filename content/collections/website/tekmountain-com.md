@@ -91,6 +91,30 @@ development-template:
             </picture>
             </div>
         </section>
+
+        <section tabindex="0" class="section-blue grid grid-stacked margin-top-4--sm margin-top-4--lg">
+          <div class="z-1 place-self-start-center">
+            <div class="section-leader-gray place-self-center-center text-align-center--lg">
+              <h2 class="h2">We're Invested and Connected</h2>
+              <p class="p">tekMountain is embedded in the important work of deeply understanding and addressing some of healthcare and higher education's most difficult problems.</p>
+            </div>   
+            <div class="grid grid-3--lg grid-col-gap-2--lg padding-x-4--sm padding-x-4--lg padding-bottom-4--sm padding-bottom-4--lg text-align-left--lg">
+              <div class="invested-columns margin-top-4--sm margin-top-4--lg">
+                <h3 class="h3 invested-header">Knowledge</h3>
+                <p class='invested-copy'>Ask. Listen. Learn. Share. Guide.</p>
+                <p class='invested-copy'>It's a proven approach that has led to countless industry firsts. We place the individual at the center of the knowledge ecosystem - both as a contributor and a beneficiary producing guidance and insight that is shared with all stakeholders allowing them to leverage our experience and knowledge. What we think always starts with you.</p>
+              </div>
+              <div class="margin-top-4--sm margin-top-4--lg">
+                <h3 class="h3 invested-header">Network</h3>
+                <p class='invested-copy'>Being vested in the industries, communities, and individuals we serve has a profound impact on solving real problems. We rely upon our large footprint and deep roots to help all stakeholders become an influential voice in our collective future. That network is the difference between seeing change happen and leading it.</p>
+              </div>
+              <div class="margin-top-4--sm margin-top-4--lg">
+                <h3 class="h3 invested-header">Insights</h3>
+                <p class='invested-copy'>Data analytics is the voice of our network. It separates truth from opinion, and cuts through the clutter to reveal clarity. 360-degree insight is the result of industry-wide, data-led intelligence that connects data and connects the dots.</p>
+              </div>
+            </div>
+          </div>
+        </section>
       mode: htmlmixed
     type: item
     enabled: true
@@ -177,5 +201,5 @@ development-image:
     enabled: true
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675051785
+updated_at: 1675051856
 ---
