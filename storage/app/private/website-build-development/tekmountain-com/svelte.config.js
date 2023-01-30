@@ -5,7 +5,7 @@ import adapterNetlify from '@sveltejs/adapter-netlify';
 let adapter = null;
 let adapterKit = null;
 
-if ( process.env.VITE_ENV === 'local' ) 
+if ( process.env.VITE_ENV === 'local' || process.env.VITE_ENV === 'preview' ) 
 {
     adapter = adapterStatic;
     adapterKit = {

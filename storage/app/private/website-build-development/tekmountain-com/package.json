@@ -3,11 +3,11 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"local": "NODE_ENV=local VITE_ENV=local vite build",
-		"development": "NODE_ENV=development vite build --mode development",
-		"staging": "NODE_ENV=staging vite build --mode staging",
-		"preview": "NODE_ENV=preview vite build --mode preview",
-		"production": "NODE_ENV=production vite build --mode production"
+		"local": "vite build --mode preview",
+		"development": "vite build --mode preview",
+		"staging": "vite build --mode staging",
+		"preview": "vite build --mode preview",
+		"production": "vite build --mode production"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
