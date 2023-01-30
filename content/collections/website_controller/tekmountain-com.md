@@ -402,7 +402,8 @@ development-code:
             	let ttpl = false;
               
             	onMount(async () => {
-            	  // #Await...
+            	  
+            	  /* #Await... */
             	  await tick();
 
             	  /* $page.data = data */
@@ -484,15 +485,15 @@ development-code:
 
                         /**
                          *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
                         
                         var disqus_config = function () {
-                            this.page.url = sitePageUrl;  // Replace PAGE_URL with your page's canonical URL variable
-                            this.page.identifier = sitePageId; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                            this.page.url = sitePageUrl;  /* Replace PAGE_URL with your page's canonical URL variable */
+                            this.page.identifier = sitePageId; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
                             this.page.title = sitePageTitle;
                         };
                         
-                        (function() { // DON'T EDIT BELOW THIS LINE
+                        (function() { /* DON'T EDIT BELOW THIS LINE */
                         var d = document, s = d.createElement('script');
                         s.src = sitePageEmbedUrl;
                         s.setAttribute('data-timestamp', +new Date());
@@ -4545,7 +4546,7 @@ development-code:
 
 
             <svelte:head>
-                <script src="/lib/js/modal-subscribe.js"></script>
+                <script src="/lib/script/modal-subscribe.js"></script>
             </svelte:head>
           mode: htmlmixed
         type: item
@@ -5861,5 +5862,5 @@ development-document:
     type: item
     enabled: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675051702
+updated_at: 1675052438
 ---
