@@ -1254,7 +1254,7 @@ class SchemaClass
             {
                 foreach( $navigation['children'] as $navigationChild )
                 {
-                    return $this->buildPageRouteTree( $id, $navigationChild, $path );
+                    $this->buildPageRouteTree( $id, $navigationChild, $path );
                 }
             }
         }
