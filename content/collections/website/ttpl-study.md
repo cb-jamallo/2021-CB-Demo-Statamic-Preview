@@ -1,6 +1,5 @@
 ---
 id: bc428b58-d6fe-4541-81b9-ebf0faae27ee
-published: false
 blueprint: website
 title: 'TTPL Study'
 development-template:
@@ -40,8 +39,7 @@ development-template:
     enabled: true
 parent: 785879d1-9782-4240-a37e-add7b81d4399
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675087066
-replicate:
-  - page
-target: development
+updated_at: 1675087070
+replicate: 'null'
+target: 'null'
 ---
