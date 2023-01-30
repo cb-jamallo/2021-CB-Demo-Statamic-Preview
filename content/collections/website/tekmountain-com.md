@@ -580,8 +580,7 @@ development-template:
       mode: htmlmixed
     type: item
     enabled: true
-replicate:
-  - 'null'
+replicate: 'null'
 local-image:
   -
     uid: image
@@ -662,7 +661,7 @@ development-image:
     file: tekmountain-com/image/home/industries-we-serve/tekmountain-associations-desktop@2x.jpg
     type: item
     enabled: true
-target: development
+target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675046568
+updated_at: 1675046719
 ---
