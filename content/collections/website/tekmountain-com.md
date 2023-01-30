@@ -580,17 +580,14 @@ development-template:
       mode: htmlmixed
     type: item
     enabled: true
-replicate:
-  - 'null'
+replicate: 'null'
 local-image:
   -
     uid: image
-    file: tekmountain-com/image/AdobeStock_233158786_Preview.jpeg
     type: item
     enabled: true
   -
     uid: image2
-    file: tekmountain-com/image/AdobeStock_291317597_Preview.jpeg
     type: item
     enabled: true
 local-template:
@@ -628,6 +625,28 @@ local-template:
       mode: htmlmixed
     type: item
     enabled: true
+development-image:
+  -
+    uid: home-hero-collage-desktop-1x
+    file: tekmountain-com/image/home/hero/home-hero-collage-desktop.jpg
+    type: item
+    enabled: true
+  -
+    uid: home-hero-collage-desktop-2x
+    file: tekmountain-com/image/home/hero/home-hero-collage-desktop@2x.jpg
+    type: item
+    enabled: true
+  -
+    uid: home-hero-collage-mobile-1x
+    file: tekmountain-com/image/home/hero/home-hero-collage-mobile.jpg
+    type: item
+    enabled: true
+  -
+    uid: home-hero-collage-mobile-2x
+    file: tekmountain-com/image/home/hero/home-hero-collage-mobile@2x.jpg
+    type: item
+    enabled: true
+target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675041854
+updated_at: 1675046194
 ---
