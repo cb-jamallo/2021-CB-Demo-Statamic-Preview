@@ -120,6 +120,7 @@ class SchemaClass
         $this->schema['websiteBuild']['replicate'] = $this->schema['websiteBuild']['event']->entry->replicate;
         $this->schema['websiteBuild']['target'] = $this->schema['websiteBuild']['event']->entry->target;
         $this->schema['websiteBuild']['run'] = $this->schema['websiteBuild']['event']->entry->run;
+        $this->schema['websiteBuild']['deploy'] = $this->schema['websiteBuild']['event']->entry->deploy;
         
         //  Handle Build on Website Collection
         if ( $this->schema['websiteBuild']['blueprint'] === 'website' )
@@ -301,6 +302,8 @@ class SchemaClass
         // Replicate
         $this->schema['website']['replicate'] = $this->parseDataKey('website', 'replicate'); // Required Per-publish...
         $this->schema['website']['target'] = $this->parseDataKey('website', 'target'); // Required Per-publish...
+        $this->schema['website']['run'] = $this->parseDataKey( 'website', 'run' );
+        $this->schema['website']['deploy'] = $this->parseDataKey( 'website', 'deploy' );
         
         // Domain
         $this->schema['website']['domain'] = [
@@ -377,6 +380,7 @@ class SchemaClass
             $this->schema['websiteController']['replicate'] = $this->parseDataKey( 'websiteController', 'replicate' ); //$this->schema['websiteController']['dataAugmented']['replicate']->raw();
             $this->schema['websiteController']['target'] = $this->parseDataKey( 'websiteController', 'target' ); //$this->schema['websiteController']['dataAugmented']['target']->raw();
             $this->schema['websiteController']['run'] = $this->parseDataKey( 'websiteController', 'run' );
+            $this->schema['websiteController']['deploy'] = $this->parseDataKey( 'websiteController', 'deploy' );
             
             // Domain
             $this->schema['websiteController']['domain'] = [
@@ -1143,9 +1147,6 @@ class SchemaClass
     {
         $fileEnv = 'build-' . strtolower( $this->schema['websiteBuild']['target'] );
         $fileSlug = strtolower( $this->schema['websiteBuild']['domain']['slug'] );
-        $filePath = $_fileCodeEntry['path'] ?? '/src' . $this->buildPageRouteTree( $this->schema['websiteBuild']['id'], $this->schema['websiteBuild']['navigation'] );
-        // $fileRoot = $this->buildPageRouteCleaned( $fileSlug . '/' . 'static/lib/data', 'website', 'json' );
-        // $fileGlobal = $this->buildPageRouteCleaned( $fileEnv . '/' . $fileSlug . '/' . 'static/lib/data', 'website', 'json' );
 
         unset( $this->schema['website']['entry'] );
         unset( $this->schema['website']['root'] );
@@ -1246,19 +1247,20 @@ class SchemaClass
         $navigation = $_navigation['tree'] ?? $_navigation;
         $path = isset( $_navigation['tree'] ) ? $_navigation['tree']['uri'] : $navigation['uri'] ?? '/';
 
-        if ( $id === $navigation['id'] ) return $navigation['id'];
+        if ( $id === $navigation['id'] && $path === '' ) return '/';
+        if ( $id === $navigation['id'] && $path !== '' ) return $path;
 
         if ( array_key_exists( 'children', $navigation ) )
         {
             foreach( $navigation['children'] as $navigationChild )
             {
-                $target = $this->buildPageRouteTree( $id, $navigationChild, $path );
+               $target = $this->buildPageRouteTree( $id, $navigationChild, $path );
 
-                if ( $id === $target ) return $navigationChild['uri'];
+               if ( !$target ) continue;
+
+               return $target;
             }
         }
-
-        return '';
 
     }
 
@@ -1627,64 +1629,69 @@ class SchemaClass
         $buildEnvDirectory = sprintf( '/storage/%s', explode( 'storage/', $buildEnv->path('') )[1] );
         $buildTarget = $this->schema['websiteBuild']['target'];
         $buildRun = $this->schema['websiteBuild']['run'];
+        $buildDeploy = $this->schema['websiteBuild']['deploy'];
         $buildSlug = $this->schema['websiteBuild']['domain']['slug'];
         $buildDirectoriesRoot = $buildEnv->directories( $this->schema['websiteBuild']['domain']['slug'] );
         $buildDirectoriesNode = $buildEnv->directories( $this->schema['websiteBuild']['domain']['slug'] . '/node_modules' );
-        $buildDirectoryUserPath = 'cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin'; // PAIN IN THE ARSE TO FIGURE OUT!!!!
-
-        // Handle old build remove
-        if ( in_array( $buildSlug . '/.svelte-kit', $buildDirectoriesRoot ) ) $buildEnv->deleteDirectory( $buildSlug . '/.svelte-kit' );
-        if ( in_array( $buildSlug . '/build', $buildDirectoriesRoot ) ) $buildEnv->deleteDirectory( $buildSlug . '/build' );
-        
-        
-
-        // Handle build run ONLY when not a live deploy
-        if ( $buildRun && $buildTarget !== 'live' ) 
+        $buildDirectoryUserPath = 'cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin'; // REQUIRED TO BUILD W/ ACCESS TO NPM. PAIN IN THE ARSE TO FIGURE OUT!!!!
+      
+        // Handle build run
+        if ( $buildRun ) 
         {
+
+            // Handle old build removal
+            if ( in_array( $buildSlug . '/.svelte-kit', $buildDirectoriesRoot ) ) $buildEnv->deleteDirectory( $buildSlug . '/.svelte-kit' );
+            if ( in_array( $buildSlug . '/build', $buildDirectoriesRoot ) ) $buildEnv->deleteDirectory( $buildSlug . '/build' );
+
             // Install node_modules if not already
-            if ( sizeof( $buildDirectoriesNode ) <= 0 ) 
-            {
+            // if ( sizeof( $buildDirectoriesNode ) <= 0 ) 
+            // {
                 shell_exec( $buildDirectoryUserPath . ' npm install 2>&1');
-            }
+            // }
 
             //exec('cd ' . $buildEnv->path('') . $buildSlug . '&& PATH=' . getenv('PATH') . ':/usr/local/bin npm run ' . $buildTarget . ' 2>&1');
             shell_exec( $buildDirectoryUserPath . ' npm run ' . $buildTarget . ' 2>&1' );
         }
 
-        // Handle git commit
-        // Change credentials to app then back to system
-        // https://jhooq.com/github-permission-denied-publickey/
-        // https://statamic.com/forum/5247-enabling-automatic-git-push-ssh-key-not-being-used
-        
-        $github = null;
-        $githubOrigin = env('CB_GITHUB_USERNAME'). ':' . env('CB_GITHUB_TOKEN') . '@github.com/' . env('CB_GITHUB_USERNAME'). '/' . env('CB_GITHUB_REPO');
-        $githubOriginUrl = 'https://' . $githubOrigin .'.git';
-        
-        // Handle main branch updates
-        $github = shell_exec( $buildDirectoryUserPath . ' git checkout main 2>&1');
-        $github = shell_exec( $buildDirectoryUserPath . ' git add -A' );
-        $github = shell_exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
-        $github = shell_exec( $buildDirectoryUserPath . ' git push https://' . $githubOrigin .'.git main 2>&1');
-        
-        // Handle delete: git push origin --delete tekmountain-com-development
+        // Handle build deplyment
+        if ( $buildDeploy ) 
+        {
 
-        // Handle target branch updates
-        $github = shell_exec( $buildDirectoryUserPath . ' git push https://' . $githubOrigin .'.git ' . $buildSlug . '-' . $buildTarget . ' 2>&1');
-        // Handle new branch create and push upstream
-        //$github = shell_exec( $buildDirectoryUserPath . ' git ls-remote --heads ' . $githubOriginUrl .' development 2>&1' ); 
-        
-        // if ( !github ) shell_exec( $buildDirectoryUserPath . ' git branch ' . $buildSlug . '-' . $buildTarget . ' && git push -u ' . $githubOriginUrl . ' ' . $buildSlug . '-' . $buildTarget . ' 2>&1');
-        
-        
-        // $m = "Returned with status $return_var and output:\n";
-        // $m = print_r($output, false );
-        // SSH Teesting Command: ssh -T git@github.com
-        // $githubClass = new GithubClass( $this->schema, $buildEnv->path('') . $buildSlug );
-        // $githubClass->repoExec( $buildDirectoryUserPath . ' git add -A' );
-        // $githubClass->repoExec( $buildDirectoryUserPath . ' git commit -m "Automated Commit"' );
-        // $githubClass->repoExec( $buildDirectoryUserPath . ' git remote set-url statamic' );
-        // $githubClass->repoExec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main' );
-        
+            // Handle git commit
+            // Change credentials to app then back to system
+            // https://jhooq.com/github-permission-denied-publickey/
+            // https://statamic.com/forum/5247-enabling-automatic-git-push-ssh-key-not-being-used
+
+            $github = null;
+            $githubOrigin = env('CB_GITHUB_USERNAME'). ':' . env('CB_GITHUB_TOKEN') . '@github.com/' . env('CB_GITHUB_USERNAME'). '/' . env('CB_GITHUB_REPO');
+            $githubOriginUrl = 'https://' . $githubOrigin .'.git';
+
+            // Handle main branch updates
+            $github = shell_exec( $buildDirectoryUserPath . ' git checkout main 2>&1');
+            $github = shell_exec( $buildDirectoryUserPath . ' git add -A' );
+            $github = shell_exec( $buildDirectoryUserPath . ' git commit -m "Automated Commit" 2>&1' );
+            $github = shell_exec( $buildDirectoryUserPath . ' git push https://' . $githubOrigin .'.git main 2>&1');
+
+            // Handle delete: git push origin --delete tekmountain-com-development
+
+            // Handle target branch updates
+            $github = shell_exec( $buildDirectoryUserPath . ' git push https://' . $githubOrigin .'.git ' . $buildSlug . '-' . $buildTarget . ' 2>&1');
+            // Handle new branch create and push upstream
+            //$github = shell_exec( $buildDirectoryUserPath . ' git ls-remote --heads ' . $githubOriginUrl .' development 2>&1' ); 
+
+            // if ( !github ) shell_exec( $buildDirectoryUserPath . ' git branch ' . $buildSlug . '-' . $buildTarget . ' && git push -u ' . $githubOriginUrl . ' ' . $buildSlug . '-' . $buildTarget . ' 2>&1');
+
+
+            // $m = "Returned with status $return_var and output:\n";
+            // $m = print_r($output, false );
+            // SSH Teesting Command: ssh -T git@github.com
+            // $githubClass = new GithubClass( $this->schema, $buildEnv->path('') . $buildSlug );
+            // $githubClass->repoExec( $buildDirectoryUserPath . ' git add -A' );
+            // $githubClass->repoExec( $buildDirectoryUserPath . ' git commit -m "Automated Commit"' );
+            // $githubClass->repoExec( $buildDirectoryUserPath . ' git remote set-url statamic' );
+            // $githubClass->repoExec( $buildDirectoryUserPath . ' git push git@github.com:cb-jamallo/2021-CB-Demo-Statamic-Preview.git main' );
+
+        }        
 
     }
 

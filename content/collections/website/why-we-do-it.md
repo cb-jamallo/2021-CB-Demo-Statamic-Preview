@@ -35,8 +35,123 @@ development-template:
     body:
       code: |-
         <svelte:head>
-          <title>Why We Do It | [[websiteController.domain.title]]</title>
+          
+          <title>{ TemplateParseTitle( `Here's my title` ) }</title>
+          <meta name='description' content='...' />
+
         </svelte:head>
+
+
+        <section class='section-1 grid grid-stacked'>
+            <div class="z-2 grid place-self-center-center--sm place-self-start-center--lg padding-x-4--sm padding-x-4--lg">
+            <h1 class='h1'>
+              <span class='h1-small'>Access to</span>
+              <span>Knowledge</span>
+            </h1>
+            <p class='hp'><span>We believe in unlocking the potential of every individual.</span></p>
+          </div>
+          <div class='z-1'>
+            <picture class='picture-object-fit-cover z-1'>
+              <source srcset='/lib/image/why-we-do-it/why-we-do-it-mobile.jpg, /lib/image/why-we-do-it/why-we-do-it-mobile@2x.jpg 2x' media='(max-width: 767px)' />
+              <source srcset='/lib/image/why-we-do-it/why-we-do-it-desktop.jpg, /lib/image/why-we-do-it/why-we-do-it-desktop@2x.jpg 2x' media='(min-width: 768px)' />
+              <img src='/lib/image/why-we-do-it/why-we-do-it-mobile.jpg' alt='...' />
+            </picture> 
+          </div>
+        </section>
+
+        <section tabindex='0' class='section-blue grid grid-stacked margin-top-4--sm margin-top-4--lg'>
+          <div class='place-self-start-center'>
+              <div class='section-leader-gray place-self-center-center text-align-center--lg'>
+                  <h2 class='h2'>Our DNA</h2>
+                  <p class='p'>Understanding the forces and factors that indicate or influence the immediate and long-term success of an individual nurse is key to achieving ecosystem balance. We're dedicated to sharing our resources with the people and industries we serve to help cultivate next-level thinking and publish actionable insight. Our passion has always been to create initiatives that support the professional journey of an individual with a commitment to place them at the center of their own destiny.</p>
+              </div>   
+              <div tabindex='-1' class='grid grid-4--lg place-self-center-center text-align-center'>
+                &nbsp;&nbsp;
+              </div>
+          </div>
+        </section>
+         
+        <section tabindex='0' class='grid grid-col-gap-4--lg grid-2--lg grid-2-alt--sm grid-2-alt--lg padding-x-4 margin-top-10--sm margin-top-6--lg'>
+          <div class='margin-top-4--sm place-self-center-center'>
+            <h3 class='h3'>Globe-Spanning Experiences. Life-Changing Opportunities.</h3>
+            <p>Global Ambassador University is a one-of-a-kind six-year individual TTPL journey of knowledge, network and self-discovery.</p>
+            <p><a href='/why-we-do-it/global-ambassador'><button class='button-primary'>Meet our Global Ambassadors</button></a></p>
+            <!-- href='https://realvaccinationid.com/ambassador' target='_blank'-->
+          </div>
+          <div class='grid grid-stacked'>
+            <picture class='picture-object-fit-cover z-2'>
+              <source srcset='/lib/image/why-we-do-it/global-ambassador-mobile.jpg, /lib/image/why-we-do-it/global-ambassador-mobile@2x.jpg 2x' media='(max-width: 767px)' />
+              <source srcset='/lib/image/why-we-do-it/global-ambassador-desktop.jpg, /lib/image/why-we-do-it/global-ambassador-desktop@2x.jpg 2x' media='(min-width: 768px)' />
+              <img src='/lib/image/why-we-do-it/global-ambassador-mobile.jpg' alt='' />
+            </picture>
+            <div class='background-pattern z-1'></div>
+          </div>
+        </section>
+
+
+        <section tabindex='0' class='grid grid-2--lg grid-col-gap-4--lg grid-2-alt--sm padding-x-4 margin-top-10--sm margin-top-6--lg'>
+          <div class='margin-top-4--sm place-self-center-center'>
+            <h3 class='h3'>COVID-19 Thought-Leadership at a Most Critical Time.</h3>
+            <p>We created the Infectious Disease Council in support of the specific pandemic problems of higher education, healthcare, and individual nurses.</p>
+            <p><a href='https://infectiousdiseasecouncil.org/' target='_blank'><button class='button-primary'>Learn More</button></a></p>
+          </div>
+          <div class='grid grid-stacked'>
+            <picture class='picture-object-fit-cover z-2'>
+              <source srcset='/lib/image/why-we-do-it/infectious-disease-council-mobile.jpg, /lib/image/why-we-do-it/infectious-disease-council-mobile@2x.jpg 2x' media='(max-width: 767px)' />
+              <source srcset='/lib/image/why-we-do-it/infectious-disease-council-desktop.jpg, /lib/image/why-we-do-it/infectious-disease-council-desktop@2x.jpg 2x' media='(min-width: 768px)' />
+              <img src='/lib/image/why-we-do-it/infectious-disease-council-mobile.jpg' alt='' />
+            </picture>
+            <div class='background-pattern z-1'></div>
+          </div>
+        </section>
+
+        <section tabindex='0' class='grid grid-2--lg grid-col-gap-4--lg grid-2-alt--sm grid-2-alt--lg padding-x-4 margin-top-10--sm margin-top-6--lg'>
+          <div class='margin-top-4--sm place-self-center-center'>
+            <h3 class='h3'>An Investment in Nurses is an Investment in <br />All of Us.</h3>
+            <p>Wer're honored to partner with the AACN and OADN in providing scholarships to Nursing students. Financial support is critical in helping to reduce dropout and prepare young minds for success.</p>
+            <!-- <p><button class='button-primary'>Learn More</button></p> -->
+          </div>
+          <div class='grid grid-stacked'>
+            <picture class='picture-object-fit-cover z-2'>
+              <source srcset='/lib/image/why-we-do-it/scholarship-mobile.jpg, /lib/image/why-we-do-it/scholarship-mobile@2x.jpg 2x' media='(max-width: 767px)' />
+              <source srcset='/lib/image/why-we-do-it/scholarship-desktop.jpg, /lib/image/why-we-do-it/scholarship-desktop@2x.jpg 2x' media='(min-width: 768px)' />
+              <img src='/lib/image/why-we-do-it/scholarship-mobile.jpg' alt='' />
+            </picture>
+            <div class='background-pattern z-1'></div>
+          </div>
+        </section>
+
+        <section tabindex='0' class='grid grid-2--lg grid-col-gap-4--lg grid-2-alt--sm padding-x-4 margin-top-10--sm margin-top-6--lg'>
+          <div class='margin-top-4--sm place-self-center-center'>
+            <h3 class='h3'>Experiential Self Discovery.</h3>
+            <p>BaseCamp spirit is many things. It's about creativity and compassion, calm and courage; it's about fostering deep connections to your team by encouraging honest vision, communication, and trust; about discovering your Self &mdash; who you are and where you're going; and about understanding who and what you need to progress along to the next phase of your journey.</p>
+            <p><a href='https://base-camp.me/' target='_blank'><button class='button-primary'>Discover Basecamp</button></a></p>
+          </div>
+          <div class='grid grid-stacked'>
+            <picture class='picture-object-fit-cover z-2'>
+              <source srcset='/lib/image/why-we-do-it/basecamp-mobile.jpg, /lib/image/why-we-do-it/basecamp-mobile@2x.jpg 2x' media='(max-width: 767px)' />
+              <source srcset='/lib/image/why-we-do-it/basecamp-desktop.jpg, /lib/image/why-we-do-it/basecamp-desktop@2x.jpg 2x' media='(min-width: 768px)' />
+              <img src='/lib/image/why-we-do-it/basecamp-mobile.jpg' alt='' />
+            </picture>
+            <div class='background-pattern z-1'></div>
+          </div>
+        </section>
+
+        <section tabindex='0' class='grid grid-2--lg grid-col-gap-4--lg grid-2-alt--sm grid-2-alt--lg padding-x-4 margin-top-10--sm margin-bottom-8--sm margin-y-6--lg'>
+          <div class='margin-top-4--sm place-self-center-center'>
+            <h3 class='h3'>Engaged and Embedded in Our Industries.</h3>
+            <p>Each year, we facilitate and lead multiple user groups. By listening, learning and understanding, we're able to help all stakeholders address the problems that impact the nursing industry and build the solutions that become best practices.</p>
+            <!-- <p><a href='#' target='_blank'><button class='button-primary'>Discover Basecamp</button></a></p> -->
+          </div>
+          <div class='grid grid-stacked'>
+            <picture class='picture-object-fit-cover z-2'>
+              <source srcset='/lib/image/why-we-do-it/user-groups-mobile.jpg, /lib/image/why-we-do-it/user-groups-mobile@2x.jpg 2x' media='(max-width: 767px)' />
+              <source srcset='/lib/image/why-we-do-it/user-groups-desktop.jpg, /lib/image/why-we-do-it/user-groups-desktop@2x.jpg 2x' media='(min-width: 768px)' />
+              <img src='/lib/image/why-we-do-it/user-groups-mobile.jpg' alt='' />
+            </picture>
+            <div class='background-pattern z-1'></div>
+          </div>
+        </section>
       mode: htmlmixed
     type: item
     enabled: true
@@ -44,5 +159,5 @@ parent: 8fe0f1f3-c0b7-4b5e-9483-a18722504c5d
 replicate: 'null'
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675111278
+updated_at: 1675138439
 ---

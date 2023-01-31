@@ -27,116 +27,7 @@
   		: pageRouteId.replace('/', '');
   
 	/* Component JS */
-	let swiperInstances = [];
-	let swiperInstanceList = null;
-
-	const swiperInstanceWhatDrivesUs = ( _ARGS ) =>
-	{
-
-	}
-
-	const swiperInstanceListInit = () =>
-	{
-	  swiperInstanceList = document.querySelectorAll('.swiper'); 
-
-	  swiperInstanceList.forEach( ( _swiper, _swiperIndex ) =>
-								 {
-
-		swiperInstanceListResize( 
-		  swiperInstanceListConfig(
-			_swiper, 
-			JSON.parse( _swiper.getAttribute('data-swiper' ) )
-		  )
-		);
-
-	  });
-	}
-
-	const swiperInstanceListResize = ( _ARGS ) => 
-	{
-	  let swiper = _ARGS.swiper;
-	  let swiperInstance = _ARGS.swiperInstance;
-	  let swiperConfig = _ARGS.swiperConfig;
-	  let swiperParent = swiper.parentNode;
-
-	  let swiperParentWidth = () =>
-	  { 
-		if ( !swiperConfig?.destroy )
-		{
-		  console.log(`${swiper.getBoundingClientRect().width}`  )
-		  swiper.style.width = `${swiper.getBoundingClientRect().width}px`;
-		}
-		else
-		{
-		  swiper.firstChild.classList.remove('swiper-wrapper');
-		  swiper.style.width = 'auto';
-		  swiperInstance.destroy( true, true );
-		}
-	  }
-
-	  window.addEventListener( 'resize', ( _resize ) => {
-
-		swiperParentWidth();
-
-	  });
-
-	  swiperParentWidth();
-
-	  return _ARGS;
-	}
-
-	const swiperInstanceListConfig = ( _swiper, _swiperConfig ) =>
-	{
-	  console.log( _swiper, _swiperConfig)
-	  let swiper = _swiper;
-	  let swiperId = _swiperConfig.id;
-	  let swiperConfig = _swiperConfig;
-
-	  if ( window.outerWidth <= 767 )
-	  {
-
-		swiperConfig = swiperConfig.mobile.config;
-
-		if ( swiperConfig.scrollbar === true )
-		{
-		  swiperConfig.scrollbar = false;
-		  swiper.querySelector( '.swiper-scrollbar' )?.remove();
-		}
-	  }
-	  else
-	  { 
-
-		swiperConfig = swiperConfig.desktop.config;
-
-		if ( swiperConfig.scrollbar === true )
-		{
-		  delete( swiperConfig.scrollbar );
-		  swiperConfig.scrollbar = { el: ".swiper-scrollbar", draggable: true, hide: false }; 
-		}
-
-	  }
-
-	  swiperConfig.a11y = true;
-	  swiperConfig.keyboardControl = true;
-	  swiperConfig.grabCursor = true;
-
-	  let swiperInstance = new Swiper( swiper, swiperConfig );
-	  /* swiperInstance.on('slideChange', function () {
-	  //   console.log('slide changed');
-	  }); */
-	  swiperInstances.push( swiperInstance );
-
-	  return {
-		swiper: swiper,
-		swiperId: swiperId,
-		swiperInstance: swiperInstance, 
-		swiperConfig: swiperConfig
-	  }
-
-	}
 	
-	let ttpl = false;
-  
 	onMount(async () => {
 	  
 	  /* #Await... */
@@ -150,12 +41,9 @@
 	afterUpdate(async () => {
 	  
 	  tick();
-
-	  swiperInstanceListInit();
-	  window.swiperInstances = swiperInstances;
-
-	  $Store.disqus = ( window.location.pathname.includes('/insights/') && window.location.pathname !== '/insights/' && window.location.pathname !== '/insights' );
-
+	  
+	  console.log( 'Anime check...');
+	  
 	});
   
 </script>

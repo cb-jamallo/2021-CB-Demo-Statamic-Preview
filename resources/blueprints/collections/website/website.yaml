@@ -1296,16 +1296,26 @@ sections:
           max_items: 1
           listable: false
           localizable: true
+          display: Parent
+          instructions_position: above
+          mode: default
+          create: true
       -
         handle: replicate
         field:
-          inline: false
           options:
             page: Page
             children: Children
+            assets: Assets
+          multiple: true
+          clearable: false
+          searchable: true
+          taggable: false
+          push_tags: false
+          cast_booleans: false
           display: Replicate
-          type: checkboxes
-          icon: checkboxes
+          type: select
+          icon: select
           listable: hidden
           instructions_position: above
       -
@@ -1326,5 +1336,25 @@ sections:
           display: Target
           type: select
           icon: select
+          listable: hidden
+          instructions_position: above
+      -
+        handle: run
+        field:
+          default: false
+          display: Run
+          type: toggle
+          icon: toggle
+          listable: hidden
+          instructions_position: above
+          if:
+            target: '!== live'
+      -
+        handle: deploy
+        field:
+          default: false
+          display: Deploy
+          type: toggle
+          icon: toggle
           listable: hidden
           instructions_position: above

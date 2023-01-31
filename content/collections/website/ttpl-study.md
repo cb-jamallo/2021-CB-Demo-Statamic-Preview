@@ -33,13 +33,13 @@ development-template:
       code: null
       mode: javascript
     body:
-      code: 'TTPL Study'
+      code: 'TTPL Study...'
       mode: htmlmixed
     type: item
     enabled: true
 parent: 785879d1-9782-4240-a37e-add7b81d4399
-updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675087070
 replicate: 'null'
 target: 'null'
+updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
+updated_at: 1675114613
 ---

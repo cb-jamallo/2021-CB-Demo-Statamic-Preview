@@ -122,7 +122,8 @@ class SchemaNavigationClass
 
         $entryUri = ( !isset( $_ARGS['root'] ) )
                     ? ''
-                    : str_replace( '//', '/', '/' . $_ARGS['uri'] . '/' )  . $entry->slug();
+                    //: str_replace( '//', '/', '/' . $_ARGS['uri'] . '/' )  . $entry->slug();
+                    : str_replace( '//', '/', '/' . $_ARGS['parent']['uri'] . '/' )  . $entry->slug();
         
         $entryEnabled = $entry->data()->get('development-template')[0]['enabled'];
 

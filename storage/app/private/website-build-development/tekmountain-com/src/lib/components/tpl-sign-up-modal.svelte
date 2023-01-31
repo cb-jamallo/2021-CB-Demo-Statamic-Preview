@@ -25,14 +25,14 @@
 
     onMount(async () => 
     {
-        //
-        tick();
+        /* AWAIT */
+	  	tick();
         
     });
 
     afterUpdate(async () => 
     {
-        //
+        /* AWAIT */
         tick();
     
     });
@@ -41,5 +41,5 @@
 
 
 <svelte:head>
-    <script src="/lib/script/modal-subscribe.js"></script>
+    <!-- <script src="/lib/script/modal-subscribe.js"></script> -->
 </svelte:head>

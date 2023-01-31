@@ -2908,4 +2908,13 @@ sections:
           listable: hidden
           instructions_position: above
           if:
-            target: 'contains_any preview, staging, development, local'
+            target: '!== live'
+      -
+        handle: deploy
+        field:
+          default: false
+          display: Deploy
+          type: toggle
+          icon: toggle
+          listable: hidden
+          instructions_position: above

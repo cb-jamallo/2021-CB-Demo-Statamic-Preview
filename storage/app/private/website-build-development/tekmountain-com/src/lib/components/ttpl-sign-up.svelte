@@ -280,16 +280,16 @@
     
     onMount(async () => 
     {
-        //
-        tick();
+        /* AWAIT */
+	  	tick();
         
-        init();
+        /* init(); */
     });
 
     afterUpdate(async () => 
     {
-        //
-        tick();
+        /* AWAIT */
+	  	tick();
     
     });
 

@@ -36,9 +36,8 @@ development-template:
     body:
       code: |-
         <script>
-        	'use strict';
-
-            /* SVELTE/KIT IMPORTS */
+        	
+          	/* SVELTE/KIT IMPORTS */
         	import { tick, onMount, afterUpdate } from 'svelte';
             
         	/* CUSTOM IMPORTS */
@@ -47,7 +46,55 @@ development-template:
           	import { TemplateParseTitle } from "$lib/components/_stores/template-functions";
           
           	/* CUSTOM JS */
-        	 
+        	/*
+        	let swiperInitWhatDrivesUs = ( _swiper ) => {
+
+        	  console.log( _swiper.activeIndex )
+
+        	  const swiperSlideDetails = document.querySelectorAll('.what-drives-us-detail');
+
+        	  const swiperSlideDetailHide = () =>
+        	  {
+        		swiperSlideDetails.forEach( ( _item, _itemIndex ) => {
+
+        		  _item.style.display = 'none';
+        		  _item.style.opacity = 0;
+
+        		});
+        	  }
+
+        	  const swiperSlideDetailShow = ( _i ) =>
+        	  {
+
+        		swiperSlideDetails.forEach( ( _item, _itemIndex ) => {
+
+        		  _item.style.display = 'none';
+        		  _item.style.opacity = 0;
+
+        		  if ( _itemIndex + 1 === _swiper.activeIndex ||
+        			   _itemIndex + 1 === 1 && _swiper.activeIndex > swiperSlideDetails.length ||
+        			   ( _itemIndex + 1 === swiperSlideDetails.length && _swiper.activeIndex === 0 )
+        		  )
+        		  {
+        			_item.style.display = 'initial';
+        			_item.style.opacity = 1;
+        		  }
+
+        		});
+        	  }
+
+
+        	  _swiper.on('slideChange', function ( _slide ) {
+        		  console.log('slide changed', _swiper.activeIndex );
+
+        		  swiperSlideDetailShow( _swiper.activeIndex );
+        	  });
+
+        	  swiperSlideDetailHide();
+        	  swiperSlideDetailShow(1);
+            } 
+        	*/
+          
         	onMount(async () => {	
         	  	tick();
         	}); 
@@ -55,7 +102,6 @@ development-template:
         	afterUpdate(async () => 
         	{
         		tick();
-        		
         		/*
         		let temp = setInterval( () => {
         			if ( window.swiperInstances );
@@ -441,5 +487,5 @@ development-image:
     enabled: true
 target: 'null'
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675111612
+updated_at: 1675117639
 ---
