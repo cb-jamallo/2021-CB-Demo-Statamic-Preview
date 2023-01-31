@@ -34,6 +34,12 @@ development-template:
       mode: javascript
     body:
       code: |-
+        <svelte:head>
+          <link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+          <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto+Condensed%3A300%2C400%2C700%7CNTR%3A400%7CAbel%3A400&#038;ver=5.9.3' media='all' />
+          <link rel='stylesheet' href='//fonts.googleapis.com/css?family=NTR%3A400%7CAbel%3A400&#038;ver=5.9.3' media='all' />
+        </svelte:head>
+
         <section class='section-1 grid grid-stacked'>
           <img class='logo-header place-self-start-center--sm place-self-start--lg z-2' src='/lib/image/why-we-do-it/global-ambassador/logo-header.png' alt='Global Ambassador' />
           <div class='grid grid-stacked z-1'>
@@ -299,7 +305,7 @@ development-template:
         .section-3-header { font-size: var(--ga-section-3-header-type-size); line-height: var(--ga-section-3-header-small-line-height); }
         .section-3-header small { font-size: var(--ga-section-3-header-small-type-size); }
 
-        // .section-4 {  background-color: #585C65; }
+        /* .section-4 {  background-color: #585C65; } */
         .section-4 h2, .section-4 p { color: #FFF ; }
 
         .section-5 { margin: var(--ga-section-5-margin); }
@@ -338,5 +344,5 @@ target: 'null'
 run: false
 deploy: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675141496
+updated_at: 1675141609
 ---
