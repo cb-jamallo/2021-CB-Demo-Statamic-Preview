@@ -34,6 +34,75 @@ development-template:
       mode: javascript
     body:
       code: |-
+        <script>
+          
+        	/* SVELTE/KIT IMPORTS */
+        	import { tick, onMount, afterUpdate } from 'svelte';
+         	import { page } from '$app/stores';
+         
+         	$Store.headerLogo = false;
+
+         	/* 3RD-PARTY IMPORTS */
+          
+         	/* CUSTOM IMPORTS */
+          
+         	import Store from '$lib/components/_stores/store';
+          
+        	let videoModal = null;
+          	let videoModalClose = null;
+          
+        	onMount(async () => 
+        			{
+        		/* AWAIT */
+        	  	tick();
+
+        	  	document.querySelectorAll('.nav-main-a').forEach( (_navItem) => {
+        			_navItem.classList.add('nav-main-a-white');
+        	  	});
+
+        		document.querySelectorAll('.section-6-header, .section-7-header, .section-8-header').forEach( (_navItem, _navIndex) => {
+
+        		_navItem.addEventListener('click', ( _navItemEvent ) => {
+        			let video = _navItemEvent.target.dataset.video;
+
+        		 	if ( !videoModal.classList.contains('video-modal-open') ) videoModal.classList.add('video-modal-open');
+
+        		 	videoModal.querySelectorAll('div[class*=video-]').forEach( ( _video ) => {
+
+        			  if ( !_video.classList.contains(video) )
+        			  {
+        				_video.hidden = true;
+        			  } else {
+        				_video.hidden = false;
+        			  }
+        		 	});
+
+        		});
+
+        	});
+
+        	videoModalClose.addEventListener('click', () => {
+
+        		videoModal.classList.remove('video-modal-open');
+        		videoModal.querySelectorAll('div[class*=video-]').forEach( ( _video ) => {
+
+        		 _video.hidden = false;
+
+        		});
+
+        	  });
+
+        	});
+
+          	afterUpdate(async () => 
+          	{
+            	/* AWAIT */
+            	tick(); 
+          	});
+          
+        </script>
+          
+
         <svelte:head>
           <link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
           <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto+Condensed%3A300%2C400%2C700%7CNTR%3A400%7CAbel%3A400&#038;ver=5.9.3' media='all' />
@@ -344,5 +413,5 @@ target: 'null'
 run: false
 deploy: true
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675141609
+updated_at: 1675141993
 ---
