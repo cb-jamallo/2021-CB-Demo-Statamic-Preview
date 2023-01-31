@@ -1653,10 +1653,10 @@ class SchemaClass
             shell_exec( $buildDirectoryUserPath . ' npm run ' . $buildTarget . ' 2>&1' );
         }
 
+
         // Handle build deplyment
         if ( $buildDeploy ) 
         {
-
             // Handle git commit
             // Change credentials to app then back to system
             // https://jhooq.com/github-permission-denied-publickey/

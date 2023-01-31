@@ -34,13 +34,6 @@ development-template:
       mode: javascript
     body:
       code: |-
-        <svelte:head>
-          <link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
-          <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto+Condensed%3A300%2C400%2C700%7CNTR%3A400%7CAbel%3A400&#038;ver=5.9.3' media='all' />
-          <link rel='stylesheet' href='//fonts.googleapis.com/css?family=NTR%3A400%7CAbel%3A400&#038;ver=5.9.3' media='all' />
-        </svelte:head>
-
-
         <section class='section-1 grid grid-stacked'>
           <img class='logo-header place-self-start-center--sm place-self-start--lg z-2' src='/lib/image/why-we-do-it/global-ambassador/logo-header.png' alt='Global Ambassador' />
           <div class='grid grid-stacked z-1'>
@@ -342,6 +335,8 @@ development-template:
 parent: c025df8d-4362-4fc9-8676-bf13ff46eff2
 replicate: 'null'
 target: 'null'
+run: false
+deploy: false
 updated_by: 3fcfe9a1-6362-444c-8d55-030541dd2f8d
-updated_at: 1675139902
+updated_at: 1675141463
 ---
